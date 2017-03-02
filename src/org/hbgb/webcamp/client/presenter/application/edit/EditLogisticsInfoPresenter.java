@@ -1,0 +1,51 @@
+/*
+ * Decompiled with CFR 0_115.
+ */
+package org.hbgb.webcamp.client.presenter.application.edit;
+
+import org.hbgb.webcamp.client.model.IKeyedModel;
+import org.hbgb.webcamp.client.model.LogisticsInfoBlockModel;
+import org.hbgb.webcamp.client.presenter.application.edit.AbstractInfoBlockPresenter;
+import org.hbgb.webcamp.client.view.IPartView;
+import org.hbgb.webcamp.client.view.application.edit.EditLogisticsInfoViewImpl;
+import org.hbgb.webcamp.shared.LogisticsInfoBlock;
+import org.hbgb.webcamp.shared.enums.DayOfEvent;
+import org.hbgb.webcamp.shared.enums.PlayaTime;
+import org.hbgb.webcamp.shared.enums.Transportation;
+
+public class EditLogisticsInfoPresenter
+extends AbstractInfoBlockPresenter {
+    static EditLogisticsInfoViewImpl view = new EditLogisticsInfoViewImpl();
+    static LogisticsInfoBlockModel model = new LogisticsInfoBlockModel();
+
+    public EditLogisticsInfoPresenter() {
+        super(model, view);
+    }
+
+    @Override
+    protected void setViewData() {
+        LogisticsInfoBlock logisticsInfoBlock = model.getData();
+        view.setWantsEarlyTeam(logisticsInfoBlock.getWantsEarlyTeam());
+        view.setIsAssignedEarlyTeam(logisticsInfoBlock.getIsAssignedEarlyTeam());
+        view.setWantsStrikeTeam(logisticsInfoBlock.getWantsStrikeTeam());
+        view.setTransportation(logisticsInfoBlock.getTransType());
+        view.setArrivalDate(logisticsInfoBlock.getArrivalDoE());
+        view.setArrivalTime(logisticsInfoBlock.getArrivalTime());
+        view.setDepartureDate(logisticsInfoBlock.getDepartureDoE());
+        view.setDepartureTime(logisticsInfoBlock.getDepartureTime());
+    }
+
+    @Override
+    protected void setModelData() {
+        LogisticsInfoBlock logisticsInfoBlock = model.getData();
+        logisticsInfoBlock.setWantsEarlyTeam(view.getWantsEarlyTeam());
+        logisticsInfoBlock.setIsAssignedEarlyTeam(view.getIsAssignedEarlyTeam());
+        logisticsInfoBlock.setWantsStrikeTeam(view.getWantsStrikeTeam());
+        logisticsInfoBlock.setTransType(view.getTransportation());
+        logisticsInfoBlock.setArrivalDoE(view.getArrivalDate());
+        logisticsInfoBlock.setArrivalTime(view.getArrivalTime());
+        logisticsInfoBlock.setDepartureDoE(view.getDepartureDate());
+        logisticsInfoBlock.setDepartureTime(view.getDepartureTime());
+    }
+}
+

@@ -1,0 +1,71 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	         xmlns:g="urn:import:com.google.gwt.user.client.ui">
+
+	<g:ScrollPanel>
+		<g:VerticalPanel>
+			
+				<g:CaptionPanel captionText="Healer Sheet Info" styleName="formTwoColumn">
+				
+					<g:VerticalPanel>
+					
+						<g:HTMLPanel>
+							<p>	
+								In the next space, please enter the number of minutes your average session lasts.
+								This should just be a 2 digit number, like 45.  
+							</p>
+						</g:HTMLPanel>
+					
+						<g:HorizontalPanel>	
+				        	<g:Label text="Session Length"/>
+				        	<g:TextBox ui:field="sessionLength"/>
+						</g:HorizontalPanel>
+						
+						<g:HTMLPanel>
+							<p>	
+								In the next four spaces, please enter the NAMES (no descriptions yet) of up to four modalities you plan
+								to practice in the healing tent. Please keep these names short (one to three words). 
+							</p>
+						</g:HTMLPanel>
+						
+						<g:HorizontalPanel>	
+				        	<g:Label text="Modality 1"/>
+				        	<g:TextBox ui:field="modality1"/>
+						</g:HorizontalPanel>
+						
+						<g:HorizontalPanel>	
+				        	<g:Label text="Modality 2"/>
+				        	<g:TextBox ui:field="modality2"/>
+						</g:HorizontalPanel>
+						
+						<g:HorizontalPanel>	
+				        	<g:Label text="Modality 3"/>
+				        	<g:TextBox ui:field="modality3"/>
+						</g:HorizontalPanel>
+						
+						<g:HorizontalPanel>	
+				        	<g:Label text="Modality 4"/>
+				        	<g:TextBox ui:field="modality4"/>
+						</g:HorizontalPanel>
+						
+						<g:HTMLPanel>
+							<p>	
+								In the next space, please provide a short 500 character bio and 
+								description of your sessions. This Bio will be on your healer sheet. 
+							</p>
+						</g:HTMLPanel>
+						
+						<g:VerticalPanel>
+							<g:HTML text="Healer's Bio"/>
+				        	<g:TextArea ui:field="bioBox"/>
+						</g:VerticalPanel>		
+				        
+					</g:VerticalPanel>
+					
+				</g:CaptionPanel>
+		
+				<g:Button ui:field="nextButton" styleName="right">Next</g:Button>
+		
+		</g:VerticalPanel>		
+	</g:ScrollPanel>
+</ui:UiBinder> 

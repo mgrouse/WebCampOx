@@ -1,0 +1,57 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	         xmlns:g="urn:import:com.google.gwt.user.client.ui"
+	         xmlns:w="urn:org.hbgb.webcamp.widget">
+
+	<g:ScrollPanel>
+		<g:VerticalPanel>
+		
+			<g:CaptionPanel captionText="6: Shelter" styleName="formOneColumn">
+			
+				<g:VerticalPanel>
+				
+					<g:HTMLPanel>
+						<p>
+							Please Note: We have RV Electrical Hook Ups available for $400. You are on your own for other utilities.
+						</p>
+						<br/>
+					</g:HTMLPanel>
+					
+					<g:HorizontalPanel>
+						<g:CheckBox ui:field="hasRv"/>
+						<g:HTML text="I am bringing an RV."/>
+					</g:HorizontalPanel>
+				
+					<g:HTML text="Please describe your RV in terms of size type etc. If you want Electric hook up for your RV please mention it in this box."/>
+			        <g:TextArea ui:field="rvInfo"/>
+						
+					<g:HTMLPanel>
+						<br/>
+						<br/>
+					</g:HTMLPanel>
+					<g:HorizontalPanel>
+						<g:CheckBox ui:field="isInDormTent"/>	
+						<g:HTML text="I am planning on putting a tent (up to 3 person size) in the Dorm tent."/>
+		        	</g:HorizontalPanel>	
+		        	<g:HTMLPanel>
+						<br/>
+						<br/>
+					</g:HTMLPanel>
+		        	
+		        	<g:HorizontalPanel>
+						<g:CheckBox ui:field="hasStructure"/>
+						<g:HTML text="I am bringing a free standing structure."/>
+		        	</g:HorizontalPanel>
+		        	
+					<g:HTML text="Please describe your structure in terms of size, type etc."/>
+			        <g:TextArea ui:field="structureInfo"/>
+			        
+				</g:VerticalPanel>
+				
+			</g:CaptionPanel>
+			
+			<g:Button ui:field="nextButton" styleName="right">Next</g:Button>
+			
+		</g:VerticalPanel>		
+	</g:ScrollPanel>
+</ui:UiBinder> 

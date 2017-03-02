@@ -1,0 +1,101 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	         xmlns:g="urn:import:com.google.gwt.user.client.ui"
+	         xmlns:w="urn:import:org.hbgb.webcamp.client.widget">
+
+	<g:ScrollPanel>
+		<g:VerticalPanel>
+			<g:HorizontalPanel>	
+			
+				<g:CaptionPanel captionText="2: Demographics" styleName="formTwoColumn">
+				
+					<g:VerticalPanel>
+					
+						<g:HorizontalPanel>	
+				        	<g:Label text="Email"/>
+				        	<g:TextBox ui:field="emailBox"/>
+						</g:HorizontalPanel>
+						
+						<g:HorizontalPanel>
+							<g:Label text="First Name"/>
+				        	<g:TextBox ui:field="firstNameBox"/>
+				        </g:HorizontalPanel>
+				        
+				        <g:HorizontalPanel>
+							<g:Label text="Last Name"/>
+				        	<g:TextBox ui:field="lastNameBox"/>
+						</g:HorizontalPanel>
+				        
+				        <g:HorizontalPanel>
+				        	<g:Label text="Playa Name"/>
+				        	<g:TextBox ui:field="playaNameBox"/>
+				        </g:HorizontalPanel>
+				        
+						<g:HorizontalPanel>
+							<g:Label text="Gender"/>
+				        	<w:GenderListBox ui:field="genderBox"/>
+						</g:HorizontalPanel>
+						
+						<g:HorizontalPanel>
+							<g:Label text="Birth Date"/>
+				        	<w:BirthDateWidget ui:field="birthDate"/>
+						</g:HorizontalPanel>
+						
+						<g:HorizontalPanel>
+							<g:Label text="Default World Job"/>
+				        	<g:TextBox ui:field="defaultWorldJobBox"/>
+						</g:HorizontalPanel>
+						
+						<g:VerticalPanel>
+							<g:HTML text="What would you like your fellow HeeBees know about you? NOTE: this will be used as a bio on an upcoming page where you will be able to see some details on this years HeeBees"/>
+				        	<g:TextArea ui:field="bioBox"/>
+						</g:VerticalPanel>		
+				        
+					</g:VerticalPanel>
+					
+				</g:CaptionPanel>
+				
+				
+				<g:CaptionPanel captionText="Contact Info"  styleName="formTwoColumn">
+				
+					<g:VerticalPanel>
+					
+						<w:AddressWidget ui:field="homeAddress"/>
+						
+						<g:HTMLPanel>	
+							<p>
+								We will be contacting ALL Hee Bee applicants that we have not already met.
+								Please Let us know how best to contact you and when. All times are Pacific Standard Time.
+							</p>
+						</g:HTMLPanel>
+										
+						<g:HorizontalPanel>
+							<g:Label text="Phone"/>
+				        	<g:TextBox ui:field="phoneBox"/>
+						</g:HorizontalPanel>
+						
+						<g:HorizontalPanel>
+							<g:Label text="Skype Name"/>
+				        	<g:TextBox ui:field="skypeNameBox"/>
+						</g:HorizontalPanel>
+						
+						<g:HorizontalPanel>
+							<g:Label text="Preferred Contact Method"/>
+				        	<w:ContactMethodListBox ui:field="contactMethodBox"/>
+						</g:HorizontalPanel>
+						
+						<g:HorizontalPanel>
+							<g:Label text="Preferred Contact Time"/>
+				        	<w:CallTimeListBox ui:field="contactTimeBox"/>
+						</g:HorizontalPanel>
+				
+					</g:VerticalPanel>
+					
+				</g:CaptionPanel>
+				
+			</g:HorizontalPanel>
+		
+			<g:Button ui:field="nextButton" styleName="right">Next</g:Button>
+		</g:VerticalPanel>		
+	</g:ScrollPanel>
+</ui:UiBinder> 

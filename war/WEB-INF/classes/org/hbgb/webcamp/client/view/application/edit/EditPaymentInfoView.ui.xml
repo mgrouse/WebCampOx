@@ -1,0 +1,60 @@
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	         xmlns:g="urn:import:com.google.gwt.user.client.ui"
+	         xmlns:w="urn:import:org.hbgb.webcamp.client.widget">
+
+	<g:CaptionPanel captionText="Payment">
+		<g:VerticalPanel>
+		
+			<g:VerticalPanel ui:field="form">
+				
+				<g:HorizontalPanel>
+					<g:CheckBox ui:field="hasTicket"/>
+					<g:HTML text="I have a ticket to Burning Man."/>
+				</g:HorizontalPanel>
+						
+				<g:HorizontalPanel>	
+		        	<g:Label text="My Ticket is:"/>
+		        	<w:TicketTypeListBox ui:field="ticketType"/>
+				</g:HorizontalPanel>		
+				
+				<g:HorizontalPanel>
+					<g:CheckBox ui:field="hasBeenInvoiced"/>
+					<g:HTML text="Has Burner been invoiced?" />
+				</g:HorizontalPanel>
+				
+				<g:HorizontalPanel>
+					<g:CheckBox ui:field="hasPaidDues"/>
+					<g:HTML text="Has Burner Paid dues?" />
+				</g:HorizontalPanel>
+				
+				<g:HorizontalPanel>
+					<g:Label text="Paid Date:"/>
+		        	<g:TextBox ui:field="paidDate"/>
+				</g:HorizontalPanel>
+				
+				<g:HorizontalPanel>
+					<g:CheckBox ui:field="wasSubsidized"/>
+					<g:HTML text="Was HeeBee subsidized?" />
+				</g:HorizontalPanel>
+				
+				<g:HorizontalPanel>
+					<g:Label text="Subsidy Amount?"/>
+		        	<g:TextBox ui:field="subsidyAmt"/>
+				</g:HorizontalPanel>
+				
+				<g:HorizontalPanel>
+					<g:HTML text="Rreason / Type of subsidy?" />
+		        	<g:TextBox ui:field="subsidyReason"/>
+				</g:HorizontalPanel>
+				
+			</g:VerticalPanel>
+			
+			<g:HorizontalPanel ui:field="buttonPanel">
+				<g:Button ui:field="expandButton">+</g:Button>
+				<g:Button ui:field="editButton">Edit</g:Button>
+				<g:Button ui:field="saveButton">Save</g:Button>
+			</g:HorizontalPanel>	
+		</g:VerticalPanel>
+	</g:CaptionPanel>
+		
+</ui:UiBinder> 

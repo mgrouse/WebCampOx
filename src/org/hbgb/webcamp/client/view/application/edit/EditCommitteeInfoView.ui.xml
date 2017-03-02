@@ -1,0 +1,51 @@
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	         xmlns:g="urn:import:com.google.gwt.user.client.ui"
+	         xmlns:w="urn:import:org.hbgb.webcamp.client.widget">
+
+	<g:CaptionPanel captionText="Committee">
+	
+		<g:VerticalPanel>
+		
+			<g:VerticalPanel ui:field="form">
+			
+				<g:HorizontalPanel>	
+		        	<g:Label text="First Choice"/>
+		        	<w:CommitteeListBox ui:field="committee1"/>
+				</g:HorizontalPanel>
+					
+				<g:HTML text="Why do you want to be on this committee?" styleName="longLabel"/>
+	        	<g:TextArea ui:field="reason1"/>
+					
+				<g:HorizontalPanel>	
+		        	<g:Label text="Second Choice"/>
+		        	<w:CommitteeListBox ui:field="committee2"/>
+				</g:HorizontalPanel>		        
+			        
+				<g:HTML text="Why do you want to be on this committee?"  styleName="longLabel"/>
+	        	<g:TextArea ui:field="reason2"/>				
+					
+				<g:HorizontalPanel>	
+		        	<g:Label text="Assigned Committee"/>
+		        	<w:CommitteeListBox ui:field="assignedCommittee"/>
+				</g:HorizontalPanel>
+				
+				<g:HorizontalPanel>
+		        	<g:CheckBox ui:field="isAssignedLead"/>
+		        	<g:Label text="Assigned as Lead?"/>
+				</g:HorizontalPanel>
+				
+			</g:VerticalPanel>
+			
+			<g:HorizontalPanel ui:field="buttonPanel">
+			
+				<g:Button ui:field="expandButton">+</g:Button>
+				<g:Button ui:field="editButton">Edit</g:Button>
+				<g:Button ui:field="saveButton">Save</g:Button>
+				
+			</g:HorizontalPanel>	
+			
+		</g:VerticalPanel>
+		
+	</g:CaptionPanel>
+		
+</ui:UiBinder> 

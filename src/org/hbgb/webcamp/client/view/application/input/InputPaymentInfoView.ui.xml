@@ -1,0 +1,95 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	         xmlns:g="urn:import:com.google.gwt.user.client.ui"
+	         xmlns:d="urn:import:com.google.gwt.user.datepicker.client"
+	         xmlns:w="urn:import:org.hbgb.webcamp.client.widget">
+
+	<g:ScrollPanel>
+	
+		<g:VerticalPanel>
+			
+			<g:CaptionPanel captionText="3: Tickets" styleName="formOneColumn">
+			
+				<g:VerticalPanel>
+					
+					<g:HTMLPanel>
+					<p>
+						Please let us know you already own a ticket by checking the box below. 
+						If you do not yet own a ticket you may continue to apply, but we will contact 
+						you later and may put you on a wait list if you do not own a ticket at that time. 
+					</p>
+					<br/>
+					<br/>
+					</g:HTMLPanel>
+					
+					<g:HorizontalPanel>
+						<g:CheckBox ui:field="hasTicket"/>
+						<g:HTML text="I have a ticket to Burning Man."/>
+					</g:HorizontalPanel>
+				
+					<g:HTMLPanel>
+					<br/>
+					<br/>
+					<p>
+						A regular ticket is one that is in your hand, or will be mailed by the Burning Man Organization.
+					</p>
+					<p> 
+						A Will Call ticket is going to be held for you At the festival at the Will Call building and will 
+						prevent you from being on early team. We firmly suggest that EVERYONE (not just early team) NOT have 
+						their ticket held at Will Call as it WILL add hours to the amount of time spent waiting to enter the festival.
+					</p>
+					<p>
+						Certain assistance may be available to those with Low Income tickets.
+					</p>
+					<br/>
+					<br/>
+					</g:HTMLPanel>
+				
+					<g:HorizontalPanel>	
+			        	<g:Label text="My Ticket is:"/>
+			        	<w:TicketTypeListBox ui:field="ticketType"/>
+					</g:HorizontalPanel>
+					
+					<g:VerticalPanel ui:field="payProcessPanel">
+					
+						<g:HorizontalPanel>
+							<g:CheckBox ui:field="hasBeenInvoiced"/>
+							<g:HTML text="Has Burner been invoiced?" />
+						</g:HorizontalPanel>
+						
+						<g:HorizontalPanel>
+							<g:CheckBox ui:field="hasPaidDues"/>
+							<g:HTML text="Has Burner Paid dues?" />
+						</g:HorizontalPanel>
+						
+						<g:HorizontalPanel>
+							<g:Label text="Paid Date:"/>
+				        	<d:DatePicker ui:field="paidDate"/>
+						</g:HorizontalPanel>
+						
+						<g:HorizontalPanel>
+							<g:CheckBox ui:field="wasSubsidized"/>
+							<g:HTML text="Was HeeBee subsidized?" />
+						</g:HorizontalPanel>
+						
+						<g:HorizontalPanel>
+							<g:Label text="Subsidy Amount?"/>
+				        	<g:TextBox ui:field="subsidyAmt"/>
+						</g:HorizontalPanel>
+						
+						<g:HorizontalPanel>
+							<g:HTML text="Rreason / Type of subsidy?" />
+				        	<g:TextBox ui:field="subsidyReason"/>
+						</g:HorizontalPanel>
+					</g:VerticalPanel>
+			        
+				</g:VerticalPanel>
+				
+			</g:CaptionPanel>
+		
+			<g:Button ui:field="nextButton" styleName="right">Next</g:Button>
+			
+		</g:VerticalPanel>
+		
+	</g:ScrollPanel>
+</ui:UiBinder> 

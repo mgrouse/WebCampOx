@@ -1,0 +1,20 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	         xmlns:g="urn:import:com.google.gwt.user.client.ui">
+
+	<g:CaptionPanel captionText="Application View">
+		<g:VerticalPanel>
+		
+			<g:HTMLPanel >
+				<h1>Thanks!!!</h1>	
+			</g:HTMLPanel>
+			
+			<g:HTMLPanel>
+				<p>
+					We now have the info we need.
+				</p>
+			</g:HTMLPanel>
+			
+		</g:VerticalPanel>
+	</g:CaptionPanel>
+</ui:UiBinder> 

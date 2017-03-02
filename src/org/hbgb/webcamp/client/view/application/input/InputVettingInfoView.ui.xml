@@ -1,0 +1,28 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	         xmlns:g="urn:import:com.google.gwt.user.client.ui"
+	         xmlns:w="urn:org.hbgb.webcamp.widget">
+
+	<g:ScrollPanel>
+	
+		<g:CaptionPanel captionText="Vetting">
+		
+			<g:VerticalPanel>
+			
+				
+				<g:HorizontalPanel>
+					<g:Label text="Are you a sparkle pony?"/>
+		        	<g:CheckBox ui:field="isSparklePony"/>
+				</g:HorizontalPanel>
+				
+				
+			</g:VerticalPanel>
+			
+		</g:CaptionPanel>
+		
+		<g:HorizontalPanel>
+			<g:Button ui:field="nextButton">Next</g:Button>
+		</g:HorizontalPanel>
+		
+	</g:ScrollPanel>
+</ui:UiBinder> 
