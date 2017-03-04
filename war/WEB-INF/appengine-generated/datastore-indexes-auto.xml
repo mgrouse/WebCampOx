@@ -1,0 +1,11 @@
+<!-- Indices written at Fri, 3 Mar 2017 22:32:32 PST -->
+
+<datastore-indexes>
+
+    <!-- Used 2 times in query history -->
+    <datastore-index kind="Application" ancestor="false" source="auto">
+        <property name="year" direction="asc"/>
+        <property name="status" direction="asc"/>
+    </datastore-index>
+
+</datastore-indexes>

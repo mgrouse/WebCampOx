@@ -48,5 +48,5 @@
 			</g:HorizontalPanel>
 				
 		</g:VerticalPanel>
-	</g:DecoratorPanel>
+	</g:CaptionPanel>
 </ui:UiBinder> 

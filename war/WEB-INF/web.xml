@@ -24,7 +24,7 @@
 
 	<servlet-mapping>
 		<servlet-name>BlobStoreUploadServlet</servlet-name>
-		<url-pattern>/webcamp/upload</url-pattern>
+		<url-pattern>/hbgbwebcamp/upload</url-pattern>
 	</servlet-mapping>
   	
   	<servlet>
@@ -34,7 +34,7 @@
 
 	<servlet-mapping>
 		<servlet-name>blobStoreURLServiceServlet</servlet-name>
-		<url-pattern>/webcamp/images</url-pattern>
+		<url-pattern>/hbgbwebcamp/images</url-pattern>
 	</servlet-mapping>
   	
   	<servlet>
@@ -44,7 +44,7 @@
 
 	<servlet-mapping>
 		<servlet-name>emailServiceServlet</servlet-name>
-		<url-pattern>/webcamp/emailService</url-pattern>
+		<url-pattern>/hbgbwebcamp/emailService</url-pattern>
 	</servlet-mapping>
   
 	<servlet>
@@ -54,7 +54,7 @@
 
 	<servlet-mapping>
 		<servlet-name>applicationServiceServlet</servlet-name>
-		<url-pattern>/webcamp/applicationService</url-pattern>
+		<url-pattern>/hbgbwebcamp/applicationService</url-pattern>
 	</servlet-mapping>
 	
 	<servlet>
@@ -64,10 +64,8 @@
 
 	<servlet-mapping>
 		<servlet-name>healerSheetServiceServlet</servlet-name>
-		<url-pattern>/webcamp/healerSheetService</url-pattern>
+		<url-pattern>/hbgbwebcamp/healerSheetService</url-pattern>
 	</servlet-mapping>
-	
-	
 	
 	<servlet>
 		<servlet-name>uploadedPhotoServiceServlet</servlet-name>
@@ -76,17 +74,7 @@
 
 	<servlet-mapping>
 		<servlet-name>uploadedPhotoServiceServlet</servlet-name>
-		<url-pattern>/webcamp/uploadedPhotoService</url-pattern>
-	</servlet-mapping>
-	
-	<servlet>
-		<servlet-name>profileServiceServlet</servlet-name>
-		<servlet-class>org.hbgb.webcamp.server.ProfileServiceImpl</servlet-class>
-	</servlet>
-
-	<servlet-mapping>
-		<servlet-name>profileServiceServlet</servlet-name>
-		<url-pattern>/webcamp/profileService</url-pattern>
+		<url-pattern>/hbgbwebcamp/uploadedPhotoService</url-pattern>
 	</servlet-mapping>
 	
 	<servlet>
@@ -96,7 +84,7 @@
 
 	<servlet-mapping>
 		<servlet-name>userServiceServlet</servlet-name>
-		<url-pattern>/webcamp/userService</url-pattern>
+		<url-pattern>/hbgbwebcamp/userService</url-pattern>
 	</servlet-mapping>
   
   
