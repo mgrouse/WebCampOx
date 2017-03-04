@@ -41,13 +41,13 @@ public class StartPresenter implements SequentialPresenterI
 		this.screen = container;
 		this.screen.clear();
 		this.view.clear();
-		this.screen.add(this.view.asWidget());
+		this.screen.add(view.asWidget());
 	}
 
 	@Override
 	public void setNextPresenter(KeyPresenterI next)
 	{
-		this.nextPresenter = next;
+		nextPresenter = next;
 	}
 
 	@Override

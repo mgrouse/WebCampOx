@@ -16,13 +16,12 @@
 				</g:HorizontalPanel>
 				
 				
+				<g:Button ui:field="nextButton">Next</g:Button>
+				
+				
 			</g:VerticalPanel>
 			
 		</g:CaptionPanel>
-		
-		<g:HorizontalPanel>
-			<g:Button ui:field="nextButton">Next</g:Button>
-		</g:HorizontalPanel>
 		
 	</g:ScrollPanel>
 </ui:UiBinder> 

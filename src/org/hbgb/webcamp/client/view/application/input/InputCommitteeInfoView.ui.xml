@@ -51,27 +51,27 @@
 						</g:HTMLPanel>
 					
 						<g:HorizontalPanel>	
-				        	<g:Label text="Avg. Session length in Minutes (45)"/>
+				        	<g:Label text="Avg. Session length in Minutes (45)"  styleName="longLabel"/>
 				        	<g:TextBox ui:field="sessionLength"/>
 						</g:HorizontalPanel>
 						
 						<g:HorizontalPanel>
-							<g:Label text="Modality 1  (Massage)"/>
+							<g:Label text="Modality 1 (Massage)"  styleName="longLabel"/>
 				        	<g:TextBox ui:field="modality1"/>
 						</g:HorizontalPanel>
 						
 						<g:HorizontalPanel>
-							<g:Label text="Modality 2  (Reiki)"/>
+							<g:Label text="Modality 2 (Reiki)" styleName="longLabel"/>
 				        	<g:TextBox ui:field="modality2"/>
 						</g:HorizontalPanel>
 						
 						<g:HorizontalPanel>
-							<g:Label text="Modality 3  (Talk Therapy)"/>
+							<g:Label text="Modality 3 (Talk Therapy)"  styleName="longLabel"/>
 				        	<g:TextBox ui:field="modality3"/>
 						</g:HorizontalPanel>
 						
 						<g:HorizontalPanel>
-							<g:Label text="Modality 4  (Chiropractic)"/>
+							<g:Label text="Modality 4 (Chiropractic)"  styleName="longLabel"/>
 				        	<g:TextBox ui:field="modality4"/>
 						</g:HorizontalPanel>
 						

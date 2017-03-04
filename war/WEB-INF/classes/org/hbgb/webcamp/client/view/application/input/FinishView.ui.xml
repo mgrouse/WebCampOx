@@ -36,6 +36,5 @@
 				</g:HTMLPanel>
 			</g:CaptionPanel>				
 		</g:VerticalPanel>
-		
 	</g:ScrollPanel>
 </ui:UiBinder> 

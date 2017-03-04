@@ -20,19 +20,29 @@ import com.google.gwt.user.client.ui.HasWidgets;
 
 public class ApplicationProcessApplet implements IApplet
 {
-	private final StartPresenter enter = new StartPresenter();
-	private final UploadPhotoPresenter picturePage = new UploadPhotoPresenter(null);
-	private final InputPersonalInfoPresenter personalPage = new InputPersonalInfoPresenter(null);
-	private final InputPaymentInfoPresenter paymentPage = new InputPaymentInfoPresenter(null);
-	private final InputCommitteeNHealerSheetInfoPresenter committeePage = new InputCommitteeNHealerSheetInfoPresenter(null);
-	private final InputDietInfoPresenter dietPage = new InputDietInfoPresenter(null);
-	private final InputShelterInfoPresenter shelterPage = new InputShelterInfoPresenter(null);
-	private final InputLogisticsInfoPresenter logisticPage = new InputLogisticsInfoPresenter(null);
-	private final FinishPresenter exit = new FinishPresenter();
+	private final StartPresenter enter;
+	private final UploadPhotoPresenter picturePage;
+	private final InputPersonalInfoPresenter personalPage;
+	private final InputPaymentInfoPresenter paymentPage;
+	private final InputCommitteeNHealerSheetInfoPresenter committeePage;
+	private final InputDietInfoPresenter dietPage;
+	private final InputShelterInfoPresenter shelterPage;
+	private final InputLogisticsInfoPresenter logisticPage;
+	private final FinishPresenter exit;
 	private HasWidgets screen;
 
 	public ApplicationProcessApplet()
 	{
+		enter = new StartPresenter();
+		picturePage = new UploadPhotoPresenter(null);
+		personalPage = new InputPersonalInfoPresenter(null);
+		paymentPage = new InputPaymentInfoPresenter(null);
+		committeePage = new InputCommitteeNHealerSheetInfoPresenter(null);
+		dietPage = new InputDietInfoPresenter(null);
+		shelterPage = new InputShelterInfoPresenter(null);
+		logisticPage = new InputLogisticsInfoPresenter(null);
+		exit = new FinishPresenter();
+
 		this.setOrder();
 	}
 
