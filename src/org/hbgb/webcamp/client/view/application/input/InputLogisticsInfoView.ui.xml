@@ -10,83 +10,86 @@
 		    <g:HTMLPanel ui:field="verifyWarning">
 			</g:HTMLPanel>
 		    
-			<g:HorizontalPanel>
-		
-				<g:CaptionPanel captionText="Arrival" styleName="formTwoColumn">
-				
-					<g:VerticalPanel>
-						
-						<g:HorizontalPanel>
-				        	<g:CheckBox ui:field="wantsEarlyTeam"/>
-				        	<g:Label text="I want to be on early team."/>
-						</g:HorizontalPanel>
-						
-						<g:HorizontalPanel>
-							<g:Label ui:field="transportationLabel" text="I will travel by: "/>
-				        	<w:TransportationListBox ui:field="transportation"/>
-						</g:HorizontalPanel>
-						
-						<g:HTMLPanel>
-							<br/>
-							<br/>
-						</g:HTMLPanel>
-						
-						<g:HorizontalPanel>
-							<g:Label ui:field="arrivalDayLabel" text="I will arrive on: "/>
-				        	<w:DayOfEventListBox ui:field="arrivalDoE"/>
-						</g:HorizontalPanel>
-						
-						<g:HTMLPanel>
-							<br/>
-							<br/>
-						</g:HTMLPanel>
-						
-						 <g:HorizontalPanel>	
-				        	<g:Label ui:field="arrivalTimeLabel" text="I will arrive: "/>
-				        	<w:PlayaTimeListBox ui:field="arrivalTime"/>
-						</g:HorizontalPanel>
-						
-					</g:VerticalPanel>
+		    <g:CaptionPanel captionText="Travel Plans" styleName="formOneColumn">
+		    
+				<g:HorizontalPanel>
+			
+					<g:CaptionPanel captionText="Arrival" styleName="formTwoColumn">
 					
-				</g:CaptionPanel>
+						<g:VerticalPanel>
+							
+							<g:HorizontalPanel>
+					        	<g:CheckBox ui:field="wantsEarlyTeam"/>
+					        	<g:Label text="I want to be on early team."/>
+							</g:HorizontalPanel>
+							
+							<g:HorizontalPanel>
+								<g:Label ui:field="transportationLabel" text="I will travel by: "/>
+					        	<w:TransportationListBox ui:field="transportation"/>
+							</g:HorizontalPanel>
+							
+							<g:HTMLPanel>
+								<br/>
+								<br/>
+							</g:HTMLPanel>
+							
+							<g:HorizontalPanel>
+								<g:Label ui:field="arrivalDayLabel" text="I will arrive on: "/>
+					        	<w:DayOfEventListBox ui:field="arrivalDoE"/>
+							</g:HorizontalPanel>
+							
+							<g:HTMLPanel>
+								<br/>
+								<br/>
+							</g:HTMLPanel>
+							
+							 <g:HorizontalPanel>	
+					        	<g:Label ui:field="arrivalTimeLabel" text="I will arrive: "/>
+					        	<w:PlayaTimeListBox ui:field="arrivalTime"/>
+							</g:HorizontalPanel>
+							
+						</g:VerticalPanel>
 						
-				<g:CaptionPanel captionText="Departure" styleName="formTwoColumn">	
-				
-					<g:VerticalPanel>
-				
-						<g:HorizontalPanel>
-							<g:Label ui:field="departureDayLabel" text="I will leave on"/>
-				        	<w:DayOfEventListBox ui:field="departureDoE"/>
-						</g:HorizontalPanel>
-						
-						<g:HTMLPanel>
-							<br/>
-							<br/>
-						</g:HTMLPanel>
-						
-						 <g:HorizontalPanel>	
-				        	<g:Label ui:field="departureTimeLabel" text="I will leave: "/>
-				        	<w:PlayaTimeListBox ui:field="departureTime"/>
-						</g:HorizontalPanel>
-						
-						<g:HTMLPanel>
-							<br/>
-							<br/>
-						</g:HTMLPanel>
-						
-						<g:HorizontalPanel>
-				        	<g:CheckBox ui:field="wantsStrikeTeam"/>
-				        	<g:Label text="I plan on being on Strike team."/>
-						</g:HorizontalPanel>
-						
-					</g:VerticalPanel>
+					</g:CaptionPanel>
+							
+					<g:CaptionPanel captionText="Departure" styleName="formTwoColumn">	
 					
-				</g:CaptionPanel>
+						<g:VerticalPanel>
+					
+							<g:HorizontalPanel>
+								<g:Label ui:field="departureDayLabel" text="I will leave on"/>
+					        	<w:DayOfEventListBox ui:field="departureDoE"/>
+							</g:HorizontalPanel>
+							
+							<g:HTMLPanel>
+								<br/>
+								<br/>
+							</g:HTMLPanel>
+							
+							 <g:HorizontalPanel>	
+					        	<g:Label ui:field="departureTimeLabel" text="I will leave: "/>
+					        	<w:PlayaTimeListBox ui:field="departureTime"/>
+							</g:HorizontalPanel>
+							
+							<g:HTMLPanel>
+								<br/>
+								<br/>
+							</g:HTMLPanel>
+							
+							<g:HorizontalPanel>
+					        	<g:CheckBox ui:field="wantsStrikeTeam"/>
+					        	<g:Label text="I plan on being on Strike team."/>
+							</g:HorizontalPanel>
+							
+						</g:VerticalPanel>
+						
+					</g:CaptionPanel>
+				
+				</g:HorizontalPanel>
 			
-			</g:HorizontalPanel>
-			
-			<g:Button ui:field="nextButton" styleName="right">Next</g:Button>
-			
+				<g:Button ui:field="nextButton" styleName="right">Next</g:Button>
+				
+			</g:CaptionPanel>
 		</g:VerticalPanel>
 	</g:ScrollPanel>
 </ui:UiBinder> 

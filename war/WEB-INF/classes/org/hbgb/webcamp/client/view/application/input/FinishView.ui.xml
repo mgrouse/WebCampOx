@@ -5,9 +5,9 @@
 
 	<g:ScrollPanel>
 		
-			<g:VerticalPanel>
+		<g:VerticalPanel>
 			
-			
+			<g:CaptionPanel captionText="7: Finished" styleName="formOneColumn">
 				<g:HTMLPanel >
 					<h1>Thanks!!!</h1>	
 				</g:HTMLPanel>
@@ -34,8 +34,8 @@
 						and read up on camp life.
 					</p>
 				</g:HTMLPanel>
-						
-			</g:VerticalPanel>
+			</g:CaptionPanel>				
+		</g:VerticalPanel>
 		
 	</g:ScrollPanel>
 </ui:UiBinder> 

@@ -20,8 +20,8 @@
 				    
 					<g:HTMLPanel>
 						<p>
-							Please let us know you ALREADY own a ticket by checking the box below. 
-							If you do not yet own a ticket you may continue to apply, but we will contact 
+							Please check the box below if you ALREADY own a ticket. 
+							If you do not yet own a ticket you may continue to apply, and we will contact 
 							you later and may put you on a wait list if you do not own a ticket at that time. 
 						</p>
 						<br/>
@@ -37,10 +37,10 @@
 						<br/>
 						<br/>
 						<p>
-							A regular ticket is one that is in your hand, or will be mailed by the Burning Man Organization.
+							A regular ticket is one that is in your hand, or will be mailed to you by the Burning Man Organization.
 						</p>
 						<p> 
-							A Will Call ticket is going to be held for you At the festival at the Will Call building and will 
+							A Will Call ticket is going to be held for you at the festival at the Will Call building and will 
 							prevent you from being on early team. We firmly suggest that EVERYONE (not just early team) NOT have 
 							their ticket held at Will Call as it WILL add hours to the amount of time spent waiting in line to enter the festival.
 						</p>
@@ -56,11 +56,13 @@
 			        	<w:TicketTypeListBox ui:field="ticketType"/>
 					</g:HorizontalPanel>
 			        
+					<g:Button ui:field="nextButton" styleName="right">Next</g:Button>
+					
 				</g:VerticalPanel>
 				
 			</g:CaptionPanel>
 		
-			<g:Button ui:field="nextButton" styleName="right">Next</g:Button>
+			
 			
 		</g:VerticalPanel>
 		

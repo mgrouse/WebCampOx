@@ -32,9 +32,9 @@ public class InputLogisticsInfoPresenter implements SequentialPresenterI
 	public InputLogisticsInfoPresenter(String key)
 	{
 		this.key = key;
-		this.view = ViewFinder.getLogisticsInfoView();
-		this.view.setVisibility(SecurityRole.USER);
-		this.view.setPresenter(this);
+		view = ViewFinder.getLogisticsInfoView();
+		view.setVisibility(SecurityRole.USER);
+		view.setPresenter(this);
 	}
 
 	@Override
@@ -45,58 +45,60 @@ public class InputLogisticsInfoPresenter implements SequentialPresenterI
 
 	private void setView()
 	{
-		this.view.setWantsEarlyTeam(this.logisticsInfoBlock.getWantsEarlyTeam());
-		this.view.setWantsStrikeTeam(this.logisticsInfoBlock.getWantsStrikeTeam());
-		this.view.setTransportation(this.logisticsInfoBlock.getTransType());
-		this.view.setArrivalDate(this.logisticsInfoBlock.getArrivalDoE());
-		this.view.setArrivalTime(this.logisticsInfoBlock.getArrivalTime());
-		this.view.setDepartureDate(this.logisticsInfoBlock.getDepartureDoE());
-		this.view.setDepartureTime(this.logisticsInfoBlock.getDepartureTime());
+		view.setWantsEarlyTeam(logisticsInfoBlock.getWantsEarlyTeam());
+		view.setWantsStrikeTeam(logisticsInfoBlock.getWantsStrikeTeam());
+		view.setTransportation(logisticsInfoBlock.getTransType());
+		view.setArrivalDate(logisticsInfoBlock.getArrivalDoE());
+		view.setArrivalTime(logisticsInfoBlock.getArrivalTime());
+		view.setDepartureDate(logisticsInfoBlock.getDepartureDoE());
+		view.setDepartureTime(logisticsInfoBlock.getDepartureTime());
 	}
 
 	private void setModel()
 	{
-		this.logisticsInfoBlock.setWantsEarlyTeam(this.view.getWantsEarlyTeam());
-		this.logisticsInfoBlock.setWantsStrikeTeam(this.view.getWantsStrikeTeam());
-		this.logisticsInfoBlock.setTransType(this.view.getTransportation());
-		this.logisticsInfoBlock.setArrivalDoE(this.view.getArrivalDate());
-		this.logisticsInfoBlock.setArrivalTime(this.view.getArrivalTime());
-		this.logisticsInfoBlock.setDepartureDoE(this.view.getDepartureDate());
-		this.logisticsInfoBlock.setDepartureTime(this.view.getDepartureTime());
+		logisticsInfoBlock.setWantsEarlyTeam(view.getWantsEarlyTeam());
+		logisticsInfoBlock.setWantsStrikeTeam(view.getWantsStrikeTeam());
+		logisticsInfoBlock.setTransType(view.getTransportation());
+		logisticsInfoBlock.setArrivalDoE(view.getArrivalDate());
+		logisticsInfoBlock.setArrivalTime(view.getArrivalTime());
+		logisticsInfoBlock.setDepartureDoE(view.getDepartureDate());
+		logisticsInfoBlock.setDepartureTime(view.getDepartureTime());
 	}
 
 	@Override
 	public void go(HasWidgets container)
 	{
-		this.screen = container;
-		this.fetchData();
-		this.screen.clear();
+		screen = container;
+		fetchData();
+		screen.clear();
 	}
 
 	@Override
 	public void setNextPresenter(KeyPresenterI next)
 	{
-		this.nextPresenter = next;
+		nextPresenter = next;
 	}
 
 	public void fetchData()
 	{
-		if (this.key != null)
+		if (key != null)
 		{
-			this.rpcService.getApplicantsLogisticsInfoBlock(this.key, new AsyncCallback<LogisticsInfoBlock>()
+			rpcService.getApplicantsLogisticsInfoBlock(key, new AsyncCallback<LogisticsInfoBlock>()
 			{
 
 				@Override
 				public void onSuccess(LogisticsInfoBlock result)
 				{
+					logisticsInfoBlock = result;
+
 					if (result == null)
 					{
 						Window.alert("Applicant's Payment Info reurned as null");
 						return;
 					}
-					InputLogisticsInfoPresenter.access$0(InputLogisticsInfoPresenter.this, result);
-					InputLogisticsInfoPresenter.this.setView();
-					InputLogisticsInfoPresenter.this.screen.add(InputLogisticsInfoPresenter.this.view.asWidget());
+
+					setView();
+					screen.add(view.asWidget());
 				}
 
 				@Override
@@ -113,8 +115,8 @@ public class InputLogisticsInfoPresenter implements SequentialPresenterI
 	@Override
 	public void onNextButtonClicked()
 	{
-		this.setModel();
-		this.rpcService.updateApplicantsLogisticsInfoBlock(this.logisticsInfoBlock, new AsyncCallback<Boolean>()
+		setModel();
+		rpcService.updateApplicantsLogisticsInfoBlock(logisticsInfoBlock, new AsyncCallback<Boolean>()
 		{
 
 			@Override
@@ -122,9 +124,9 @@ public class InputLogisticsInfoPresenter implements SequentialPresenterI
 			{
 				if (saved.booleanValue())
 				{
-					InputLogisticsInfoPresenter.this.screen.clear();
-					InputLogisticsInfoPresenter.this.nextPresenter.setKey(InputLogisticsInfoPresenter.this.key);
-					InputLogisticsInfoPresenter.this.nextPresenter.go(InputLogisticsInfoPresenter.this.screen);
+					screen.clear();
+					nextPresenter.setKey(key);
+					nextPresenter.go(screen);
 					return;
 				}
 				Window.alert("DB Error saving Applicant's Shelter Info");
@@ -136,11 +138,6 @@ public class InputLogisticsInfoPresenter implements SequentialPresenterI
 				Window.alert("RPC Error saving Applicant's Shelter Info");
 			}
 		});
-	}
-
-	static /* synthetic */ void access$0(InputLogisticsInfoPresenter inputLogisticsInfoPresenter, LogisticsInfoBlock logisticsInfoBlock)
-	{
-		inputLogisticsInfoPresenter.logisticsInfoBlock = logisticsInfoBlock;
 	}
 
 }

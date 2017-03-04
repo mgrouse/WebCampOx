@@ -34,7 +34,7 @@
 						<h2>Do you have other dietary restriction(s) we need to be aware of?</h2>
 						
 						<p>
-							PLease enter the name(s) of any serious food related condition(s) in the box.
+							Please enter the name(s) of any SERIOUS food related condition(s) in the box.
 						   	Please do not enter "No", to tell us you have no restrictions; leaving the box blank serves that purpose.
 						   	Please enter only the name of each condition, separated by a comma. 
 						   	Please, NO sentences describing conditions, as lengthy responses mess with the readability of our automated reports. 
@@ -48,7 +48,9 @@
 						
 						<p> 
 							Good example: Diabetic, Strawberry Allergy, Lactose Intollerant.
-								  
+						</p>
+						
+						<p>	  
 							Bad examples: I have been type 2 Diabetic since I was 5, I don't like onions, Green beans give me gass."
 						</p>
 					</g:HTMLPanel>

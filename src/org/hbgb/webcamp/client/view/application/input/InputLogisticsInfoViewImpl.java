@@ -200,8 +200,7 @@ public class InputLogisticsInfoViewImpl extends AbstractView implements InputLog
 	{
 		Boolean retVal = true;
 
-		DayOfEvent day = this.getArrivalDate();
-		if (day == null)
+		if (getArrivalDate() == null)
 		{
 			retVal = false;
 			this.arrivalDayLabel.getElement().getStyle().setColor("red");
@@ -222,11 +221,12 @@ public class InputLogisticsInfoViewImpl extends AbstractView implements InputLog
 			this.verifyWarning.setVisible(true);
 		}
 
-		if (getDepartureTime() != null)
-			return retVal;
-		retVal = false;
-		this.departureTimeLabel.getElement().getStyle().setColor("red");
-		this.verifyWarning.setVisible(true);
+		if (getDepartureTime() == null)
+		{
+			retVal = false;
+			departureTimeLabel.getElement().getStyle().setColor("red");
+			verifyWarning.setVisible(true);
+		}
 		return retVal;
 	}
 

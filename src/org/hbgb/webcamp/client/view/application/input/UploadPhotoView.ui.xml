@@ -5,7 +5,7 @@
 	<g:ScrollPanel>
 		<g:VerticalPanel>
 		
-			<g:CaptionPanel captionText="1: Photo" styleName="formOneColumn">
+			<g:CaptionPanel captionText="2: Photo" styleName="formOneColumn">
 			
 				<g:VerticalPanel>
 				
