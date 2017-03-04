@@ -32,3 +32,240 @@ h1 {
 #closeButton {
   margin: 15px 6px 6px;
 }
+
+
+.center
+{
+	margin-left:auto;
+	margin-right:auto;
+}
+
+/* .gwt-RootLayoutPanel
+{
+	height: 100px;
+	width:  100%;
+} */
+
+.gwt-DecoratorPanel
+{
+	height: 600px;
+	width:  900px;
+	margin-left:auto;
+	margin-right:auto;
+}
+
+/*.gwt-ScrollPanel
+{
+	height: 100px;
+	width:  100%;
+}*/
+
+.gwt-Button 
+{
+  height: 4.0em;
+  margin-bottom: 5px;
+  padding-bottom: 3px;
+  font-size: 12px;
+  font-family: arial, sans-serif;
+} 
+
+
+.gwt-Label 
+{
+  /*color: #DF0101;*/
+  font: normal 12px tahoma, arial, helvetica, sans-serif;
+  /* border: 1px solid #99bbe8;*/
+  padding: 14px;
+  width: 100px;
+}
+
+
+.gwt-HTMLPanel
+{
+	width:  50%;
+}
+
+
+.gwt-ListBox
+{
+	
+}
+
+.gwt-TextArea
+{
+	height: 150px;
+	width:  70%;
+	margin-left:auto;
+	margin-right:auto;
+}
+
+.textBox
+{
+	margin: 0px 0px 0px 0px;
+	
+}
+
+.viewFlexTable 
+{
+	margin: 5px 0px 5px 0px;
+}
+
+.buttonHPanel 
+{
+	margin: 5px 5px 5px 5px;
+}
+
+.formRow
+{
+
+}
+
+.formOneColumn
+{
+	width:  80%;
+	margin-left:auto;
+	margin-right:auto;
+}
+
+.formTwoColumn
+{
+	width:  37%;
+	margin-left:auto;
+	margin-right:auto;
+}
+
+.left
+{
+	float:left;
+}
+
+.right
+{
+	float:right;
+}
+
+.clear
+{
+	clear: both;
+}
+
+
+
+div.modality
+{
+    padding-left:20px;
+    padding-right:10px;
+    float: left;
+    width: 465px;
+    margin: 0px;
+    
+}
+
+div.picture
+{
+    float: left;
+    width: 300px;
+    height: 300px;
+    text-align:center;
+    background-repeat:no-repeat;
+    background-position:center;
+    background-size:contain;
+}
+
+div.whoIs 
+{
+    float: left;
+    width: 465px;
+    padding-left:20px;
+    padding-right:10px;
+   
+}
+
+div.sessionTiming
+{
+    text-align: center;
+}
+
+div.signUp
+{
+    width: 100%;
+    margin: 0px;
+}
+
+/* Need SIGN UP table and cell STYLES */
+
+div.left
+{
+    float: left;
+}
+
+div.right
+{
+    float: right;
+}
+
+div.clearFloats
+{
+    clear: both;
+}
+
+img.centered
+{
+    text-align: center;
+    vertical-align: middle;
+}
+
+p.bio
+{
+    font-size: 20px;
+}
+
+p.sessionTiming
+{
+	font-size: 18px;
+}
+
+li
+{
+    font-size: 22px;
+}
+
+table.signUp
+{
+    width: 100%
+}
+
+th
+{
+    font-size: 18px;
+    font-weight:bold;
+}
+
+
+
+td.sigCell
+{
+	font-size: 40px;
+    border-width:1px;
+    border-bottom-style:solid;
+}
+
+td.timeCell
+{
+	font-size: 40px;
+    border-width:1px;
+    width: 200px;
+    background-color:LightGray;
+    border-style:solid
+}
+
+
+
+
+
+
+
+
+
+
+

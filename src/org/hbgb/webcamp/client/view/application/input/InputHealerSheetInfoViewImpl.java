@@ -27,8 +27,8 @@ import com.google.gwt.user.client.ui.Widget;
 
 public class InputHealerSheetInfoViewImpl extends AbstractView implements InputHealerSheetInfoView
 {
-	private static UiBinder<Widget, InputHealerSheetInfoViewImpl> binder = (UiBinder) GWT
-			.create((Class) InputHealerSheetInfoViewImplBinder.class);
+	private static UiBinder<Widget, InputHealerSheetInfoViewImpl> binder =  GWT
+			.create( InputHealerSheetInfoViewImplBinder.class);
 	@UiField
 	TextBox sessionLength;
 	@UiField

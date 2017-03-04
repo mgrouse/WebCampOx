@@ -20,18 +20,26 @@ import com.google.gwt.user.client.ui.Widget;
 
 public class AddressWidget extends Composite
 {
-	private static UiBinder<Widget, AddressWidget> binder = (UiBinder) GWT
-			.create((Class) AddressWidgetBinder.class);
+	static interface AddressWidgetBinder extends UiBinder<Widget, AddressWidget>
+	{}
+
+	private static UiBinder<Widget, AddressWidget> binder = GWT.create(AddressWidgetBinder.class);
+
 	@UiField
 	TextBox street1Box;
+
 	@UiField
 	TextBox street2Box;
+
 	@UiField
 	TextBox cityBox;
+
 	@UiField
 	TextBox stateBox;
+
 	@UiField
 	TextBox countryBox;
+
 	@UiField
 	TextBox postCodeBox;
 
@@ -130,10 +138,6 @@ public class AddressWidget extends Composite
 	public String getPostCodeText()
 	{
 		return this.postCodeBox.getText();
-	}
-
-	static interface AddressWidgetBinder extends UiBinder<Widget, AddressWidget>
-	{
 	}
 
 }

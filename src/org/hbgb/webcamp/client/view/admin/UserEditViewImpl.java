@@ -31,8 +31,7 @@ public class UserEditViewImpl extends AbstractView implements IUserEditView
 {
 	@UiTemplate(value = "UserEditView.ui.xml")
 	static interface UserEditViewUiBinder extends UiBinder<Widget, UserEditViewImpl>
-	{
-	}
+	{}
 
 	private static UserEditViewUiBinder uiBinder = GWT.create(UserEditViewUiBinder.class);
 

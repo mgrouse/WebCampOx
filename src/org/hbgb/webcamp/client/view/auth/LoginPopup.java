@@ -29,8 +29,8 @@ import com.google.gwt.user.client.ui.Widget;
 
 public class LoginPopup extends AbstractView implements LoginView
 {
-	private static UiBinder<Widget, LoginPopup> uiBinder = (UiBinder) GWT
-			.create((Class) LoginPopupBinder.class);
+	private static UiBinder<Widget, LoginPopup> uiBinder =  GWT
+			.create( LoginPopupBinder.class);
 	@UiField
 	TextBox emailBox;
 	@UiField

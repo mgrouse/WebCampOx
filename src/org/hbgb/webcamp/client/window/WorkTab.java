@@ -19,8 +19,8 @@ import com.google.gwt.user.client.ui.Widget;
 
 public class WorkTab extends Composite
 {
-	private static UiBinder<Widget, WorkTab> binder = (UiBinder) GWT
-			.create((Class) WorkTabBinder.class);
+	private static UiBinder<Widget, WorkTab> binder =  GWT
+			.create( WorkTabBinder.class);
 	@UiField
 	ScrollPanel scrollPanel;
 

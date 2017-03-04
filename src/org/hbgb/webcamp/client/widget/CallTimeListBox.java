@@ -22,8 +22,8 @@ import com.google.gwt.user.client.ui.Widget;
 
 public class CallTimeListBox extends Composite
 {
-	private static UiBinder<Widget, CallTimeListBox> binder = (UiBinder) GWT
-			.create((Class) CallTimeListBoxBinder.class);
+	private static UiBinder<Widget, CallTimeListBox> binder =  GWT
+			.create( CallTimeListBoxBinder.class);
 	@UiField
 	ListBox list;
 

@@ -1,0 +1,2 @@
+serviceClass: org.hbgb.webcamp.client.async.EmailService
+path: 629F5B7CCBB5D72ED27EB4A5D8F8AA4F.gwt.rpc

@@ -28,7 +28,7 @@ implements ProfileService {
         Profile profile = null;
         PersistenceManager pm = this.getPM();
         try {
-            profile = (Profile)pm.getObjectById((Class)Profile.class, (Object)encoded);
+            profile = (Profile)pm.getObjectById(Profile.class, (Object)encoded);
             return profile;
         }
         finally {
@@ -67,7 +67,7 @@ implements ProfileService {
     public Boolean deleteProfile(String encoded) {
         PersistenceManager pm = this.getPM();
         try {
-            Profile profile = (Profile)pm.getObjectById((Class)Profile.class, (Object)encoded);
+            Profile profile = (Profile)pm.getObjectById(Profile.class, (Object)encoded);
             pm.deletePersistent((Object)profile);
             return true;
         }
@@ -86,7 +86,7 @@ implements ProfileService {
 
     private List<Profile> getProfiles() {
         PersistenceManager pm = PMF.get().getPersistenceManager();
-        Query query = pm.newQuery((Class)Profile.class);
+        Query query = pm.newQuery(Profile.class);
         query.setOrdering("email ASC");
         return (List)query.execute();
     }

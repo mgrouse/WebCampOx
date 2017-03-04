@@ -31,8 +31,8 @@ import com.google.gwt.user.client.ui.Widget;
 
 public class MealsReportViewImpl extends Composite implements IMealsReportView
 {
-	private static UiBinder<Widget, MealsReportViewImpl> binder = (UiBinder) GWT
-			.create((Class) MealsReportViewImplBinder.class);
+	private static UiBinder<Widget, MealsReportViewImpl> binder =  GWT
+			.create( MealsReportViewImplBinder.class);
 	@UiField
 	FlexTable table;
 	IReportPresenter presenter;

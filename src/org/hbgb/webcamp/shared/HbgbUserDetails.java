@@ -1,38 +1,52 @@
-/*
- * Decompiled with CFR 0_115.
- */
 package org.hbgb.webcamp.shared;
 
 import java.io.Serializable;
 
-public class HbgbUserDetails
-implements Serializable {
-    private String encodedKey;
-    private String displayName;
+@SuppressWarnings("serial")
+public class HbgbUserDetails implements Serializable
+{
+	private String encodedKey;
+	private String displayName;
+	private String email;
 
-    public HbgbUserDetails() {
-        new org.hbgb.webcamp.shared.HbgbUserDetails(null, "");
-    }
+	public HbgbUserDetails()
+	{
+		new HbgbUserDetails(null, "");
+	}
 
-    public HbgbUserDetails(String key, String fullName) {
-        this.encodedKey = key;
-        this.displayName = fullName;
-    }
+	public HbgbUserDetails(String key, String displayName)
+	{
+		this.encodedKey = key;
+		this.displayName = displayName;
+	}
 
-    public String getKey() {
-        return this.encodedKey;
-    }
+	public String getKey()
+	{
+		return encodedKey;
+	}
 
-    public void setKey(String key) {
-        this.encodedKey = key;
-    }
+	public void setKey(String key)
+	{
+		this.encodedKey = key;
+	}
 
-    public String getDisplayName() {
-        return this.displayName;
-    }
+	public String getDisplayName()
+	{
+		return displayName;
+	}
 
-    public void setDisplayName(String displayName) {
-        this.displayName = displayName;
-    }
+	public void setDisplayName(String displayName)
+	{
+		this.displayName = displayName;
+	}
+	
+	public String getEmail()
+	{
+		return email;
+	}
+
+	public void setEmail(String email)
+	{
+		this.email = email;
+	}
 }
-

@@ -28,8 +28,8 @@ import com.google.gwt.user.client.ui.Widget;
 
 public class StartViewImpl extends AbstractView implements StartViewI
 {
-	private static UiBinder<Widget, StartViewImpl> binder = (UiBinder) GWT
-			.create((Class) EnterViewImplBinder.class);
+	private static UiBinder<Widget, StartViewImpl> binder =  GWT
+			.create( EnterViewImplBinder.class);
 	@UiField
 	HTML warning;
 	@UiField

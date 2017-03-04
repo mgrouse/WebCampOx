@@ -23,8 +23,8 @@ public class EditApplicationInfoViewImpl extends AbstractPartView
 		implements IEditApplicationInfoView
 {
 	private static final String IMAGE_NOT_AVAIALABLE = "http://storage.googleapis.com/hbgbwebcamp.appspot.com/PhotoNotAvailable.jpg";
-	private static UiBinder<Widget, EditApplicationInfoViewImpl> binder = (UiBinder) GWT
-			.create((Class) EditApplicationInfoViewImplBinder.class);
+	private static UiBinder<Widget, EditApplicationInfoViewImpl> binder =  GWT
+			.create( EditApplicationInfoViewImplBinder.class);
 	@UiField
 	ApplicationStatusListBox applicationStatus;
 	@UiField

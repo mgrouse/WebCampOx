@@ -25,8 +25,7 @@ import com.google.gwt.user.client.ui.Widget;
 public class LogTab extends Composite
 {
 	private static final Logger log = Logger.getLogger("");
-	private static UiBinder<Widget, LogTab> binder = (UiBinder) GWT
-			.create((Class) LogTabBinder.class);
+	private static UiBinder<Widget, LogTab> binder = GWT.create(LogTabBinder.class);
 	@UiField
 	VerticalPanel logArea;
 
@@ -37,7 +36,6 @@ public class LogTab extends Composite
 	}
 
 	static interface LogTabBinder extends UiBinder<Widget, LogTab>
-	{
-	}
+	{}
 
 }

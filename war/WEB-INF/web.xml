@@ -5,16 +5,100 @@
          version="2.5"
          xmlns="http://java.sun.com/xml/ns/javaee">
 
-  <!-- Servlets -->
-  <servlet>
-    <servlet-name>greetServlet</servlet-name>
-    <servlet-class>org.hbgb.webcamp.server.GreetingServiceImpl</servlet-class>
-  </servlet>
+    	<!-- Servlets -->
+  	<servlet>
+		<servlet-name>CamperRosterServlet</servlet-name>
+		<servlet-class>org.hbgb.webcamp.server.CamperRosterServlet</servlet-class>
+		<!-- <load-on-startup>1</load-on-startup>  -->
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>CamperRosterServlet</servlet-name>
+		<url-pattern>/static/roster</url-pattern>
+	</servlet-mapping>
+  	
+  	<servlet>
+		<servlet-name>BlobStoreUploadServlet</servlet-name>
+		<servlet-class>org.hbgb.webcamp.server.BlobStoreUploadServlet</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>BlobStoreUploadServlet</servlet-name>
+		<url-pattern>/webcamp/upload</url-pattern>
+	</servlet-mapping>
+  	
+  	<servlet>
+		<servlet-name>blobStoreURLServiceServlet</servlet-name>
+		<servlet-class>org.hbgb.webcamp.server.BlobStoreUploadURLServiceImpl</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>blobStoreURLServiceServlet</servlet-name>
+		<url-pattern>/webcamp/images</url-pattern>
+	</servlet-mapping>
+  	
+  	<servlet>
+		<servlet-name>emailServiceServlet</servlet-name>
+		<servlet-class>org.hbgb.webcamp.server.EmailServiceImpl</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>emailServiceServlet</servlet-name>
+		<url-pattern>/webcamp/emailService</url-pattern>
+	</servlet-mapping>
   
-  <servlet-mapping>
-    <servlet-name>greetServlet</servlet-name>
-    <url-pattern>/hbgbwebcamp/greet</url-pattern>
-  </servlet-mapping>
+	<servlet>
+		<servlet-name>applicationServiceServlet</servlet-name>
+		<servlet-class>org.hbgb.webcamp.server.ApplicationServiceImpl</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>applicationServiceServlet</servlet-name>
+		<url-pattern>/webcamp/applicationService</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>healerSheetServiceServlet</servlet-name>
+		<servlet-class>org.hbgb.webcamp.server.HealerSheetServiceImpl</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>healerSheetServiceServlet</servlet-name>
+		<url-pattern>/webcamp/healerSheetService</url-pattern>
+	</servlet-mapping>
+	
+	
+	
+	<servlet>
+		<servlet-name>uploadedPhotoServiceServlet</servlet-name>
+		<servlet-class>org.hbgb.webcamp.server.UploadedPhotoServiceImpl</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>uploadedPhotoServiceServlet</servlet-name>
+		<url-pattern>/webcamp/uploadedPhotoService</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>profileServiceServlet</servlet-name>
+		<servlet-class>org.hbgb.webcamp.server.ProfileServiceImpl</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>profileServiceServlet</servlet-name>
+		<url-pattern>/webcamp/profileService</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>userServiceServlet</servlet-name>
+		<servlet-class>org.hbgb.webcamp.server.HbgbAppUserServiceImpl</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>userServiceServlet</servlet-name>
+		<url-pattern>/webcamp/userService</url-pattern>
+	</servlet-mapping>
+  
   
   <!-- Default page to serve -->
   <welcome-file-list>

@@ -22,8 +22,8 @@ import com.google.gwt.user.client.ui.Widget;
 
 public class DayOfEventListBox extends Composite
 {
-	private static UiBinder<Widget, DayOfEventListBox> binder = (UiBinder) GWT
-			.create((Class) DayOfEventListBoxBinder.class);
+	private static UiBinder<Widget, DayOfEventListBox> binder =  GWT
+			.create( DayOfEventListBoxBinder.class);
 	@UiField
 	EnumListBox<DayOfEvent> list;
 

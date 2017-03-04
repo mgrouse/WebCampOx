@@ -27,7 +27,6 @@ import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.uibinder.client.UiHandler;
 import com.google.gwt.uibinder.client.UiTemplate;
-import com.google.gwt.user.client.ui.CheckBox;
 import com.google.gwt.user.client.ui.Panel;
 import com.google.gwt.user.client.ui.TextArea;
 import com.google.gwt.user.client.ui.TextBox;
@@ -35,8 +34,14 @@ import com.google.gwt.user.client.ui.Widget;
 
 public class InputCommitteeInfoViewImpl extends AbstractView implements InputCommitteeInfoView
 {
-	private static UiBinder<Widget, InputCommitteeInfoViewImpl> binder = (UiBinder) GWT
-			.create((Class) EditComitteeInfoViewImplBinder.class);
+	@UiTemplate(value = "InputCommitteeInfoView.ui.xml")
+	static interface EditComitteeInfoViewImplBinder
+			extends UiBinder<Widget, InputCommitteeInfoViewImpl>
+	{
+	}
+
+	private static UiBinder<Widget, InputCommitteeInfoViewImpl> binder =  GWT
+			.create( EditComitteeInfoViewImplBinder.class);
 
 	@UiField
 	CommitteeListBox committee1;
@@ -49,15 +54,6 @@ public class InputCommitteeInfoViewImpl extends AbstractView implements InputCom
 
 	@UiField
 	TextArea reason2;
-
-	@UiField
-	Panel assignmentsPanel;
-
-	@UiField
-	CommitteeListBox assignedCommittee;
-
-	@UiField
-	CheckBox isAssignedLead;
 
 	@UiField
 	Panel healerSheetPanel;
@@ -100,12 +96,7 @@ public class InputCommitteeInfoViewImpl extends AbstractView implements InputCom
 	@Override
 	public void setVisibility(SecurityRole role)
 	{
-		if (role == SecurityRole.USER)
-		{
-			this.assignmentsPanel.setVisible(false);
-			return;
-		}
-		this.assignmentsPanel.setVisible(true);
+
 	}
 
 	@UiHandler(value = { "committee1", "committee2" })
@@ -184,30 +175,6 @@ public class InputCommitteeInfoViewImpl extends AbstractView implements InputCom
 	}
 
 	@Override
-	public void setAssignedCommittee(Committee c)
-	{
-		this.assignedCommittee.setSelectedValue(c);
-	}
-
-	@Override
-	public Committee getAssignedCommittee()
-	{
-		return this.assignedCommittee.getSelectedValue();
-	}
-
-	@Override
-	public void setIsAssignedLead(Boolean bool)
-	{
-		this.isAssignedLead.setValue(bool, false);
-	}
-
-	@Override
-	public Boolean getIsAssignedLead()
-	{
-		return this.isAssignedLead.getValue();
-	}
-
-	@Override
 	public void setSessionLength(String text)
 	{
 		this.sessionLength.setText(text);
@@ -268,13 +235,13 @@ public class InputCommitteeInfoViewImpl extends AbstractView implements InputCom
 	}
 
 	@Override
-	public void setBioBox(String text)
+	public void setBioBoxText(String text)
 	{
 		this.bioBox.setValue(text, false);
 	}
 
 	@Override
-	public String getBioBox()
+	public String getBioBoxText()
 	{
 		return this.bioBox.getText();
 	}
@@ -286,12 +253,6 @@ public class InputCommitteeInfoViewImpl extends AbstractView implements InputCom
 		this.setModality2("");
 		this.setModality3("");
 		this.setModality4("");
-	}
-
-	@UiTemplate(value = "InputCommitteeInfoView.ui.xml")
-	static interface EditComitteeInfoViewImplBinder
-			extends UiBinder<Widget, InputCommitteeInfoViewImpl>
-	{
 	}
 
 }

@@ -15,8 +15,6 @@
  */
 package org.hbgb.webcamp.client.view.application.input;
 
-import java.util.Date;
-
 import org.hbgb.webcamp.client.presenter.SequentialPresenterI;
 import org.hbgb.webcamp.client.view.AbstractView;
 import org.hbgb.webcamp.client.widget.TicketTypeListBox;
@@ -32,37 +30,24 @@ import com.google.gwt.uibinder.client.UiTemplate;
 import com.google.gwt.user.client.ui.CheckBox;
 import com.google.gwt.user.client.ui.HTMLPanel;
 import com.google.gwt.user.client.ui.Label;
-import com.google.gwt.user.client.ui.Panel;
-import com.google.gwt.user.client.ui.TextBox;
 import com.google.gwt.user.client.ui.Widget;
-import com.google.gwt.user.datepicker.client.DatePicker;
 
 public class InputPaymentInfoViewImpl extends AbstractView implements InputPaymentInfoView
 {
-	private static UiBinder<Widget, InputPaymentInfoViewImpl> binder = (UiBinder) GWT
-			.create((Class) EditPaymentInfoViewImplBinder.class);
+	private static UiBinder<Widget, InputPaymentInfoViewImpl> binder =  GWT
+			.create( EditPaymentInfoViewImplBinder.class);
 	@UiField
 	HTMLPanel verifyWarning;
+
 	@UiField
 	CheckBox hasTicket;
+
 	@UiField
 	Label ticketTypeLabel;
+
 	@UiField
 	TicketTypeListBox ticketType;
-	@UiField
-	Panel payProcessPanel;
-	@UiField
-	CheckBox hasBeenInvoiced;
-	@UiField
-	CheckBox hasPaidDues;
-	@UiField
-	DatePicker paidDate;
-	@UiField
-	CheckBox wasSubsidized;
-	@UiField
-	TextBox subsidyAmt;
-	@UiField
-	TextBox subsidyReason;
+
 	private SequentialPresenterI presenter;
 
 	public InputPaymentInfoViewImpl()
@@ -80,12 +65,7 @@ public class InputPaymentInfoViewImpl extends AbstractView implements InputPayme
 	@Override
 	public void setVisibility(SecurityRole role)
 	{
-		if (role == SecurityRole.USER)
-		{
-			this.payProcessPanel.setVisible(false);
-			return;
-		}
-		this.payProcessPanel.setVisible(true);
+
 	}
 
 	@UiHandler(value = { "nextButton" })
@@ -120,78 +100,6 @@ public class InputPaymentInfoViewImpl extends AbstractView implements InputPayme
 	public TicketType getTicketType()
 	{
 		return this.ticketType.getSelectedValue();
-	}
-
-	@Override
-	public void setHasBeenInvoiced(Boolean bool)
-	{
-		this.hasBeenInvoiced.setValue(bool, false);
-	}
-
-	@Override
-	public Boolean getHasBeenInvoiced()
-	{
-		return this.hasBeenInvoiced.getValue();
-	}
-
-	@Override
-	public void setHasPaidDues(Boolean bool)
-	{
-		this.hasPaidDues.setValue(bool, false);
-	}
-
-	@Override
-	public Boolean getHasPaidDues()
-	{
-		return this.hasPaidDues.getValue();
-	}
-
-	@Override
-	public void setPaidDate(Date d)
-	{
-		this.paidDate.setValue(d, false);
-	}
-
-	@Override
-	public Date getPaidDate()
-	{
-		return this.paidDate.getValue();
-	}
-
-	@Override
-	public void setWasSubsidized(Boolean bool)
-	{
-		this.wasSubsidized.setValue(bool, false);
-	}
-
-	@Override
-	public Boolean getWasSubsidized()
-	{
-		return this.wasSubsidized.getValue();
-	}
-
-	@Override
-	public void setSubsidyAmt(Integer amt)
-	{
-		this.subsidyAmt.setValue(amt.toString(), false);
-	}
-
-	@Override
-	public Integer getSubsidyAmt()
-	{
-		return Integer.valueOf(this.subsidyAmt.getValue());
-	}
-
-	@Override
-	public void setSubsidyReason(String r)
-	{
-		this.subsidyReason.setValue(r, false);
-	}
-
-	@Override
-	public String getSubsidyReason()
-	{
-		return this.subsidyReason.getValue();
 	}
 
 	@Override

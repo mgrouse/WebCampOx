@@ -39,8 +39,8 @@ public class EditPersonalInfoViewImpl extends AbstractPartView implements IEditP
 	{
 	}
 
-	private static UiBinder<Widget, EditPersonalInfoViewImpl> binder = (UiBinder) GWT
-			.create((Class) EditPersonalInfoViewImplBinder.class);
+	private static UiBinder<Widget, EditPersonalInfoViewImpl> binder =  GWT
+			.create( EditPersonalInfoViewImplBinder.class);
 	@UiField
 	TextBox emailBox;
 	@UiField

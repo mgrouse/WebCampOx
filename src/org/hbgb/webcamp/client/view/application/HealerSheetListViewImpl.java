@@ -40,8 +40,8 @@ public class HealerSheetListViewImpl<T> extends Composite implements HealerSheet
 	{
 	}
 
-	private static UiBinder<Widget, HealerSheetListViewImpl> binder = (UiBinder) GWT
-			.create((Class) HealerSheetListViewImplBinder.class);
+	private static UiBinder<Widget, HealerSheetListViewImpl> binder =  GWT
+			.create( HealerSheetListViewImplBinder.class);
 
 	@UiField
 	FlexTable table;

@@ -10,19 +10,26 @@
 			
 				<g:VerticalPanel>
 				
+				    <g:HTMLPanel ui:field="verifyWarning" >
+						<p>
+							<font color="red">Please answer the questions in RED below</font> 
+						</p>
+					</g:HTMLPanel>
+				    
 					<g:HTMLPanel>
 						<p>
-							Please Note: We have RV Electrical Hook Ups available for $400. You are on your own for other utilities.
+							<!-- Please Note: We have RV Electrical Hook Ups available for $400. You are on your own for other utilities. -->
+							Please Note: RV owners are on their own for electric and other utilities.
 						</p>
 						<br/>
 					</g:HTMLPanel>
 					
 					<g:HorizontalPanel>
 						<g:CheckBox ui:field="hasRv"/>
-						<g:HTML text="I am bringing an RV."/>
+						<g:Label ui:field="hsRvLabel" text="I am bringing an RV."/>
 					</g:HorizontalPanel>
 				
-					<g:HTML text="Please describe your RV in terms of size type etc. If you want Electric hook up for your RV please mention it in this box."/>
+					<g:HTML text="Please describe your RV in terms of size type etc."/> <!-- If you want Electric hook up for your RV please mention it in this box."/> -->
 			        <g:TextArea ui:field="rvInfo"/>
 						
 					<g:HTMLPanel>
@@ -31,7 +38,7 @@
 					</g:HTMLPanel>
 					<g:HorizontalPanel>
 						<g:CheckBox ui:field="isInDormTent"/>	
-						<g:HTML text="I am planning on putting a tent (up to 3 person size) in the Dorm tent."/>
+						<g:Label ui:field="isInDormTentLabel" text="I am planning on putting a tent (up to 3 person size) in the Dorm tent."/>
 		        	</g:HorizontalPanel>	
 		        	<g:HTMLPanel>
 						<br/>
@@ -40,10 +47,10 @@
 		        	
 		        	<g:HorizontalPanel>
 						<g:CheckBox ui:field="hasStructure"/>
-						<g:HTML text="I am bringing a free standing structure."/>
+						<g:Label ui:field="hasStructureLabel" text="I am bringing a free standing structure."/>
 		        	</g:HorizontalPanel>
 		        	
-					<g:HTML text="Please describe your structure in terms of size, type etc."/>
+					<g:Label text="Please describe your structure in terms of size, type etc."/>
 			        <g:TextArea ui:field="structureInfo"/>
 			        
 				</g:VerticalPanel>

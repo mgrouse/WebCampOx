@@ -24,8 +24,8 @@ public class BirthDateWidget extends Composite
 {
 	private static final int THIS_YEAR = 2015;
 	private static final int NUM_YEARS = 100;
-	private static UiBinder<Widget, BirthDateWidget> binder = (UiBinder) GWT
-			.create((Class) BirthDateWidgetBinder.class);
+	private static UiBinder<Widget, BirthDateWidget> binder =  GWT
+			.create( BirthDateWidgetBinder.class);
 	@UiField
 	ListBox month;
 	@UiField

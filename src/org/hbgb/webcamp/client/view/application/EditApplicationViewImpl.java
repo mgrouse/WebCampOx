@@ -35,7 +35,7 @@ public class EditApplicationViewImpl extends AbstractView implements IEditApplic
 	}
 
 	private static EditApplicationViewUiBinder uiBinder = (EditApplicationViewUiBinder) GWT
-			.create((Class) EditApplicationViewUiBinder.class);
+			.create( EditApplicationViewUiBinder.class);
 
 	@UiField
 	Button prevButton;

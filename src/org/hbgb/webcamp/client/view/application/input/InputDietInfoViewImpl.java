@@ -38,8 +38,8 @@ public class InputDietInfoViewImpl extends AbstractView implements InputDietInfo
 	{
 	}
 
-	private static UiBinder<Widget, InputDietInfoViewImpl> binder = (UiBinder) GWT
-			.create((Class) EditDietInfoViewImplBinder.class);
+	private static UiBinder<Widget, InputDietInfoViewImpl> binder =  GWT
+			.create( EditDietInfoViewImplBinder.class);
 
 	@UiField
 	HTMLPanel verifyWarning;

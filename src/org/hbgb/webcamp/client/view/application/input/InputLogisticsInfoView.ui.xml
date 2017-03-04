@@ -6,38 +6,23 @@
 
 	<g:ScrollPanel>
 		<g:VerticalPanel>
+		    
+		    <g:HTMLPanel ui:field="verifyWarning">
+			</g:HTMLPanel>
+		    
 			<g:HorizontalPanel>
 		
 				<g:CaptionPanel captionText="Arrival" styleName="formTwoColumn">
 				
 					<g:VerticalPanel>
 						
-						<g:VerticalPanel ui:field="earlyTeamPanel">
-						
-							<g:HorizontalPanel>
-					        	<g:CheckBox ui:field="wantsEarlyTeam"/>
-					        	<g:HTML text="I want to be on early team."/>
-							</g:HorizontalPanel>
-							
-							<g:HTMLPanel>
-								<br/>
-								<br/>
-							</g:HTMLPanel>
-							
-							<g:HorizontalPanel>
-								<g:CheckBox ui:field="isAssignedEarlyTeam"/>
-								<g:HTML text="Is this HeeBee on early team?"/>
-							</g:HorizontalPanel>
-							
-							<g:HTMLPanel>
-								<br/>
-								<br/>
-							</g:HTMLPanel>
-							
-						</g:VerticalPanel>
+						<g:HorizontalPanel>
+				        	<g:CheckBox ui:field="wantsEarlyTeam"/>
+				        	<g:Label text="I want to be on early team."/>
+						</g:HorizontalPanel>
 						
 						<g:HorizontalPanel>
-							<g:HTML text="I will travel by: "/>
+							<g:Label ui:field="transportationLabel" text="I will travel by: "/>
 				        	<w:TransportationListBox ui:field="transportation"/>
 						</g:HorizontalPanel>
 						
@@ -47,7 +32,7 @@
 						</g:HTMLPanel>
 						
 						<g:HorizontalPanel>
-							<g:Label text="I will arrive on: "/>
+							<g:Label ui:field="arrivalDayLabel" text="I will arrive on: "/>
 				        	<w:DayOfEventListBox ui:field="arrivalDoE"/>
 						</g:HorizontalPanel>
 						
@@ -57,7 +42,7 @@
 						</g:HTMLPanel>
 						
 						 <g:HorizontalPanel>	
-				        	<g:Label text="I will arrive: "/>
+				        	<g:Label ui:field="arrivalTimeLabel" text="I will arrive: "/>
 				        	<w:PlayaTimeListBox ui:field="arrivalTime"/>
 						</g:HorizontalPanel>
 						
@@ -70,7 +55,7 @@
 					<g:VerticalPanel>
 				
 						<g:HorizontalPanel>
-							<g:Label text="I will leave on"/>
+							<g:Label ui:field="departureDayLabel" text="I will leave on"/>
 				        	<w:DayOfEventListBox ui:field="departureDoE"/>
 						</g:HorizontalPanel>
 						
@@ -80,7 +65,7 @@
 						</g:HTMLPanel>
 						
 						 <g:HorizontalPanel>	
-				        	<g:Label text="I will leave: "/>
+				        	<g:Label ui:field="departureTimeLabel" text="I will leave: "/>
 				        	<w:PlayaTimeListBox ui:field="departureTime"/>
 						</g:HorizontalPanel>
 						
@@ -91,7 +76,7 @@
 						
 						<g:HorizontalPanel>
 				        	<g:CheckBox ui:field="wantsStrikeTeam"/>
-				        	<g:HTML text="I plan on being on Strike team."/>
+				        	<g:Label text="I plan on being on Strike team."/>
 						</g:HorizontalPanel>
 						
 					</g:VerticalPanel>
@@ -101,7 +86,7 @@
 			</g:HorizontalPanel>
 			
 			<g:Button ui:field="nextButton" styleName="right">Next</g:Button>
-				
+			
 		</g:VerticalPanel>
 	</g:ScrollPanel>
 </ui:UiBinder> 

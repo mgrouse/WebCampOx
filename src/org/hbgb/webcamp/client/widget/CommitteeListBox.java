@@ -26,8 +26,8 @@ import com.google.gwt.user.client.ui.Widget;
 
 public class CommitteeListBox extends Composite
 {
-	private static UiBinder<Widget, CommitteeListBox> binder = (UiBinder) GWT
-			.create((Class) CommitteeListBoxBinder.class);
+	private static UiBinder<Widget, CommitteeListBox> binder =  GWT
+			.create( CommitteeListBoxBinder.class);
 	@UiField
 	EnumListBox<Committee> list;
 

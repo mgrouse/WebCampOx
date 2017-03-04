@@ -26,13 +26,13 @@ public class WebCampEntryPoint implements EntryPoint, ValueChangeHandler<String>
 	@Override
 	public void onModuleLoad()
 	{
-		log.info("Module loaded. BaseURL - " + GWT.getModuleBaseURL());
+		log.info("Module loaded. BaseURL: " + GWT.getModuleBaseURL());
 
 		History.addValueChangeHandler(this);
 
 		if ("".equals(History.getToken()))
 		{
-			History.newItem("apply");
+			History.newItem("admin");
 		}
 		else
 		{
@@ -57,10 +57,6 @@ public class WebCampEntryPoint implements EntryPoint, ValueChangeHandler<String>
 				startApplication(rp);
 				break;
 
-			case "healer":
-				startHealer(rp);
-				break;
-
 			case "roster":
 				startRoster(rp);
 				break;
@@ -69,12 +65,13 @@ public class WebCampEntryPoint implements EntryPoint, ValueChangeHandler<String>
 				startSheet(rp);
 				break;
 
-			case "profile":
-				startProfileEdit(rp);
-				break;
-
 			case "test":
 				startTest(rp);
+
+				// case "healer":
+				// startHealer(rp);
+				// break;
+
 			}
 		}
 	}
@@ -128,11 +125,6 @@ public class WebCampEntryPoint implements EntryPoint, ValueChangeHandler<String>
 		rp.clear();
 		presenter.setScreen(rp);
 		presenter.go();
-	}
-
-	private void startProfileEdit(RootLayoutPanel rp)
-	{
-
 	}
 
 	private void startTest(RootLayoutPanel rp)

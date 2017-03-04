@@ -20,7 +20,7 @@
 package org.hbgb.webcamp.client.panel;
 
 import org.hbgb.webcamp.client.WebCampResource;
-import org.hbgb.webcamp.client.event.EventBus;
+import org.hbgb.webcamp.client.event.SingletonEventBus;
 import org.hbgb.webcamp.client.event.MenuEvent;
 
 import com.google.gwt.core.client.GWT;
@@ -57,7 +57,7 @@ public class MenuItem extends Composite
 			@Override
 			public void onClick(ClickEvent event)
 			{
-				EventBus.get().fireEvent(new MenuEvent(contentName));
+				SingletonEventBus.get().fireEvent(new MenuEvent(contentName));
 			}
 		});
 	}

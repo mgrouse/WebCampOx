@@ -1,48 +1,54 @@
-/*
- * Decompiled with CFR 0_115.
- */
 package org.hbgb.webcamp.shared;
 
 import java.io.Serializable;
 
-public class BurnerDetails
-implements Serializable {
-    private String encodedKey;
-    private String displayName;
-    private String email;
+@SuppressWarnings("serial")
+public class BurnerDetails implements Serializable
+{
+	private String encodedKey;
+	private String displayName;
+	private String email;
+	
+	public BurnerDetails()
+	{
+		new BurnerDetails(null, "", "");
+	}
+	
+	public BurnerDetails(String key, String displayName, String email)
+	{
+		this.encodedKey = key;
+		this.displayName = displayName;
+		this.email = email;
+	}
 
-    public BurnerDetails() {
-        new org.hbgb.webcamp.shared.BurnerDetails(null, "", "");
-    }
+	public String getEncodedKey()
+	{
+		return encodedKey;
+	}
 
-    public BurnerDetails(String key, String displayName, String email) {
-        this.encodedKey = key;
-        this.displayName = displayName;
-        this.email = email;
-    }
+	public void setEncodedKey(String encodedKey)
+	{
+		this.encodedKey = encodedKey;
+	}
 
-    public String getEncodedKey() {
-        return this.encodedKey;
-    }
+	public String getDisplayName()
+	{
+		return displayName;
+	}
 
-    public void setEncodedKey(String encodedKey) {
-        this.encodedKey = encodedKey;
-    }
+	public void setDisplayName(String displayName)
+	{
+		this.displayName = displayName;
+	}
 
-    public String getDisplayName() {
-        return this.displayName;
-    }
+	public String getEmail()
+	{
+		return email;
+	}
 
-    public void setDisplayName(String displayName) {
-        this.displayName = displayName;
-    }
+	public void setEmail(String email)
+	{
+		this.email = email;
+	}
 
-    public String getEmail() {
-        return this.email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
 }
-

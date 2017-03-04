@@ -22,8 +22,8 @@ import com.google.gwt.user.client.ui.Widget;
 
 public class ApplicationStatusListBox extends Composite
 {
-	private static UiBinder<Widget, ApplicationStatusListBox> binder = (UiBinder) GWT
-			.create((Class) ApplicationStatusListBoxBinder.class);
+	private static UiBinder<Widget, ApplicationStatusListBox> binder =  GWT
+			.create( ApplicationStatusListBoxBinder.class);
 	@UiField
 	EnumListBox<ApplicationStatus> list;
 

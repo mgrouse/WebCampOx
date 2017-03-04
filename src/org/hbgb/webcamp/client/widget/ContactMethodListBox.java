@@ -22,8 +22,8 @@ import com.google.gwt.user.client.ui.Widget;
 
 public class ContactMethodListBox extends Composite
 {
-	private static UiBinder<Widget, ContactMethodListBox> binder = (UiBinder) GWT
-			.create((Class) ContactMethodListBoxBinder.class);
+	private static UiBinder<Widget, ContactMethodListBox> binder =  GWT
+			.create( ContactMethodListBoxBinder.class);
 	@UiField
 	EnumListBox<ContactMethod> list;
 

@@ -23,8 +23,8 @@ public class ThankYouViewImpl extends Composite implements ThankYouView
 	{
 	}
 
-	private static UiBinder<Widget, ThankYouViewImpl> binder = (UiBinder) GWT
-			.create((Class) ThankYouViewImplBinder.class);
+	private static UiBinder<Widget, ThankYouViewImpl> binder =  GWT
+			.create( ThankYouViewImplBinder.class);
 
 	public ThankYouViewImpl()
 	{

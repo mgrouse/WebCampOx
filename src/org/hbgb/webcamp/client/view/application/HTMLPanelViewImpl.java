@@ -28,8 +28,8 @@ public class HTMLPanelViewImpl extends Composite implements HTMLPanelView
 	{
 	}
 
-	private static UiBinder<Widget, HTMLPanelViewImpl> binder = (UiBinder) GWT
-			.create((Class) HTMLPanelViewImplBinder.class);
+	private static UiBinder<Widget, HTMLPanelViewImpl> binder =  GWT
+			.create( HTMLPanelViewImplBinder.class);
 
 	@UiField
 	HTMLPanel panel;

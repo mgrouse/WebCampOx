@@ -39,36 +39,54 @@ import com.google.gwt.user.client.ui.Widget;
 
 public class InputPersonalInfoViewImpl extends AbstractView implements InputPersonalInfoView
 {
-	private static UiBinder<Widget, InputPersonalInfoViewImpl> binder = (UiBinder) GWT
-			.create((Class) EditPersonalInfoViewImplBinder.class);
+	@UiTemplate(value = "InputPersonalInfoView.ui.xml")
+	static interface InputPersonalInfoViewImplBinder extends UiBinder<Widget, InputPersonalInfoViewImpl>
+	{}
+
+	private static UiBinder<Widget, InputPersonalInfoViewImpl> binder = GWT.create(InputPersonalInfoViewImplBinder.class);
+
 	@UiField
 	TextBox emailBox;
+
 	@UiField
 	TextBox firstNameBox;
+
 	@UiField
 	TextBox lastNameBox;
+
 	@UiField
 	TextBox playaNameBox;
+
 	@UiField
 	GenderListBox genderBox;
+
 	@UiField
 	BirthDateWidget birthDate;
+
 	@UiField
 	TextBox defaultWorldJobBox;
+
 	@UiField
 	TextArea bioBox;
+
 	@UiField
 	AddressWidget homeAddress;
+
 	@UiField
 	TextBox phoneBox;
+
 	@UiField
 	TextBox skypeNameBox;
+
 	@UiField
 	ContactMethodListBox contactMethodBox;
+
 	@UiField
 	CallTimeListBox contactTimeBox;
+
 	@UiField
 	Button nextButton;
+
 	private SequentialPresenterI presenter;
 
 	public InputPersonalInfoViewImpl()
@@ -245,12 +263,6 @@ public class InputPersonalInfoViewImpl extends AbstractView implements InputPers
 	public CallTime getCallTime()
 	{
 		return this.contactTimeBox.getSelectedValue();
-	}
-
-	@UiTemplate(value = "InputPersonalInfoView.ui.xml")
-	static interface EditPersonalInfoViewImplBinder
-			extends UiBinder<Widget, InputPersonalInfoViewImpl>
-	{
 	}
 
 }

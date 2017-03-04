@@ -1,16 +1,4 @@
-/*
- * Decompiled with CFR 0_115.
- * 
- * Could not load the following classes: com.google.gwt.core.client.GWT
- * com.google.gwt.event.dom.client.ClickEvent
- * com.google.gwt.event.dom.client.KeyUpEvent
- * com.google.gwt.uibinder.client.UiBinder
- * com.google.gwt.uibinder.client.UiField
- * com.google.gwt.uibinder.client.UiHandler
- * com.google.gwt.uibinder.client.UiTemplate
- * com.google.gwt.user.client.ui.Button com.google.gwt.user.client.ui.TextBox
- * com.google.gwt.user.client.ui.Widget
- */
+
 package org.hbgb.webcamp.client.view.admin;
 
 import org.hbgb.webcamp.client.view.AbstractView;
@@ -34,7 +22,7 @@ public class EarlyTeamMemberViewImpl extends AbstractView implements IEarlyTeamM
 	}
 
 	private static EarlyTeamMemberViewUiBinder uiBinder = (EarlyTeamMemberViewUiBinder) GWT
-			.create((Class) EarlyTeamMemberViewUiBinder.class);
+			.create( EarlyTeamMemberViewUiBinder.class);
 
 	@UiField
 	TextBox emailBox;

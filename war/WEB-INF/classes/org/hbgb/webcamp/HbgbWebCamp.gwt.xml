@@ -17,15 +17,23 @@
   <!-- <inherits name='com.google.gwt.user.theme.chrome.Chrome'/> -->
   <!-- <inherits name='com.google.gwt.user.theme.dark.Dark'/>     -->
 
-  <!-- Other module inherits                                      -->
+  <!-- Other module inherits     --> 
+  <inherits name="com.google.gwt.logging.Logging" />
+  <inherits name="com.resmarksystems.AppEngineDataTypes"/>                                -->
 
   <!-- Specify the app entry point class.                         -->
-  <entry-point class='org.hbgb.webcamp.client.HbgbWebCamp'/>
+  <entry-point class='org.hbgb.webcamp.client.WebCampEntryPoint'/>
 
   <!-- Specify the paths for translatable code                    -->
   <source path='client'/>
   <source path='shared'/>
+  
+  <stylesheet src="HbgbWebCamp.css" />
 
+  <set-property name="gwt.logging.logLevel" value="FINE" />
+  <set-property name="gwt.logging.enabled" value="TRUE" />
+  
+  
   <!-- allow Super Dev Mode -->
   <add-linker name="xsiframe"/>
 </module>

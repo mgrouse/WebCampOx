@@ -38,8 +38,8 @@ import com.google.gwt.user.client.ui.Widget;
 public class UploadPhotoViewImpl extends AbstractView implements UploadPhotoView
 {
 	private static final String IMAGE_NOT_AVAIALABLE = "http://storage.googleapis.com/hbgbwebcamp.appspot.com/PhotoNotAvailable.jpg";
-	private static UiBinder<Widget, UploadPhotoViewImpl> binder = (UiBinder) GWT
-			.create((Class) PictureUploadViewImplBinder.class);
+	private static UiBinder<Widget, UploadPhotoViewImpl> binder =  GWT
+			.create( PictureUploadViewImplBinder.class);
 	BlobStoreUploadURLServiceAsync imageServ;
 	@UiField
 	Button uploadButton;

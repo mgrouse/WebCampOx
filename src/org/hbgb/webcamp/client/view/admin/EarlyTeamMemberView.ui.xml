@@ -1,0 +1,52 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	         xmlns:g="urn:import:com.google.gwt.user.client.ui">
+
+	<g:CaptionPanel captionText="Edit ET Member">
+		<g:VerticalPanel>
+		    
+		    <g:HorizontalPanel>	
+	        	<g:Label text="Email"/>
+	        	<g:TextBox ui:field="emailBox"/>
+	        	
+	        	<g:Button ui:field="lookUpButton">Look Up</g:Button>
+			</g:HorizontalPanel>
+			
+		    <g:HorizontalPanel>	
+	        	<g:Label text="Password"/>
+	        	<g:TextBox ui:field="passwordBox"/>
+			</g:HorizontalPanel>
+		    
+			<g:HorizontalPanel>
+				<g:Label text="First Name"/>
+	        	<g:TextBox ui:field="firstNameBox"/>
+	        </g:HorizontalPanel>
+	        
+	        <g:HorizontalPanel>
+	        	<g:Label text="Last Name"/>
+	        	<g:TextBox ui:field="lastNameBox"/>
+	        </g:HorizontalPanel>
+	        
+	        <g:HorizontalPanel>
+	        	<g:Label text="Playa Name"/>
+	        	<g:TextBox ui:field="playaNameBox"/>
+	        </g:HorizontalPanel>
+	           
+	        <g:HorizontalPanel>
+	        	<g:Label text="On Early Team"/>
+	        	<g:CheckBox ui:field="etCheckBox"/>
+	        </g:HorizontalPanel>
+			
+			<g:HorizontalPanel>	
+	        	<g:Label text="Security"/>
+	        	<g:TextBox ui:field="securityRoleBox"/>
+			</g:HorizontalPanel>
+			
+			<g:HorizontalPanel>
+				<g:Button ui:field="saveButton">Save</g:Button>
+				<g:Button ui:field="cancelButton">Cancel</g:Button>
+			</g:HorizontalPanel>
+				
+		</g:VerticalPanel>
+	</g:DecoratorPanel>
+</ui:UiBinder> 

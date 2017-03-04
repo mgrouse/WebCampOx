@@ -1,0 +1,7 @@
+# Module hbgbwebcamp
+# RPC service class, partial path of RPC policy file
+org.hbgb.webcamp.client.async.HbgbAppUserService, 6029649E561A3E9E4F6373C68B13AF87.gwt.rpc
+org.hbgb.webcamp.client.async.EmailService, 629F5B7CCBB5D72ED27EB4A5D8F8AA4F.gwt.rpc
+org.hbgb.webcamp.client.async.BlobStoreUploadURLService, 02D3823411B7BECBF713B05C3FF6F09F.gwt.rpc
+org.hbgb.webcamp.client.async.ApplicationService, F41D35FD32CE39A0EB3046208E7EA2DF.gwt.rpc
+org.hbgb.webcamp.client.async.HealerSheetService, AC718E49527BFF7D2159C872069BE68A.gwt.rpc

@@ -22,8 +22,8 @@ import com.google.gwt.user.client.ui.Widget;
 
 public class TransportationListBox extends Composite
 {
-	private static UiBinder<Widget, TransportationListBox> binder = (UiBinder) GWT
-			.create((Class) TransportationListBoxBinder.class);
+	private static UiBinder<Widget, TransportationListBox> binder =  GWT
+			.create( TransportationListBoxBinder.class);
 	@UiField
 	EnumListBox<Transportation> list;
 

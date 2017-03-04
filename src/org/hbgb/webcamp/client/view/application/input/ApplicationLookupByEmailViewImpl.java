@@ -26,17 +26,23 @@ import com.google.gwt.user.client.ui.HTML;
 import com.google.gwt.user.client.ui.TextBox;
 import com.google.gwt.user.client.ui.Widget;
 
-public class ApplicationLookupByEmailViewImpl extends AbstractView
-		implements ApplicationLookupByEmailView
+public class ApplicationLookupByEmailViewImpl extends AbstractView implements ApplicationLookupByEmailView
 {
-	private static UiBinder<Widget, ApplicationLookupByEmailViewImpl> binder = (UiBinder) GWT
-			.create((Class) ApplicationLookupByEmailViewImplBinder.class);
+	@UiTemplate(value = "ApplicationLookupByEmail.ui.xml")
+	static interface ApplicationLookupByEmailViewImplBinder extends UiBinder<Widget, ApplicationLookupByEmailViewImpl>
+	{}
+
+	private static UiBinder<Widget, ApplicationLookupByEmailViewImpl> binder = GWT.create(ApplicationLookupByEmailViewImplBinder.class);
+
 	@UiField
 	HTML warning;
+
 	@UiField
 	TextBox emailBox;
+
 	@UiField
 	Button nextButton;
+
 	private SequentialPresenterI presenter;
 
 	public ApplicationLookupByEmailViewImpl()
@@ -100,12 +106,6 @@ public class ApplicationLookupByEmailViewImpl extends AbstractView
 	{
 		this.setEmailText("");
 		this.setWarningText("");
-	}
-
-	@UiTemplate(value = "ApplicationLookupByEmail.ui.xml")
-	static interface ApplicationLookupByEmailViewImplBinder
-			extends UiBinder<Widget, ApplicationLookupByEmailViewImpl>
-	{
 	}
 
 }

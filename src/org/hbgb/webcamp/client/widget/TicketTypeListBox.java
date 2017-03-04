@@ -22,8 +22,8 @@ import com.google.gwt.user.client.ui.Widget;
 
 public class TicketTypeListBox extends Composite
 {
-	private static UiBinder<Widget, TicketTypeListBox> binder = (UiBinder) GWT
-			.create((Class) TicketTypeListBoxBinder.class);
+	private static UiBinder<Widget, TicketTypeListBox> binder =  GWT
+			.create( TicketTypeListBoxBinder.class);
 	@UiField
 	EnumListBox<TicketType> list;
 

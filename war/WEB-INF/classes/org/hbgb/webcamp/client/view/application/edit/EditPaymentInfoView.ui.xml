@@ -9,7 +9,7 @@
 				
 				<g:HorizontalPanel>
 					<g:CheckBox ui:field="hasTicket"/>
-					<g:HTML text="I have a ticket to Burning Man."/>
+					<g:Label text="I have a ticket to Burning Man."/>
 				</g:HorizontalPanel>
 						
 				<g:HorizontalPanel>	
@@ -19,12 +19,12 @@
 				
 				<g:HorizontalPanel>
 					<g:CheckBox ui:field="hasBeenInvoiced"/>
-					<g:HTML text="Has Burner been invoiced?" />
+					<g:Label text="Has Burner been invoiced?" />
 				</g:HorizontalPanel>
 				
 				<g:HorizontalPanel>
 					<g:CheckBox ui:field="hasPaidDues"/>
-					<g:HTML text="Has Burner Paid dues?" />
+					<g:Label text="Has Burner Paid dues?" />
 				</g:HorizontalPanel>
 				
 				<g:HorizontalPanel>
@@ -34,7 +34,7 @@
 				
 				<g:HorizontalPanel>
 					<g:CheckBox ui:field="wasSubsidized"/>
-					<g:HTML text="Was HeeBee subsidized?" />
+					<g:Label text="Was HeeBee subsidized?" />
 				</g:HorizontalPanel>
 				
 				<g:HorizontalPanel>
@@ -43,7 +43,7 @@
 				</g:HorizontalPanel>
 				
 				<g:HorizontalPanel>
-					<g:HTML text="Rreason / Type of subsidy?" />
+					<g:Label text="Rreason / Type of subsidy?" />
 		        	<g:TextBox ui:field="subsidyReason"/>
 				</g:HorizontalPanel>
 				

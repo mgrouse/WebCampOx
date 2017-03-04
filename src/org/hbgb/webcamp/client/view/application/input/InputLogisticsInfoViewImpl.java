@@ -30,46 +30,57 @@ import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.uibinder.client.UiHandler;
 import com.google.gwt.uibinder.client.UiTemplate;
 import com.google.gwt.user.client.ui.CheckBox;
-import com.google.gwt.user.client.ui.HTML;
 import com.google.gwt.user.client.ui.HTMLPanel;
 import com.google.gwt.user.client.ui.Label;
-import com.google.gwt.user.client.ui.Panel;
 import com.google.gwt.user.client.ui.Widget;
 
 public class InputLogisticsInfoViewImpl extends AbstractView implements InputLogisticsInfoView
 {
-	private static UiBinder<Widget, InputLogisticsInfoViewImpl> binder = (UiBinder) GWT
-			.create((Class) EditLogisticsInfoViewImplBinder.class);
+	@UiTemplate(value = "InputLogisticsInfoView.ui.xml")
+	static interface InputLogisticsInfoViewImplBinder extends UiBinder<Widget, InputLogisticsInfoViewImpl>
+	{}
+
+	private static UiBinder<Widget, InputLogisticsInfoViewImpl> binder = GWT.create(InputLogisticsInfoViewImplBinder.class);
+
 	@UiField
 	HTMLPanel verifyWarning;
-	@UiField
-	Panel earlyTeamPanel;
+
 	@UiField
 	CheckBox wantsEarlyTeam;
-	@UiField
-	CheckBox isAssignedEarlyTeam;
+
 	@UiField
 	CheckBox wantsStrikeTeam;
+
 	@UiField
-	HTML transportLabel;
+	Label transportationLabel;
+
 	@UiField
 	TransportationListBox transportation;
+
 	@UiField
 	Label arrivalDayLabel;
+
 	@UiField
 	DayOfEventListBox arrivalDoE;
+
 	@UiField
 	Label arrivalTimeLabel;
+
 	@UiField
 	PlayaTimeListBox arrivalTime;
+
 	@UiField
 	Label departureDayLabel;
+
 	@UiField
 	DayOfEventListBox departureDoE;
+
 	@UiField
 	Label departureTimeLabel;
+
 	@UiField
 	PlayaTimeListBox departureTime;
+
 	private SequentialPresenterI presenter;
 
 	public InputLogisticsInfoViewImpl()
@@ -87,12 +98,7 @@ public class InputLogisticsInfoViewImpl extends AbstractView implements InputLog
 	@Override
 	public void setVisibility(SecurityRole role)
 	{
-		if (role == SecurityRole.USER)
-		{
-			this.earlyTeamPanel.setVisible(false);
-			return;
-		}
-		this.earlyTeamPanel.setVisible(true);
+
 	}
 
 	@UiHandler(value = { "nextButton" })
@@ -115,18 +121,6 @@ public class InputLogisticsInfoViewImpl extends AbstractView implements InputLog
 	public Boolean getWantsEarlyTeam()
 	{
 		return this.wantsEarlyTeam.getValue();
-	}
-
-	@Override
-	public void setIsAssignedEarlyTeam(Boolean bool)
-	{
-		this.isAssignedEarlyTeam.setValue(bool, false);
-	}
-
-	@Override
-	public Boolean getIsAssignedEarlyTeam()
-	{
-		return this.isAssignedEarlyTeam.getValue();
 	}
 
 	@Override
@@ -206,6 +200,7 @@ public class InputLogisticsInfoViewImpl extends AbstractView implements InputLog
 	{
 		PlayaTime pt;
 		Boolean retVal = true;
+
 		DayOfEvent day = this.getArrivalDate();
 		if (day == null)
 		{
@@ -213,30 +208,27 @@ public class InputLogisticsInfoViewImpl extends AbstractView implements InputLog
 			this.arrivalDayLabel.getElement().getStyle().setColor("red");
 			this.verifyWarning.setVisible(true);
 		}
+
 		if ((pt = this.getArrivalTime()) == null)
 		{
 			retVal = false;
 			this.arrivalTimeLabel.getElement().getStyle().setColor("red");
 			this.verifyWarning.setVisible(true);
 		}
+
 		if ((day = this.getDepartureDate()) == null)
 		{
 			retVal = false;
 			this.departureDayLabel.getElement().getStyle().setColor("red");
 			this.verifyWarning.setVisible(true);
 		}
+
 		if ((pt = this.getDepartureTime()) != null)
 			return retVal;
 		retVal = false;
 		this.departureTimeLabel.getElement().getStyle().setColor("red");
 		this.verifyWarning.setVisible(true);
 		return retVal;
-	}
-
-	@UiTemplate(value = "InputLogisticsInfoView.ui.xml")
-	static interface EditLogisticsInfoViewImplBinder
-			extends UiBinder<Widget, InputLogisticsInfoViewImpl>
-	{
 	}
 
 }

@@ -23,33 +23,46 @@ import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.uibinder.client.UiHandler;
 import com.google.gwt.uibinder.client.UiTemplate;
 import com.google.gwt.user.client.ui.CheckBox;
-import com.google.gwt.user.client.ui.HTML;
 import com.google.gwt.user.client.ui.HTMLPanel;
+import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.TextArea;
 import com.google.gwt.user.client.ui.Widget;
 
 public class InputShelterInfoViewImpl extends AbstractView implements InputShelterInfoView
 {
-	private static UiBinder<Widget, InputShelterInfoViewImpl> binder = (UiBinder) GWT
-			.create((Class) EditShelterInfoViewBinder.class);
+	@UiTemplate(value = "InputShelterInfoView.ui.xml")
+	static interface EditShelterInfoViewBinder extends UiBinder<Widget, InputShelterInfoViewImpl>
+	{}
+
+	private static UiBinder<Widget, InputShelterInfoViewImpl> binder = GWT.create(EditShelterInfoViewBinder.class);
+
 	@UiField
 	HTMLPanel verifyWarning;
+
 	@UiField
-	HTML hsRvLabel;
+	Label hsRvLabel;
+
 	@UiField
 	CheckBox hasRv;
+
 	@UiField
 	TextArea rvInfo;
+
 	@UiField
-	HTML isInDormTentLabel;
+	Label isInDormTentLabel;
+
 	@UiField
 	CheckBox isInDormTent;
+
 	@UiField
-	HTML hasStructureLabel;
+	Label hasStructureLabel;
+
 	@UiField
 	CheckBox hasStructure;
+
 	@UiField
 	TextArea structureInfo;
+
 	private SequentialPresenterI presenter;
 
 	public InputShelterInfoViewImpl()
@@ -150,11 +163,6 @@ public class InputShelterInfoViewImpl extends AbstractView implements InputShelt
 		this.hasStructureLabel.getElement().getStyle().setColor("red");
 		this.verifyWarning.setVisible(true);
 		return retVal;
-	}
-
-	@UiTemplate(value = "InputShelterInfoView.ui.xml")
-	static interface EditShelterInfoViewBinder extends UiBinder<Widget, InputShelterInfoViewImpl>
-	{
 	}
 
 }

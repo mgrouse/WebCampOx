@@ -29,8 +29,8 @@ public class EditDietInfoViewImpl extends AbstractPartView implements IEditDietI
 	{
 	}
 
-	private static UiBinder<Widget, EditDietInfoViewImpl> binder = (UiBinder) GWT
-			.create((Class) EditDietInfoViewImplBinder.class);
+	private static UiBinder<Widget, EditDietInfoViewImpl> binder =  GWT
+			.create( EditDietInfoViewImplBinder.class);
 
 	@UiField
 	DietListBox dietType;

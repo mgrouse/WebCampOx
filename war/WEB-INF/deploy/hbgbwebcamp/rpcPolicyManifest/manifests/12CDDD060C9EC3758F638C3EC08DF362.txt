@@ -1,0 +1,2 @@
+serviceClass: org.hbgb.webcamp.client.async.HbgbAppUserService
+path: 6029649E561A3E9E4F6373C68B13AF87.gwt.rpc

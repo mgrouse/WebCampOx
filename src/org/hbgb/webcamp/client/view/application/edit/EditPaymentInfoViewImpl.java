@@ -31,8 +31,8 @@ public class EditPaymentInfoViewImpl extends AbstractPartView implements IEditPa
 	{
 	}
 
-	private static UiBinder<Widget, EditPaymentInfoViewImpl> binder = (UiBinder) GWT
-			.create((Class) EditPaymentInfoViewImplBinder.class);
+	private static UiBinder<Widget, EditPaymentInfoViewImpl> binder =  GWT
+			.create( EditPaymentInfoViewImplBinder.class);
 
 	@UiField
 	CheckBox hasTicket;

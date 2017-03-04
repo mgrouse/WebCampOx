@@ -22,8 +22,8 @@ import com.google.gwt.user.client.ui.Widget;
 
 public class PlayaTimeListBox extends Composite
 {
-	private static UiBinder<Widget, PlayaTimeListBox> binder = (UiBinder) GWT
-			.create((Class) PlayaTimeListBoxBinder.class);
+	private static UiBinder<Widget, PlayaTimeListBox> binder =  GWT
+			.create( PlayaTimeListBoxBinder.class);
 	@UiField
 	EnumListBox<PlayaTime> list;
 

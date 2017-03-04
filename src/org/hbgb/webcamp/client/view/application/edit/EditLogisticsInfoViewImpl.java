@@ -31,8 +31,8 @@ public class EditLogisticsInfoViewImpl extends AbstractPartView implements IEdit
 	{
 	}
 
-	private static UiBinder<Widget, EditLogisticsInfoViewImpl> binder = (UiBinder) GWT
-			.create((Class) EditLogisticsInfoViewImplBinder.class);
+	private static UiBinder<Widget, EditLogisticsInfoViewImpl> binder =  GWT
+			.create( EditLogisticsInfoViewImplBinder.class);
 
 	@UiField
 	CheckBox wantsEarlyTeam;

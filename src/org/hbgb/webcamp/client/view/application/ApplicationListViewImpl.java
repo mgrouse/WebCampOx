@@ -38,13 +38,12 @@ import com.google.gwt.user.client.ui.Widget;
 
 public class ApplicationListViewImpl<T> extends Composite implements ApplicationListView<T>
 {
+	@SuppressWarnings("rawtypes")
 	@UiTemplate(value = "ApplicationListView.ui.xml")
 	static interface ApplicationViewUiBinder extends UiBinder<Widget, ApplicationListViewImpl>
-	{
-	}
+	{}
 
-	private static ApplicationViewUiBinder uiBinder = (ApplicationViewUiBinder) GWT
-			.create((Class) ApplicationViewUiBinder.class);
+	private static ApplicationViewUiBinder uiBinder = GWT.create(ApplicationViewUiBinder.class);
 
 	@UiField
 	TextBox totalApps;
@@ -299,7 +298,6 @@ public class ApplicationListViewImpl<T> extends Composite implements Application
 
 	@Override
 	public void setVisibility(SecurityRole role)
-	{
-	}
+	{}
 
 }

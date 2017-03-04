@@ -30,7 +30,7 @@ public class EditCommitteeInfoViewImpl extends AbstractPartView implements IEdit
 	{
 	}
 
-	private static UiBinder<Widget, EditCommitteeInfoViewImpl> binder = (UiBinder) GWT
+	private static UiBinder<Widget, EditCommitteeInfoViewImpl> binder =  GWT
 			.create(EditCommitteeInfoViewImplBinder.class);
 
 	@UiField
