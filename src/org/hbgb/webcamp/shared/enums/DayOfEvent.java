@@ -37,4 +37,18 @@ public enum DayOfEvent
 	{
 		return val[i];
 	}
+
+	public static DayOfEvent reverseLookup(String name)
+	{
+		DayOfEvent retVal = null;
+		for (DayOfEvent day : val)
+		{
+			if (day.toString().equals(name))
+			{
+				retVal = day;
+				break;
+			}
+		}
+		return retVal;
+	}
 }

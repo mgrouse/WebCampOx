@@ -22,7 +22,12 @@ import com.google.gwt.user.client.ui.Widget;
 
 public class DayOfEventListBox extends Composite
 {
+	@UiTemplate(value = "DayOfEventListBox.ui.xml")
+	static interface DayOfEventListBoxBinder extends UiBinder<Widget, DayOfEventListBox>
+	{}
+
 	private static UiBinder<Widget, DayOfEventListBox> binder = GWT.create(DayOfEventListBoxBinder.class);
+
 	@UiField
 	EnumListBox<DayOfEvent> list;
 
@@ -38,7 +43,11 @@ public class DayOfEventListBox extends Composite
 
 	public DayOfEvent getSelectedValue()
 	{
-		return this.list.getSelectedEnumValue();
+		DayOfEvent doe = null;
+		String temp = list.getSelectedItemText();
+		doe = DayOfEvent.reverseLookup(temp);
+
+		return doe;
 	}
 
 	@UiFactory
@@ -46,9 +55,5 @@ public class DayOfEventListBox extends Composite
 	{
 		return new EnumListBox<>(DayOfEvent.class);
 	}
-
-	@UiTemplate(value = "DayOfEventListBox.ui.xml")
-	static interface DayOfEventListBoxBinder extends UiBinder<Widget, DayOfEventListBox>
-	{}
 
 }

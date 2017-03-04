@@ -4,10 +4,8 @@
 	         xmlns:w="urn:org.hbgb.webcamp.widget">
 
 	<g:ScrollPanel>
-		
-		<g:VerticalPanel>
-			
-			<g:CaptionPanel captionText="7: Finished" styleName="formOneColumn">
+		<g:CaptionPanel captionText="8: Finished" styleName="formOneColumn">
+			<g:VerticalPanel>
 				<g:HTMLPanel >
 					<h1>Thanks!!!</h1>	
 				</g:HTMLPanel>
@@ -15,7 +13,7 @@
 				<g:HTMLPanel ui:field="emailSuccess">
 					<p>
 						We have emailed: <br/> 
-						Scooter, our camp leader, to let him know you have applied.<br/>
+						Our camp leaders, to let them know you have applied.<br/>
 						You, to let you know the process completed, and remind you of some steps you should take to connect with the HeeBee tribe.
 					</p>
 				</g:HTMLPanel>
@@ -34,7 +32,8 @@
 						and read up on camp life.
 					</p>
 				</g:HTMLPanel>
-			</g:CaptionPanel>				
-		</g:VerticalPanel>
+			</g:VerticalPanel>
+		</g:CaptionPanel>				
+		
 	</g:ScrollPanel>
 </ui:UiBinder> 

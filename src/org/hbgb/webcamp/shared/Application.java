@@ -16,7 +16,7 @@ import org.hbgb.webcamp.shared.enums.ApplicationStatus;
 @PersistenceCapable(identityType = IdentityType.APPLICATION)
 public class Application implements Serializable
 {
-	private static final int THIS_YEAR = 2015;
+	private static final int THIS_YEAR = 2017;
 
 	@PrimaryKey
 	@Persistent(valueStrategy = IdGeneratorStrategy.IDENTITY)

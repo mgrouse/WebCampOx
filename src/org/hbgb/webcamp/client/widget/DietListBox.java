@@ -23,6 +23,7 @@ import com.google.gwt.user.client.ui.Widget;
 public class DietListBox extends Composite
 {
 	private static UiBinder<Widget, DietListBox> binder = GWT.create(DietListBoxBinder.class);
+
 	@UiField
 	EnumListBox<DietType> list;
 

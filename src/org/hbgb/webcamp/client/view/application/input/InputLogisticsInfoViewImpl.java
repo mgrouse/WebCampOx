@@ -104,11 +104,13 @@ public class InputLogisticsInfoViewImpl extends AbstractView implements InputLog
 	@UiHandler(value = { "nextButton" })
 	void onNextButtonClicked(ClickEvent event)
 	{
-		if (this.isFormComplete() == false)
-			return;
-		if (this.presenter == null)
-			return;
-		this.presenter.onNextButtonClicked();
+		if (this.isFormComplete() == true)
+		{
+			if (this.presenter != null)
+			{
+				presenter.onNextButtonClicked();
+			}
+		}
 	}
 
 	@Override
@@ -156,7 +158,8 @@ public class InputLogisticsInfoViewImpl extends AbstractView implements InputLog
 	@Override
 	public DayOfEvent getArrivalDate()
 	{
-		return this.arrivalDoE.getSelectedValue();
+		DayOfEvent doe = arrivalDoE.getSelectedValue();
+		return doe;
 	}
 
 	@Override
@@ -168,6 +171,7 @@ public class InputLogisticsInfoViewImpl extends AbstractView implements InputLog
 	@Override
 	public PlayaTime getArrivalTime()
 	{
+
 		return this.arrivalTime.getSelectedValue();
 	}
 

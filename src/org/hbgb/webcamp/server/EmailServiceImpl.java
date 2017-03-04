@@ -78,11 +78,11 @@ public class EmailServiceImpl extends RemoteServiceServlet implements EmailServi
 
 	private InternetAddress getRegistrationLeadAddress() throws Exception
 	{
-		return new InternetAddress("michael.grouse@gmail.com", "Scooter");
+		return new InternetAddress("shanalory@hotmail.com", "Quiggles");
 	}
 
 	private String getRegistrationLeadAddressAsText()
 	{
-		return "michael.grouse@gmail.com";
+		return "shanalory@hotmail.com";
 	}
 }
