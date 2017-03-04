@@ -104,8 +104,10 @@ public class ApplicationServiceImpl extends RemoteServiceServlet implements Appl
 			if (!results.isEmpty())
 			{
 				app = results.get(0);
+
 				app = pm.detachCopy(app);
 			}
+
 		}
 		finally
 		{

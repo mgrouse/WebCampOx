@@ -33,7 +33,7 @@ public class Burner implements Serializable
 	private ContactInfo contactInfo;
 
 	@Persistent
-	private List<Burn> burns = new ArrayList<Burn>();
+	private List<Burn> burns = new ArrayList<>();
 
 	public Burner()
 	{}
@@ -41,7 +41,7 @@ public class Burner implements Serializable
 	public Burner(String emailText)
 	{
 		email = emailText;
-		burns = new ArrayList<Burn>();
+		burns = new ArrayList<>();
 		demographics = new Demographics(emailText);
 		contactInfo = new ContactInfo(emailText);
 	}
@@ -54,14 +54,14 @@ public class Burner implements Serializable
 			this.setDemographics(new Demographics(source.getEmail(), source.getDemographics()));
 			this.setContactInfo(new ContactInfo(source.getEmail(), source.getContactInfo()));
 
-			if (null != source.getBurns())
-			{
-				List<Burn> newBurns = new ArrayList<Burn>();
-				for (Burn current : source.getBurns())
-				{
-					newBurns.add(new Burn(current));
-				}
-			}
+			// if (null != source.getBurns())
+			// {
+			// List<Burn> newBurns = new ArrayList<Burn>();
+			// for (Burn current : source.getBurns())
+			// {
+			// newBurns.add(new Burn(current));
+			// }
+			// }
 		}
 		else
 		{

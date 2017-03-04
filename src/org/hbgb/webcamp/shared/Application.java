@@ -105,7 +105,7 @@ public class Application implements Serializable
 			email = source.getEmail();
 			paymentInfoBlock = new PaymentInfoBlock(email, source.getPaymentInfoBlock());
 			committeeInfoBlock = new CommitteeInfoBlock(email, source.getCommitteeInfoBlock());
-			logisticsInfoBlock = new LogisticsInfoBlock(email, source.getLogisticsInfoBlock());
+			logisticsInfoBlock = new LogisticsInfoBlock(email, null);
 			shelterInfoBlock = new ShelterInfoBlock(email, source.getShelterInfoBlock());
 			dietInfoBlock = new DietInfoBlock(email, source.getDietInfoBlock());
 

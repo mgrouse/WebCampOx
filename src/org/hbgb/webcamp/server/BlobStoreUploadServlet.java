@@ -70,7 +70,7 @@ public class BlobStoreUploadServlet extends HttpServlet
 
 			photoServ.addUploadedPhoto(photo);
 
-			res.sendRedirect("/webcamp/upload?imageUrl=" + imageUrl);
+			res.sendRedirect("/hbgbwebcamp/upload?imageUrl=" + imageUrl);
 
 		}
 	}
