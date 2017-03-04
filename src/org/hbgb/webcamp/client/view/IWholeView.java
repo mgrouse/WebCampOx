@@ -7,9 +7,10 @@
  */
 package org.hbgb.webcamp.client.view;
 
+import org.hbgb.webcamp.client.presenter.IWholePresenter;
+
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.user.client.ui.HasWidgets;
-import org.hbgb.webcamp.client.presenter.IWholePresenter;
 
 public interface IWholeView
 {

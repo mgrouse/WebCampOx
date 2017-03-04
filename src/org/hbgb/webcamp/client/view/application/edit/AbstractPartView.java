@@ -10,15 +10,16 @@
  */
 package org.hbgb.webcamp.client.view.application.edit;
 
+import org.hbgb.webcamp.client.presenter.IPartPresenter;
+import org.hbgb.webcamp.client.view.AbstractView;
+import org.hbgb.webcamp.client.view.IPartView;
+
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.uibinder.client.UiHandler;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.HorizontalPanel;
 import com.google.gwt.user.client.ui.VerticalPanel;
-import org.hbgb.webcamp.client.presenter.IPartPresenter;
-import org.hbgb.webcamp.client.view.AbstractView;
-import org.hbgb.webcamp.client.view.IPartView;
 
 public abstract class AbstractPartView extends AbstractView implements IPartView
 {

@@ -6,13 +6,12 @@
  */
 package org.hbgb.webcamp.client.applet;
 
-import com.google.gwt.user.client.ui.HasWidgets;
-import org.hbgb.webcamp.client.applet.IApplet;
-import org.hbgb.webcamp.client.presenter.KeyPresenterI;
 import org.hbgb.webcamp.client.presenter.application.ApplicationLookupByEmailPresenter;
 import org.hbgb.webcamp.client.presenter.application.CreateHealerSheetInfoPresenter;
 import org.hbgb.webcamp.client.presenter.application.ThankYouPresenter;
 import org.hbgb.webcamp.client.presenter.application.input.InputHealerSheetInfoPresenter;
+
+import com.google.gwt.user.client.ui.HasWidgets;
 
 public class HealerSheetInputApplet implements IApplet
 {

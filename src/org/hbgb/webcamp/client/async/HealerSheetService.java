@@ -7,11 +7,13 @@
  */
 package org.hbgb.webcamp.client.async;
 
-import com.google.gwt.user.client.rpc.RemoteService;
-import com.google.gwt.user.client.rpc.RemoteServiceRelativePath;
 import java.util.List;
+
 import org.hbgb.webcamp.shared.HealerSheetDetails;
 import org.hbgb.webcamp.shared.HealerSheetInfoBlock;
+
+import com.google.gwt.user.client.rpc.RemoteService;
+import com.google.gwt.user.client.rpc.RemoteServiceRelativePath;
 
 @RemoteServiceRelativePath(value = "healerSheetService")
 public interface HealerSheetService extends RemoteService

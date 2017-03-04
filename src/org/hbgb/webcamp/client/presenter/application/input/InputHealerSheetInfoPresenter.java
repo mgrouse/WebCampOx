@@ -6,8 +6,6 @@
  */
 package org.hbgb.webcamp.client.presenter.application.input;
 
-import com.google.gwt.user.client.ui.HasWidgets;
-import com.google.gwt.user.client.ui.Widget;
 import org.hbgb.webcamp.client.model.HealerSheetInfoBlockModel;
 import org.hbgb.webcamp.client.presenter.IKeyedModelPresenter;
 import org.hbgb.webcamp.client.presenter.KeyPresenterI;
@@ -15,6 +13,8 @@ import org.hbgb.webcamp.client.presenter.SequentialPresenterI;
 import org.hbgb.webcamp.client.view.ViewFinder;
 import org.hbgb.webcamp.client.view.application.input.InputHealerSheetInfoView;
 import org.hbgb.webcamp.shared.HealerSheetInfoBlock;
+
+import com.google.gwt.user.client.ui.HasWidgets;
 
 public class InputHealerSheetInfoPresenter implements SequentialPresenterI, IKeyedModelPresenter
 {

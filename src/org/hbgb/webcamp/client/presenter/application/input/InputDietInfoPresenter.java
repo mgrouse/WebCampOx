@@ -7,10 +7,6 @@
  */
 package org.hbgb.webcamp.client.presenter.application.input;
 
-import com.google.gwt.user.client.Window;
-import com.google.gwt.user.client.rpc.AsyncCallback;
-import com.google.gwt.user.client.ui.HasWidgets;
-import com.google.gwt.user.client.ui.Widget;
 import org.hbgb.webcamp.client.async.ApplicationServiceAsync;
 import org.hbgb.webcamp.client.async.AsyncServiceFinder;
 import org.hbgb.webcamp.client.presenter.KeyPresenterI;
@@ -18,8 +14,11 @@ import org.hbgb.webcamp.client.presenter.SequentialPresenterI;
 import org.hbgb.webcamp.client.view.ViewFinder;
 import org.hbgb.webcamp.client.view.application.input.InputDietInfoView;
 import org.hbgb.webcamp.shared.DietInfoBlock;
-import org.hbgb.webcamp.shared.enums.DietType;
 import org.hbgb.webcamp.shared.enums.SecurityRole;
+
+import com.google.gwt.user.client.Window;
+import com.google.gwt.user.client.rpc.AsyncCallback;
+import com.google.gwt.user.client.ui.HasWidgets;
 
 public class InputDietInfoPresenter implements SequentialPresenterI
 {

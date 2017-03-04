@@ -6,10 +6,12 @@
  */
 package org.hbgb.webcamp.client.async;
 
-import com.google.gwt.user.client.rpc.AsyncCallback;
 import java.util.ArrayList;
+
 import org.hbgb.webcamp.shared.Profile;
 import org.hbgb.webcamp.shared.ProfileDetails;
+
+import com.google.gwt.user.client.rpc.AsyncCallback;
 
 public interface ProfileServiceAsync
 {

@@ -6,9 +6,6 @@
  */
 package org.hbgb.webcamp.client.applet;
 
-import com.google.gwt.user.client.ui.HasWidgets;
-import org.hbgb.webcamp.client.applet.IApplet;
-import org.hbgb.webcamp.client.presenter.KeyPresenterI;
 import org.hbgb.webcamp.client.presenter.application.input.FinishPresenter;
 import org.hbgb.webcamp.client.presenter.application.input.InputCommitteeNHealerSheetInfoPresenter;
 import org.hbgb.webcamp.client.presenter.application.input.InputDietInfoPresenter;
@@ -18,6 +15,8 @@ import org.hbgb.webcamp.client.presenter.application.input.InputPersonalInfoPres
 import org.hbgb.webcamp.client.presenter.application.input.InputShelterInfoPresenter;
 import org.hbgb.webcamp.client.presenter.application.input.StartPresenter;
 import org.hbgb.webcamp.client.presenter.application.input.UploadPhotoPresenter;
+
+import com.google.gwt.user.client.ui.HasWidgets;
 
 public class ApplicationProcessApplet implements IApplet
 {

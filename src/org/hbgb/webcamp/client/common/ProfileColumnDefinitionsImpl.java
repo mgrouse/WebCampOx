@@ -6,12 +6,13 @@
  */
 package org.hbgb.webcamp.client.common;
 
+import java.util.ArrayList;
+
+import org.hbgb.webcamp.shared.ProfileDetails;
+
 import com.google.gwt.user.client.ui.CheckBox;
 import com.google.gwt.user.client.ui.HTML;
 import com.google.gwt.user.client.ui.Widget;
-import java.util.ArrayList;
-import org.hbgb.webcamp.client.common.ColumnDefinition;
-import org.hbgb.webcamp.shared.ProfileDetails;
 
 public class ProfileColumnDefinitionsImpl extends ArrayList<ColumnDefinition<ProfileDetails>>
 {

@@ -7,10 +7,9 @@
  */
 package org.hbgb.webcamp.client.async;
 
-import com.google.gwt.user.client.rpc.RemoteService;
-import com.google.gwt.user.client.rpc.RemoteServiceRelativePath;
 import java.util.ArrayList;
 import java.util.List;
+
 import org.hbgb.webcamp.shared.Application;
 import org.hbgb.webcamp.shared.ApplicationDetails;
 import org.hbgb.webcamp.shared.Burner;
@@ -22,6 +21,9 @@ import org.hbgb.webcamp.shared.PaymentInfoBlock;
 import org.hbgb.webcamp.shared.RosterDetails;
 import org.hbgb.webcamp.shared.ShelterInfoBlock;
 import org.hbgb.webcamp.shared.enums.Committee;
+
+import com.google.gwt.user.client.rpc.RemoteService;
+import com.google.gwt.user.client.rpc.RemoteServiceRelativePath;
 
 @RemoteServiceRelativePath(value = "applicationService")
 public interface ApplicationService extends RemoteService

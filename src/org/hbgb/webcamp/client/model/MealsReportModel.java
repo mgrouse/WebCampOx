@@ -6,13 +6,13 @@
  */
 package org.hbgb.webcamp.client.model;
 
-import com.google.gwt.user.client.Window;
-import com.google.gwt.user.client.rpc.AsyncCallback;
 import org.hbgb.webcamp.client.async.ApplicationServiceAsync;
 import org.hbgb.webcamp.client.async.AsyncServiceFinder;
-import org.hbgb.webcamp.client.model.IMealsReportModel;
 import org.hbgb.webcamp.client.presenter.IReportPresenter;
 import org.hbgb.webcamp.shared.MealsReport;
+
+import com.google.gwt.user.client.Window;
+import com.google.gwt.user.client.rpc.AsyncCallback;
 
 public class MealsReportModel implements IMealsReportModel
 {

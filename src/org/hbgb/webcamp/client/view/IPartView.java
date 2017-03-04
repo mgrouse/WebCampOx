@@ -6,9 +6,9 @@
  */
 package org.hbgb.webcamp.client.view;
 
-import com.google.gwt.event.dom.client.ClickEvent;
 import org.hbgb.webcamp.client.presenter.IPartPresenter;
-import org.hbgb.webcamp.client.view.IView;
+
+import com.google.gwt.event.dom.client.ClickEvent;
 
 public interface IPartView extends IView
 {

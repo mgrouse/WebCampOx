@@ -3,10 +3,7 @@
  */
 package org.hbgb.webcamp.client.presenter.application.edit;
 
-import org.hbgb.webcamp.client.model.IKeyedModel;
 import org.hbgb.webcamp.client.model.ShelterInfoBlockModel;
-import org.hbgb.webcamp.client.presenter.application.edit.AbstractInfoBlockPresenter;
-import org.hbgb.webcamp.client.view.IPartView;
 import org.hbgb.webcamp.client.view.application.edit.EditShelterInfoViewImpl;
 import org.hbgb.webcamp.shared.ShelterInfoBlock;
 

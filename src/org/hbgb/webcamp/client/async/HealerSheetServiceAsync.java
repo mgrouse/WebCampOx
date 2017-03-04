@@ -6,10 +6,12 @@
  */
 package org.hbgb.webcamp.client.async;
 
-import com.google.gwt.user.client.rpc.AsyncCallback;
 import java.util.List;
+
 import org.hbgb.webcamp.shared.HealerSheetDetails;
 import org.hbgb.webcamp.shared.HealerSheetInfoBlock;
+
+import com.google.gwt.user.client.rpc.AsyncCallback;
 
 public interface HealerSheetServiceAsync
 {

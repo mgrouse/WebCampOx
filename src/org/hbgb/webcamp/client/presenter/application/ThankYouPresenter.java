@@ -6,11 +6,11 @@
  */
 package org.hbgb.webcamp.client.presenter.application;
 
-import com.google.gwt.user.client.ui.HasWidgets;
-import com.google.gwt.user.client.ui.Widget;
 import org.hbgb.webcamp.client.presenter.KeyPresenterI;
 import org.hbgb.webcamp.client.view.application.ThankYouView;
 import org.hbgb.webcamp.client.view.application.ThankYouViewImpl;
+
+import com.google.gwt.user.client.ui.HasWidgets;
 
 public class ThankYouPresenter implements KeyPresenterI
 {

@@ -6,14 +6,13 @@
  */
 package org.hbgb.webcamp.client.presenter.report;
 
-import com.google.gwt.user.client.ui.HasWidgets;
-import com.google.gwt.user.client.ui.Widget;
 import org.hbgb.webcamp.client.model.IMealsReportModel;
 import org.hbgb.webcamp.client.model.MealsReportModel;
 import org.hbgb.webcamp.client.presenter.IReportPresenter;
 import org.hbgb.webcamp.client.view.report.IMealsReportView;
 import org.hbgb.webcamp.client.view.report.MealsReportViewImpl;
-import org.hbgb.webcamp.shared.MealsReport;
+
+import com.google.gwt.user.client.ui.HasWidgets;
 
 public class MealsReportPresenter implements IReportPresenter
 {

@@ -4,6 +4,7 @@
 package org.hbgb.webcamp.client.view.application.input;
 
 import java.util.Date;
+
 import org.hbgb.webcamp.client.presenter.SequentialPresenterI;
 import org.hbgb.webcamp.client.view.IView;
 import org.hbgb.webcamp.shared.Address;

@@ -5,8 +5,9 @@
  */
 package org.hbgb.webcamp.client.view;
 
-import com.google.gwt.user.client.ui.Widget;
 import org.hbgb.webcamp.shared.enums.SecurityRole;
+
+import com.google.gwt.user.client.ui.Widget;
 
 public interface IView
 {

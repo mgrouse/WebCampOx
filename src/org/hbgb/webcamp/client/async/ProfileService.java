@@ -7,11 +7,13 @@
  */
 package org.hbgb.webcamp.client.async;
 
-import com.google.gwt.user.client.rpc.RemoteService;
-import com.google.gwt.user.client.rpc.RemoteServiceRelativePath;
 import java.util.ArrayList;
+
 import org.hbgb.webcamp.shared.Profile;
 import org.hbgb.webcamp.shared.ProfileDetails;
+
+import com.google.gwt.user.client.rpc.RemoteService;
+import com.google.gwt.user.client.rpc.RemoteServiceRelativePath;
 
 @RemoteServiceRelativePath(value = "profileService")
 public interface ProfileService extends RemoteService

@@ -4,12 +4,8 @@
 package org.hbgb.webcamp.client.presenter.application.edit;
 
 import org.hbgb.webcamp.client.model.DietInfoBlockModel;
-import org.hbgb.webcamp.client.model.IKeyedModel;
-import org.hbgb.webcamp.client.presenter.application.edit.AbstractInfoBlockPresenter;
-import org.hbgb.webcamp.client.view.IPartView;
 import org.hbgb.webcamp.client.view.application.edit.EditDietInfoViewImpl;
 import org.hbgb.webcamp.shared.DietInfoBlock;
-import org.hbgb.webcamp.shared.enums.DietType;
 
 public class EditDietInfoPresenter extends AbstractInfoBlockPresenter
 {

@@ -7,15 +7,15 @@
  */
 package org.hbgb.webcamp.client.presenter.application.input;
 
-import com.google.gwt.user.client.Window;
-import com.google.gwt.user.client.rpc.AsyncCallback;
-import com.google.gwt.user.client.ui.HasWidgets;
-import com.google.gwt.user.client.ui.Widget;
 import org.hbgb.webcamp.client.async.AsyncServiceFinder;
 import org.hbgb.webcamp.client.async.EmailServiceAsync;
 import org.hbgb.webcamp.client.presenter.KeyPresenterI;
 import org.hbgb.webcamp.client.view.application.input.FinishViewI;
 import org.hbgb.webcamp.client.view.application.input.FinishViewImpl;
+
+import com.google.gwt.user.client.Window;
+import com.google.gwt.user.client.rpc.AsyncCallback;
+import com.google.gwt.user.client.ui.HasWidgets;
 
 public class FinishPresenter implements KeyPresenterI
 {

@@ -6,10 +6,10 @@
  */
 package org.hbgb.webcamp.client.view;
 
+import org.hbgb.webcamp.shared.enums.SecurityRole;
+
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.Widget;
-import org.hbgb.webcamp.client.view.IView;
-import org.hbgb.webcamp.shared.enums.SecurityRole;
 
 public abstract class AbstractView extends Composite implements IView
 {

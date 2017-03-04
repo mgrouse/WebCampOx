@@ -5,8 +5,7 @@ package org.hbgb.webcamp.client.common;
 
 import java.util.ArrayList;
 import java.util.List;
-import org.hbgb.webcamp.client.common.ApplicationColumnDefinitionsImpl;
-import org.hbgb.webcamp.client.common.ColumnDefinition;
+
 import org.hbgb.webcamp.shared.ApplicationDetails;
 
 public class ApplicationColumnDefinitionsFactory<T>

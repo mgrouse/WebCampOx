@@ -4,12 +4,8 @@
 package org.hbgb.webcamp.client.presenter.application.edit;
 
 import org.hbgb.webcamp.client.model.CommitteeInfoBlockModel;
-import org.hbgb.webcamp.client.model.IKeyedModel;
-import org.hbgb.webcamp.client.presenter.application.edit.AbstractInfoBlockPresenter;
-import org.hbgb.webcamp.client.view.IPartView;
 import org.hbgb.webcamp.client.view.application.edit.EditCommitteeInfoViewImpl;
 import org.hbgb.webcamp.shared.CommitteeInfoBlock;
-import org.hbgb.webcamp.shared.enums.Committee;
 
 public class EditCommitteeInfoPresenter extends AbstractInfoBlockPresenter
 {

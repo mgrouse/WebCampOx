@@ -4,6 +4,7 @@
 package org.hbgb.webcamp.client.view.admin;
 
 import java.util.List;
+
 import org.hbgb.webcamp.client.common.ColumnDefinition;
 import org.hbgb.webcamp.client.view.IView;
 

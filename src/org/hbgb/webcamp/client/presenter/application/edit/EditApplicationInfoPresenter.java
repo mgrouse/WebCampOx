@@ -4,12 +4,8 @@
 package org.hbgb.webcamp.client.presenter.application.edit;
 
 import org.hbgb.webcamp.client.model.ApplicationModel;
-import org.hbgb.webcamp.client.model.IKeyedModel;
-import org.hbgb.webcamp.client.presenter.application.edit.AbstractInfoBlockPresenter;
-import org.hbgb.webcamp.client.view.IPartView;
 import org.hbgb.webcamp.client.view.application.edit.EditApplicationInfoViewImpl;
 import org.hbgb.webcamp.shared.Application;
-import org.hbgb.webcamp.shared.enums.ApplicationStatus;
 
 public class EditApplicationInfoPresenter extends AbstractInfoBlockPresenter
 {

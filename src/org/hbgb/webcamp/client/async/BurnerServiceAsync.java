@@ -6,10 +6,12 @@
  */
 package org.hbgb.webcamp.client.async;
 
-import com.google.gwt.user.client.rpc.AsyncCallback;
 import java.util.ArrayList;
+
 import org.hbgb.webcamp.shared.Burner;
 import org.hbgb.webcamp.shared.BurnerDetails;
+
+import com.google.gwt.user.client.rpc.AsyncCallback;
 
 public interface BurnerServiceAsync
 {

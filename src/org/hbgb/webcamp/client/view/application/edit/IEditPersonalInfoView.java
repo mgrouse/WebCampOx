@@ -4,6 +4,7 @@
 package org.hbgb.webcamp.client.view.application.edit;
 
 import java.util.Date;
+
 import org.hbgb.webcamp.shared.Address;
 import org.hbgb.webcamp.shared.enums.CallTime;
 import org.hbgb.webcamp.shared.enums.ContactMethod;

@@ -4,8 +4,7 @@
 package org.hbgb.webcamp.client.common;
 
 import java.util.List;
-import org.hbgb.webcamp.client.common.ColumnDefinition;
-import org.hbgb.webcamp.client.common.HealerSheetDetailsColumnDefinitionsImpl;
+
 import org.hbgb.webcamp.shared.HealerSheetDetails;
 
 public class HealerSheetDetailsColumnDefinitionsFactory

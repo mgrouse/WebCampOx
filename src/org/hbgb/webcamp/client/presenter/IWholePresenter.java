@@ -6,9 +6,11 @@
  */
 package org.hbgb.webcamp.client.presenter;
 
-import com.google.gwt.user.client.ui.HasWidgets;
 import java.util.List;
+
 import org.hbgb.webcamp.client.presenter.application.edit.AbstractInfoBlockPresenter;
+
+import com.google.gwt.user.client.ui.HasWidgets;
 
 public interface IWholePresenter
 {

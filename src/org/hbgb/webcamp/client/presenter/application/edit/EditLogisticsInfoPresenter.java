@@ -3,15 +3,9 @@
  */
 package org.hbgb.webcamp.client.presenter.application.edit;
 
-import org.hbgb.webcamp.client.model.IKeyedModel;
 import org.hbgb.webcamp.client.model.LogisticsInfoBlockModel;
-import org.hbgb.webcamp.client.presenter.application.edit.AbstractInfoBlockPresenter;
-import org.hbgb.webcamp.client.view.IPartView;
 import org.hbgb.webcamp.client.view.application.edit.EditLogisticsInfoViewImpl;
 import org.hbgb.webcamp.shared.LogisticsInfoBlock;
-import org.hbgb.webcamp.shared.enums.DayOfEvent;
-import org.hbgb.webcamp.shared.enums.PlayaTime;
-import org.hbgb.webcamp.shared.enums.Transportation;
 
 public class EditLogisticsInfoPresenter extends AbstractInfoBlockPresenter
 {

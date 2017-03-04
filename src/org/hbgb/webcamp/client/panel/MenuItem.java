@@ -20,8 +20,8 @@
 package org.hbgb.webcamp.client.panel;
 
 import org.hbgb.webcamp.client.WebCampResource;
-import org.hbgb.webcamp.client.event.SingletonEventBus;
 import org.hbgb.webcamp.client.event.MenuEvent;
+import org.hbgb.webcamp.client.event.SingletonEventBus;
 
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.dom.client.ClickEvent;

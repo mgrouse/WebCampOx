@@ -7,14 +7,15 @@
  */
 package org.hbgb.webcamp.client.presenter.application;
 
-import com.google.gwt.user.client.Window;
-import com.google.gwt.user.client.rpc.AsyncCallback;
-import com.google.gwt.user.client.ui.HasWidgets;
 import org.hbgb.webcamp.client.async.AsyncServiceFinder;
 import org.hbgb.webcamp.client.async.HealerSheetServiceAsync;
 import org.hbgb.webcamp.client.presenter.KeyPresenterI;
 import org.hbgb.webcamp.client.presenter.SequentialPresenterI;
 import org.hbgb.webcamp.shared.HealerSheetInfoBlock;
+
+import com.google.gwt.user.client.Window;
+import com.google.gwt.user.client.rpc.AsyncCallback;
+import com.google.gwt.user.client.ui.HasWidgets;
 
 public class CreateHealerSheetInfoPresenter implements SequentialPresenterI
 {

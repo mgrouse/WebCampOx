@@ -6,8 +6,9 @@
  */
 package org.hbgb.webcamp.client.async;
 
-import com.google.gwt.user.client.rpc.AsyncCallback;
 import org.hbgb.webcamp.shared.HbgbUser;
+
+import com.google.gwt.user.client.rpc.AsyncCallback;
 
 public interface LoginServiceAsync
 {

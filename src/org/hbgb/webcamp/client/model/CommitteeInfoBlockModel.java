@@ -6,13 +6,13 @@
  */
 package org.hbgb.webcamp.client.model;
 
-import com.google.gwt.user.client.Window;
-import com.google.gwt.user.client.rpc.AsyncCallback;
 import org.hbgb.webcamp.client.async.ApplicationServiceAsync;
 import org.hbgb.webcamp.client.async.AsyncServiceFinder;
-import org.hbgb.webcamp.client.model.IKeyedModel;
 import org.hbgb.webcamp.client.presenter.IKeyedModelPresenter;
 import org.hbgb.webcamp.shared.CommitteeInfoBlock;
+
+import com.google.gwt.user.client.Window;
+import com.google.gwt.user.client.rpc.AsyncCallback;
 
 public class CommitteeInfoBlockModel implements IKeyedModel
 {

@@ -7,7 +7,6 @@
 package org.hbgb.webcamp.client.event.application;
 
 import com.google.gwt.event.shared.EventHandler;
-import org.hbgb.webcamp.client.event.application.EditHealerSheetEvent;
 
 public interface EditHealerSheetEventHandler extends EventHandler
 {

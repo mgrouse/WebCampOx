@@ -7,9 +7,10 @@
  */
 package org.hbgb.webcamp.client.async;
 
+import org.hbgb.webcamp.shared.HbgbUser;
+
 import com.google.gwt.user.client.rpc.RemoteService;
 import com.google.gwt.user.client.rpc.RemoteServiceRelativePath;
-import org.hbgb.webcamp.shared.HbgbUser;
 
 @RemoteServiceRelativePath(value = "loginService")
 public interface LoginService extends RemoteService

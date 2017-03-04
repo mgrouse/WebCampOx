@@ -7,13 +7,13 @@
  */
 package org.hbgb.webcamp.client.presenter.admin;
 
-import com.google.gwt.event.shared.HandlerManager;
-import com.google.gwt.user.client.ui.HasWidgets;
-import com.google.gwt.user.client.ui.Widget;
 import org.hbgb.webcamp.client.presenter.IPresenter;
 import org.hbgb.webcamp.client.view.application.HTMLPanelView;
 import org.hbgb.webcamp.client.view.application.HTMLPanelViewImpl;
 import org.hbgb.webcamp.shared.HealerSheetDetails;
+
+import com.google.gwt.event.shared.HandlerManager;
+import com.google.gwt.user.client.ui.HasWidgets;
 
 public class HealerSheetPrintPresenter implements IPresenter
 {

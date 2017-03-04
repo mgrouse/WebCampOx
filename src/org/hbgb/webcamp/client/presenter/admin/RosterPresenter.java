@@ -7,17 +7,18 @@
  */
 package org.hbgb.webcamp.client.presenter.admin;
 
-import com.google.gwt.user.client.Window;
-import com.google.gwt.user.client.rpc.AsyncCallback;
-import com.google.gwt.user.client.ui.HasWidgets;
-import com.google.gwt.user.client.ui.Widget;
 import java.util.List;
+
 import org.hbgb.webcamp.client.async.ApplicationServiceAsync;
 import org.hbgb.webcamp.client.async.AsyncServiceFinder;
 import org.hbgb.webcamp.client.presenter.IPresenter;
 import org.hbgb.webcamp.client.view.application.HTMLPanelView;
 import org.hbgb.webcamp.client.view.application.HTMLPanelViewImpl;
 import org.hbgb.webcamp.shared.RosterDetails;
+
+import com.google.gwt.user.client.Window;
+import com.google.gwt.user.client.rpc.AsyncCallback;
+import com.google.gwt.user.client.ui.HasWidgets;
 
 public class RosterPresenter implements IPresenter
 {
