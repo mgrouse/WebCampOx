@@ -5,11 +5,11 @@
 
 	<g:ScrollPanel>
 	
-		<g:CaptionPanel captionText="Vetting">
+		
 		
 			<g:VerticalPanel>
 			
-				
+				<g:CaptionPanel captionText="Vetting">
 				<g:HorizontalPanel>
 					<g:Label text="Are you a sparkle pony?"/>
 		        	<g:CheckBox ui:field="isSparklePony"/>
@@ -17,11 +17,11 @@
 				
 				
 				<g:Button ui:field="nextButton">Next</g:Button>
-				
+				</g:CaptionPanel>
 				
 			</g:VerticalPanel>
 			
-		</g:CaptionPanel>
+		
 		
 	</g:ScrollPanel>
 </ui:UiBinder> 

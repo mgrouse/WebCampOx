@@ -3,42 +3,42 @@
 	         xmlns:g="urn:import:com.google.gwt.user.client.ui">
 
 	<g:ScrollPanel>
-	<g:VerticalPanel>
+		<g:VerticalPanel>
 	
-		<g:CaptionPanel captionText="1: Getting Started" styleName="formOneColumn">
-		
-			<g:VerticalPanel>
+			<g:CaptionPanel captionText="1: Getting Started" styleName="formOneColumn">
 			
-				<g:HTMLPanel>
-					<p>There will be seven steps to this process. at each step we will ask 
-					  	you some questions about you and what you would like to do with the HeeBees.
-					  	The entire process should take about 15 minutes.
-					</p>
+				<g:VerticalPanel>
+				
+					<g:HTMLPanel>
+						<p>There will be seven steps to this process. at each step we will ask 
+						  	you some questions about you and what you would like to do with the HeeBees.
+						  	The entire process should take about 15 minutes.
+						</p>
+						
+						<p>
+							We need an email address in order to begin your application process. 
+							Please provide one below. Note that we will send you emails at this 
+							address about your application process.
+						</p>
+					</g:HTMLPanel>
 					
-					<p>
-						We need an email address in order to begin your application process. 
-						Please provide one below. Note that we will send you emails at this 
-						address about your application process.
-					</p>
-				</g:HTMLPanel>
-				
-				<g:HTML ui:field = "warning">
+					<g:HTML ui:field = "warning">
+						
+					</g:HTML>
 					
-				</g:HTML>
+					<g:HorizontalPanel>	
+			        	<g:Label text="Email"/>
+			        	<g:TextBox ui:field="emailBox"/>
+					</g:HorizontalPanel>
+					
+				</g:VerticalPanel>
 				
-				<g:HorizontalPanel>	
-		        	<g:Label text="Email"/>
-		        	<g:TextBox ui:field="emailBox"/>
-				</g:HorizontalPanel>
-				
-			</g:VerticalPanel>
+			</g:CaptionPanel>
 			
-		</g:CaptionPanel>
-		
-		
-		<g:Button ui:field="nextButton" styleName="right">Next</g:Button>
-		
+			
+			<g:Button ui:field="nextButton" styleName="right">Next</g:Button>
+			
 	
-	</g:VerticalPanel>	
+		</g:VerticalPanel>	
 	</g:ScrollPanel>
 </ui:UiBinder> 
