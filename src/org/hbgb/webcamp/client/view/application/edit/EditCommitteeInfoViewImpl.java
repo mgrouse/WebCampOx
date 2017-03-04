@@ -25,13 +25,10 @@ public class EditCommitteeInfoViewImpl extends AbstractPartView implements IEdit
 {
 
 	@UiTemplate(value = "EditCommitteeInfoView.ui.xml")
-	static interface EditCommitteeInfoViewImplBinder
-			extends UiBinder<Widget, EditCommitteeInfoViewImpl>
-	{
-	}
+	static interface EditCommitteeInfoViewImplBinder extends UiBinder<Widget, EditCommitteeInfoViewImpl>
+	{}
 
-	private static UiBinder<Widget, EditCommitteeInfoViewImpl> binder =  GWT
-			.create(EditCommitteeInfoViewImplBinder.class);
+	private static UiBinder<Widget, EditCommitteeInfoViewImpl> binder = GWT.create(EditCommitteeInfoViewImplBinder.class);
 
 	@UiField
 	CommitteeListBox committee1;
@@ -131,7 +128,6 @@ public class EditCommitteeInfoViewImpl extends AbstractPartView implements IEdit
 
 	@Override
 	public void clear()
-	{
-	}
+	{}
 
 }

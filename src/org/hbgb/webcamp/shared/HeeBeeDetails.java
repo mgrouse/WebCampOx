@@ -2,9 +2,9 @@ package org.hbgb.webcamp.shared;
 
 public class HeeBeeDetails
 {
-	private String	encodedKey;
-	private String	displayName;
-	private String	email;
+	private String encodedKey;
+	private String displayName;
+	private String email;
 
 	public HeeBeeDetails()
 	{

@@ -10,23 +10,23 @@ import javax.jdo.annotations.Persistent;
 import javax.jdo.annotations.PrimaryKey;
 
 @SuppressWarnings("serial")
-@PersistenceCapable(identityType=IdentityType.APPLICATION)
+@PersistenceCapable(identityType = IdentityType.APPLICATION)
 public class VettingInfoBlock implements Serializable
 {
 	@PrimaryKey
-    @Persistent(valueStrategy = IdGeneratorStrategy.IDENTITY)
-    @Extension(vendorName="datanucleus", key="gae.encoded-pk", value="true")
-    private String encodedKey;
-	
+	@Persistent(valueStrategy = IdGeneratorStrategy.IDENTITY)
+	@Extension(vendorName = "datanucleus", key = "gae.encoded-pk", value = "true")
+	private String encodedKey;
+
 	@Persistent
 	private String email = "";
-	
+
 	@Persistent
 	private Boolean isSparklePony = false;
-	
-	
-	public VettingInfoBlock(){}
-	
+
+	public VettingInfoBlock()
+	{}
+
 	public VettingInfoBlock(String emailText)
 	{
 		email = emailText;
@@ -36,7 +36,7 @@ public class VettingInfoBlock implements Serializable
 	{
 		return encodedKey;
 	}
-	
+
 	public void setEncodedKey(String encodedKey)
 	{
 		this.encodedKey = encodedKey;
@@ -60,5 +60,5 @@ public class VettingInfoBlock implements Serializable
 	public void setIsSparklePony(Boolean isSparklePony)
 	{
 		this.isSparklePony = isSparklePony;
-	}	
+	}
 }

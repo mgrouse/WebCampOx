@@ -49,28 +49,28 @@ public class WebCampEntryPoint implements EntryPoint, ValueChangeHandler<String>
 		{
 			switch (token)
 			{
-			case "admin":
-				startAdminPanel(rp);
-				break;
+				case "admin":
+					startAdminPanel(rp);
+					break;
 
-			case "apply":
-				startApplication(rp);
-				break;
+				case "apply":
+					startApplication(rp);
+					break;
 
-			case "roster":
-				startRoster(rp);
-				break;
+				case "roster":
+					startRoster(rp);
+					break;
 
-			case "sheet":
-				startSheet(rp);
-				break;
+				case "sheet":
+					startSheet(rp);
+					break;
 
-			case "test":
-				startTest(rp);
+				case "test":
+					startTest(rp);
 
-				// case "healer":
-				// startHealer(rp);
-				// break;
+					// case "healer":
+					// startHealer(rp);
+					// break;
 
 			}
 		}

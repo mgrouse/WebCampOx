@@ -12,48 +12,46 @@ import javax.jdo.annotations.PrimaryKey;
 import com.google.appengine.api.datastore.Text;
 
 @SuppressWarnings("serial")
-@PersistenceCapable(identityType=IdentityType.APPLICATION)
+@PersistenceCapable(identityType = IdentityType.APPLICATION)
 public class ShelterInfoBlock implements Serializable
 {
 	@PrimaryKey
-    @Persistent(valueStrategy = IdGeneratorStrategy.IDENTITY)
-    @Extension(vendorName="datanucleus", key="gae.encoded-pk", value="true")
-    private String encodedKey;
-	
+	@Persistent(valueStrategy = IdGeneratorStrategy.IDENTITY)
+	@Extension(vendorName = "datanucleus", key = "gae.encoded-pk", value = "true")
+	private String encodedKey;
+
 	@Persistent
 	private String email = "";
-	
+
 	@Persistent
 	private Boolean isProfile = false;
 
 	@Persistent
-	private Boolean isBringingRv = false; 
+	private Boolean isBringingRv = false;
 
 	@Persistent
-	private String rvInfo = ""; 
-    
+	private String rvInfo = "";
+
 	@Persistent
-	private Boolean isInDormTent = false; 
-	
+	private Boolean isInDormTent = false;
+
 	@Persistent
 	private Boolean hasStructure = false;
 
 	@Persistent
-	private Text structureInfo = new Text(""); 
-	
-	
-	
-	
-	public ShelterInfoBlock(){}
-	
+	private Text structureInfo = new Text("");
+
+	public ShelterInfoBlock()
+	{}
+
 	public ShelterInfoBlock(String emailText)
 	{
 		this.setEmail(emailText);
 	}
-	
+
 	public ShelterInfoBlock(String email, ShelterInfoBlock source)
 	{
-		if(null != source)
+		if (null != source)
 		{
 			this.setEmail(source.getEmail());
 			this.setIsProfile(source.getIsProfile());
@@ -68,8 +66,6 @@ public class ShelterInfoBlock implements Serializable
 			this.setEmail(email);
 		}
 	}
-	
-	
 
 	public String getEncodedKey()
 	{
@@ -140,7 +136,7 @@ public class ShelterInfoBlock implements Serializable
 	{
 		this.structureInfo = new Text(structureInfo);
 	}
-	
+
 	public Boolean getHasStructure()
 	{
 		return hasStructure;

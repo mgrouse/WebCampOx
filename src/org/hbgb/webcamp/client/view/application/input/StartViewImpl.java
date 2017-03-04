@@ -28,8 +28,7 @@ import com.google.gwt.user.client.ui.Widget;
 
 public class StartViewImpl extends AbstractView implements StartViewI
 {
-	private static UiBinder<Widget, StartViewImpl> binder =  GWT
-			.create( EnterViewImplBinder.class);
+	private static UiBinder<Widget, StartViewImpl> binder = GWT.create(EnterViewImplBinder.class);
 	@UiField
 	HTML warning;
 	@UiField
@@ -103,7 +102,6 @@ public class StartViewImpl extends AbstractView implements StartViewI
 
 	@UiTemplate(value = "StartView.ui.xml")
 	static interface EnterViewImplBinder extends UiBinder<Widget, StartViewImpl>
-	{
-	}
+	{}
 
 }

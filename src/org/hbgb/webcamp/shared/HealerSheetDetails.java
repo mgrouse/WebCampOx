@@ -15,17 +15,12 @@ public class HealerSheetDetails implements Comparable<HealerSheetDetails>, Seria
 	private String modality3 = "";
 	private String modality4 = "";
 	private String bio = "";
-	
-	
-	
-	
-	public HealerSheetDetails(){}
 
-	
-	public HealerSheetDetails(String key, 
-							  String email, String playaName, String imageURL, 
-							  String sessionLength, String modality1, String modality2, 
-							  String modality3, String modality4, String bio)
+	public HealerSheetDetails()
+	{}
+
+	public HealerSheetDetails(String key, String email, String playaName, String imageURL, String sessionLength, String modality1, String modality2,
+			String modality3, String modality4, String bio)
 	{
 		this.encodedKey = key;
 		this.email = email;

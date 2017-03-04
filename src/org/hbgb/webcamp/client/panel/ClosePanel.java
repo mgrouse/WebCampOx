@@ -35,8 +35,7 @@ public class ClosePanel extends Composite implements HasCloseHandlers<ClosePanel
 {
 
 	static interface ClosePanelBinder extends UiBinder<Widget, ClosePanel>
-	{
-	}
+	{}
 
 	private static UiBinder<Widget, ClosePanel> binder = GWT.create(ClosePanelBinder.class);
 

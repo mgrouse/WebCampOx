@@ -31,11 +31,9 @@ public class HealerSheetListApplet implements IApplet
 {
 	private final HandlerManager eventBus = new HandlerManager((Object) null);
 	private HasWidgets screen;
-	private final HealerSheetListPresenter listPresenter = new HealerSheetListPresenter(
-			this.eventBus);
+	private final HealerSheetListPresenter listPresenter = new HealerSheetListPresenter(this.eventBus);
 	private final WholePresenter editPresenter = new WholePresenter(this.eventBus);
-	private final HealerSheetPrintPresenter printPresenter = new HealerSheetPrintPresenter(
-			this.eventBus);
+	private final HealerSheetPrintPresenter printPresenter = new HealerSheetPrintPresenter(this.eventBus);
 
 	public HealerSheetListApplet()
 	{
@@ -54,8 +52,7 @@ public class HealerSheetListApplet implements IApplet
 			public void onPrintHealerSheet(PrintHealerSheetEvent event)
 			{
 				HealerSheetListApplet.this.screen.clear();
-				HealerSheetListApplet.this.printPresenter
-						.setScreen(HealerSheetListApplet.this.screen);
+				HealerSheetListApplet.this.printPresenter.setScreen(HealerSheetListApplet.this.screen);
 				HealerSheetListApplet.this.printPresenter.setHealerSheetDetails(event.getDetails());
 				HealerSheetListApplet.this.printPresenter.go();
 			}
@@ -67,8 +64,7 @@ public class HealerSheetListApplet implements IApplet
 			public void onEditHealerSheet(EditHealerSheetEvent event)
 			{
 				HealerSheetListApplet.this.screen.clear();
-				HealerSheetListApplet.this.editPresenter
-						.setScreen(HealerSheetListApplet.this.screen);
+				HealerSheetListApplet.this.editPresenter.setScreen(HealerSheetListApplet.this.screen);
 				HealerSheetListApplet.this.editPresenter.setKey(event.getKey());
 				HealerSheetListApplet.this.editPresenter.setKeyList(event.getKeyList());
 			}

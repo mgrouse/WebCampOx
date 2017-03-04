@@ -3,13 +3,13 @@
  */
 package org.hbgb.webcamp.client.widget;
 
-public interface IMessages {
-    public void addMessage(String var1);
+public interface IMessages
+{
+	public void addMessage(String var1);
 
-    public void addMessageAndFlush(String var1);
+	public void addMessageAndFlush(String var1);
 
-    public void removeMessage(String var1);
+	public void removeMessage(String var1);
 
-    public void clear();
+	public void clear();
 }
-

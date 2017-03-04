@@ -19,8 +19,7 @@ import org.hbgb.webcamp.shared.enums.SecurityRole;
 
 import com.google.gwt.user.client.ui.HasWidgets;
 
-public class InputCommitteeNHealerSheetInfoPresenter
-		implements SequentialPresenterI, IKeyedModelPresenter
+public class InputCommitteeNHealerSheetInfoPresenter implements SequentialPresenterI, IKeyedModelPresenter
 {
 	private static final int THIS_YEAR = 2017;
 	private static final int NUM_MODELS = 2;

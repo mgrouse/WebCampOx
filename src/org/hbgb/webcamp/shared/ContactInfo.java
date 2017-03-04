@@ -13,52 +13,50 @@ import org.hbgb.webcamp.shared.enums.CallTime;
 import org.hbgb.webcamp.shared.enums.ContactMethod;
 
 @SuppressWarnings("serial")
-@PersistenceCapable(detachable="true", identityType = IdentityType.APPLICATION)
+@PersistenceCapable(detachable = "true", identityType = IdentityType.APPLICATION)
 public class ContactInfo implements Serializable
 {
 	@PrimaryKey
 	@Persistent(valueStrategy = IdGeneratorStrategy.IDENTITY)
 	@Extension(vendorName = "datanucleus", key = "gae.encoded-pk", value = "true")
-	private String					encodedKey;
-
+	private String encodedKey;
 
 	// if we only had one email field this would be it
 	@Persistent
-	private String					email = "";
+	private String email = "";
 
 	@Persistent
-	private Address					address;
+	private Address address;
 
 	@Persistent
-	private String					phone = "";
+	private String phone = "";
 
 	@Persistent
-	private String					skypeName = "";
+	private String skypeName = "";
 
 	@Persistent
-	private Boolean					isReturningHeeBee;
-	
-	@Persistent
-	private String                  pastYearsText;
-	
-	@Persistent
-	private ContactMethod			contactMethod;
+	private Boolean isReturningHeeBee;
 
 	@Persistent
-	private CallTime				callTime;
-	
-	
+	private String pastYearsText;
 
-	public ContactInfo(){}
-	
+	@Persistent
+	private ContactMethod contactMethod;
+
+	@Persistent
+	private CallTime callTime;
+
+	public ContactInfo()
+	{}
+
 	public ContactInfo(String emailText)
 	{
 		email = emailText;
 	}
-	
+
 	public ContactInfo(String email, ContactInfo source)
 	{
-		if(null != source)
+		if (null != source)
 		{
 			this.setEmail(source.getEmail());
 			this.setAddress(new Address(source.getAddress()));
@@ -73,8 +71,6 @@ public class ContactInfo implements Serializable
 			this.setAddress(new Address());
 		}
 	}
-	
-	
 
 	public String getEncodedKey()
 	{

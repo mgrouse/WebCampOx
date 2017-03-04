@@ -24,8 +24,7 @@ import com.google.gwt.user.client.ui.Widget;
 public class MenuHeader extends Composite
 {
 	static interface MenuHeaderBinder extends UiBinder<Widget, MenuHeader>
-	{
-	}
+	{}
 
 	private static UiBinder<Widget, MenuHeader> binder = GWT.create(MenuHeaderBinder.class);
 

@@ -20,36 +20,35 @@ public class CommitteeInfoBlock implements Serializable
 	@PrimaryKey
 	@Persistent(valueStrategy = IdGeneratorStrategy.IDENTITY)
 	@Extension(vendorName = "datanucleus", key = "gae.encoded-pk", value = "true")
-	private String		encodedKey;
+	private String encodedKey;
 
 	@Persistent
-	private String		email = "";
+	private String email = "";
 
 	@Persistent
-	private Boolean		isProfile = false;
+	private Boolean isProfile = false;
 
 	@Persistent
-	private Committee	committee1;
+	private Committee committee1;
 
 	@Persistent
-	private Text		reason1 = new Text("");
+	private Text reason1 = new Text("");
 
 	@Persistent
-	private Committee	committee2;
+	private Committee committee2;
 
 	@Persistent
-	private Text		reason2 = new Text("");
+	private Text reason2 = new Text("");
 
 	@Persistent
-	private Committee	assignedCommittee;
+	private Committee assignedCommittee;
 
 	@Persistent
-	private Boolean		isAssignedLead = false;
+	private Boolean isAssignedLead = false;
 
-	
-	
-	public CommitteeInfoBlock(){}
-	
+	public CommitteeInfoBlock()
+	{}
+
 	public CommitteeInfoBlock(String emailText)
 	{
 		this.setEmail(emailText);
@@ -57,7 +56,7 @@ public class CommitteeInfoBlock implements Serializable
 
 	public CommitteeInfoBlock(String email, CommitteeInfoBlock source)
 	{
-		if(null != source)
+		if (null != source)
 		{
 			this.setEmail(source.getEmail());
 			this.setIsProfile(source.getIsProfile());
@@ -65,18 +64,15 @@ public class CommitteeInfoBlock implements Serializable
 			this.setReason1(source.getReason1());
 			this.setCommittee2(source.getCommittee2());
 			this.setReason2(source.getReason2());
-			//this.setAssignedCommittee(source.getAssignedCommittee());
-			//this.setIsAssignedLead(source.getIsAssignedLead());
+			// this.setAssignedCommittee(source.getAssignedCommittee());
+			// this.setIsAssignedLead(source.getIsAssignedLead());
 		}
 		else
 		{
 			this.setEmail(email);
 		}
 	}
-	
-	
-	
-	
+
 	public String getEncodedKey()
 	{
 		return encodedKey;

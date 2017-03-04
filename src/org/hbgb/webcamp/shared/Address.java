@@ -10,35 +10,35 @@ import javax.jdo.annotations.Persistent;
 import javax.jdo.annotations.PrimaryKey;
 
 @SuppressWarnings("serial")
-@PersistenceCapable(detachable="true", identityType = IdentityType.APPLICATION)
+@PersistenceCapable(detachable = "true", identityType = IdentityType.APPLICATION)
 public class Address implements Serializable
 {
 	@PrimaryKey
 	@Persistent(valueStrategy = IdGeneratorStrategy.IDENTITY)
 	@Extension(vendorName = "datanucleus", key = "gae.encoded-pk", value = "true")
-	private String	encodedKey;
+	private String encodedKey;
 
 	@Persistent
-	private String	street1 = "";
+	private String street1 = "";
 
 	@Persistent
-	private String	street2 = "";
+	private String street2 = "";
 
 	@Persistent
-	private String	city = "";
+	private String city = "";
 
 	@Persistent
-	private String	state = "";
-	
-	@Persistent
-	private String	country = "";
+	private String state = "";
 
 	@Persistent
-	private String	postalCode = "";
-	
+	private String country = "";
 
-	public Address() {}
-	
+	@Persistent
+	private String postalCode = "";
+
+	public Address()
+	{}
+
 	public Address(Address source)
 	{
 		this.setStreet1(source.getStreet1());
@@ -48,7 +48,7 @@ public class Address implements Serializable
 		this.setCountry(source.getCountry());
 		this.setPostalCode(source.getPostalCode());
 	}
-	
+
 	public String getEncodedKey()
 	{
 		return encodedKey;
@@ -98,7 +98,7 @@ public class Address implements Serializable
 	{
 		this.state = state;
 	}
-	
+
 	public String getCountry()
 	{
 		return country;

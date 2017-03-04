@@ -6,10 +6,9 @@ package org.hbgb.webcamp.client.presenter;
 import org.hbgb.webcamp.client.presenter.KeyPresenterI;
 
 @Deprecated
-public interface SequentialPresenterI
-extends KeyPresenterI {
-    public void setNextPresenter(KeyPresenterI var1);
+public interface SequentialPresenterI extends KeyPresenterI
+{
+	public void setNextPresenter(KeyPresenterI var1);
 
-    public void onNextButtonClicked();
+	public void onNextButtonClicked();
 }
-

@@ -12,26 +12,23 @@ import javax.jdo.annotations.PrimaryKey;
 import com.google.appengine.api.datastore.Text;
 
 @SuppressWarnings("serial")
-@PersistenceCapable(identityType=IdentityType.APPLICATION)
+@PersistenceCapable(identityType = IdentityType.APPLICATION)
 public class OfficeUse implements Serializable
 {
 	@PrimaryKey
-    @Persistent(valueStrategy = IdGeneratorStrategy.IDENTITY)
-    @Extension(vendorName="datanucleus", key="gae.encoded-pk", value="true")
-    private String encodedKey;
+	@Persistent(valueStrategy = IdGeneratorStrategy.IDENTITY)
+	@Extension(vendorName = "datanucleus", key = "gae.encoded-pk", value = "true")
+	private String encodedKey;
 
 	@Persistent
 	private String email = "";
-	
+
 	@Persistent
 	private Text notes = new Text("");
-	
-	
-	
-	
-	
-	public OfficeUse(){}
-	
+
+	public OfficeUse()
+	{}
+
 	public OfficeUse(String emailText)
 	{
 		email = emailText;
@@ -66,5 +63,5 @@ public class OfficeUse implements Serializable
 	{
 		this.notes = notes;
 	}
-	
+
 }

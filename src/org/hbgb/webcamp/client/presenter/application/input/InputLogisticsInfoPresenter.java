@@ -83,31 +83,28 @@ public class InputLogisticsInfoPresenter implements SequentialPresenterI
 	{
 		if (this.key != null)
 		{
-			this.rpcService.getApplicantsLogisticsInfoBlock(this.key,
-					new AsyncCallback<LogisticsInfoBlock>()
+			this.rpcService.getApplicantsLogisticsInfoBlock(this.key, new AsyncCallback<LogisticsInfoBlock>()
+			{
+
+				@Override
+				public void onSuccess(LogisticsInfoBlock result)
+				{
+					if (result == null)
 					{
+						Window.alert("Applicant's Payment Info reurned as null");
+						return;
+					}
+					InputLogisticsInfoPresenter.access$0(InputLogisticsInfoPresenter.this, result);
+					InputLogisticsInfoPresenter.this.setView();
+					InputLogisticsInfoPresenter.this.screen.add(InputLogisticsInfoPresenter.this.view.asWidget());
+				}
 
-						@Override
-						public void onSuccess(LogisticsInfoBlock result)
-						{
-							if (result == null)
-							{
-								Window.alert("Applicant's Payment Info reurned as null");
-								return;
-							}
-							InputLogisticsInfoPresenter.access$0(InputLogisticsInfoPresenter.this,
-									result);
-							InputLogisticsInfoPresenter.this.setView();
-							InputLogisticsInfoPresenter.this.screen
-									.add(InputLogisticsInfoPresenter.this.view.asWidget());
-						}
-
-						@Override
-						public void onFailure(Throwable caught)
-						{
-							Window.alert("DB Error retrieving Applicant's Payment Info");
-						}
-					});
+				@Override
+				public void onFailure(Throwable caught)
+				{
+					Window.alert("DB Error retrieving Applicant's Payment Info");
+				}
+			});
 			return;
 		}
 		Window.alert("Error no key for Applicant's Application!");
@@ -117,35 +114,31 @@ public class InputLogisticsInfoPresenter implements SequentialPresenterI
 	public void onNextButtonClicked()
 	{
 		this.setModel();
-		this.rpcService.updateApplicantsLogisticsInfoBlock(this.logisticsInfoBlock,
-				new AsyncCallback<Boolean>()
+		this.rpcService.updateApplicantsLogisticsInfoBlock(this.logisticsInfoBlock, new AsyncCallback<Boolean>()
+		{
+
+			@Override
+			public void onSuccess(Boolean saved)
+			{
+				if (saved.booleanValue())
 				{
+					InputLogisticsInfoPresenter.this.screen.clear();
+					InputLogisticsInfoPresenter.this.nextPresenter.setKey(InputLogisticsInfoPresenter.this.key);
+					InputLogisticsInfoPresenter.this.nextPresenter.go(InputLogisticsInfoPresenter.this.screen);
+					return;
+				}
+				Window.alert("DB Error saving Applicant's Shelter Info");
+			}
 
-					@Override
-					public void onSuccess(Boolean saved)
-					{
-						if (saved.booleanValue())
-						{
-							InputLogisticsInfoPresenter.this.screen.clear();
-							InputLogisticsInfoPresenter.this.nextPresenter
-									.setKey(InputLogisticsInfoPresenter.this.key);
-							InputLogisticsInfoPresenter.this.nextPresenter
-									.go(InputLogisticsInfoPresenter.this.screen);
-							return;
-						}
-						Window.alert("DB Error saving Applicant's Shelter Info");
-					}
-
-					@Override
-					public void onFailure(Throwable caught)
-					{
-						Window.alert("RPC Error saving Applicant's Shelter Info");
-					}
-				});
+			@Override
+			public void onFailure(Throwable caught)
+			{
+				Window.alert("RPC Error saving Applicant's Shelter Info");
+			}
+		});
 	}
 
-	static /* synthetic */ void access$0(InputLogisticsInfoPresenter inputLogisticsInfoPresenter,
-			LogisticsInfoBlock logisticsInfoBlock)
+	static /* synthetic */ void access$0(InputLogisticsInfoPresenter inputLogisticsInfoPresenter, LogisticsInfoBlock logisticsInfoBlock)
 	{
 		inputLogisticsInfoPresenter.logisticsInfoBlock = logisticsInfoBlock;
 	}

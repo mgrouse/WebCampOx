@@ -3,6 +3,5 @@
  */
 package org.hbgb.webcamp.client.view.application.input;
 
-public class InputVettingInfoViewImpl {
-}
-
+public class InputVettingInfoViewImpl
+{}

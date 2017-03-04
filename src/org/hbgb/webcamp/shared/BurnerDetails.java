@@ -8,12 +8,12 @@ public class BurnerDetails implements Serializable
 	private String encodedKey;
 	private String displayName;
 	private String email;
-	
+
 	public BurnerDetails()
 	{
 		new BurnerDetails(null, "", "");
 	}
-	
+
 	public BurnerDetails(String key, String displayName, String email)
 	{
 		this.encodedKey = key;

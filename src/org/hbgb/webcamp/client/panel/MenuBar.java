@@ -16,8 +16,7 @@ import com.google.gwt.user.client.ui.Widget;
 public class MenuBar extends ResizeComposite
 {
 	static interface MenuBarBinder extends UiBinder<Widget, MenuBar>
-	{
-	}
+	{}
 
 	private static UiBinder<Widget, MenuBar> binder = GWT.create(MenuBarBinder.class);
 

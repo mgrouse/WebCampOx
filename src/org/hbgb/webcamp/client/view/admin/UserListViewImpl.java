@@ -36,11 +36,9 @@ public class UserListViewImpl<T> extends AbstractView implements UserListView<T>
 {
 	@UiTemplate(value = "UserListView.ui.xml")
 	static interface UserViewUiBinder extends UiBinder<Widget, UserListViewImpl>
-	{
-	}
+	{}
 
-	private static UserViewUiBinder uiBinder = (UserViewUiBinder) GWT
-			.create(UserViewUiBinder.class);
+	private static UserViewUiBinder uiBinder = (UserViewUiBinder) GWT.create(UserViewUiBinder.class);
 
 	@UiField
 	VerticalPanel vPanel;

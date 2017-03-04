@@ -39,121 +39,153 @@ import org.hbgb.webcamp.shared.ApplicationDetails;
 import org.hbgb.webcamp.shared.HbgbUserDetails;
 import org.hbgb.webcamp.shared.HealerSheetDetails;
 
-public class ViewFinder {
-    private static IEarlyTeamMemberView earlyTeamMemberView;
-    private static IUserEditView editUserView;
-    private static UserListView<HbgbUserDetails> listUserView;
-    private static IEditApplicationView editApplicationView;
-    private static ApplicationListView<ApplicationDetails> listApplicationListView;
-    private static StartViewI enterView;
-    private static InputLogisticsInfoView editLogisticsView;
-    private static InputShelterInfoView editShelterView;
-    private static InputDietInfoView editDietView;
-    private static InputCommitteeInfoView editCommitteeView;
-    private static InputPaymentInfoView editPaymentView;
-    private static InputPersonalInfoView editPersonalView;
-    private static HealerSheetListView<HealerSheetDetails> healerSheetListView;
-    private static ApplicationLookupByEmailView appLookByEmailView;
-    private static InputHealerSheetInfoView inputHealerSheetView;
-    private static UploadPhotoView uplaodPhotoView;
+public class ViewFinder
+{
+	private static IEarlyTeamMemberView earlyTeamMemberView;
+	private static IUserEditView editUserView;
+	private static UserListView<HbgbUserDetails> listUserView;
+	private static IEditApplicationView editApplicationView;
+	private static ApplicationListView<ApplicationDetails> listApplicationListView;
+	private static StartViewI enterView;
+	private static InputLogisticsInfoView editLogisticsView;
+	private static InputShelterInfoView editShelterView;
+	private static InputDietInfoView editDietView;
+	private static InputCommitteeInfoView editCommitteeView;
+	private static InputPaymentInfoView editPaymentView;
+	private static InputPersonalInfoView editPersonalView;
+	private static HealerSheetListView<HealerSheetDetails> healerSheetListView;
+	private static ApplicationLookupByEmailView appLookByEmailView;
+	private static InputHealerSheetInfoView inputHealerSheetView;
+	private static UploadPhotoView uplaodPhotoView;
 
-    private ViewFinder() {
-    }
+	private ViewFinder()
+	{}
 
-    public static IEarlyTeamMemberView getEarlyTeamMemberView() {
-        if (earlyTeamMemberView != null) return earlyTeamMemberView;
-        earlyTeamMemberView = new EarlyTeamMemberViewImpl();
-        return earlyTeamMemberView;
-    }
+	public static IEarlyTeamMemberView getEarlyTeamMemberView()
+	{
+		if (earlyTeamMemberView != null)
+			return earlyTeamMemberView;
+		earlyTeamMemberView = new EarlyTeamMemberViewImpl();
+		return earlyTeamMemberView;
+	}
 
-    public static IUserEditView getEditUserView() {
-        if (editUserView != null) return editUserView;
-        editUserView = new UserEditViewImpl();
-        return editUserView;
-    }
+	public static IUserEditView getEditUserView()
+	{
+		if (editUserView != null)
+			return editUserView;
+		editUserView = new UserEditViewImpl();
+		return editUserView;
+	}
 
-    public static UserListView<HbgbUserDetails> getUserListView() {
-        if (listUserView != null) return listUserView;
-        listUserView = new UserListViewImpl<HbgbUserDetails>();
-        return listUserView;
-    }
+	public static UserListView<HbgbUserDetails> getUserListView()
+	{
+		if (listUserView != null)
+			return listUserView;
+		listUserView = new UserListViewImpl<HbgbUserDetails>();
+		return listUserView;
+	}
 
-    public static IEditApplicationView getEditApplicationView() {
-        if (editApplicationView != null) return editApplicationView;
-        editApplicationView = new EditApplicationViewImpl();
-        return editApplicationView;
-    }
+	public static IEditApplicationView getEditApplicationView()
+	{
+		if (editApplicationView != null)
+			return editApplicationView;
+		editApplicationView = new EditApplicationViewImpl();
+		return editApplicationView;
+	}
 
-    public static ApplicationListView<ApplicationDetails> getApplicationListView() {
-        if (listApplicationListView != null) return listApplicationListView;
-        listApplicationListView = new ApplicationListViewImpl<ApplicationDetails>();
-        return listApplicationListView;
-    }
+	public static ApplicationListView<ApplicationDetails> getApplicationListView()
+	{
+		if (listApplicationListView != null)
+			return listApplicationListView;
+		listApplicationListView = new ApplicationListViewImpl<ApplicationDetails>();
+		return listApplicationListView;
+	}
 
-    public static HealerSheetListView<HealerSheetDetails> getHealerSheetListView() {
-        if (healerSheetListView != null) return healerSheetListView;
-        healerSheetListView = new HealerSheetListViewImpl<HealerSheetDetails>();
-        return healerSheetListView;
-    }
+	public static HealerSheetListView<HealerSheetDetails> getHealerSheetListView()
+	{
+		if (healerSheetListView != null)
+			return healerSheetListView;
+		healerSheetListView = new HealerSheetListViewImpl<HealerSheetDetails>();
+		return healerSheetListView;
+	}
 
-    public static InputCommitteeInfoView getCommitteeInfoView() {
-        if (editCommitteeView != null) return editCommitteeView;
-        editCommitteeView = new InputCommitteeInfoViewImpl();
-        return editCommitteeView;
-    }
+	public static InputCommitteeInfoView getCommitteeInfoView()
+	{
+		if (editCommitteeView != null)
+			return editCommitteeView;
+		editCommitteeView = new InputCommitteeInfoViewImpl();
+		return editCommitteeView;
+	}
 
-    public static InputPersonalInfoView getPersonalInfoView() {
-        if (editPersonalView != null) return editPersonalView;
-        editPersonalView = new InputPersonalInfoViewImpl();
-        return editPersonalView;
-    }
+	public static InputPersonalInfoView getPersonalInfoView()
+	{
+		if (editPersonalView != null)
+			return editPersonalView;
+		editPersonalView = new InputPersonalInfoViewImpl();
+		return editPersonalView;
+	}
 
-    public static StartViewI getEnterView() {
-        if (enterView != null) return enterView;
-        enterView = new StartViewImpl();
-        return enterView;
-    }
+	public static StartViewI getEnterView()
+	{
+		if (enterView != null)
+			return enterView;
+		enterView = new StartViewImpl();
+		return enterView;
+	}
 
-    public static InputPaymentInfoView getPaymentInfoView() {
-        if (editPaymentView != null) return editPaymentView;
-        editPaymentView = new InputPaymentInfoViewImpl();
-        return editPaymentView;
-    }
+	public static InputPaymentInfoView getPaymentInfoView()
+	{
+		if (editPaymentView != null)
+			return editPaymentView;
+		editPaymentView = new InputPaymentInfoViewImpl();
+		return editPaymentView;
+	}
 
-    public static InputDietInfoView getDietInfoView() {
-        if (editDietView != null) return editDietView;
-        editDietView = new InputDietInfoViewImpl();
-        return editDietView;
-    }
+	public static InputDietInfoView getDietInfoView()
+	{
+		if (editDietView != null)
+			return editDietView;
+		editDietView = new InputDietInfoViewImpl();
+		return editDietView;
+	}
 
-    public static InputShelterInfoView getShelterInfoView() {
-        if (editShelterView != null) return editShelterView;
-        editShelterView = new InputShelterInfoViewImpl();
-        return editShelterView;
-    }
+	public static InputShelterInfoView getShelterInfoView()
+	{
+		if (editShelterView != null)
+			return editShelterView;
+		editShelterView = new InputShelterInfoViewImpl();
+		return editShelterView;
+	}
 
-    public static InputLogisticsInfoView getLogisticsInfoView() {
-        if (editLogisticsView != null) return editLogisticsView;
-        editLogisticsView = new InputLogisticsInfoViewImpl();
-        return editLogisticsView;
-    }
+	public static InputLogisticsInfoView getLogisticsInfoView()
+	{
+		if (editLogisticsView != null)
+			return editLogisticsView;
+		editLogisticsView = new InputLogisticsInfoViewImpl();
+		return editLogisticsView;
+	}
 
-    public static ApplicationLookupByEmailView getApplicationLookupByEmailView() {
-        if (appLookByEmailView != null) return appLookByEmailView;
-        appLookByEmailView = new ApplicationLookupByEmailViewImpl();
-        return appLookByEmailView;
-    }
+	public static ApplicationLookupByEmailView getApplicationLookupByEmailView()
+	{
+		if (appLookByEmailView != null)
+			return appLookByEmailView;
+		appLookByEmailView = new ApplicationLookupByEmailViewImpl();
+		return appLookByEmailView;
+	}
 
-    public static InputHealerSheetInfoView getHealerSheetInfoView() {
-        if (inputHealerSheetView != null) return inputHealerSheetView;
-        inputHealerSheetView = new InputHealerSheetInfoViewImpl();
-        return inputHealerSheetView;
-    }
+	public static InputHealerSheetInfoView getHealerSheetInfoView()
+	{
+		if (inputHealerSheetView != null)
+			return inputHealerSheetView;
+		inputHealerSheetView = new InputHealerSheetInfoViewImpl();
+		return inputHealerSheetView;
+	}
 
-    public static UploadPhotoView getUploadPhotoView() {
-        if (uplaodPhotoView != null) return uplaodPhotoView;
-        uplaodPhotoView = new UploadPhotoViewImpl();
-        return uplaodPhotoView;
-    }
+	public static UploadPhotoView getUploadPhotoView()
+	{
+		if (uplaodPhotoView != null)
+			return uplaodPhotoView;
+		uplaodPhotoView = new UploadPhotoViewImpl();
+		return uplaodPhotoView;
+	}
 }
-

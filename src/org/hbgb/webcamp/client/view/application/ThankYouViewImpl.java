@@ -20,11 +20,9 @@ public class ThankYouViewImpl extends Composite implements ThankYouView
 {
 	@UiTemplate(value = "ThankYouView.ui.xml")
 	static interface ThankYouViewImplBinder extends UiBinder<Widget, ThankYouViewImpl>
-	{
-	}
+	{}
 
-	private static UiBinder<Widget, ThankYouViewImpl> binder =  GWT
-			.create( ThankYouViewImplBinder.class);
+	private static UiBinder<Widget, ThankYouViewImpl> binder = GWT.create(ThankYouViewImplBinder.class);
 
 	public ThankYouViewImpl()
 	{
@@ -39,12 +37,10 @@ public class ThankYouViewImpl extends Composite implements ThankYouView
 
 	@Override
 	public void clear()
-	{
-	}
+	{}
 
 	@Override
 	public void setVisibility(SecurityRole role)
-	{
-	}
+	{}
 
 }

@@ -10,17 +10,17 @@ import javax.jdo.annotations.Persistent;
 import javax.jdo.annotations.PrimaryKey;
 
 @SuppressWarnings("serial")
-@PersistenceCapable(identityType=IdentityType.APPLICATION)
+@PersistenceCapable(identityType = IdentityType.APPLICATION)
 public class Burn implements Serializable
 {
 	@PrimaryKey
-    @Persistent(valueStrategy = IdGeneratorStrategy.IDENTITY)
-    @Extension(vendorName="datanucleus", key="gae.encoded-pk", value="true")
-    private String encodedKey;
-	
+	@Persistent(valueStrategy = IdGeneratorStrategy.IDENTITY)
+	@Extension(vendorName = "datanucleus", key = "gae.encoded-pk", value = "true")
+	private String encodedKey;
+
 	@Persistent
 	private String email;
-	
+
 	@Persistent
 	private String year;
 
@@ -29,10 +29,10 @@ public class Burn implements Serializable
 
 	@Persistent
 	private String note;
-	
-	
-	public Burn(){}
-	
+
+	public Burn()
+	{}
+
 	public Burn(String email)
 	{
 		this.setEmail(email);
@@ -45,8 +45,7 @@ public class Burn implements Serializable
 		this.setCamp(source.getCamp());
 		this.setNote(source.getNote());
 	}
-	
-	
+
 	public String getEmail()
 	{
 		return email;
@@ -86,5 +85,5 @@ public class Burn implements Serializable
 	{
 		this.note = note;
 	}
-	
+
 }

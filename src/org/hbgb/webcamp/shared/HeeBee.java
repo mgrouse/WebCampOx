@@ -19,8 +19,8 @@ public class HeeBee extends Burner implements Serializable
 	@PrimaryKey
 	@Persistent(valueStrategy = IdGeneratorStrategy.IDENTITY)
 	@Extension(vendorName = "datanucleus", key = "gae.encoded-pk", value = "true")
-	private String						encodedKey;
+	private String encodedKey;
 
 	@Persistent
-	private List<HeeBeeHistoryRecord>	history;
+	private List<HeeBeeHistoryRecord> history;
 }

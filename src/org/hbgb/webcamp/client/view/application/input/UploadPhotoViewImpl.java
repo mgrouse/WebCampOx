@@ -38,8 +38,7 @@ import com.google.gwt.user.client.ui.Widget;
 public class UploadPhotoViewImpl extends AbstractView implements UploadPhotoView
 {
 	private static final String IMAGE_NOT_AVAIALABLE = "http://storage.googleapis.com/hbgbwebcamp.appspot.com/PhotoNotAvailable.jpg";
-	private static UiBinder<Widget, UploadPhotoViewImpl> binder =  GWT
-			.create( PictureUploadViewImplBinder.class);
+	private static UiBinder<Widget, UploadPhotoViewImpl> binder = GWT.create(PictureUploadViewImplBinder.class);
 	BlobStoreUploadURLServiceAsync imageServ;
 	@UiField
 	Button uploadButton;
@@ -88,8 +87,7 @@ public class UploadPhotoViewImpl extends AbstractView implements UploadPhotoView
 
 			@Override
 			public void onFailure(Throwable caught)
-			{
-			}
+			{}
 		});
 	}
 
@@ -121,8 +119,7 @@ public class UploadPhotoViewImpl extends AbstractView implements UploadPhotoView
 			this.currentImage.setUrl(imageURL);
 			return;
 		}
-		this.currentImage.setUrl(
-				"http://storage.googleapis.com/hbgbwebcamp.appspot.com/PhotoNotAvailable.jpg");
+		this.currentImage.setUrl("http://storage.googleapis.com/hbgbwebcamp.appspot.com/PhotoNotAvailable.jpg");
 	}
 
 	@Override
@@ -137,13 +134,11 @@ public class UploadPhotoViewImpl extends AbstractView implements UploadPhotoView
 			return;
 		if (this.currentImage.getUrl().isEmpty())
 			return;
-		this.currentImage.getUrl().equals(
-				"http://storage.googleapis.com/hbgbwebcamp.appspot.com/PhotoNotAvailable.jpg");
+		this.currentImage.getUrl().equals("http://storage.googleapis.com/hbgbwebcamp.appspot.com/PhotoNotAvailable.jpg");
 	}
 
 	@UiTemplate(value = "UploadPhotoView.ui.xml")
 	static interface PictureUploadViewImplBinder extends UiBinder<Widget, UploadPhotoViewImpl>
-	{
-	}
+	{}
 
 }

@@ -13,37 +13,37 @@ import javax.jdo.annotations.PrimaryKey;
 import org.hbgb.webcamp.shared.enums.ApplicationStatus;
 
 @SuppressWarnings("serial")
-@PersistenceCapable(identityType=IdentityType.APPLICATION)
+@PersistenceCapable(identityType = IdentityType.APPLICATION)
 public class Application implements Serializable
 {
 	private static final int THIS_YEAR = 2015;
-	
+
 	@PrimaryKey
-    @Persistent(valueStrategy = IdGeneratorStrategy.IDENTITY)
-    @Extension(vendorName="datanucleus", key="gae.encoded-pk", value="true")
-    private String encodedKey;
-	
-	@Persistent
-	private String email = "";
-	
-	@Persistent
-	private Date created; 
-	
-	@Persistent
-	private Date edited; 
-	
-	@Persistent
-	private int year;
-	
-	@Persistent
-    private String imageURL = "";
+	@Persistent(valueStrategy = IdGeneratorStrategy.IDENTITY)
+	@Extension(vendorName = "datanucleus", key = "gae.encoded-pk", value = "true")
+	private String encodedKey;
 
 	@Persistent
-	private ApplicationStatus status; 
-	
+	private String email = "";
+
+	@Persistent
+	private Date created;
+
+	@Persistent
+	private Date edited;
+
+	@Persistent
+	private int year;
+
+	@Persistent
+	private String imageURL = "";
+
+	@Persistent
+	private ApplicationStatus status;
+
 	@Persistent
 	private Burner applicant;
-	
+
 	@Persistent
 	private PaymentInfoBlock paymentInfoBlock;
 
@@ -64,21 +64,19 @@ public class Application implements Serializable
 
 	@Persistent
 	private OfficeUse officeUse;
-	
+
 	// on save of last page send invite link to yahoo group
 
-	
-	
-	
-	public Application(){}
-	
+	public Application()
+	{}
+
 	public Application(String emailText)
 	{
 		email = emailText;
-		
+
 		created = new Date();
-		edited = null; 
-		
+		edited = null;
+
 		// TODO needs to look up the current year.
 		year = THIS_YEAR;
 		status = ApplicationStatus.NEW;
@@ -88,20 +86,20 @@ public class Application implements Serializable
 		logisticsInfoBlock = new LogisticsInfoBlock(emailText);
 		shelterInfoBlock = new ShelterInfoBlock(emailText);
 		dietInfoBlock = new DietInfoBlock(emailText);
-		vettingInfoBlock = null; //new VettingInfoBlock(emailText);
-		officeUse = null; //new OfficeUse(emailText);
+		vettingInfoBlock = null; // new VettingInfoBlock(emailText);
+		officeUse = null; // new OfficeUse(emailText);
 	}
 
 	public Application(Application source)
 	{
 		created = new Date();
-		edited = null; 
-		
-		//TODO needs to look up the current year.
+		edited = null;
+
+		// TODO needs to look up the current year.
 		year = THIS_YEAR;
 		status = ApplicationStatus.NEW;
-		
-		if(null != source)
+
+		if (null != source)
 		{
 			this.setImageURL(source.getImageURL());
 			email = source.getEmail();
@@ -110,12 +108,13 @@ public class Application implements Serializable
 			logisticsInfoBlock = new LogisticsInfoBlock(email, source.getLogisticsInfoBlock());
 			shelterInfoBlock = new ShelterInfoBlock(email, source.getShelterInfoBlock());
 			dietInfoBlock = new DietInfoBlock(email, source.getDietInfoBlock());
-			
+
 			applicant = new Burner(email, source.getApplicant());
-			//vettingInfoBlock = new VettingInfoBlock(source.getVettingInfoBlock());
-			//officeUse = new OfficeUse(source.getOfficeUse());
+			// vettingInfoBlock = new
+			// VettingInfoBlock(source.getVettingInfoBlock());
+			// officeUse = new OfficeUse(source.getOfficeUse());
 		}
-		
+
 	}
 
 	public String getEncodedKey()
@@ -137,7 +136,7 @@ public class Application implements Serializable
 	{
 		this.email = email;
 	}
-	
+
 	public Date getCreated()
 	{
 		return created;

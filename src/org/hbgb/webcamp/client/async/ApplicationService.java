@@ -2,8 +2,8 @@
  * Decompiled with CFR 0_115.
  * 
  * Could not load the following classes:
- *  com.google.gwt.user.client.rpc.RemoteService
- *  com.google.gwt.user.client.rpc.RemoteServiceRelativePath
+ * com.google.gwt.user.client.rpc.RemoteService
+ * com.google.gwt.user.client.rpc.RemoteServiceRelativePath
  */
 package org.hbgb.webcamp.client.async;
 
@@ -23,55 +23,54 @@ import org.hbgb.webcamp.shared.RosterDetails;
 import org.hbgb.webcamp.shared.ShelterInfoBlock;
 import org.hbgb.webcamp.shared.enums.Committee;
 
-@RemoteServiceRelativePath(value="applicationService")
-public interface ApplicationService
-extends RemoteService {
-    public String findApplicationKeyByEmail(String var1);
+@RemoteServiceRelativePath(value = "applicationService")
+public interface ApplicationService extends RemoteService
+{
+	public String findApplicationKeyByEmail(String var1);
 
-    public String findApplicationEmailByKey(String var1);
+	public String findApplicationEmailByKey(String var1);
 
-    public Application getApplication(String var1);
+	public Application getApplication(String var1);
 
-    public ArrayList<ApplicationDetails> getApplicationDetails();
+	public ArrayList<ApplicationDetails> getApplicationDetails();
 
-    public List<RosterDetails> getAcceptedRosterDetailsByYear(String var1);
+	public List<RosterDetails> getAcceptedRosterDetailsByYear(String var1);
 
-    public Application findOrAddApplication(String var1);
+	public Application findOrAddApplication(String var1);
 
-    public Boolean updateApplication(Application var1);
+	public Boolean updateApplication(Application var1);
 
-    public Boolean deleteApplication(String var1);
+	public Boolean deleteApplication(String var1);
 
-    public ArrayList<ApplicationDetails> deleteApplications(ArrayList<String> var1);
+	public ArrayList<ApplicationDetails> deleteApplications(ArrayList<String> var1);
 
-    public List<String> getCommitteeEmails(Committee var1);
+	public List<String> getCommitteeEmails(Committee var1);
 
-    public MealsReport getMealsReport();
+	public MealsReport getMealsReport();
 
-    public Burner getApplicant(String var1);
+	public Burner getApplicant(String var1);
 
-    public Boolean updateApplicant(Burner var1);
+	public Boolean updateApplicant(Burner var1);
 
-    public CommitteeInfoBlock getApplicantsCommitteeInfoBlock(String var1);
+	public CommitteeInfoBlock getApplicantsCommitteeInfoBlock(String var1);
 
-    public Boolean updateApplicantsCommitteeInfoBlock(CommitteeInfoBlock var1);
+	public Boolean updateApplicantsCommitteeInfoBlock(CommitteeInfoBlock var1);
 
-    public PaymentInfoBlock getApplicantsPaymentInfoBlock(String var1);
+	public PaymentInfoBlock getApplicantsPaymentInfoBlock(String var1);
 
-    public Boolean updateApplicantsPaymentInfoBlock(PaymentInfoBlock var1);
+	public Boolean updateApplicantsPaymentInfoBlock(PaymentInfoBlock var1);
 
-    public DietInfoBlock getApplicantsDietInfoBlock(String var1);
+	public DietInfoBlock getApplicantsDietInfoBlock(String var1);
 
-    public boolean updateApplicantsDietInfoBlock(DietInfoBlock var1);
+	public boolean updateApplicantsDietInfoBlock(DietInfoBlock var1);
 
-    public ShelterInfoBlock getApplicantsShelterInfoBlock(String var1);
+	public ShelterInfoBlock getApplicantsShelterInfoBlock(String var1);
 
-    public boolean updateApplicantsShelterInfoBlock(ShelterInfoBlock var1);
+	public boolean updateApplicantsShelterInfoBlock(ShelterInfoBlock var1);
 
-    public LogisticsInfoBlock getApplicantsLogisticsInfoBlock(String var1);
+	public LogisticsInfoBlock getApplicantsLogisticsInfoBlock(String var1);
 
-    public boolean updateApplicantsLogisticsInfoBlock(LogisticsInfoBlock var1);
+	public boolean updateApplicantsLogisticsInfoBlock(LogisticsInfoBlock var1);
 
-    public String updateApplicationObjectSchema();
+	public String updateApplicationObjectSchema();
 }
-

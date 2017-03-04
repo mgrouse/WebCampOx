@@ -37,11 +37,9 @@ public class HealerSheetListViewImpl<T> extends Composite implements HealerSheet
 
 	@UiTemplate(value = "HealerSheetListView.ui.xml")
 	static interface HealerSheetListViewImplBinder extends UiBinder<Widget, HealerSheetListViewImpl>
-	{
-	}
+	{}
 
-	private static UiBinder<Widget, HealerSheetListViewImpl> binder =  GWT
-			.create( HealerSheetListViewImplBinder.class);
+	private static UiBinder<Widget, HealerSheetListViewImpl> binder = GWT.create(HealerSheetListViewImplBinder.class);
 
 	@UiField
 	FlexTable table;
@@ -83,73 +81,81 @@ public class HealerSheetListViewImpl<T> extends Composite implements HealerSheet
 		this.table.setWidget(0, 7, new HTML("Modality 3"));
 		this.table.setWidget(0, 8, new HTML("Modality 4"));
 		this.table.setWidget(0, 9, new HTML("Bio"));
-		int i = 0;
-		while (i < rowData.size())
+
+		for (int i = 0; i < rowData.size(); ++i)
 		{
 			T t = rowData.get(i);
-			int j = 0;
-			while (j < this.columnDefinitions.size())
+
+			for (int j = 0; j < columnDefinitions.size(); ++j)
 			{
-				ColumnDefinition<T> columnDefinition = this.columnDefinitions.get(j);
-				this.table.setWidget(i + 1, j, columnDefinition.render(t));
-				++j;
+				ColumnDefinition<T> columnDefinition = columnDefinitions.get(j);
+				table.setWidget(i + 1, j, columnDefinition.render(t));
 			}
-			++i;
 		}
 	}
 
 	@UiHandler(value = { "table" })
 	void onTableClicked(ClickEvent event)
 	{
-		if (this.presenter == null)
-			return;
-		HTMLTable.Cell cell = this.table.getCellForEvent(event);
-		if (cell == null)
-			return;
-		if (this.shouldFireClickEvent(cell))
+		if (presenter != null)
 		{
-			this.presenter.onItemClicked(this.rowData.get(cell.getRowIndex() - 1),
-					cell.getCellIndex());
+			HTMLTable.Cell cell = table.getCellForEvent(event);
+
+			if (cell != null)
+			{
+				if (shouldFireClickEvent(cell))
+				{
+					presenter.onItemClicked(rowData.get(cell.getRowIndex() - 1), cell.getCellIndex());
+				}
+
+				if (shouldFireSelectEvent(cell))
+				{
+					presenter.onItemSelected(rowData.get(cell.getRowIndex() - 1));
+				}
+			}
 		}
-		if (!this.shouldFireSelectEvent(cell))
-			return;
-		this.presenter.onItemSelected(this.rowData.get(cell.getRowIndex() - 1));
 	}
 
 	private boolean shouldFireClickEvent(HTMLTable.Cell cell)
 	{
 		boolean shouldFireClickEvent = false;
-		if (cell == null)
-			return shouldFireClickEvent;
-		if (cell.getRowIndex() == 0)
-			return shouldFireClickEvent;
-		ColumnDefinition<T> columnDefinition = this.columnDefinitions.get(cell.getCellIndex());
-		if (columnDefinition == null)
-			return shouldFireClickEvent;
-		return columnDefinition.isClickable();
+
+		if ((cell != null) && (cell.getRowIndex() != 0))
+		{
+			ColumnDefinition<T> columnDefinition = columnDefinitions.get(cell.getCellIndex());
+
+			if (columnDefinition != null)
+			{
+				shouldFireClickEvent = columnDefinition.isClickable();
+			}
+		}
+
+		return shouldFireClickEvent;
 	}
 
 	private boolean shouldFireSelectEvent(HTMLTable.Cell cell)
 	{
 		boolean shouldFireSelectEvent = false;
-		if (cell == null)
-			return shouldFireSelectEvent;
-		if (cell.getRowIndex() == 0)
-			return shouldFireSelectEvent;
-		ColumnDefinition<T> columnDefinition = this.columnDefinitions.get(cell.getCellIndex());
-		if (columnDefinition == null)
-			return shouldFireSelectEvent;
-		return columnDefinition.isSelectable();
+
+		if ((cell != null) && (cell.getRowIndex() != 0))
+		{
+			ColumnDefinition<T> columnDefinition = columnDefinitions.get(cell.getCellIndex());
+
+			if (columnDefinition != null)
+			{
+				shouldFireSelectEvent = columnDefinition.isSelectable();
+			}
+		}
+
+		return shouldFireSelectEvent;
 	}
 
 	@Override
 	public void clear()
-	{
-	}
+	{}
 
 	@Override
 	public void setVisibility(SecurityRole role)
-	{
-	}
+	{}
 
 }

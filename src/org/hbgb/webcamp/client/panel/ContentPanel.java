@@ -27,8 +27,7 @@ import com.google.gwt.user.client.ui.Widget;
 public class ContentPanel extends ResizeComposite implements CloseHandler<ClosePanel>
 {
 	static interface ContentPanelBinder extends UiBinder<Widget, ContentPanel>
-	{
-	}
+	{}
 
 	private static UiBinder<Widget, ContentPanel> binder = GWT.create(ContentPanelBinder.class);
 	@UiField

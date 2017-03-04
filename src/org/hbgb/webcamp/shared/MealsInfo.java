@@ -10,7 +10,7 @@ import org.hbgb.webcamp.shared.enums.PlayaTime;
 public class MealsInfo implements Serializable
 {
 	private String fullName = "";
-	
+
 	private DayOfEvent arrivalDate;
 
 	private PlayaTime arrivalTime = PlayaTime.before_dinner;
@@ -18,18 +18,12 @@ public class MealsInfo implements Serializable
 	private DayOfEvent departureDate;
 
 	private PlayaTime departureTime = PlayaTime.before_dinner;
-	
-	private DietType dietType = DietType.Omnivore;
-	
-	private Boolean isGlutenFree = false;
-    
-	private String dietaryRestrictions = "";
 
-	
-	
-	
-	
-	
+	private DietType dietType = DietType.Omnivore;
+
+	private Boolean isGlutenFree = false;
+
+	private String dietaryRestrictions = "";
 
 	public String getFullName()
 	{
@@ -109,5 +103,5 @@ public class MealsInfo implements Serializable
 	public void setDietaryRestrictions(String dietaryRestrictions)
 	{
 		this.dietaryRestrictions = dietaryRestrictions;
-	} 
+	}
 }

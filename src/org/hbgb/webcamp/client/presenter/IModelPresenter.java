@@ -3,6 +3,5 @@
  */
 package org.hbgb.webcamp.client.presenter;
 
-public interface IModelPresenter {
-}
-
+public interface IModelPresenter
+{}

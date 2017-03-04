@@ -20,8 +20,7 @@ import com.google.gwt.user.client.ui.Widget;
 
 public class EditShelterInfoViewImpl extends AbstractPartView implements IEditShelterInfoView
 {
-	private static UiBinder<Widget, EditShelterInfoViewImpl> binder =  GWT
-			.create( EditShelterInfoViewImplBinder.class);
+	private static UiBinder<Widget, EditShelterInfoViewImpl> binder = GWT.create(EditShelterInfoViewImplBinder.class);
 	@UiField
 	CheckBox hasRv;
 	@UiField
@@ -101,7 +100,6 @@ public class EditShelterInfoViewImpl extends AbstractPartView implements IEditSh
 
 	@UiTemplate(value = "EditShelterInfoView.ui.xml")
 	static interface EditShelterInfoViewImplBinder extends UiBinder<Widget, EditShelterInfoViewImpl>
-	{
-	}
+	{}
 
 }

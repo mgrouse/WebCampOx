@@ -9,13 +9,15 @@ import org.hbgb.webcamp.client.common.ApplicationColumnDefinitionsImpl;
 import org.hbgb.webcamp.client.common.ColumnDefinition;
 import org.hbgb.webcamp.shared.ApplicationDetails;
 
-public class ApplicationColumnDefinitionsFactory<T> {
-    public static List<ColumnDefinition<ApplicationDetails>> getApplicationColumnDefinitions() {
-        return ApplicationColumnDefinitionsImpl.getInstance();
-    }
+public class ApplicationColumnDefinitionsFactory<T>
+{
+	public static List<ColumnDefinition<ApplicationDetails>> getApplicationColumnDefinitions()
+	{
+		return ApplicationColumnDefinitionsImpl.getInstance();
+	}
 
-    public static List<ColumnDefinition<ApplicationDetails>> getTestApplicationColumnDefinitions() {
-        return new ArrayList<ColumnDefinition<ApplicationDetails>>();
-    }
+	public static List<ColumnDefinition<ApplicationDetails>> getTestApplicationColumnDefinitions()
+	{
+		return new ArrayList<ColumnDefinition<ApplicationDetails>>();
+	}
 }
-

@@ -22,8 +22,7 @@ import com.google.gwt.user.client.ui.Widget;
 
 public class GenderListBox extends Composite
 {
-	private static UiBinder<Widget, GenderListBox> binder =  GWT
-			.create( GenderListBoxBinder.class);
+	private static UiBinder<Widget, GenderListBox> binder = GWT.create(GenderListBoxBinder.class);
 	@UiField
 	EnumListBox<Gender> list;
 
@@ -50,7 +49,6 @@ public class GenderListBox extends Composite
 
 	@UiTemplate(value = "GenderListBox.ui.xml")
 	static interface GenderListBoxBinder extends UiBinder<Widget, GenderListBox>
-	{
-	}
+	{}
 
 }

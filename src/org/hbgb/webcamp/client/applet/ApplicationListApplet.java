@@ -24,10 +24,8 @@ public class ApplicationListApplet implements IApplet
 {
 	private final HandlerManager eventBus = new HandlerManager((Object) null);
 	private HasWidgets screen;
-	private final ApplicationListPresenter applicationListPresenter = new ApplicationListPresenter(
-			this.eventBus);
-	private final EditWholeApplicationPresenter editWholeApplicationPresenter = new EditWholeApplicationPresenter(
-			this.eventBus);
+	private final ApplicationListPresenter applicationListPresenter = new ApplicationListPresenter(this.eventBus);
+	private final EditWholeApplicationPresenter editWholeApplicationPresenter = new EditWholeApplicationPresenter(this.eventBus);
 
 	public ApplicationListApplet()
 	{
@@ -43,11 +41,9 @@ public class ApplicationListApplet implements IApplet
 			public void onEditApplication(EditApplicationEvent event)
 			{
 				ApplicationListApplet.this.screen.clear();
-				ApplicationListApplet.this.editWholeApplicationPresenter
-						.setScreen(ApplicationListApplet.this.screen);
+				ApplicationListApplet.this.editWholeApplicationPresenter.setScreen(ApplicationListApplet.this.screen);
 				ApplicationListApplet.this.editWholeApplicationPresenter.setKey(event.getKey());
-				ApplicationListApplet.this.editWholeApplicationPresenter
-						.setKeyList(event.getKeyList());
+				ApplicationListApplet.this.editWholeApplicationPresenter.setKeyList(event.getKeyList());
 			}
 		});
 		this.eventBus.addHandler(ListApplicationEvent.TYPE, new ListApplicationEventHandler()

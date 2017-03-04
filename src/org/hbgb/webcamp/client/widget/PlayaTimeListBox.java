@@ -22,8 +22,7 @@ import com.google.gwt.user.client.ui.Widget;
 
 public class PlayaTimeListBox extends Composite
 {
-	private static UiBinder<Widget, PlayaTimeListBox> binder =  GWT
-			.create( PlayaTimeListBoxBinder.class);
+	private static UiBinder<Widget, PlayaTimeListBox> binder = GWT.create(PlayaTimeListBoxBinder.class);
 	@UiField
 	EnumListBox<PlayaTime> list;
 
@@ -50,7 +49,6 @@ public class PlayaTimeListBox extends Composite
 
 	@UiTemplate(value = "PLayaTimeListBox.ui.xml")
 	static interface PlayaTimeListBoxBinder extends UiBinder<Widget, PlayaTimeListBox>
-	{
-	}
+	{}
 
 }

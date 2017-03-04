@@ -78,7 +78,6 @@ public class MenuItem extends Composite
 	}
 
 	static interface MenuItemBinder extends UiBinder<Widget, MenuItem>
-	{
-	}
+	{}
 
 }

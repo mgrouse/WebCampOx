@@ -8,9 +8,10 @@ import org.hbgb.webcamp.client.common.ColumnDefinition;
 import org.hbgb.webcamp.client.common.HealerSheetDetailsColumnDefinitionsImpl;
 import org.hbgb.webcamp.shared.HealerSheetDetails;
 
-public class HealerSheetDetailsColumnDefinitionsFactory {
-    public static List<ColumnDefinition<HealerSheetDetails>> getHealerSheetColumnDefinitions() {
-        return HealerSheetDetailsColumnDefinitionsImpl.getInstance();
-    }
+public class HealerSheetDetailsColumnDefinitionsFactory
+{
+	public static List<ColumnDefinition<HealerSheetDetails>> getHealerSheetColumnDefinitions()
+	{
+		return HealerSheetDetailsColumnDefinitionsImpl.getInstance();
+	}
 }
-

@@ -34,8 +34,7 @@ import com.google.gwt.user.client.ui.Widget;
 
 public class InputPaymentInfoViewImpl extends AbstractView implements InputPaymentInfoView
 {
-	private static UiBinder<Widget, InputPaymentInfoViewImpl> binder =  GWT
-			.create( EditPaymentInfoViewImplBinder.class);
+	private static UiBinder<Widget, InputPaymentInfoViewImpl> binder = GWT.create(EditPaymentInfoViewImplBinder.class);
 	@UiField
 	HTMLPanel verifyWarning;
 
@@ -116,9 +115,7 @@ public class InputPaymentInfoViewImpl extends AbstractView implements InputPayme
 	}
 
 	@UiTemplate(value = "InputPaymentInfoView.ui.xml")
-	static interface EditPaymentInfoViewImplBinder
-			extends UiBinder<Widget, InputPaymentInfoViewImpl>
-	{
-	}
+	static interface EditPaymentInfoViewImplBinder extends UiBinder<Widget, InputPaymentInfoViewImpl>
+	{}
 
 }

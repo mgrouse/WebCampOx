@@ -19,9 +19,9 @@ package org.hbgb.webcamp.client.window;
 import org.hbgb.webcamp.client.applet.ApplicationListApplet;
 import org.hbgb.webcamp.client.applet.EarlyTeamListApplet;
 import org.hbgb.webcamp.client.applet.UserListApplet;
-import org.hbgb.webcamp.client.event.SingletonEventBus;
 import org.hbgb.webcamp.client.event.MenuEvent;
 import org.hbgb.webcamp.client.event.MenuHandler;
+import org.hbgb.webcamp.client.event.SingletonEventBus;
 import org.hbgb.webcamp.client.event.StatusEvent;
 import org.hbgb.webcamp.client.event.StatusHandler;
 import org.hbgb.webcamp.client.panel.ContentPanel;
@@ -85,6 +85,10 @@ public class AdminWindowManager extends ResizeComposite implements StatusHandler
 
 			case REPORT_MEALS:
 				openMealseReport();
+				break;
+
+			case UTILS_EARLY_TEAM:
+				openEarlyTeam();
 				break;
 
 			case DEV_USERS:

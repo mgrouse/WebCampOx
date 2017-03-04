@@ -22,10 +22,9 @@ import com.google.gwt.user.client.ui.Widget;
 
 public class BirthDateWidget extends Composite
 {
-	private static final int THIS_YEAR = 2015;
+	private static final int THIS_YEAR = 2017;
 	private static final int NUM_YEARS = 100;
-	private static UiBinder<Widget, BirthDateWidget> binder =  GWT
-			.create( BirthDateWidgetBinder.class);
+	private static UiBinder<Widget, BirthDateWidget> binder = GWT.create(BirthDateWidgetBinder.class);
 	@UiField
 	ListBox month;
 	@UiField
@@ -150,7 +149,6 @@ public class BirthDateWidget extends Composite
 
 	@UiTemplate(value = "BirthDateWidget.ui.xml")
 	static interface BirthDateWidgetBinder extends UiBinder<Widget, BirthDateWidget>
-	{
-	}
+	{}
 
 }

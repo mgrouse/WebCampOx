@@ -27,8 +27,7 @@ public class EarlyTeamListApplet implements IApplet
 	private final HandlerManager eventBus = new HandlerManager(null);
 	private HasWidgets screen;
 	private final EarlyTeamListPresenter etListPresenter = new EarlyTeamListPresenter(eventBus);
-	private final EarlyTeamMemberPresenter etEditPresenter = new EarlyTeamMemberPresenter(eventBus,
-			null);
+	private final EarlyTeamMemberPresenter etEditPresenter = new EarlyTeamMemberPresenter(eventBus, null);
 
 	public EarlyTeamListApplet()
 	{

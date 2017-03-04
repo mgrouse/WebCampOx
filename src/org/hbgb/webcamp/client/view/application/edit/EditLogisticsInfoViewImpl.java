@@ -26,13 +26,10 @@ import com.google.gwt.user.client.ui.Widget;
 public class EditLogisticsInfoViewImpl extends AbstractPartView implements IEditLogisticsInfoView
 {
 	@UiTemplate(value = "EditLogisticsInfoView.ui.xml")
-	static interface EditLogisticsInfoViewImplBinder
-			extends UiBinder<Widget, EditLogisticsInfoViewImpl>
-	{
-	}
+	static interface EditLogisticsInfoViewImplBinder extends UiBinder<Widget, EditLogisticsInfoViewImpl>
+	{}
 
-	private static UiBinder<Widget, EditLogisticsInfoViewImpl> binder =  GWT
-			.create( EditLogisticsInfoViewImplBinder.class);
+	private static UiBinder<Widget, EditLogisticsInfoViewImpl> binder = GWT.create(EditLogisticsInfoViewImplBinder.class);
 
 	@UiField
 	CheckBox wantsEarlyTeam;

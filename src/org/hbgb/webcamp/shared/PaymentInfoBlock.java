@@ -13,70 +13,68 @@ import javax.jdo.annotations.PrimaryKey;
 import org.hbgb.webcamp.shared.enums.TicketType;
 
 @SuppressWarnings("serial")
-@PersistenceCapable(identityType=IdentityType.APPLICATION)
+@PersistenceCapable(identityType = IdentityType.APPLICATION)
 public class PaymentInfoBlock implements Serializable
 {
 	@PrimaryKey
-    @Persistent(valueStrategy = IdGeneratorStrategy.IDENTITY)
-    @Extension(vendorName="datanucleus", key="gae.encoded-pk", value="true")
-    private String encodedKey;
-	
+	@Persistent(valueStrategy = IdGeneratorStrategy.IDENTITY)
+	@Extension(vendorName = "datanucleus", key = "gae.encoded-pk", value = "true")
+	private String encodedKey;
+
 	@Persistent
 	private String email = "";
-	
+
 	@Persistent
 	private Boolean hasTicket = false;
 
 	@Persistent
 	private TicketType ticketType;
-	
+
 	@Persistent
 	private Boolean hasBeenInvoiced = false;
-	
+
 	@Persistent
 	private Boolean hasPaidDues = false;
 
 	@Persistent
 	private Date paidDate;
-	
+
 	@Persistent
 	private Boolean wasHeeBeeSubsidized = false;
 
 	@Persistent
 	private Integer subsidyAmt = 0;
-	
+
 	@Persistent
 	private String subsidyReason = "";
-	
-	
 
-	public PaymentInfoBlock(){}
-	
+	public PaymentInfoBlock()
+	{}
+
 	public PaymentInfoBlock(String emailText)
 	{
 		this.setEmail(emailText);
 	}
-	
+
 	public PaymentInfoBlock(String email, PaymentInfoBlock source)
 	{
-		if(null != source)
+		if (null != source)
 		{
 			this.setEmail(source.getEmail());
-			//this.setHasTicket(source.getHasTicket());
-			//this.setTicketType(source.getTicketType());
-			//this.setHasBeenInvoiced(source.getHasBeenInvoiced());
-			//this.setHasPaidDues(source.getHasPaidDues());
-			//this.setPaidDate(source.getPaidDate());
-			//this.setWasHeeBeeSubsidized(source.getWasHeeBeeSubsidized());
-			//this.setSubsidyAmt(source.getSubsidyAmt());
-			//this.setSubsidyReason(source.getSubsidyReason());
+			// this.setHasTicket(source.getHasTicket());
+			// this.setTicketType(source.getTicketType());
+			// this.setHasBeenInvoiced(source.getHasBeenInvoiced());
+			// this.setHasPaidDues(source.getHasPaidDues());
+			// this.setPaidDate(source.getPaidDate());
+			// this.setWasHeeBeeSubsidized(source.getWasHeeBeeSubsidized());
+			// this.setSubsidyAmt(source.getSubsidyAmt());
+			// this.setSubsidyReason(source.getSubsidyReason());
 		}
 		else
 		{
 			this.setEmail(email);
 		}
 	}
-	
 
 	public String getEncodedKey()
 	{
@@ -177,10 +175,5 @@ public class PaymentInfoBlock implements Serializable
 	{
 		this.subsidyReason = subsidyReason;
 	}
-	
-	
-	
-	
-	
-	
+
 }

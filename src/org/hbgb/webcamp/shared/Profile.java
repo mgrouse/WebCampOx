@@ -9,25 +9,24 @@ import javax.jdo.annotations.PersistenceCapable;
 import javax.jdo.annotations.Persistent;
 import javax.jdo.annotations.PrimaryKey;
 
-	
 @SuppressWarnings("serial")
-@PersistenceCapable(identityType=IdentityType.APPLICATION)
+@PersistenceCapable(identityType = IdentityType.APPLICATION)
 public class Profile implements Serializable
 {
 	@PrimaryKey
-    @Persistent(valueStrategy = IdGeneratorStrategy.IDENTITY)
-    @Extension(vendorName="datanucleus", key="gae.encoded-pk", value="true")
-    private String encodedKey;
-	
+	@Persistent(valueStrategy = IdGeneratorStrategy.IDENTITY)
+	@Extension(vendorName = "datanucleus", key = "gae.encoded-pk", value = "true")
+	private String encodedKey;
+
 	@Persistent
 	private String email;
-	
-	//Many of the following class instances may become
-	// collections for the user to choose from for 
+
+	// Many of the following class instances may become
+	// collections for the user to choose from for
 	// this years' application
-	
-    //private      picture;
-	
+
+	// private picture;
+
 	@Persistent
 	private HeeBee heebee;
 
@@ -48,8 +47,6 @@ public class Profile implements Serializable
 
 	@Persistent
 	private OfficeUse officeUse;
-	
-	
 
 	public String getEncodedKey()
 	{
@@ -140,7 +137,5 @@ public class Profile implements Serializable
 	{
 		this.officeUse = officeUse;
 	}
-	
-	
-}
 
+}

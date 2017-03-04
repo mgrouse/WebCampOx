@@ -18,11 +18,9 @@ import com.google.gwt.user.client.ui.TextArea;
 import com.google.gwt.user.client.ui.TextBox;
 import com.google.gwt.user.client.ui.Widget;
 
-public class EditHealerSheetInfoBlockViewImpl extends AbstractPartView
-		implements IEditHealerSheetInfoView
+public class EditHealerSheetInfoBlockViewImpl extends AbstractPartView implements IEditHealerSheetInfoView
 {
-	private static UiBinder<Widget, EditHealerSheetInfoBlockViewImpl> binder =  GWT
-			.create( EditHealerSheetInfoBlockViewImplBinder.class);
+	private static UiBinder<Widget, EditHealerSheetInfoBlockViewImpl> binder = GWT.create(EditHealerSheetInfoBlockViewImplBinder.class);
 	@UiField
 	TextBox sessionLength;
 	@UiField
@@ -124,9 +122,7 @@ public class EditHealerSheetInfoBlockViewImpl extends AbstractPartView
 	}
 
 	@UiTemplate(value = "EditHealerSheetInfoView.ui.xml")
-	static interface EditHealerSheetInfoBlockViewImplBinder
-			extends UiBinder<Widget, EditHealerSheetInfoBlockViewImpl>
-	{
-	}
+	static interface EditHealerSheetInfoBlockViewImplBinder extends UiBinder<Widget, EditHealerSheetInfoBlockViewImpl>
+	{}
 
 }

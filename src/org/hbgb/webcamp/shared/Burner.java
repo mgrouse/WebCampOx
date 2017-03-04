@@ -13,20 +13,19 @@ import javax.jdo.annotations.PersistenceCapable;
 import javax.jdo.annotations.Persistent;
 import javax.jdo.annotations.PrimaryKey;
 
-
 @SuppressWarnings("serial")
-@PersistenceCapable(detachable="true", identityType=IdentityType.APPLICATION)
-@Inheritance(strategy=InheritanceStrategy.NEW_TABLE)
+@PersistenceCapable(detachable = "true", identityType = IdentityType.APPLICATION)
+@Inheritance(strategy = InheritanceStrategy.NEW_TABLE)
 public class Burner implements Serializable
 {
 	@PrimaryKey
-    @Persistent(valueStrategy = IdGeneratorStrategy.IDENTITY)
-    @Extension(vendorName="datanucleus", key="gae.encoded-pk", value="true")
+	@Persistent(valueStrategy = IdGeneratorStrategy.IDENTITY)
+	@Extension(vendorName = "datanucleus", key = "gae.encoded-pk", value = "true")
 	private String encodedKey;
 
 	@Persistent
 	private String email = "";
-	
+
 	@Persistent
 	private Demographics demographics;
 
@@ -36,8 +35,8 @@ public class Burner implements Serializable
 	@Persistent
 	private List<Burn> burns = new ArrayList<Burn>();
 
-	
-	public Burner(){}
+	public Burner()
+	{}
 
 	public Burner(String emailText)
 	{
@@ -49,16 +48,16 @@ public class Burner implements Serializable
 
 	public Burner(String email, Burner source)
 	{
-		if(null != source)
+		if (null != source)
 		{
 			this.setEmail(source.getEmail());
 			this.setDemographics(new Demographics(source.getEmail(), source.getDemographics()));
 			this.setContactInfo(new ContactInfo(source.getEmail(), source.getContactInfo()));
-			
-			if(null != source.getBurns())
+
+			if (null != source.getBurns())
 			{
 				List<Burn> newBurns = new ArrayList<Burn>();
-				for(Burn current : source.getBurns())
+				for (Burn current : source.getBurns())
 				{
 					newBurns.add(new Burn(current));
 				}
@@ -71,7 +70,7 @@ public class Burner implements Serializable
 			this.setContactInfo(new ContactInfo(email));
 		}
 	}
-	
+
 	public String getEncodedKey()
 	{
 		return encodedKey;
@@ -121,6 +120,5 @@ public class Burner implements Serializable
 	{
 		this.burns = burns;
 	}
-	
-	
+
 }

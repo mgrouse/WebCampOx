@@ -31,11 +31,9 @@ public class EditApplicationViewImpl extends AbstractView implements IEditApplic
 {
 	@UiTemplate(value = "EditApplicationView.ui.xml")
 	static interface EditApplicationViewUiBinder extends UiBinder<Widget, EditApplicationViewImpl>
-	{
-	}
+	{}
 
-	private static EditApplicationViewUiBinder uiBinder = (EditApplicationViewUiBinder) GWT
-			.create( EditApplicationViewUiBinder.class);
+	private static EditApplicationViewUiBinder uiBinder = (EditApplicationViewUiBinder) GWT.create(EditApplicationViewUiBinder.class);
 
 	@UiField
 	Button prevButton;
@@ -111,7 +109,6 @@ public class EditApplicationViewImpl extends AbstractView implements IEditApplic
 
 	@Override
 	public void clear()
-	{
-	}
+	{}
 
 }

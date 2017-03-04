@@ -21,61 +21,60 @@ public class LogisticsInfoBlock implements Serializable
 	@PrimaryKey
 	@Persistent(valueStrategy = IdGeneratorStrategy.IDENTITY)
 	@Extension(vendorName = "datanucleus", key = "gae.encoded-pk", value = "true")
-	private String			encodedKey;
+	private String encodedKey;
 
 	@Persistent
-	private String			email = "";
+	private String email = "";
 
 	@Persistent
-	private Boolean			isProfile = false;
+	private Boolean isProfile = false;
 
 	@Persistent
-	private Boolean			wantsEarlyTeam = false;
+	private Boolean wantsEarlyTeam = false;
 
 	@Persistent
-	private Boolean			isAssignedEarlyTeam = false;
+	private Boolean isAssignedEarlyTeam = false;
 
 	@Persistent
-	private Boolean			wantsStrikeTeam = false;
+	private Boolean wantsStrikeTeam = false;
 
 	@Persistent
-	private Transportation	transType;
+	private Transportation transType;
 
 	@Persistent
-	private Date			arrivalDate;
-	
-	@Persistent
-	private DayOfEvent	    arrivalDoE;
+	private Date arrivalDate;
 
 	@Persistent
-	private PlayaTime		arrivalTime;
+	private DayOfEvent arrivalDoE;
 
 	@Persistent
-	private Date			departureDate;
-	
-	@Persistent
-	private DayOfEvent	    departureDoE;
+	private PlayaTime arrivalTime;
 
 	@Persistent
-	private PlayaTime		departureTime;
-	
-	
-	
-	public LogisticsInfoBlock(){}
-	
+	private Date departureDate;
+
+	@Persistent
+	private DayOfEvent departureDoE;
+
+	@Persistent
+	private PlayaTime departureTime;
+
+	public LogisticsInfoBlock()
+	{}
+
 	public LogisticsInfoBlock(String emailText)
 	{
 		this.setEmail(emailText);
 	}
-	
+
 	public LogisticsInfoBlock(String email, LogisticsInfoBlock source)
 	{
-		if(null != source)
+		if (null != source)
 		{
 			this.setEmail(source.getEmail());
 			this.setIsProfile(source.getIsProfile());
 			this.setWantsEarlyTeam(source.getWantsEarlyTeam());
-			//this.setIsAssignedEarlyTeam(source.getIsAssignedEarlyTeam());
+			// this.setIsAssignedEarlyTeam(source.getIsAssignedEarlyTeam());
 			this.setWantsStrikeTeam(source.getWantsStrikeTeam());
 			this.setTransType(source.getTransType());
 			this.setArrivalDoE(source.getArrivalDoE());
@@ -88,10 +87,6 @@ public class LogisticsInfoBlock implements Serializable
 			this.setEmail(email);
 		}
 	}
-	
-	
-	
-	
 
 	public String getEncodedKey()
 	{

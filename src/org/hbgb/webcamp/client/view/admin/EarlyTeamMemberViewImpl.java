@@ -18,11 +18,9 @@ public class EarlyTeamMemberViewImpl extends AbstractView implements IEarlyTeamM
 {
 	@UiTemplate(value = "EarlyTeamMemberView.ui.xml")
 	static interface EarlyTeamMemberViewUiBinder extends UiBinder<Widget, EarlyTeamMemberViewImpl>
-	{
-	}
+	{}
 
-	private static EarlyTeamMemberViewUiBinder uiBinder = (EarlyTeamMemberViewUiBinder) GWT
-			.create( EarlyTeamMemberViewUiBinder.class);
+	private static EarlyTeamMemberViewUiBinder uiBinder = (EarlyTeamMemberViewUiBinder) GWT.create(EarlyTeamMemberViewUiBinder.class);
 
 	@UiField
 	TextBox emailBox;

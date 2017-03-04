@@ -35,13 +35,10 @@ import com.google.gwt.user.client.ui.Widget;
 public class InputCommitteeInfoViewImpl extends AbstractView implements InputCommitteeInfoView
 {
 	@UiTemplate(value = "InputCommitteeInfoView.ui.xml")
-	static interface EditComitteeInfoViewImplBinder
-			extends UiBinder<Widget, InputCommitteeInfoViewImpl>
-	{
-	}
+	static interface EditComitteeInfoViewImplBinder extends UiBinder<Widget, InputCommitteeInfoViewImpl>
+	{}
 
-	private static UiBinder<Widget, InputCommitteeInfoViewImpl> binder =  GWT
-			.create( EditComitteeInfoViewImplBinder.class);
+	private static UiBinder<Widget, InputCommitteeInfoViewImpl> binder = GWT.create(EditComitteeInfoViewImplBinder.class);
 
 	@UiField
 	CommitteeListBox committee1;
@@ -115,8 +112,7 @@ public class InputCommitteeInfoViewImpl extends AbstractView implements InputCom
 
 	private void setHealerSheetPanelVisibility()
 	{
-		if (this.committee1.getSelectedValue() != Committee.Healers
-				&& this.committee2.getSelectedValue() != Committee.Healers)
+		if (this.committee1.getSelectedValue() != Committee.Healers && this.committee2.getSelectedValue() != Committee.Healers)
 		{
 			this.healerSheetPanel.setVisible(false);
 			return;

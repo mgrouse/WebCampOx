@@ -39,7 +39,7 @@ public class HbgbUserDetails implements Serializable
 	{
 		this.displayName = displayName;
 	}
-	
+
 	public String getEmail()
 	{
 		return email;

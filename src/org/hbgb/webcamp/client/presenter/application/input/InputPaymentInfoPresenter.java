@@ -75,31 +75,28 @@ public class InputPaymentInfoPresenter implements SequentialPresenterI
 	{
 		if (this.key != null)
 		{
-			this.rpcService.getApplicantsPaymentInfoBlock(this.key,
-					new AsyncCallback<PaymentInfoBlock>()
+			this.rpcService.getApplicantsPaymentInfoBlock(this.key, new AsyncCallback<PaymentInfoBlock>()
+			{
+
+				@Override
+				public void onSuccess(PaymentInfoBlock result)
+				{
+					if (result == null)
 					{
+						Window.alert("Applicant's Payment Info reurned as null");
+						return;
+					}
+					InputPaymentInfoPresenter.access$0(InputPaymentInfoPresenter.this, result);
+					InputPaymentInfoPresenter.this.setView();
+					InputPaymentInfoPresenter.this.screen.add(InputPaymentInfoPresenter.this.view.asWidget());
+				}
 
-						@Override
-						public void onSuccess(PaymentInfoBlock result)
-						{
-							if (result == null)
-							{
-								Window.alert("Applicant's Payment Info reurned as null");
-								return;
-							}
-							InputPaymentInfoPresenter.access$0(InputPaymentInfoPresenter.this,
-									result);
-							InputPaymentInfoPresenter.this.setView();
-							InputPaymentInfoPresenter.this.screen
-									.add(InputPaymentInfoPresenter.this.view.asWidget());
-						}
-
-						@Override
-						public void onFailure(Throwable caught)
-						{
-							Window.alert("DB Error retrieving Applicant's Payment Info");
-						}
-					});
+				@Override
+				public void onFailure(Throwable caught)
+				{
+					Window.alert("DB Error retrieving Applicant's Payment Info");
+				}
+			});
 			return;
 		}
 		Window.alert("Error no key for Applicant's Application!");
@@ -109,35 +106,31 @@ public class InputPaymentInfoPresenter implements SequentialPresenterI
 	public void onNextButtonClicked()
 	{
 		this.setModel();
-		this.rpcService.updateApplicantsPaymentInfoBlock(this.paymentInfo,
-				new AsyncCallback<Boolean>()
+		this.rpcService.updateApplicantsPaymentInfoBlock(this.paymentInfo, new AsyncCallback<Boolean>()
+		{
+
+			@Override
+			public void onSuccess(Boolean saved)
+			{
+				if (saved.booleanValue())
 				{
+					InputPaymentInfoPresenter.this.screen.clear();
+					InputPaymentInfoPresenter.this.nextPresenter.setKey(InputPaymentInfoPresenter.this.key);
+					InputPaymentInfoPresenter.this.nextPresenter.go(InputPaymentInfoPresenter.this.screen);
+					return;
+				}
+				Window.alert("DB Error saving Applicant's Payment Info");
+			}
 
-					@Override
-					public void onSuccess(Boolean saved)
-					{
-						if (saved.booleanValue())
-						{
-							InputPaymentInfoPresenter.this.screen.clear();
-							InputPaymentInfoPresenter.this.nextPresenter
-									.setKey(InputPaymentInfoPresenter.this.key);
-							InputPaymentInfoPresenter.this.nextPresenter
-									.go(InputPaymentInfoPresenter.this.screen);
-							return;
-						}
-						Window.alert("DB Error saving Applicant's Payment Info");
-					}
-
-					@Override
-					public void onFailure(Throwable caught)
-					{
-						Window.alert("RPC Error saving Applicant's Payment Info");
-					}
-				});
+			@Override
+			public void onFailure(Throwable caught)
+			{
+				Window.alert("RPC Error saving Applicant's Payment Info");
+			}
+		});
 	}
 
-	static /* synthetic */ void access$0(InputPaymentInfoPresenter inputPaymentInfoPresenter,
-			PaymentInfoBlock paymentInfoBlock)
+	static /* synthetic */ void access$0(InputPaymentInfoPresenter inputPaymentInfoPresenter, PaymentInfoBlock paymentInfoBlock)
 	{
 		inputPaymentInfoPresenter.paymentInfo = paymentInfoBlock;
 	}

@@ -1,10 +1,8 @@
 /*
  * Decompiled with CFR 0_115.
  * 
- * Could not load the following classes:
- *  com.google.gwt.user.client.ui.CheckBox
- *  com.google.gwt.user.client.ui.HTML
- *  com.google.gwt.user.client.ui.Widget
+ * Could not load the following classes: com.google.gwt.user.client.ui.CheckBox
+ * com.google.gwt.user.client.ui.HTML com.google.gwt.user.client.ui.Widget
  */
 package org.hbgb.webcamp.client.common;
 
@@ -15,138 +13,170 @@ import java.util.ArrayList;
 import org.hbgb.webcamp.client.common.ColumnDefinition;
 import org.hbgb.webcamp.shared.ApplicationDetails;
 
-public class ApplicationColumnDefinitionsImpl
-extends ArrayList<ColumnDefinition<ApplicationDetails>> {
-    private static ApplicationColumnDefinitionsImpl instance = null;
+public class ApplicationColumnDefinitionsImpl extends ArrayList<ColumnDefinition<ApplicationDetails>>
+{
+	private static ApplicationColumnDefinitionsImpl instance = null;
 
-    public static ApplicationColumnDefinitionsImpl getInstance() {
-        if (instance != null) return instance;
-        instance = new ApplicationColumnDefinitionsImpl();
-        return instance;
-    }
+	public static ApplicationColumnDefinitionsImpl getInstance()
+	{
+		if (instance != null)
+			return instance;
+		instance = new ApplicationColumnDefinitionsImpl();
+		return instance;
+	}
 
-    protected ApplicationColumnDefinitionsImpl() {
-        this.add(new ColumnDefinition<ApplicationDetails>(){
+	protected ApplicationColumnDefinitionsImpl()
+	{
+		this.add(new ColumnDefinition<ApplicationDetails>()
+		{
 
-            @Override
-            public Widget render(ApplicationDetails c) {
-                return new CheckBox();
-            }
+			@Override
+			public Widget render(ApplicationDetails c)
+			{
+				return new CheckBox();
+			}
 
-            @Override
-            public boolean isSelectable() {
-                return true;
-            }
-        });
-        this.add(new ColumnDefinition<ApplicationDetails>(){
+			@Override
+			public boolean isSelectable()
+			{
+				return true;
+			}
+		});
+		this.add(new ColumnDefinition<ApplicationDetails>()
+		{
 
-            @Override
-            public Widget render(ApplicationDetails c) {
-                return new HTML(c.getStatus());
-            }
+			@Override
+			public Widget render(ApplicationDetails c)
+			{
+				return new HTML(c.getStatus());
+			}
 
-            @Override
-            public boolean isClickable() {
-                return true;
-            }
-        });
-        this.add(new ColumnDefinition<ApplicationDetails>(){
+			@Override
+			public boolean isClickable()
+			{
+				return true;
+			}
+		});
+		this.add(new ColumnDefinition<ApplicationDetails>()
+		{
 
-            @Override
-            public Widget render(ApplicationDetails c) {
-                return new HTML(c.getDisplayName());
-            }
+			@Override
+			public Widget render(ApplicationDetails c)
+			{
+				return new HTML(c.getDisplayName());
+			}
 
-            @Override
-            public boolean isClickable() {
-                return true;
-            }
-        });
-        this.add(new ColumnDefinition<ApplicationDetails>(){
+			@Override
+			public boolean isClickable()
+			{
+				return true;
+			}
+		});
+		this.add(new ColumnDefinition<ApplicationDetails>()
+		{
 
-            @Override
-            public Widget render(ApplicationDetails c) {
-                return new HTML(c.getPlayaName());
-            }
+			@Override
+			public Widget render(ApplicationDetails c)
+			{
+				return new HTML(c.getPlayaName());
+			}
 
-            @Override
-            public boolean isClickable() {
-                return true;
-            }
-        });
-        this.add(new ColumnDefinition<ApplicationDetails>(){
+			@Override
+			public boolean isClickable()
+			{
+				return true;
+			}
+		});
+		this.add(new ColumnDefinition<ApplicationDetails>()
+		{
 
-            @Override
-            public Widget render(ApplicationDetails c) {
-                return new HTML(c.getEmail());
-            }
+			@Override
+			public Widget render(ApplicationDetails c)
+			{
+				return new HTML(c.getEmail());
+			}
 
-            @Override
-            public boolean isClickable() {
-                return true;
-            }
-        });
-        this.add(new ColumnDefinition<ApplicationDetails>(){
+			@Override
+			public boolean isClickable()
+			{
+				return true;
+			}
+		});
+		this.add(new ColumnDefinition<ApplicationDetails>()
+		{
 
-            @Override
-            public Widget render(ApplicationDetails c) {
-                return new HTML(c.getCommittee());
-            }
+			@Override
+			public Widget render(ApplicationDetails c)
+			{
+				return new HTML(c.getCommittee());
+			}
 
-            @Override
-            public boolean isClickable() {
-                return true;
-            }
-        });
-        this.add(new ColumnDefinition<ApplicationDetails>(){
+			@Override
+			public boolean isClickable()
+			{
+				return true;
+			}
+		});
+		this.add(new ColumnDefinition<ApplicationDetails>()
+		{
 
-            @Override
-            public Widget render(ApplicationDetails c) {
-                return new HTML(c.getDiet());
-            }
+			@Override
+			public Widget render(ApplicationDetails c)
+			{
+				return new HTML(c.getDiet());
+			}
 
-            @Override
-            public boolean isClickable() {
-                return true;
-            }
-        });
-        this.add(new ColumnDefinition<ApplicationDetails>(){
+			@Override
+			public boolean isClickable()
+			{
+				return true;
+			}
+		});
+		this.add(new ColumnDefinition<ApplicationDetails>()
+		{
 
-            @Override
-            public Widget render(ApplicationDetails c) {
-                return new HTML(c.getInvoiced());
-            }
+			@Override
+			public Widget render(ApplicationDetails c)
+			{
+				return new HTML(c.getInvoiced());
+			}
 
-            @Override
-            public boolean isClickable() {
-                return true;
-            }
-        });
-        this.add(new ColumnDefinition<ApplicationDetails>(){
+			@Override
+			public boolean isClickable()
+			{
+				return true;
+			}
+		});
+		this.add(new ColumnDefinition<ApplicationDetails>()
+		{
 
-            @Override
-            public Widget render(ApplicationDetails c) {
-                return new HTML(c.getPaid());
-            }
+			@Override
+			public Widget render(ApplicationDetails c)
+			{
+				return new HTML(c.getPaid());
+			}
 
-            @Override
-            public boolean isClickable() {
-                return true;
-            }
-        });
-        this.add(new ColumnDefinition<ApplicationDetails>(){
+			@Override
+			public boolean isClickable()
+			{
+				return true;
+			}
+		});
+		this.add(new ColumnDefinition<ApplicationDetails>()
+		{
 
-            @Override
-            public Widget render(ApplicationDetails c) {
-                return new HTML(c.getTicket());
-            }
+			@Override
+			public Widget render(ApplicationDetails c)
+			{
+				return new HTML(c.getTicket());
+			}
 
-            @Override
-            public boolean isClickable() {
-                return true;
-            }
-        });
-    }
+			@Override
+			public boolean isClickable()
+			{
+				return true;
+			}
+		});
+	}
 
 }
-

@@ -2,8 +2,7 @@
  * Decompiled with CFR 0_115.
  * 
  * Could not load the following classes:
- *  com.google.gwt.user.client.ui.HasWidgets
- *  com.google.gwt.user.client.ui.Widget
+ * com.google.gwt.user.client.ui.HasWidgets com.google.gwt.user.client.ui.Widget
  */
 package org.hbgb.webcamp.client.presenter.report;
 
@@ -16,33 +15,36 @@ import org.hbgb.webcamp.client.view.report.IMealsReportView;
 import org.hbgb.webcamp.client.view.report.MealsReportViewImpl;
 import org.hbgb.webcamp.shared.MealsReport;
 
-public class MealsReportPresenter
-implements IReportPresenter {
-    IMealsReportModel model = new MealsReportModel();
-    IMealsReportView view;
-    HasWidgets screen;
+public class MealsReportPresenter implements IReportPresenter
+{
+	IMealsReportModel model = new MealsReportModel();
+	IMealsReportView view;
+	HasWidgets screen;
 
-    public MealsReportPresenter() {
-        this.model.setPresenter(this);
-        this.view = new MealsReportViewImpl();
-        this.view.setPresenter(this);
-    }
+	public MealsReportPresenter()
+	{
+		this.model.setPresenter(this);
+		this.view = new MealsReportViewImpl();
+		this.view.setPresenter(this);
+	}
 
-    @Override
-    public void setScreen(HasWidgets container) {
-        this.screen = container;
-        this.screen.clear();
-    }
+	@Override
+	public void setScreen(HasWidgets container)
+	{
+		this.screen = container;
+		this.screen.clear();
+	}
 
-    @Override
-    public void report() {
-        this.model.fetchData();
-    }
+	@Override
+	public void report()
+	{
+		this.model.fetchData();
+	}
 
-    @Override
-    public void onDataFetched() {
-        this.view.setReportData(this.model.getReportData());
-        this.screen.add(this.view.asWidget());
-    }
+	@Override
+	public void onDataFetched()
+	{
+		this.view.setReportData(this.model.getReportData());
+		this.screen.add(this.view.asWidget());
+	}
 }
-

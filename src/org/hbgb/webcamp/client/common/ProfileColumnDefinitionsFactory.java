@@ -9,13 +9,15 @@ import org.hbgb.webcamp.client.common.ColumnDefinition;
 import org.hbgb.webcamp.client.common.ProfileColumnDefinitionsImpl;
 import org.hbgb.webcamp.shared.ProfileDetails;
 
-public class ProfileColumnDefinitionsFactory<T> {
-    public static List<ColumnDefinition<ProfileDetails>> getProfileColumnDefinitions() {
-        return ProfileColumnDefinitionsImpl.getInstance();
-    }
+public class ProfileColumnDefinitionsFactory<T>
+{
+	public static List<ColumnDefinition<ProfileDetails>> getProfileColumnDefinitions()
+	{
+		return ProfileColumnDefinitionsImpl.getInstance();
+	}
 
-    public static List<ColumnDefinition<ProfileDetails>> getTestProfileColumnDefinitions() {
-        return new ArrayList<ColumnDefinition<ProfileDetails>>();
-    }
+	public static List<ColumnDefinition<ProfileDetails>> getTestProfileColumnDefinitions()
+	{
+		return new ArrayList<ColumnDefinition<ProfileDetails>>();
+	}
 }
-

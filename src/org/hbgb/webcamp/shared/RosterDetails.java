@@ -12,16 +12,13 @@ public class RosterDetails implements Comparable<RosterDetails>, Serializable
 	private String homeTown;
 	private String committee;
 	private String bio;
-	
-	
-	
+
 	public RosterDetails()
 	{
 		new RosterDetails(null, "", "", "", "", "", "");
 	}
-	
-	public RosterDetails(String key, String photoURL, String playaName, String firstName, 
-						 String homeTown, String committee, String bio)
+
+	public RosterDetails(String key, String photoURL, String playaName, String firstName, String homeTown, String committee, String bio)
 	{
 		this.encodedKey = key;
 		this.photoURL = photoURL;
@@ -31,9 +28,7 @@ public class RosterDetails implements Comparable<RosterDetails>, Serializable
 		this.committee = committee;
 		this.bio = bio;
 	}
-	
-	
-	
+
 	public String getEncodedKey()
 	{
 		return encodedKey;
@@ -108,9 +103,9 @@ public class RosterDetails implements Comparable<RosterDetails>, Serializable
 	public int compareTo(RosterDetails rd)
 	{
 		int retval = 0;
-		  
+
 		retval = this.playaName.compareTo(rd.playaName);
-		
+
 		return retval;
 	}
 }

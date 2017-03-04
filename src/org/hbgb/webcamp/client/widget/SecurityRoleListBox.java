@@ -22,8 +22,7 @@ import com.google.gwt.user.client.ui.Widget;
 
 public class SecurityRoleListBox extends Composite
 {
-	private static UiBinder<Widget, SecurityRoleListBox> binder =  GWT
-			.create( SecurityRoleListBoxBinder.class);
+	private static UiBinder<Widget, SecurityRoleListBox> binder = GWT.create(SecurityRoleListBoxBinder.class);
 	@UiField
 	EnumListBox<SecurityRole> list;
 
@@ -50,7 +49,6 @@ public class SecurityRoleListBox extends Composite
 
 	@UiTemplate(value = "SecurityRoleListBox.ui.xml")
 	static interface SecurityRoleListBoxBinder extends UiBinder<Widget, SecurityRoleListBox>
-	{
-	}
+	{}
 
 }

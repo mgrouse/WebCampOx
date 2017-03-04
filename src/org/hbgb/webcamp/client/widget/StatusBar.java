@@ -19,8 +19,7 @@ import com.google.gwt.user.client.ui.Widget;
 
 public class StatusBar extends Composite implements HasText
 {
-	private static UiBinder<Widget, StatusBar> binder =  GWT
-			.create( StatusBarBinder.class);
+	private static UiBinder<Widget, StatusBar> binder = GWT.create(StatusBarBinder.class);
 	@UiField
 	HTML html;
 
@@ -42,7 +41,6 @@ public class StatusBar extends Composite implements HasText
 	}
 
 	static interface StatusBarBinder extends UiBinder<Widget, StatusBar>
-	{
-	}
+	{}
 
 }

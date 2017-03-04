@@ -1,6 +1,5 @@
 package org.hbgb.webcamp.shared;
 
-
 import java.io.Serializable;
 import java.util.Date;
 
@@ -14,27 +13,23 @@ import javax.jdo.annotations.PrimaryKey;
 import com.google.appengine.api.blobstore.BlobKey;
 
 @SuppressWarnings("serial")
-@PersistenceCapable(identityType=IdentityType.APPLICATION)
+@PersistenceCapable(identityType = IdentityType.APPLICATION)
 public class UploadedPhoto implements Serializable
 {
 	@PrimaryKey
-    @Persistent(valueStrategy = IdGeneratorStrategy.IDENTITY)
-    @Extension(vendorName="datanucleus", key="gae.encoded-pk", value="true")
-    private String encodedKey;
-	
-	@Persistent
-    private String imageURL;
-	
-	@Persistent
-    private Date created; 
-	
-	@Persistent
-    private BlobKey blobKey;
+	@Persistent(valueStrategy = IdGeneratorStrategy.IDENTITY)
+	@Extension(vendorName = "datanucleus", key = "gae.encoded-pk", value = "true")
+	private String encodedKey;
 
-	
-	
-	
-	
+	@Persistent
+	private String imageURL;
+
+	@Persistent
+	private Date created;
+
+	@Persistent
+	private BlobKey blobKey;
+
 	public String getEncodedKey()
 	{
 		return encodedKey;

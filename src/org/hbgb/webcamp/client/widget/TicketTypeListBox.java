@@ -22,8 +22,7 @@ import com.google.gwt.user.client.ui.Widget;
 
 public class TicketTypeListBox extends Composite
 {
-	private static UiBinder<Widget, TicketTypeListBox> binder =  GWT
-			.create( TicketTypeListBoxBinder.class);
+	private static UiBinder<Widget, TicketTypeListBox> binder = GWT.create(TicketTypeListBoxBinder.class);
 	@UiField
 	EnumListBox<TicketType> list;
 
@@ -50,7 +49,6 @@ public class TicketTypeListBox extends Composite
 
 	@UiTemplate(value = "TicketTypeListBox.ui.xml")
 	static interface TicketTypeListBoxBinder extends UiBinder<Widget, TicketTypeListBox>
-	{
-	}
+	{}
 
 }

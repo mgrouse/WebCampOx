@@ -25,11 +25,9 @@ public class HTMLPanelViewImpl extends Composite implements HTMLPanelView
 {
 	@UiTemplate(value = "HTMLPanelView.ui.xml")
 	static interface HTMLPanelViewImplBinder extends UiBinder<Widget, HTMLPanelViewImpl>
-	{
-	}
+	{}
 
-	private static UiBinder<Widget, HTMLPanelViewImpl> binder =  GWT
-			.create( HTMLPanelViewImplBinder.class);
+	private static UiBinder<Widget, HTMLPanelViewImpl> binder = GWT.create(HTMLPanelViewImplBinder.class);
 
 	@UiField
 	HTMLPanel panel;
@@ -48,12 +46,10 @@ public class HTMLPanelViewImpl extends Composite implements HTMLPanelView
 
 	@Override
 	public void clear()
-	{
-	}
+	{}
 
 	@Override
 	public void setVisibility(SecurityRole role)
-	{
-	}
+	{}
 
 }

@@ -1,30 +1,19 @@
 /*
  * Decompiled with CFR 0_115.
  * 
- * Could not load the following classes:
- *  com.google.gwt.event.shared.GwtEvent
- *  com.google.gwt.event.shared.HandlerManager
- *  com.google.gwt.user.client.Window
- *  com.google.gwt.user.client.rpc.AsyncCallback
- *  com.google.gwt.user.client.ui.HasWidgets
- *  com.google.gwt.user.client.ui.Widget
+ * Could not load the following classes: com.google.gwt.event.shared.GwtEvent
+ * com.google.gwt.event.shared.HandlerManager com.google.gwt.user.client.Window
+ * com.google.gwt.user.client.rpc.AsyncCallback
+ * com.google.gwt.user.client.ui.HasWidgets com.google.gwt.user.client.ui.Widget
  */
 package org.hbgb.webcamp.client.presenter.application;
 
-import com.google.gwt.event.shared.GwtEvent;
-import com.google.gwt.event.shared.HandlerManager;
-import com.google.gwt.user.client.Window;
-import com.google.gwt.user.client.rpc.AsyncCallback;
-import com.google.gwt.user.client.ui.HasWidgets;
-import com.google.gwt.user.client.ui.Widget;
-import java.io.PrintStream;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
+
 import org.hbgb.webcamp.client.async.ApplicationServiceAsync;
 import org.hbgb.webcamp.client.async.AsyncServiceFinder;
 import org.hbgb.webcamp.client.common.ApplicationColumnDefinitionsFactory;
-import org.hbgb.webcamp.client.common.ColumnDefinition;
 import org.hbgb.webcamp.client.common.SelectionModel;
 import org.hbgb.webcamp.client.event.application.AddApplicationEvent;
 import org.hbgb.webcamp.client.event.application.EditApplicationEvent;
@@ -33,115 +22,146 @@ import org.hbgb.webcamp.client.view.ViewFinder;
 import org.hbgb.webcamp.client.view.application.ApplicationListView;
 import org.hbgb.webcamp.shared.ApplicationDetails;
 
-public class ApplicationListPresenter
-implements IPresenter,
-ApplicationListView.Presenter<ApplicationDetails> {
-    private List<ApplicationDetails> applicationDetails;
-    private final ApplicationServiceAsync rpcService = AsyncServiceFinder.getApplicationService();
-    private final HandlerManager eventBus;
-    private final ApplicationListView<ApplicationDetails> view;
-    private final SelectionModel<ApplicationDetails> selectionModel;
-    private HasWidgets screen;
+import com.google.gwt.event.shared.HandlerManager;
+import com.google.gwt.user.client.Window;
+import com.google.gwt.user.client.rpc.AsyncCallback;
+import com.google.gwt.user.client.ui.HasWidgets;
 
-    public ApplicationListPresenter(HandlerManager eventBus) {
-        this.eventBus = eventBus;
-        this.view = ViewFinder.getApplicationListView();
-        this.selectionModel = new SelectionModel();
-        this.view.setPresenter(this);
-        this.view.setColumnDefinitions(ApplicationColumnDefinitionsFactory.getApplicationColumnDefinitions());
-    }
+public class ApplicationListPresenter implements IPresenter, ApplicationListView.Presenter<ApplicationDetails>
+{
+	private List<ApplicationDetails> applicationDetails;
+	private final ApplicationServiceAsync rpcService = AsyncServiceFinder.getApplicationService();
+	private final HandlerManager eventBus;
+	private final ApplicationListView<ApplicationDetails> view;
+	private final SelectionModel<ApplicationDetails> selectionModel;
+	private HasWidgets screen;
 
-    @Override
-    public void onAddButtonClicked() {
-        this.eventBus.fireEvent((GwtEvent)new AddApplicationEvent());
-    }
+	public ApplicationListPresenter(HandlerManager eventBus)
+	{
+		this.eventBus = eventBus;
+		this.view = ViewFinder.getApplicationListView();
+		this.selectionModel = new SelectionModel<>();
+		this.view.setPresenter(this);
+		this.view.setColumnDefinitions(ApplicationColumnDefinitionsFactory.getApplicationColumnDefinitions());
+	}
 
-    @Override
-    public void onDeleteButtonClicked() {
-    }
+	@Override
+	public void onAddButtonClicked()
+	{
+		this.eventBus.fireEvent(new AddApplicationEvent());
+	}
 
-    @Override
-    public void onItemClicked(ApplicationDetails clickedItem) {
-        ArrayList<String> keyList = new ArrayList<String>();
-        for (ApplicationDetails ad : this.applicationDetails) {
-            keyList.add(ad.getEncodedKey());
-        }
-        this.eventBus.fireEvent((GwtEvent)new EditApplicationEvent(clickedItem.getEncodedKey(), keyList));
-    }
+	@Override
+	public void onDeleteButtonClicked()
+	{
+		// does this help?
+		// view.clear();
+		// deleteSelectedApplications();
+	}
 
-    @Override
-    public void onItemSelected(ApplicationDetails selectedItem) {
-        if (this.selectionModel.isSelected(selectedItem)) {
-            this.selectionModel.removeSelection(selectedItem);
-            return;
-        }
-        this.selectionModel.addSelection(selectedItem);
-    }
+	@Override
+	public void onItemClicked(ApplicationDetails clickedItem)
+	{
+		ArrayList<String> keyList = new ArrayList<>();
+		for (ApplicationDetails ad : this.applicationDetails)
+		{
+			keyList.add(ad.getEncodedKey());
+		}
+		this.eventBus.fireEvent(new EditApplicationEvent(clickedItem.getEncodedKey(), keyList));
+	}
 
-    @Override
-    public void setScreen(HasWidgets container) {
-        this.screen = container;
-    }
+	@Override
+	public void onItemSelected(ApplicationDetails selectedItem)
+	{
+		if (selectionModel.isSelected(selectedItem))
+		{
+			selectionModel.removeSelection(selectedItem);
+		}
+		else
+		{
+			selectionModel.addSelection(selectedItem);
+		}
+	}
 
-    @Override
-    public void go() {
-        this.view.clear();
-        this.fetchApplicationDetails();
-    }
+	@Override
+	public void setScreen(HasWidgets container)
+	{
+		screen = container;
+	}
 
-    public void setApplicationDetails(List<ApplicationDetails> applicationDetails) {
-        this.applicationDetails = applicationDetails;
-    }
+	@Override
+	public void go()
+	{
+		view.clear();
+		fetchApplicationDetails();
+	}
 
-    public List<ApplicationDetails> getApplicationDetails() {
-        return this.applicationDetails;
-    }
+	public void setApplicationDetails(List<ApplicationDetails> applicationDetails)
+	{
+		this.applicationDetails = applicationDetails;
+	}
 
-    public ApplicationDetails getApplicationDetail(int index) {
-        return this.applicationDetails.get(index);
-    }
+	public List<ApplicationDetails> getApplicationDetails()
+	{
+		return this.applicationDetails;
+	}
 
-    private void fetchApplicationDetails() {
-        this.rpcService.getApplicationDetails(new AsyncCallback<ArrayList<ApplicationDetails>>(){
+	public ApplicationDetails getApplicationDetail(int index)
+	{
+		return this.applicationDetails.get(index);
+	}
 
-            public void onSuccess(ArrayList<ApplicationDetails> result) {
-                ApplicationListPresenter.access$2(ApplicationListPresenter.this, result);
-                ApplicationListPresenter.this.screen.clear();
-                ApplicationListPresenter.this.view.setRowData(ApplicationListPresenter.this.applicationDetails);
-                ApplicationListPresenter.this.screen.add(ApplicationListPresenter.this.view.asWidget());
-            }
+	private void fetchApplicationDetails()
+	{
+		this.rpcService.getApplicationDetails(new AsyncCallback<ArrayList<ApplicationDetails>>()
+		{
 
-            public void onFailure(Throwable caught) {
-                Window.alert((String)"Error fetching Application details");
-            }
-        });
-    }
+			@Override
+			public void onSuccess(ArrayList<ApplicationDetails> result)
+			{
+				applicationDetails = result;
+				ApplicationListPresenter.this.screen.clear();
+				ApplicationListPresenter.this.view.setRowData(applicationDetails);
+				ApplicationListPresenter.this.screen.add(view.asWidget());
+			}
 
-    private void deleteSelectedApplications() {
-        List<ApplicationDetails> selectedUsers = this.selectionModel.getSelectedItems();
-        ArrayList<String> ids = new ArrayList<String>();
-        int i = 0;
-        while (i < selectedUsers.size()) {
-            ids.add(selectedUsers.get(i).getEncodedKey());
-            ++i;
-        }
-        this.rpcService.deleteApplications(ids, new AsyncCallback<ArrayList<ApplicationDetails>>(){
+			@Override
+			public void onFailure(Throwable caught)
+			{
+				Window.alert("Error fetching Application details");
+			}
+		});
+	}
 
-            public void onSuccess(ArrayList<ApplicationDetails> result) {
-                ApplicationListPresenter.this.selectionModel.clearSelections();
-                ApplicationListPresenter.access$2(ApplicationListPresenter.this, result);
-                ApplicationListPresenter.this.view.setRowData(ApplicationListPresenter.this.applicationDetails);
-            }
+	private void deleteSelectedApplications()
+	{
+		List<ApplicationDetails> selectedUsers = this.selectionModel.getSelectedItems();
+		ArrayList<String> ids = new ArrayList<>();
+		for (int i = 0; i < selectedUsers.size(); ++i)
+		{
+			ids.add(selectedUsers.get(i).getEncodedKey());
+		}
 
-            public void onFailure(Throwable caught) {
-                System.out.println("Error deleting selected applications");
-            }
-        });
-    }
+		this.rpcService.deleteApplications(ids, new AsyncCallback<ArrayList<ApplicationDetails>>()
+		{
 
-    static /* synthetic */ void access$2(ApplicationListPresenter applicationListPresenter, List list) {
-        applicationListPresenter.applicationDetails = list;
-    }
+			@Override
+			public void onSuccess(ArrayList<ApplicationDetails> result)
+			{
+				selectionModel.clearSelections();
+				applicationDetails = result;
 
+				view.setRowData(applicationDetails);
+
+				// does this help?
+				// screen.add(view.asWidget());
+			}
+
+			@Override
+			public void onFailure(Throwable caught)
+			{
+				System.out.println("Error deleting selected applications");
+			}
+		});
+	}
 }
-
