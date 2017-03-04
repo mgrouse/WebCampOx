@@ -3,7 +3,6 @@ package org.hbgb.webcamp.client;
 import java.util.logging.Logger;
 
 import org.hbgb.webcamp.client.applet.ApplicationProcessApplet;
-import org.hbgb.webcamp.client.applet.HealerSheetInputApplet;
 import org.hbgb.webcamp.client.applet.HealerSheetListApplet;
 import org.hbgb.webcamp.client.presenter.admin.RosterPresenter;
 import org.hbgb.webcamp.client.window.AdminWindowManager;
@@ -50,23 +49,23 @@ public class WebCampEntryPoint implements EntryPoint, ValueChangeHandler<String>
 			switch (token)
 			{
 				case "admin":
-					startAdminPanel(rp);
+					startAdminPanel();
 					break;
 
 				case "apply":
-					startApplication(rp);
+					startApplication();
 					break;
 
 				case "roster":
-					startRoster(rp);
+					startRoster();
 					break;
 
 				case "sheet":
-					startSheet(rp);
+					startSheet();
 					break;
 
 				case "test":
-					startTest(rp);
+					startTest();
 
 					// case "healer":
 					// startHealer(rp);
@@ -76,7 +75,7 @@ public class WebCampEntryPoint implements EntryPoint, ValueChangeHandler<String>
 		}
 	}
 
-	private void startAdminPanel(final RootLayoutPanel rp)
+	private void startAdminPanel()
 	{
 		AdminWindowManager winMan = new AdminWindowManager();
 		rp.clear();
@@ -98,28 +97,28 @@ public class WebCampEntryPoint implements EntryPoint, ValueChangeHandler<String>
 		 */
 	}
 
-	private void startApplication(RootLayoutPanel rp)
+	private void startApplication()
 	{
 		ApplicationProcessApplet appProcApp = new ApplicationProcessApplet();
 		rp.clear();
 		appProcApp.run(rp);
 	}
 
-	private void startHealer(final RootLayoutPanel rp)
-	{
-		HealerSheetInputApplet healerApp = new HealerSheetInputApplet();
-		rp.clear();
-		healerApp.run(rp);
-	}
+	// private void startHealer(final RootLayoutPanel rp)
+	// {
+	// HealerSheetInputApplet healerApp = new HealerSheetInputApplet();
+	// rp.clear();
+	// healerApp.run(rp);
+	// }
 
-	private void startSheet(final RootLayoutPanel rp)
+	private void startSheet()
 	{
 		HealerSheetListApplet healerApp = new HealerSheetListApplet();
 		rp.clear();
 		healerApp.run(rp);
 	}
 
-	private void startRoster(RootLayoutPanel rp)
+	private void startRoster()
 	{
 		RosterPresenter presenter = new RosterPresenter();
 		rp.clear();
@@ -127,7 +126,7 @@ public class WebCampEntryPoint implements EntryPoint, ValueChangeHandler<String>
 		presenter.go();
 	}
 
-	private void startTest(RootLayoutPanel rp)
+	private void startTest()
 	{
 
 	}

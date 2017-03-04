@@ -14,6 +14,7 @@ import com.google.gwt.user.client.ui.CheckBox;
 import com.google.gwt.user.client.ui.HTML;
 import com.google.gwt.user.client.ui.Widget;
 
+@SuppressWarnings("serial")
 public class UserColumnDefinitionsImpl extends ArrayList<ColumnDefinition<HbgbUserDetails>>
 {
 	private static UserColumnDefinitionsImpl instance = null;

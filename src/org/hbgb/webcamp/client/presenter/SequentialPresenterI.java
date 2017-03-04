@@ -3,7 +3,7 @@
  */
 package org.hbgb.webcamp.client.presenter;
 
-@Deprecated
+// @Deprecated
 public interface SequentialPresenterI extends KeyPresenterI
 {
 	public void setNextPresenter(KeyPresenterI var1);

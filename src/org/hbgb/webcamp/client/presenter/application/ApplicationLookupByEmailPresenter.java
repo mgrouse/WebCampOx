@@ -59,46 +59,57 @@ public class ApplicationLookupByEmailPresenter implements SequentialPresenterI
 	{
 		this.setModel();
 		Boolean good = this.validateModel();
-		if (good.booleanValue())
+		if (good)
 		{
 			this.view.setNextButtonActive(false);
 			this.rpcService.findApplicationKeyByEmail(this.email, new AsyncCallback<String>()
 			{
 
+				@Override
 				public void onSuccess(String result)
 				{
-					if (result == null)
+					// this email not in there
+					if (null == result)
 					{
-						ApplicationLookupByEmailPresenter.this.screen.clear();
-						ApplicationLookupByEmailPresenter.this.view
-								.setWarningText(ApplicationLookupByEmailPresenter.this.getMissingEmailWarningText());
-						ApplicationLookupByEmailPresenter.this.view.setNextButtonActive(true);
-						ApplicationLookupByEmailPresenter.this.screen.add(ApplicationLookupByEmailPresenter.this.view.asWidget());
-						return;
-					}
-					ApplicationLookupByEmailPresenter.access$3(ApplicationLookupByEmailPresenter.this, result);
-					ApplicationLookupByEmailPresenter.this.screen.clear();
-					if (ApplicationLookupByEmailPresenter.this.byKey.booleanValue())
-					{
-						ApplicationLookupByEmailPresenter.this.nextPresenter.setKey(ApplicationLookupByEmailPresenter.this.key);
+						screen.clear();
+						view.setWarningText(getMissingEmailWarningText());
+						view.setNextButtonActive(true);
+						screen.add(view.asWidget());
 					}
 					else
 					{
-						ApplicationLookupByEmailPresenter.this.nextPresenter.setKey(ApplicationLookupByEmailPresenter.this.email);
+						// this was a good email
+						key = result;
+						{
+							screen.clear();
+							// this is a hack
+							if (byKey)
+							{
+								nextPresenter.setKey(key);
+							}
+							else
+							{
+								nextPresenter.setKey(email);
+							}
+
+							nextPresenter.go(screen);
+						}
 					}
-					ApplicationLookupByEmailPresenter.this.nextPresenter.go(ApplicationLookupByEmailPresenter.this.screen);
 				}
 
+				@Override
 				public void onFailure(Throwable caught)
 				{
-					Window.alert((String) "RPC Error during lookup. Try again later.");
+					Window.alert("RPC Error during lookup. Try again later.");
 				}
 			});
-			return;
+		} // good
+		else
+		{
+			this.screen.clear();
+			this.view.setWarningText("<p>A valid email is required to continue.</p>");
+			this.screen.add(this.view.asWidget());
 		}
-		this.screen.clear();
-		this.view.setWarningText("<p>A valid email is required to continue.</p>");
-		this.screen.add(this.view.asWidget());
 	}
 
 	private void setModel()
@@ -109,21 +120,18 @@ public class ApplicationLookupByEmailPresenter implements SequentialPresenterI
 	private Boolean validateModel()
 	{
 		Boolean retVal = true;
-		if (this.email == null)
-			return false;
-		if (!this.email.isEmpty())
-			return retVal;
-		return false;
+
+		if ((null == email) || email.isEmpty())
+		{
+			retVal = false;
+		}
+
+		return retVal;
 	}
 
 	private String getMissingEmailWarningText()
 	{
 		return "<p>The email address you supplied was not used for an application. Please try again.</p>";
-	}
-
-	static /* synthetic */ void access$3(ApplicationLookupByEmailPresenter applicationLookupByEmailPresenter, String string)
-	{
-		applicationLookupByEmailPresenter.key = string;
 	}
 
 }

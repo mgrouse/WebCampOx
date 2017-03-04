@@ -23,9 +23,10 @@ public class StartPresenter implements SequentialPresenterI
 {
 	private final ApplicationServiceAsync rpcService = AsyncServiceFinder.getApplicationService();
 	private final StartViewI view = ViewFinder.getEnterView();
+
 	private String key = null;
-	private Application application = null;
 	private String email;
+
 	private HasWidgets screen;
 	private KeyPresenterI nextPresenter;
 
@@ -52,40 +53,54 @@ public class StartPresenter implements SequentialPresenterI
 	@Override
 	public void onNextButtonClicked()
 	{
-		this.setModel();
-		Boolean good = this.validateModel();
-		if (good == false)
-			return;
-		this.view.setNextButtonActive(false);
-		this.rpcService.findOrAddApplication(this.email, new AsyncCallback<Application>()
+		setModel();
+		Boolean good = validateModel();
+
+		if (good)
 		{
-
-			public void onSuccess(Application result)
+			view.setNextButtonActive(false);
+			rpcService.findOrAddApplication(email, new AsyncCallback<Application>()
 			{
-				if (result == null)
+				@Override
+				public void onSuccess(Application result)
 				{
-					StartPresenter.this.screen.clear();
-					StartPresenter.this.view.setWarningText(StartPresenter.this.getUsedEmailWarningText());
-					StartPresenter.this.view.setNextButtonActive(true);
-					StartPresenter.this.screen.add(StartPresenter.this.view.asWidget());
-					return;
-				}
-				StartPresenter.access$3(StartPresenter.this, result.getEncodedKey());
-				if (StartPresenter.this.key == null)
-				{
-					Window.alert((String) "Applicant's Info came back with null key");
-					return;
-				}
-				StartPresenter.this.screen.clear();
-				StartPresenter.this.nextPresenter.setKey(StartPresenter.this.key);
-				StartPresenter.this.nextPresenter.go(StartPresenter.this.screen);
-			}
+					// this email used before
+					if (null == result)
+					{
+						screen.clear();
+						view.setWarningText(getUsedEmailWarningText());
+						view.setNextButtonActive(true);
+						screen.add(view.asWidget());
+					}
+					else
+					{
+						// this was a new email
+						key = result.getEncodedKey();
 
-			public void onFailure(Throwable caught)
-			{
-				Window.alert((String) ("RPC Error saving Applicant's Info: " + caught.getMessage()));
-			}
-		});
+						if (null == key)
+						{
+							Window.alert("Applicant's Info came back with null key");
+						}
+						else
+						{
+							screen.clear();
+							nextPresenter.setKey(key);
+							nextPresenter.go(screen);
+						}
+					}
+				}
+
+				@Override
+				public void onFailure(Throwable caught)
+				{
+					Window.alert("RPC Error saving Applicant's Info" + caught.getMessage());
+				}
+			});
+		} // end if good
+		else
+		{
+			// clear and add?
+		}
 	}
 
 	private void setModel()
@@ -96,13 +111,14 @@ public class StartPresenter implements SequentialPresenterI
 	private Boolean validateModel()
 	{
 		Boolean retVal = true;
-		if (this.email != null)
+
+		if ((null == email) || email.isEmpty())
 		{
-			if (!this.email.isEmpty())
-				return retVal;
+			view.setWarningText("<p>A valid email is required to continue.</p>");
+			retVal = false;
 		}
-		this.view.setWarningText("<p>A valid email is required to continue.</p>");
-		return false;
+
+		return retVal;
 	}
 
 	private String getUsedEmailWarningText()
@@ -118,10 +134,5 @@ public class StartPresenter implements SequentialPresenterI
 	@Override
 	public void setKey(String key)
 	{}
-
-	static /* synthetic */ void access$3(StartPresenter startPresenter, String string)
-	{
-		startPresenter.key = string;
-	}
 
 }

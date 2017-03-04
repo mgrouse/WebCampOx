@@ -140,7 +140,6 @@ public class ApplicationDetails implements Comparable<ApplicationDetails>, Seria
 	public int compareTo(ApplicationDetails ad)
 	{
 		int retval = 0;
-		ApplicationDetails details = ad;
 
 		retval = this.status.compareTo(ad.status);
 

@@ -297,7 +297,7 @@ public class ApplicationServiceImpl extends RemoteServiceServlet implements Appl
 		}
 		catch (Exception e)
 		{
-			String text = e.getMessage();
+			// String text = e.getMessage();
 		}
 
 		return entries;
@@ -320,7 +320,7 @@ public class ApplicationServiceImpl extends RemoteServiceServlet implements Appl
 		}
 		catch (Exception e)
 		{
-			String string = e.getMessage();
+			// String string = e.getMessage();
 		}
 		return entries;
 	}

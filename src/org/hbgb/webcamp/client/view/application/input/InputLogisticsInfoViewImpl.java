@@ -198,7 +198,6 @@ public class InputLogisticsInfoViewImpl extends AbstractView implements InputLog
 	@Override
 	protected Boolean isFormComplete()
 	{
-		PlayaTime pt;
 		Boolean retVal = true;
 
 		DayOfEvent day = this.getArrivalDate();
@@ -209,21 +208,21 @@ public class InputLogisticsInfoViewImpl extends AbstractView implements InputLog
 			this.verifyWarning.setVisible(true);
 		}
 
-		if ((pt = this.getArrivalTime()) == null)
+		if (getArrivalTime() == null)
 		{
 			retVal = false;
 			this.arrivalTimeLabel.getElement().getStyle().setColor("red");
 			this.verifyWarning.setVisible(true);
 		}
 
-		if ((day = this.getDepartureDate()) == null)
+		if (getDepartureDate() == null)
 		{
 			retVal = false;
 			this.departureDayLabel.getElement().getStyle().setColor("red");
 			this.verifyWarning.setVisible(true);
 		}
 
-		if ((pt = this.getDepartureTime()) != null)
+		if (getDepartureTime() != null)
 			return retVal;
 		retVal = false;
 		this.departureTimeLabel.getElement().getStyle().setColor("red");

@@ -23,6 +23,7 @@ import org.hbgb.webcamp.shared.enums.Committee;
 
 import com.google.gwt.user.server.rpc.RemoteServiceServlet;
 
+@SuppressWarnings("serial")
 public class HealerSheetServiceImpl extends RemoteServiceServlet implements HealerSheetService
 {
 	private static final int THIS_YEAR = 2017;
@@ -72,7 +73,7 @@ public class HealerSheetServiceImpl extends RemoteServiceServlet implements Heal
 		}
 		catch (Exception e)
 		{
-			String text = e.getMessage();
+			// String text = e.getMessage();
 		}
 
 		return entries;

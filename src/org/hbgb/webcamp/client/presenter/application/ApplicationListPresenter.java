@@ -133,6 +133,7 @@ public class ApplicationListPresenter implements IPresenter, ApplicationListView
 		});
 	}
 
+	@SuppressWarnings("unused")
 	private void deleteSelectedApplications()
 	{
 		List<ApplicationDetails> selectedUsers = this.selectionModel.getSelectedItems();

@@ -43,7 +43,7 @@ public class BirthDateWidget extends Composite
 	private void fillYear()
 	{
 		this.year.addItem("Choose One", "0");
-		Integer startYear = 1915;
+		Integer startYear = THIS_YEAR - 100;
 		Integer i = 100;
 		while (i >= 0)
 		{
@@ -114,7 +114,7 @@ public class BirthDateWidget extends Composite
 			return;
 		}
 		Integer yearInt = value + 1900;
-		this.year.setSelectedIndex(2015 - yearInt + 1);
+		this.year.setSelectedIndex(THIS_YEAR - yearInt + 1);
 	}
 
 	public void setSelectedValue(Date value)

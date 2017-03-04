@@ -34,6 +34,7 @@ public class LoginServiceImpl extends RemoteServiceServlet implements LoginServi
 		return retVal;
 	}
 
+	@SuppressWarnings("unused")
 	private PersistenceManager getPM()
 	{
 		return PMF.get().getPersistenceManager();

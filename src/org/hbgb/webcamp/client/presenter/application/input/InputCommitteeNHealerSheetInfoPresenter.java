@@ -72,11 +72,12 @@ public class InputCommitteeNHealerSheetInfoPresenter implements SequentialPresen
 	public void onDataPut()
 	{
 		++this.num_calls;
-		if (2 != this.num_calls)
-			return;
-		this.screen.clear();
-		this.nextPresenter.setKey(this.key);
-		this.nextPresenter.go(this.screen);
+		if (NUM_MODELS == this.num_calls)
+		{
+			this.screen.clear();
+			this.nextPresenter.setKey(this.key);
+			this.nextPresenter.go(this.screen);
+		}
 	}
 
 	@Override
@@ -124,7 +125,9 @@ public class InputCommitteeNHealerSheetInfoPresenter implements SequentialPresen
 		block.setModality3(this.view.getModality3());
 		block.setModality4(this.view.getModality4());
 		block.setBio(this.view.getBioBoxText());
+
 		this.hsModel.setData(block);
+
 		CommitteeInfoBlock ciBlock = this.ciModel.getData();
 		ciBlock.setReason1(this.view.getReason1());
 		ciBlock.setReason2(this.view.getReason2());

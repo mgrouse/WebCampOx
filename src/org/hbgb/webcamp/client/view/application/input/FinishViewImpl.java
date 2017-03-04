@@ -22,10 +22,13 @@ import com.google.gwt.user.client.ui.Widget;
 public class FinishViewImpl extends AbstractView implements FinishViewI
 {
 	private static UiBinder<Widget, FinishViewImpl> binder = GWT.create(ExitViewImplBinder.class);
+
 	@UiField
 	HTMLPanel emailSuccess;
+
 	@UiField
 	HTMLPanel emailFailure;
+
 	private PresenterI presenter;
 
 	public FinishViewImpl()

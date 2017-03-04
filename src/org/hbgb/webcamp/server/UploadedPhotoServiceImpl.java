@@ -22,6 +22,7 @@ import com.google.appengine.api.blobstore.BlobstoreService;
 import com.google.appengine.api.blobstore.BlobstoreServiceFactory;
 import com.google.gwt.user.server.rpc.RemoteServiceServlet;
 
+@SuppressWarnings("serial")
 public class UploadedPhotoServiceImpl extends RemoteServiceServlet implements UploadedPhotoService
 {
 	@Override

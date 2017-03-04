@@ -22,9 +22,16 @@ import com.google.gwt.user.client.ui.Widget;
 public class EditApplicationInfoViewImpl extends AbstractPartView implements IEditApplicationInfoView
 {
 	private static final String IMAGE_NOT_AVAIALABLE = "http://storage.googleapis.com/hbgbwebcamp.appspot.com/PhotoNotAvailable.jpg";
+
+	@UiTemplate(value = "EditApplicationInfoView.ui.xml")
+	static interface EditApplicationInfoViewImplBinder extends UiBinder<Widget, EditApplicationInfoViewImpl>
+	{}
+
 	private static UiBinder<Widget, EditApplicationInfoViewImpl> binder = GWT.create(EditApplicationInfoViewImplBinder.class);
+
 	@UiField
 	ApplicationStatusListBox applicationStatus;
+
 	@UiField
 	Image currentImage;
 
@@ -52,9 +59,11 @@ public class EditApplicationInfoViewImpl extends AbstractPartView implements IEd
 		if (imageURL != null && !imageURL.isEmpty())
 		{
 			this.currentImage.setUrl(imageURL);
-			return;
 		}
-		this.currentImage.setUrl("http://storage.googleapis.com/hbgbwebcamp.appspot.com/PhotoNotAvailable.jpg");
+		else
+		{
+			this.currentImage.setUrl(IMAGE_NOT_AVAIALABLE);
+		}
 	}
 
 	@Override
@@ -62,9 +71,5 @@ public class EditApplicationInfoViewImpl extends AbstractPartView implements IEd
 	{
 		return this.currentImage.getUrl();
 	}
-
-	@UiTemplate(value = "EditApplicationInfoView.ui.xml")
-	static interface EditApplicationInfoViewImplBinder extends UiBinder<Widget, EditApplicationInfoViewImpl>
-	{}
 
 }
