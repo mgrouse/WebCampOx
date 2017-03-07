@@ -75,21 +75,6 @@ public class WebCampEntryPoint implements EntryPoint, ValueChangeHandler<String>
 		AdminWindowManager winMan = new AdminWindowManager();
 		rp.clear();
 		rp.add(winMan);
-
-		/*
-		 * LoginPresenter login = new LoginPresenter(new LoginPopup());
-		 * EventBus.get().addHandler(AuthenticatedEvent.TYPE, new
-		 * AuthenticatedHandler() {
-		 * 
-		 * @Override public void onAuthenticated(AuthenticatedEvent event) {
-		 * 
-		 * WindowManager winMan = new WindowManager();//event.getUser());
-		 * rp.add(winMan); }
-		 * 
-		 * });
-		 * 
-		 * login.go(rp);
-		 */
 	}
 
 	private void startApplication()

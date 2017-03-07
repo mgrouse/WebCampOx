@@ -50,8 +50,6 @@ public class ViewFinder
 	private static InputPaymentInfoView editPaymentView;
 	private static InputPersonalInfoView editPersonalView;
 	private static HealerSheetListView<HealerSheetDetails> healerSheetListView;
-	// private static ApplicationLookupByEmailView appLookByEmailView;
-	// private static InputHealerSheetInfoView inputHealerSheetView;
 	private static UploadPhotoView uplaodPhotoView;
 
 	private ViewFinder()
