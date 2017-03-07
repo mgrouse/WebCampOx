@@ -6,7 +6,7 @@
 	<g:ScrollPanel>
 		<g:VerticalPanel>
 			
-			<g:CaptionPanel captionText="5: Dietary" styleName="formOneColumn">
+			<g:CaptionPanel captionText="6: Dietary" styleName="formOneColumn">
 			
 				<g:VerticalPanel>
 				

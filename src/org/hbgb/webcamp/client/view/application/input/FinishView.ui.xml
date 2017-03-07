@@ -4,7 +4,7 @@
 	         xmlns:w="urn:org.hbgb.webcamp.widget">
 
 	<g:ScrollPanel>
-		<g:CaptionPanel captionText="8: Finished" styleName="formOneColumn">
+		<g:CaptionPanel captionText="9: Finished" styleName="formOneColumn">
 			<g:VerticalPanel>
 				<g:HTMLPanel >
 					<h1>Thanks!!!</h1>	

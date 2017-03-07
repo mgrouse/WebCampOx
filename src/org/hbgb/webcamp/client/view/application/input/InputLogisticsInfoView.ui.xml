@@ -10,7 +10,7 @@
 		    <g:HTMLPanel ui:field="verifyWarning">
 			</g:HTMLPanel>
 		    
-		    <g:CaptionPanel captionText="7 Travel Plans" styleName="formOneColumn">
+		    <g:CaptionPanel captionText="8 Travel Plans" styleName="formOneColumn">
 		    
 				<g:HorizontalPanel>
 			

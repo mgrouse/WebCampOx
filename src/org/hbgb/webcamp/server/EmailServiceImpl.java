@@ -59,14 +59,14 @@ public class EmailServiceImpl extends RemoteServiceServlet implements EmailServi
 	private String getApplicationEmailBody()
 	{
 		StringBuilder sb = new StringBuilder();
-		sb.append("Thank you for Applying to be part of the HeeBee camp.\n");
+		sb.append("Thank you for applying to be part of the HeeBee camp.\n");
 		sb.append("If you don't hear from us soon, email ");
 		sb.append(getRegistrationLeadAddressAsText());
 		sb.append("\nPlease don't reply to this email address.\n");
-		sb.append("Meet the rest of us by joining the HeeBeeGeeBee Healers Google Group at:");
-		sb.append("https://groups.google.com/forum/#!forum/heebees.\n");
+		sb.append("Meet the rest of us by joining the HeeBeeGeeBee Healers Google Group at: ");
+		sb.append("https://www.facebook.com/groups/23767999265/?ref=bookmarks\n");
 		sb.append("\n");
-		sb.append("This year's co-leads:\n");
+		sb.append("This year's co-leads, \n");
 		sb.append("Quiggles and Dragonheart\n");
 		return sb.toString();
 	}
@@ -78,7 +78,7 @@ public class EmailServiceImpl extends RemoteServiceServlet implements EmailServi
 
 	private InternetAddress getRegistrationLeadAddress() throws Exception
 	{
-		return new InternetAddress("michael.grouse@gmail.com", "Scarab");
+		return new InternetAddress("shanalory@hotmail.com", "Quiggles");
 	}
 
 	private String getRegistrationLeadAddressAsText()
