@@ -4,89 +4,85 @@
 	         xmlns:w="urn:import:org.hbgb.webcamp.client.widget">
 
 	<g:ScrollPanel>
-		<g:VerticalPanel>
 			
-			<g:CaptionPanel captionText="5: Committee" styleName="formOneColumn">
-			
-				<g:VerticalPanel>
-			
-					<g:HTMLPanel>
-						<p>
-							All HeeBees are placed on a committee. 
-						   	Please let us know which two committees you would like to be a working member of and your reason 
-						   	for wanting to be a part of those committees. We will try to give you your first choice if possible.
-						</p>
+		<g:CaptionPanel captionText="5: Committee" styleName="formOneColumn">
+		
+			<g:VerticalPanel>
+		
+				<g:HTMLPanel>
+					<p>
+						All HeeBees are placed on a committee. 
+					   	Please let us know which two committees you would like to be a working member of and your reason 
+					   	for wanting to be a part of those committees. We will try to give you your first choice if possible.
+					</p>
+				</g:HTMLPanel>
+		
+				<g:HorizontalPanel>	
+		        	<g:Label text="First Choice"/>
+		        	<w:CommitteeListBox ui:field="committee1"/>
+				</g:HorizontalPanel>
+				
+				<g:HTML text="Why do you want to be on this committee?" styleName="longLabel"/>
+		        <g:TextArea ui:field="reason1"/>
+				
+				<g:HorizontalPanel>	
+		        	<g:Label text="Second Choice"/>
+		        	<w:CommitteeListBox ui:field="committee2"/>
+				</g:HorizontalPanel>		        
+		        
+				<g:HTML text="Why do you want to be on this committee?"  styleName="longLabel"/>
+		        <g:TextArea ui:field="reason2"/>				
+				
+				<g:VerticalPanel ui:field="healerSheetPanel">
+				
+				    <g:HTMLPanel>
+					<p>
+						 Since one of your choices is the Healer Committee,
+						 please enter the following data so we can print up your sign-up sheets.
+						 Modalities should just be the names, not descriptive sentences. 
+						 The Bio can be a paragraph including information about you, your training, 
+						 and more information about your modalities.
+					</p>
+					<p>
+						 Examples are in parentheses.
+					</p>
+					
 					</g:HTMLPanel>
-			
+				
 					<g:HorizontalPanel>	
-			        	<g:Label text="First Choice"/>
-			        	<w:CommitteeListBox ui:field="committee1"/>
+			        	<g:Label text="Avg. Session length in Minutes (45)"  styleName="longLabel"/>
+			        	<g:TextBox ui:field="sessionLength"/>
 					</g:HorizontalPanel>
 					
-						<g:HTML text="Why do you want to be on this committee?" styleName="longLabel"/>
-			        	<g:TextArea ui:field="reason1"/>
+					<g:HorizontalPanel>
+						<g:Label text="Modality 1 (Massage)"  styleName="longLabel"/>
+			        	<g:TextBox ui:field="modality1"/>
+					</g:HorizontalPanel>
 					
-					<g:HorizontalPanel>	
-			        	<g:Label text="Second Choice"/>
-			        	<w:CommitteeListBox ui:field="committee2"/>
-					</g:HorizontalPanel>		        
-			        
-						<g:HTML text="Why do you want to be on this committee?"  styleName="longLabel"/>
-			        	<g:TextArea ui:field="reason2"/>				
+					<g:HorizontalPanel>
+						<g:Label text="Modality 2 (Reiki)" styleName="longLabel"/>
+			        	<g:TextBox ui:field="modality2"/>
+					</g:HorizontalPanel>
 					
-					<g:VerticalPanel ui:field="healerSheetPanel">
+					<g:HorizontalPanel>
+						<g:Label text="Modality 3 (Talk Therapy)"  styleName="longLabel"/>
+			        	<g:TextBox ui:field="modality3"/>
+					</g:HorizontalPanel>
 					
-					    <g:HTMLPanel>
-						<p>
-							 Since you have chosen the Healer Committee as one of your choices,
-							 please enter the following data so we can print up your sign-up sheets.
-							 Modalities should just be the names, not descriptive sentences. 
-							 The Bio can be a paragraph including information about you, your training, 
-							 or more information about your modalities.
-						</p>
-						<p>
-							 Examples are in parentheses.
-						</p>
-						
-						</g:HTMLPanel>
+					<g:HorizontalPanel>
+						<g:Label text="Modality 4 (Chiropractic)"  styleName="longLabel"/>
+			        	<g:TextBox ui:field="modality4"/>
+					</g:HorizontalPanel>
 					
-						<g:HorizontalPanel>	
-				        	<g:Label text="Avg. Session length in Minutes (45)"  styleName="longLabel"/>
-				        	<g:TextBox ui:field="sessionLength"/>
-						</g:HorizontalPanel>
-						
-						<g:HorizontalPanel>
-							<g:Label text="Modality 1 (Massage)"  styleName="longLabel"/>
-				        	<g:TextBox ui:field="modality1"/>
-						</g:HorizontalPanel>
-						
-						<g:HorizontalPanel>
-							<g:Label text="Modality 2 (Reiki)" styleName="longLabel"/>
-				        	<g:TextBox ui:field="modality2"/>
-						</g:HorizontalPanel>
-						
-						<g:HorizontalPanel>
-							<g:Label text="Modality 3 (Talk Therapy)"  styleName="longLabel"/>
-				        	<g:TextBox ui:field="modality3"/>
-						</g:HorizontalPanel>
-						
-						<g:HorizontalPanel>
-							<g:Label text="Modality 4 (Chiropractic)"  styleName="longLabel"/>
-				        	<g:TextBox ui:field="modality4"/>
-						</g:HorizontalPanel>
-						
-						<g:HTML text="Please write a short healer bio"  styleName="longLabel"/>
-			        	<g:TextArea ui:field="bioBox"/>
-			        	
-			        	
-			        </g:VerticalPanel>
-			        
-				</g:VerticalPanel>
-				
-			</g:CaptionPanel>
-		
-			<g:Button ui:field="nextButton" styleName="right">Next</g:Button>
+					<g:HTML text="Please write a short healer bio"  styleName="longLabel"/>
+		        	<g:TextArea ui:field="bioBox"/>
+		        		
+		        </g:VerticalPanel> <!-- healer panel -->
+		        
+		        <g:Button ui:field="nextButton" styleName="right">Next</g:Button>
+			</g:VerticalPanel>
 			
-		</g:VerticalPanel>		
+		</g:CaptionPanel>
+			
 	</g:ScrollPanel>
 </ui:UiBinder> 

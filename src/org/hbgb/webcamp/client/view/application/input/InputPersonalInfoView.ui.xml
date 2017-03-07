@@ -4,8 +4,11 @@
 	         xmlns:w="urn:import:org.hbgb.webcamp.client.widget">
 
 	<g:ScrollPanel>
-		<g:VerticalPanel>
-		    <g:CaptionPanel captionText="3: Personal Info" styleName="formOneColumn">
+		
+		<g:CaptionPanel captionText="3: Personal Info" styleName="formOneColumn">
+			
+			<g:VerticalPanel>		
+				
 				<g:HorizontalPanel>	
 				
 					<g:CaptionPanel captionText="Demographics" styleName="formTwoColumn">
@@ -89,16 +92,13 @@
 								<g:Label text="Preferred Contact Time"/>
 					        	<w:CallTimeListBox ui:field="contactTimeBox"/>
 							</g:HorizontalPanel>
-					
 						</g:VerticalPanel>
-						
 					</g:CaptionPanel>
-					
-					
 				</g:HorizontalPanel>
-			 	<g:Button ui:field="nextButton" styleName="right">Next</g:Button>
 				
-			</g:CaptionPanel>
-		</g:VerticalPanel>		
+				<g:Button ui:field="nextButton" styleName="right">Next</g:Button>
+				
+			</g:VerticalPanel>	
+		</g:CaptionPanel>
 	</g:ScrollPanel>
 </ui:UiBinder> 

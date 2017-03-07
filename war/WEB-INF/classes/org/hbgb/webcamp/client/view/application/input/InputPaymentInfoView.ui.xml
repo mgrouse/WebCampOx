@@ -5,8 +5,6 @@
 	         xmlns:w="urn:import:org.hbgb.webcamp.client.widget">
 
 	<g:ScrollPanel>
-	
-		<g:VerticalPanel>
 			
 			<g:CaptionPanel captionText="4: Tickets" styleName="formOneColumn">
 			
@@ -61,10 +59,6 @@
 				</g:VerticalPanel>
 				
 			</g:CaptionPanel>
-		
-			
-			
-		</g:VerticalPanel>
 		
 	</g:ScrollPanel>
 </ui:UiBinder> 

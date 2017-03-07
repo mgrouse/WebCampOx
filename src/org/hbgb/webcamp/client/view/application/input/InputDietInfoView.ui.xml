@@ -4,65 +4,63 @@
 	         xmlns:w="urn:import:org.hbgb.webcamp.client.widget">
 
 	<g:ScrollPanel>
-		<g:VerticalPanel>
 			
-			<g:CaptionPanel captionText="6: Dietary" styleName="formOneColumn">
+		<g:CaptionPanel captionText="6: Dietary" styleName="formOneColumn">
 			
-				<g:VerticalPanel>
+			<g:VerticalPanel>
+			
+			    <g:HTMLPanel ui:field="verifyWarning">
+			        <p>
+			            Please answer the questions in RED.
+			        </p>
+			    </g:HTMLPanel>
+			    
+				<g:HorizontalPanel>	
+		        	<g:Label ui:field="dietLabel" text="My Diet is best described as:" styleName="longLabel"/>
+		        	<w:DietListBox ui:field="dietType"/>
+				</g:HorizontalPanel>
 				
-				    <g:HTMLPanel ui:field="verifyWarning">
-				        <p>
-				            Please answer the questions in RED.
-				        </p>
-				    </g:HTMLPanel>
-				    
-					<g:HorizontalPanel>	
-			        	<g:Label ui:field="dietLabel" text="My Diet is best described as:" styleName="longLabel"/>
-			        	<w:DietListBox ui:field="dietType"/>
-					</g:HorizontalPanel>
-					
-					<g:HTMLPanel>
-						<p>Please check the box if you require a gluten free diet.</p>
-					</g:HTMLPanel>
-					
-					<g:HorizontalPanel>
-			        	<g:CheckBox ui:field="isGlutenFree"/>
-			        	<g:Label text="My diet is Gluten Free."/>
-					</g:HorizontalPanel>
-					
-					<g:HTMLPanel>
-						<h2>Do you have other dietary restriction(s) we need to be aware of?</h2>
-						
-						<p>
-							Please enter the name(s) of any SERIOUS food related condition(s) in the box.
-						   	Please do not enter "No", to tell us you have no restrictions; leaving the box blank serves that purpose.
-						   	Please enter only the name of each condition, separated by a comma. 
-						   	Please, NO sentences describing conditions, as lengthy responses mess with the readability of our automated reports. 
-						   	We will contact you if we don't recognize the name of your condition.
-						</p>
-						
-						<p>
-							Also, don't enter foods you just don't like or that you avoid. It will be your 
-							job to avoid or pick around your unliked food item on playa.
-						</p>
-						
-						<p> 
-							Good example: Diabetic, Strawberry Allergy, Lactose Intollerant.
-						</p>
-						
-						<p>	  
-							Bad examples: I have been type 2 Diabetic since I was 5, I don't like onions, Green beans give me gass."
-						</p>
-					</g:HTMLPanel>
-					
-			        <g:TextArea ui:field="dietaryRestrictions"/>
-					
-				</g:VerticalPanel>
+				<g:HTMLPanel>
+					<p>Please check the box if you require a gluten free diet.</p>
+				</g:HTMLPanel>
 				
-			</g:CaptionPanel>
+				<g:HorizontalPanel>
+		        	<g:CheckBox ui:field="isGlutenFree"/>
+		        	<g:Label text="My diet is Gluten Free."/>
+				</g:HorizontalPanel>
+				
+				<g:HTMLPanel>
+					<h2>Do you have other dietary restriction(s) we need to be aware of?</h2>
+					
+					<p>
+						Please enter the name(s) of any SERIOUS food related condition(s) in the box.
+					   	Please do not enter "No", to tell us you have no restrictions; leaving the box blank serves that purpose.
+					   	Please enter only the name of each condition, separated by a comma. 
+					   	Please, NO sentences describing conditions, as lengthy responses mess with the readability of our automated reports. 
+					   	We will contact you if we don't recognize the name of your condition.
+					</p>
+					
+					<p>
+						Also, don't enter foods you just don't like or that you avoid. It will be your 
+						job to avoid or pick around your unliked food item on playa.
+					</p>
+					
+					<p> 
+						Good example: Diabetic, Strawberry Allergy, Lactose Intollerant.
+					</p>
+					
+					<p>	  
+						Bad examples: I have been type 2 Diabetic since I was 5, I don't like onions, Green beans give me gass."
+					</p>
+				</g:HTMLPanel>
+				
+		        <g:TextArea ui:field="dietaryRestrictions"/>
+		        
+		        <g:Button ui:field="nextButton" styleName="right">Next</g:Button>
+				
+			</g:VerticalPanel>
 			
-			<g:Button ui:field="nextButton" styleName="right">Next</g:Button>
+		</g:CaptionPanel>
 			
-		</g:VerticalPanel>
 	</g:ScrollPanel>
 </ui:UiBinder> 

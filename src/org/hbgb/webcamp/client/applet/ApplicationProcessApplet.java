@@ -43,25 +43,25 @@ public class ApplicationProcessApplet implements IApplet
 		logisticPage = new InputLogisticsInfoPresenter(null);
 		exit = new FinishPresenter();
 
-		this.setOrder();
+		setOrder();
 	}
 
 	private void setOrder()
 	{
-		this.enter.setNextPresenter(this.picturePage);
-		this.picturePage.setNextPresenter(this.personalPage);
-		this.personalPage.setNextPresenter(this.paymentPage);
-		this.paymentPage.setNextPresenter(this.committeePage);
-		this.committeePage.setNextPresenter(this.dietPage);
-		this.dietPage.setNextPresenter(this.shelterPage);
-		this.shelterPage.setNextPresenter(this.logisticPage);
-		this.logisticPage.setNextPresenter(this.exit);
+		enter.setNextPresenter(picturePage);
+		picturePage.setNextPresenter(personalPage);
+		personalPage.setNextPresenter(paymentPage);
+		paymentPage.setNextPresenter(committeePage);
+		committeePage.setNextPresenter(dietPage);
+		dietPage.setNextPresenter(shelterPage);
+		shelterPage.setNextPresenter(logisticPage);
+		logisticPage.setNextPresenter(exit);
 	}
 
 	@Override
 	public void run(HasWidgets container)
 	{
-		this.screen = container;
-		this.enter.go(this.screen);
+		screen = container;
+		enter.go(screen);
 	}
 }

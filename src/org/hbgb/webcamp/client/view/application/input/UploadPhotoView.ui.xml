@@ -3,35 +3,32 @@
 	         xmlns:g="urn:import:com.google.gwt.user.client.ui">
 
 	<g:ScrollPanel>
-		<g:VerticalPanel>
 		
-			<g:CaptionPanel captionText="2: Photo" styleName="formOneColumn">
+		<g:CaptionPanel captionText="2: Photo" styleName="formOneColumn">
+		
+			<g:VerticalPanel>
 			
-				<g:VerticalPanel>
+				<g:HTMLPanel>
+					<p>
+						Please upload a picture of yourself. Please make it a picture of your face without sunglasses.
+					</p>
+					<br/>
+				</g:HTMLPanel>
 				
-					<g:HTMLPanel>
-						<p>
-							Please upload a picture of yourself. Please make it a picture of your face without sunglasses.
-						</p>
-						<br/>
-					</g:HTMLPanel>
-					
-        			<g:FormPanel ui:field="uploadForm">
-        				<g:HorizontalPanel>
-            				<g:FileUpload ui:field="uploadField"></g:FileUpload>
-            				<g:Button ui:field="uploadButton"></g:Button>
-        				</g:HorizontalPanel>
-    				</g:FormPanel>
-       				
-       				<g:Image ui:field="currentImage" url="http://storage.googleapis.com/hbgbwebcamp.appspot.com/AlexGreyMeditating.jpg" /> 
-       			
-				</g:VerticalPanel>
+       			<g:FormPanel ui:field="uploadForm">
+       				<g:HorizontalPanel>
+           				<g:FileUpload ui:field="uploadField"></g:FileUpload>
+           				<g:Button ui:field="uploadButton"></g:Button>
+       				</g:HorizontalPanel>
+   				</g:FormPanel>
+      				
+      			<g:Image ui:field="currentImage" url="http://storage.googleapis.com/hbgbwebcamp.appspot.com/AlexGreyMeditating.jpg" /> 
+      			
+      			<g:Button ui:field="nextButton" styleName="right">Next</g:Button>
+			</g:VerticalPanel>
+			
+		</g:CaptionPanel>
 				
-			</g:CaptionPanel>
-			
-			<g:Button ui:field="nextButton" styleName="right">Next</g:Button>
-			
-		</g:VerticalPanel>		
 	</g:ScrollPanel>
 </ui:UiBinder> 
 

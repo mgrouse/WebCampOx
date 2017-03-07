@@ -4,7 +4,6 @@
 	         xmlns:w="urn:org.hbgb.webcamp.widget">
 
 	<g:ScrollPanel>
-		<g:VerticalPanel>
 		
 			<g:CaptionPanel captionText="7: Shelter" styleName="formOneColumn">
 			
@@ -53,12 +52,12 @@
 					<g:Label text="Please describe your structure in terms of size, type etc."/>
 			        <g:TextArea ui:field="structureInfo"/>
 			        
+			        <g:Button ui:field="nextButton" styleName="right">Next</g:Button>
+			
 				</g:VerticalPanel>
 				
 			</g:CaptionPanel>
 			
-			<g:Button ui:field="nextButton" styleName="right">Next</g:Button>
 			
-		</g:VerticalPanel>		
 	</g:ScrollPanel>
 </ui:UiBinder> 
