@@ -19,8 +19,6 @@ import org.hbgb.webcamp.client.view.application.input.InputCommitteeInfoView;
 import org.hbgb.webcamp.client.view.application.input.InputCommitteeInfoViewImpl;
 import org.hbgb.webcamp.client.view.application.input.InputDietInfoView;
 import org.hbgb.webcamp.client.view.application.input.InputDietInfoViewImpl;
-import org.hbgb.webcamp.client.view.application.input.InputHealerSheetInfoView;
-import org.hbgb.webcamp.client.view.application.input.InputHealerSheetInfoViewImpl;
 import org.hbgb.webcamp.client.view.application.input.InputLogisticsInfoView;
 import org.hbgb.webcamp.client.view.application.input.InputLogisticsInfoViewImpl;
 import org.hbgb.webcamp.client.view.application.input.InputPaymentInfoView;
@@ -53,7 +51,7 @@ public class ViewFinder
 	private static InputPersonalInfoView editPersonalView;
 	private static HealerSheetListView<HealerSheetDetails> healerSheetListView;
 	// private static ApplicationLookupByEmailView appLookByEmailView;
-	private static InputHealerSheetInfoView inputHealerSheetView;
+	// private static InputHealerSheetInfoView inputHealerSheetView;
 	private static UploadPhotoView uplaodPhotoView;
 
 	private ViewFinder()
@@ -161,23 +159,6 @@ public class ViewFinder
 			return editLogisticsView;
 		editLogisticsView = new InputLogisticsInfoViewImpl();
 		return editLogisticsView;
-	}
-
-	// public static ApplicationLookupByEmailView
-	// getApplicationLookupByEmailView()
-	// {
-	// if (appLookByEmailView != null)
-	// return appLookByEmailView;
-	// appLookByEmailView = new ApplicationLookupByEmailViewImpl();
-	// return appLookByEmailView;
-	// }
-
-	public static InputHealerSheetInfoView getHealerSheetInfoView()
-	{
-		if (inputHealerSheetView != null)
-			return inputHealerSheetView;
-		inputHealerSheetView = new InputHealerSheetInfoViewImpl();
-		return inputHealerSheetView;
 	}
 
 	public static UploadPhotoView getUploadPhotoView()

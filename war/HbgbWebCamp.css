@@ -1,8 +1,9 @@
 /** Add css rules here for your application. */
 
-
+  
 /** Example rules used by the template application (remove for your app) */
-h1 {
+h1 
+{
   font-size: 2em;
   font-weight: bold;
   color: #777777;
@@ -10,26 +11,31 @@ h1 {
   text-align: center;
 }
 
-.sendButton {
+.sendButton 
+{
   display: block;
   font-size: 16pt;
 }
 
 /** Most GWT widgets already have a style name defined */
-.gwt-DialogBox {
+.gwt-DialogBox 
+{
   width: 400px;
 }
 
-.dialogVPanel {
+.dialogVPanel 
+{
   margin: 5px;
 }
 
-.serverResponseLabelError {
+.serverResponseLabelError 
+{
   color: red;
 }
 
 /** Set ids using widget.getElement().setId("idOfElement") */
-#closeButton {
+#closeButton 
+{
   margin: 15px 6px 6px;
 }
 
@@ -88,7 +94,7 @@ h1 {
 
 .gwt-ListBox
 {
-	
+	margin: 5px 5px 5px 5px;
 }
 
 .gwt-TextArea
@@ -101,8 +107,7 @@ h1 {
 
 .textBox
 {
-	margin: 0px 0px 0px 0px;
-	
+	margin: 5px 5px 5px 5px;
 }
 
 .viewFlexTable 
@@ -129,7 +134,7 @@ h1 {
 
 .formTwoColumn
 {
-	width:  37%;
+	width:  45%;
 	margin-left:auto;
 	margin-right:auto;
 }
