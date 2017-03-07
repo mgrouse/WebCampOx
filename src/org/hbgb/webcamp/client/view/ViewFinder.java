@@ -15,8 +15,6 @@ import org.hbgb.webcamp.client.view.application.EditApplicationViewImpl;
 import org.hbgb.webcamp.client.view.application.HealerSheetListView;
 import org.hbgb.webcamp.client.view.application.HealerSheetListViewImpl;
 import org.hbgb.webcamp.client.view.application.IEditApplicationView;
-import org.hbgb.webcamp.client.view.application.input.ApplicationLookupByEmailView;
-import org.hbgb.webcamp.client.view.application.input.ApplicationLookupByEmailViewImpl;
 import org.hbgb.webcamp.client.view.application.input.InputCommitteeInfoView;
 import org.hbgb.webcamp.client.view.application.input.InputCommitteeInfoViewImpl;
 import org.hbgb.webcamp.client.view.application.input.InputDietInfoView;
@@ -54,7 +52,7 @@ public class ViewFinder
 	private static InputPaymentInfoView editPaymentView;
 	private static InputPersonalInfoView editPersonalView;
 	private static HealerSheetListView<HealerSheetDetails> healerSheetListView;
-	private static ApplicationLookupByEmailView appLookByEmailView;
+	// private static ApplicationLookupByEmailView appLookByEmailView;
 	private static InputHealerSheetInfoView inputHealerSheetView;
 	private static UploadPhotoView uplaodPhotoView;
 
@@ -81,7 +79,7 @@ public class ViewFinder
 	{
 		if (listUserView != null)
 			return listUserView;
-		listUserView = new UserListViewImpl<HbgbUserDetails>();
+		listUserView = new UserListViewImpl<>();
 		return listUserView;
 	}
 
@@ -97,7 +95,7 @@ public class ViewFinder
 	{
 		if (listApplicationListView != null)
 			return listApplicationListView;
-		listApplicationListView = new ApplicationListViewImpl<ApplicationDetails>();
+		listApplicationListView = new ApplicationListViewImpl<>();
 		return listApplicationListView;
 	}
 
@@ -105,7 +103,7 @@ public class ViewFinder
 	{
 		if (healerSheetListView != null)
 			return healerSheetListView;
-		healerSheetListView = new HealerSheetListViewImpl<HealerSheetDetails>();
+		healerSheetListView = new HealerSheetListViewImpl<>();
 		return healerSheetListView;
 	}
 
@@ -165,13 +163,14 @@ public class ViewFinder
 		return editLogisticsView;
 	}
 
-	public static ApplicationLookupByEmailView getApplicationLookupByEmailView()
-	{
-		if (appLookByEmailView != null)
-			return appLookByEmailView;
-		appLookByEmailView = new ApplicationLookupByEmailViewImpl();
-		return appLookByEmailView;
-	}
+	// public static ApplicationLookupByEmailView
+	// getApplicationLookupByEmailView()
+	// {
+	// if (appLookByEmailView != null)
+	// return appLookByEmailView;
+	// appLookByEmailView = new ApplicationLookupByEmailViewImpl();
+	// return appLookByEmailView;
+	// }
 
 	public static InputHealerSheetInfoView getHealerSheetInfoView()
 	{

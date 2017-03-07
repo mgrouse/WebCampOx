@@ -66,11 +66,6 @@ public class WebCampEntryPoint implements EntryPoint, ValueChangeHandler<String>
 
 				case "test":
 					startTest();
-
-					// case "healer":
-					// startHealer(rp);
-					// break;
-
 			}
 		}
 	}
@@ -103,13 +98,6 @@ public class WebCampEntryPoint implements EntryPoint, ValueChangeHandler<String>
 		rp.clear();
 		appProcApp.run(rp);
 	}
-
-	// private void startHealer(final RootLayoutPanel rp)
-	// {
-	// HealerSheetInputApplet healerApp = new HealerSheetInputApplet();
-	// rp.clear();
-	// healerApp.run(rp);
-	// }
 
 	private void startSheet()
 	{
