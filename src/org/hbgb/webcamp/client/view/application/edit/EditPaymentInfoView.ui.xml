@@ -7,49 +7,49 @@
 		
 			<g:VerticalPanel ui:field="form">
 				
-				<g:HorizontalPanel>
+				<g:HorizontalPanel verticalAlignment="ALIGN_MIDDLE" addStyleNames="formRow">
 					<g:CheckBox ui:field="hasTicket"/>
 					<g:Label text="I have a ticket to Burning Man."/>
 				</g:HorizontalPanel>
 						
-				<g:HorizontalPanel>	
+				<g:HorizontalPanel verticalAlignment="ALIGN_MIDDLE" addStyleNames="formRow">	
 		        	<g:Label text="My Ticket is:"/>
 		        	<w:TicketTypeListBox ui:field="ticketType"/>
 				</g:HorizontalPanel>		
 				
-				<g:HorizontalPanel>
+				<!-- <g:HorizontalPanel verticalAlignment="ALIGN_MIDDLE" addStyleNames="formRow">
 					<g:CheckBox ui:field="hasBeenInvoiced"/>
 					<g:Label text="Has Burner been invoiced?" />
 				</g:HorizontalPanel>
 				
-				<g:HorizontalPanel>
+				<g:HorizontalPanel verticalAlignment="ALIGN_MIDDLE" addStyleNames="formRow">
 					<g:CheckBox ui:field="hasPaidDues"/>
 					<g:Label text="Has Burner Paid dues?" />
 				</g:HorizontalPanel>
 				
-				<g:HorizontalPanel>
+				<g:HorizontalPanel verticalAlignment="ALIGN_MIDDLE" addStyleNames="formRow">
 					<g:Label text="Paid Date:"/>
 		        	<g:TextBox ui:field="paidDate"/>
 				</g:HorizontalPanel>
 				
-				<g:HorizontalPanel>
+				<g:HorizontalPanel verticalAlignment="ALIGN_MIDDLE" addStyleNames="formRow">
 					<g:CheckBox ui:field="wasSubsidized"/>
 					<g:Label text="Was HeeBee subsidized?" />
 				</g:HorizontalPanel>
 				
-				<g:HorizontalPanel>
+				<g:HorizontalPanel verticalAlignment="ALIGN_MIDDLE" addStyleNames="formRow">
 					<g:Label text="Subsidy Amount?"/>
 		        	<g:TextBox ui:field="subsidyAmt"/>
 				</g:HorizontalPanel>
 				
-				<g:HorizontalPanel>
+				<g:HorizontalPanel verticalAlignment="ALIGN_MIDDLE" addStyleNames="formRow">
 					<g:Label text="Rreason / Type of subsidy?" />
 		        	<g:TextBox ui:field="subsidyReason"/>
-				</g:HorizontalPanel>
+				</g:HorizontalPanel> -->
 				
 			</g:VerticalPanel>
 			
-			<g:HorizontalPanel ui:field="buttonPanel">
+			<g:HorizontalPanel addStyleNames="buttonPanel" ui:field="buttonPanel">
 				<g:Button ui:field="expandButton">+</g:Button>
 				<g:Button ui:field="editButton">Edit</g:Button>
 				<g:Button ui:field="saveButton">Save</g:Button>

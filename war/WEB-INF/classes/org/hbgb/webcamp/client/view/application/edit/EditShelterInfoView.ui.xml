@@ -7,38 +7,30 @@
 		
 			<g:VerticalPanel ui:field="form">
 			
-				<g:HorizontalPanel>
-						<g:CheckBox ui:field="hasRv"/>
-						<g:HTML text="I am bringing an RV."/>
-					</g:HorizontalPanel>
+				<g:HorizontalPanel verticalAlignment="ALIGN_MIDDLE" addStyleNames="formRow">
+					<g:CheckBox ui:field="hasRv"/>
+					<g:HTML text="I am bringing an RV."/>
+				</g:HorizontalPanel>
 				
-					<g:HTML text="Please describe your RV. Please mention if you want Electric hook up in this box."/>
-			        <g:TextArea ui:field="rvInfo"/>
-						
-					<g:HTMLPanel>
-						<br/>
-						<br/>
-					</g:HTMLPanel>
-					<g:HorizontalPanel>
-						<g:CheckBox ui:field="isInDormTent"/>	
-						<g:HTML text="I am planning on camping in the Dorm tent."/>
-		        	</g:HorizontalPanel>	
-		        	<g:HTMLPanel>
-						<br/>
-						<br/>
-					</g:HTMLPanel>
-		        	
-		        	<g:HorizontalPanel>
-						<g:CheckBox ui:field="hasStructure"/>
-						<g:HTML text="I am bringing a free standing structure."/>
-		        	</g:HorizontalPanel>
-		        	
-					<g:HTML text="Please describe your structure in terms of size, type etc."/>
-			        <g:TextArea ui:field="structureInfo"/>
-			        
+				<g:HTML text="Please describe your RV. Please mention if you want Electric hook up in this box."/>
+		        <g:TextArea ui:field="rvInfo"/>
+				
+				<g:HorizontalPanel verticalAlignment="ALIGN_MIDDLE" addStyleNames="formRow">
+					<g:CheckBox ui:field="isInDormTent"/>	
+					<g:HTML text="I am planning on camping in the Dorm tent."/>
+	        	</g:HorizontalPanel>	
+	        	
+	        	<g:HorizontalPanel verticalAlignment="ALIGN_MIDDLE" addStyleNames="formRow">
+					<g:CheckBox ui:field="hasStructure"/>
+					<g:HTML text="I am bringing a free standing structure."/>
+	        	</g:HorizontalPanel>
+	        	
+				<g:HTML text="Please describe your structure in terms of size, type etc."/>
+		        <g:TextArea ui:field="structureInfo"/>
+		        
 			</g:VerticalPanel>
 			
-			<g:HorizontalPanel ui:field="buttonPanel">
+			<g:HorizontalPanel addStyleNames="buttonPanel" ui:field="buttonPanel">
 			
 				<g:Button ui:field="expandButton">+</g:Button>
 				<g:Button ui:field="editButton">Edit</g:Button>

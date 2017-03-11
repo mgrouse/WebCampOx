@@ -4,30 +4,30 @@
 	         xmlns:w="urn:import:org.hbgb.webcamp.client.widget">
 
 	<g:CaptionPanel captionText="Dietary">
-	<g:VerticalPanel>
-		<g:VerticalPanel ui:field="form">
-		
-			<g:HorizontalPanel>	
-	        	<g:Label text="Campers' Diet is:"/>
-	        	<w:DietListBox ui:field="dietType"/>
-			</g:HorizontalPanel>
+		<g:VerticalPanel>
+			<g:VerticalPanel ui:field="form">
 			
-			<g:HorizontalPanel>
-			    <g:CheckBox ui:field="isGlutenFree"/>
-				<g:Label text="Gluten Free."/>
-			</g:HorizontalPanel>
+				<g:HorizontalPanel verticalAlignment="ALIGN_MIDDLE" addStyleNames="formRow">	
+		        	<g:Label text="Campers' Diet is:"/>
+		        	<w:DietListBox ui:field="dietType"/>
+				</g:HorizontalPanel>
+				
+				<g:HorizontalPanel verticalAlignment="ALIGN_MIDDLE" addStyleNames="formRow">
+				    <g:CheckBox ui:field="isGlutenFree"/>
+					<g:Label text="Gluten Free."/>
+				</g:HorizontalPanel>
+				
+				<g:Label text="Dietary restrictions"/>
+		        <g:TextArea ui:field="dietaryRestrictions"/>
+				
+			</g:VerticalPanel>
 			
-			<g:Label text="Dietary restrictions"/>
-	        <g:TextArea ui:field="dietaryRestrictions"/>
-			
+			<g:HorizontalPanel addStyleNames="buttonPanel" ui:field="buttonPanel">
+				<g:Button ui:field="expandButton">+</g:Button>
+				<g:Button ui:field="editButton">Edit</g:Button>
+				<g:Button ui:field="saveButton">Save</g:Button>
+			</g:HorizontalPanel>	
 		</g:VerticalPanel>
-		
-		<g:HorizontalPanel ui:field="buttonPanel">
-			<g:Button ui:field="expandButton">+</g:Button>
-			<g:Button ui:field="editButton">Edit</g:Button>
-			<g:Button ui:field="saveButton">Save</g:Button>
-		</g:HorizontalPanel>	
-	</g:VerticalPanel>
 	</g:CaptionPanel>
 		
 </ui:UiBinder> 

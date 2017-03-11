@@ -8,7 +8,7 @@
 		
 			<g:VerticalPanel ui:field="form">
 			
-				<g:HorizontalPanel>
+				<g:HorizontalPanel verticalAlignment="ALIGN_MIDDLE" addStyleNames="formRow">
 					<g:Label text="Application Status"/>
 					<w:ApplicationStatusListBox ui:field="applicationStatus" />
 				</g:HorizontalPanel>
@@ -16,7 +16,7 @@
 				<g:Image ui:field="currentImage"/>
 			</g:VerticalPanel>
 			
-			<g:HorizontalPanel ui:field="buttonPanel">
+			<g:HorizontalPanel addStyleNames="buttonPanel" ui:field="buttonPanel">
 			
 				<g:Button ui:field="expandButton">+</g:Button>
 				<g:Button ui:field="editButton">Edit</g:Button>

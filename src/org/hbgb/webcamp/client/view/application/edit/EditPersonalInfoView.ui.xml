@@ -12,45 +12,42 @@
 				
 					<g:VerticalPanel>
 					
-						<g:HorizontalPanel>	
+						<g:HorizontalPanel verticalAlignment="ALIGN_MIDDLE" addStyleNames="formRow">	
 				        	<g:Label text="Email"/>
 				        	<g:TextBox ui:field="emailBox"/>
 						</g:HorizontalPanel>
 						
-						<g:HorizontalPanel>
+						<g:HorizontalPanel verticalAlignment="ALIGN_MIDDLE" addStyleNames="formRow">
 							<g:Label text="First Name"/>
 				        	<g:TextBox ui:field="firstNameBox"/>
 				        </g:HorizontalPanel>
 				        
-				        <g:HorizontalPanel>
+				        <g:HorizontalPanel verticalAlignment="ALIGN_MIDDLE" addStyleNames="formRow">
 							<g:Label text="Last Name"/>
 				        	<g:TextBox ui:field="lastNameBox"/>
 						</g:HorizontalPanel>
 				        
-				        <g:HorizontalPanel>
+				        <g:HorizontalPanel verticalAlignment="ALIGN_MIDDLE" addStyleNames="formRow">
 				        	<g:Label text="Playa Name"/>
 				        	<g:TextBox ui:field="playaNameBox"/>
 				        </g:HorizontalPanel>
 				        
-						<g:HorizontalPanel>
+						<g:HorizontalPanel verticalAlignment="ALIGN_MIDDLE" addStyleNames="formRow">
 							<g:Label text="Gender"/>
 				        	<w:GenderListBox ui:field="genderBox"/>
 						</g:HorizontalPanel>
 						
-						<g:HorizontalPanel>
-							<g:Label text="Birth Date"/>
-				        	<w:BirthDateWidget ui:field="birthDate"/>
-						</g:HorizontalPanel>
+						<g:Label text="Birth Date"/>
+				        <w:BirthDateWidget ui:field="birthDate"/>
 						
-						<g:HorizontalPanel>
+						<g:HorizontalPanel verticalAlignment="ALIGN_MIDDLE" addStyleNames="formRow">
 							<g:Label text="Default World Job"/>
 				        	<g:TextBox ui:field="defaultWorldJobBox"/>
 						</g:HorizontalPanel>
 						
-						<g:VerticalPanel>
-							<g:Label text="Bio"/>
-				        	<g:TextArea ui:field="bioBox"/>
-						</g:VerticalPanel>		
+						<g:Label text="Bio"/>
+				        <g:TextArea ui:field="bioBox"/>
+								
 				        
 					</g:VerticalPanel>
 					
@@ -62,23 +59,23 @@
 					
 						<w:AddressWidget ui:field="homeAddress"/>
 										
-						<g:HorizontalPanel>
+						<g:HorizontalPanel verticalAlignment="ALIGN_MIDDLE" addStyleNames="formRow">
 							<g:Label text="Phone"/>
 				        	<g:TextBox ui:field="phoneBox"/>
 						</g:HorizontalPanel>
 						
-						<g:HorizontalPanel>
+						<g:HorizontalPanel verticalAlignment="ALIGN_MIDDLE" addStyleNames="formRow">
 							<g:Label text="Skype Name"/>
 				        	<g:TextBox ui:field="skypeNameBox"/>
 						</g:HorizontalPanel>
 						
-						<g:HorizontalPanel>
-							<g:Label text="Preferred Contact Method"/>
+						<g:HorizontalPanel verticalAlignment="ALIGN_MIDDLE" addStyleNames="formRow">
+							<g:Label addStyleNames="mediumLabel" text="Preferred Contact Method"/>
 				        	<w:ContactMethodListBox ui:field="contactMethodBox"/>
 						</g:HorizontalPanel>
 						
-						<g:HorizontalPanel>
-							<g:Label text="Preferred Contact Time"/>
+						<g:HorizontalPanel verticalAlignment="ALIGN_MIDDLE" addStyleNames="formRow">
+							<g:Label addStyleNames="mediumLabel" text="Preferred Contact Time"/>
 				        	<w:CallTimeListBox ui:field="contactTimeBox"/>
 						</g:HorizontalPanel>
 				
@@ -89,7 +86,7 @@
 		</g:HorizontalPanel>	
 		</g:VerticalPanel>
 		
-		<g:HorizontalPanel ui:field="buttonPanel">
+		<g:HorizontalPanel addStyleNames="buttonPanel" ui:field="buttonPanel">
 			<g:Button ui:field="expandButton">+</g:Button>
 			<g:Button ui:field="editButton">Edit</g:Button>
 			<g:Button ui:field="saveButton">Save</g:Button>

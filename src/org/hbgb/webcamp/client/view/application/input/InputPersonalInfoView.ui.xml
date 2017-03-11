@@ -50,7 +50,7 @@
 					        <w:BirthDateWidget ui:field="birthDate"/>
 							
 							<g:HorizontalPanel verticalAlignment="ALIGN_MIDDLE" addStyleNames="formRow">
-								<g:Label text="Default World Job"/>
+								<g:Label addStyleNames="textLengthLabel" text="Default World Job"/>
 					        	<g:TextBox ui:field="defaultWorldJobBox"/>
 							</g:HorizontalPanel>
 							

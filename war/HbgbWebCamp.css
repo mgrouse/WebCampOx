@@ -76,17 +76,10 @@ gwt-CaptionPanel
 
 .formRow
 {
-	/* vertical-align: middle; */
-	
 	margin-top: 5px;
   	margin-bottom: 5px;
   	margin-left: 0px;
   	margin-right: 0px;
-  	
-    padding-top: 0px;
-    padding-bottom: 0px;
-    padding-left: 0px;
-    padding-right: 0px;
 }
 
 
@@ -97,8 +90,8 @@ gwt-CaptionPanel
 	
 	margin-top: 5px;
   	margin-bottom: 5px;
-  	margin-left: 0px;
-  	margin-right: 0px;
+  	margin-left: 15px;
+  	margin-right: 15px;
   	
     padding-top: 0px;
     padding-bottom: 0px;
@@ -123,34 +116,24 @@ gwt-CaptionPanel
 
 .gwt-Label 
 {
-  	
   	font: normal 14px tahoma, arial, helvetica, sans-serif;
   	
   	width: 100px;
-  	vertical-align: middle;
   	
-  	margin-top: auto;
-	margin-bottom: auto;
+  	/* margin-top: auto;
+	margin-bottom: auto; */
 	margin-left: 15px;
 	margin-right: 15px;
-		
-	padding-top: 0px;
-	padding-bottom: 0px;
-	padding-left: 0px;
-	padding-right: 0px;
+}
+
+.textLengthLabel
+{
+	width: auto;
 }
 
 .mediumLabel
 {
-	font: normal 12px tahoma, arial, helvetica, sans-serif;
-  	/* border: 1px solid #99bbe8;*/
-  	
-  	width: 150px;
-  	
-  	margin-top: 0px;
-	margin-bottom: 0px;
-	margin-left: 15px;
-	margin-right: 15px;
+	width: 160px;
 }
 
 .longLabel
@@ -161,17 +144,12 @@ gwt-CaptionPanel
 	margin-bottom: 0px;
 	margin-left: 15px;
 	margin-right: 5px;
-		
-	padding-top: 0px;
-	padding-bottom: 0px;
-	padding-left: 0px;
-	padding-right: 0px;
 }
 
-.gwt-Image
+/* .gwt-Image
 {
 	
-}
+} */
 
 .gwt-Button 
 {
@@ -182,15 +160,22 @@ gwt-CaptionPanel
 	
 	margin-top: 0px;
 	margin-bottom: 0px;
-	margin-left: 0px;
-	margin-right: 0px;
-		
-	padding-top: 0px;
-	padding-bottom: 0px;
-	padding-left: 0px;
-	padding-right: 0px;
+	margin-left: 5px;
+	margin-right: 5px;
 } 
 
+.buttonPanel
+{
+	margin-top: 5px;
+	margin-bottom: 5px;
+	margin-left: 15px;
+	margin-right: 15px;
+		
+	padding-top: 5px;
+	padding-bottom: 5px;
+	padding-left: 5px;
+	padding-right: 5px;
+}
 
 .gwt-CheckBox
 {
@@ -223,8 +208,10 @@ gwt-CaptionPanel
 {
 	height: 150px;
 	width:  70%;
-	margin-left:auto;
-	margin-right:auto;
+	margin-top: 5px;
+  	margin-bottom: 5px;
+	margin-left: 15px;
+	margin-right: 15px;
 }
 
 .gwt-TextBox
@@ -255,7 +242,7 @@ gwt-CaptionPanel
     padding-right: 0px;
 }
 
-.buttonHPanel 
+/* .buttonHPanel 
 {
 	margin-top: 5px;
   	margin-bottom: 5px;
@@ -266,7 +253,7 @@ gwt-CaptionPanel
     padding-bottom: 0px;
     padding-left: 0px;
     padding-right: 0px;
-}
+} */
 
 
 .left

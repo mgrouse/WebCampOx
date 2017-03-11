@@ -8,7 +8,7 @@
 		
 			<g:VerticalPanel ui:field="form">
 			
-				<g:HorizontalPanel>	
+				<g:HorizontalPanel verticalAlignment="ALIGN_MIDDLE" addStyleNames="formRow">	
 		        	<g:Label text="First Choice"/>
 		        	<w:CommitteeListBox ui:field="committee1"/>
 				</g:HorizontalPanel>
@@ -16,7 +16,7 @@
 				<g:HTML text="Why do you want to be on this committee?" styleName="longLabel"/>
 	        	<g:TextArea ui:field="reason1"/>
 					
-				<g:HorizontalPanel>	
+				<g:HorizontalPanel verticalAlignment="ALIGN_MIDDLE" addStyleNames="formRow">	
 		        	<g:Label text="Second Choice"/>
 		        	<w:CommitteeListBox ui:field="committee2"/>
 				</g:HorizontalPanel>		        
@@ -24,19 +24,19 @@
 				<g:HTML text="Why do you want to be on this committee?"  styleName="longLabel"/>
 	        	<g:TextArea ui:field="reason2"/>				
 					
-				<g:HorizontalPanel>	
+				<g:HorizontalPanel verticalAlignment="ALIGN_MIDDLE" addStyleNames="formRow">	
 		        	<g:Label text="Assigned Committee"/>
 		        	<w:CommitteeListBox ui:field="assignedCommittee"/>
 				</g:HorizontalPanel>
 				
-				<g:HorizontalPanel>
+				<g:HorizontalPanel verticalAlignment="ALIGN_MIDDLE" addStyleNames="formRow">
 		        	<g:CheckBox ui:field="isAssignedLead"/>
 		        	<g:Label text="Assigned as Lead?"/>
 				</g:HorizontalPanel>
 				
 			</g:VerticalPanel>
 			
-			<g:HorizontalPanel ui:field="buttonPanel">
+			<g:HorizontalPanel addStyleNames="buttonPanel" ui:field="buttonPanel">
 			
 				<g:Button ui:field="expandButton">+</g:Button>
 				<g:Button ui:field="editButton">Edit</g:Button>
