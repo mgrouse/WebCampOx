@@ -31,7 +31,14 @@ public class EmailServiceImpl extends RemoteServiceServlet implements EmailServi
 	{
 		ApplicationServiceImpl appServ = new ApplicationServiceImpl();
 		Application app = appServ.getApplication(key);
-		return this.sendMail(app.getEmail(), "HeeBee Application Received!", this.getApplicationEmailBody());
+
+		// first to the Lead "michael.grouse@gmail.com"
+		// sendMail(getRegistrationLeadAddressAsText(), "HeeBee application
+		// received!", getNotificationEmailBody());
+		sendMail("michael.grouse@gmail.com", "HeeBee application received!", getNotificationEmailBody());
+
+		// then to the camper
+		return sendMail(app.getEmail(), "Your HeeBee application was received!", getApplicationEmailBody());
 	}
 
 	private String sendMail(String to, String subject, String message)
@@ -56,6 +63,18 @@ public class EmailServiceImpl extends RemoteServiceServlet implements EmailServi
 		}
 	}
 
+	/**
+	 * @return
+	 */
+	private String getNotificationEmailBody()
+	{
+		StringBuilder sb = new StringBuilder();
+		sb.append("A new application has been created.\n");
+		sb.append("<br><br>");
+		sb.append("Look at it in <a href=\"http://www.hbgbwebcamp.appspot.com/#admin\">Admin Land</a>.");
+		return sb.toString();
+	}
+
 	private String getApplicationEmailBody()
 	{
 		StringBuilder sb = new StringBuilder();
@@ -63,7 +82,7 @@ public class EmailServiceImpl extends RemoteServiceServlet implements EmailServi
 		sb.append("If you don't hear from us soon, email ");
 		sb.append(getRegistrationLeadAddressAsText());
 		sb.append("\nPlease don't reply to this email address.\n");
-		sb.append("Meet the rest of us by joining the HeeBeeGeeBee Healers Google Group at: ");
+		sb.append("Meet the rest of us by joining the HeeBeeGeeBee Healers Facebook Group at: ");
 		sb.append("https://www.facebook.com/groups/23767999265/?ref=bookmarks\n");
 		sb.append("\n");
 		sb.append("This year's co-leads, \n");
@@ -83,6 +102,6 @@ public class EmailServiceImpl extends RemoteServiceServlet implements EmailServi
 
 	private String getRegistrationLeadAddressAsText()
 	{
-		return "michael.grouse@gmail.com";
+		return "shanalory@hotmail.com";
 	}
 }

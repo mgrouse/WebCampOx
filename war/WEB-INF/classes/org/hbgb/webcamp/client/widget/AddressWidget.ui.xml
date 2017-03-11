@@ -6,32 +6,32 @@
 	
 		<g:VerticalPanel>
 		
-			<g:HorizontalPanel>	
+			<g:HorizontalPanel verticalAlignment="ALIGN_MIDDLE" addStyleNames="formRow">	
 	        	<g:Label text="Street 1"/>
 	        	<g:TextBox ui:field="street1Box"/>
 			</g:HorizontalPanel>
 			
-			<g:HorizontalPanel>	
+			<g:HorizontalPanel verticalAlignment="ALIGN_MIDDLE" addStyleNames="formRow">	
 	        	<g:Label text="Street 2"/>
 	        	<g:TextBox ui:field="street2Box"/>
 			</g:HorizontalPanel>
 			
-			<g:HorizontalPanel>
+			<g:HorizontalPanel verticalAlignment="ALIGN_MIDDLE" addStyleNames="formRow">
 				<g:Label text="City"/>
 	        	<g:TextBox ui:field="cityBox"/>
 	        </g:HorizontalPanel>
 	        
-	        <g:HorizontalPanel>
+	        <g:HorizontalPanel verticalAlignment="ALIGN_MIDDLE" addStyleNames="formRow">
 	        	<g:Label text="State or Province"/>
 	        	<g:TextBox ui:field="stateBox"/>
 	        </g:HorizontalPanel>
 	        
-	        <g:HorizontalPanel>
+	        <g:HorizontalPanel verticalAlignment="ALIGN_MIDDLE" addStyleNames="formRow">
 	        	<g:Label text="Country"/>
 	        	<g:TextBox ui:field="countryBox"/>
 	        </g:HorizontalPanel>
 	        
-	        <g:HorizontalPanel>
+	        <g:HorizontalPanel verticalAlignment="ALIGN_MIDDLE" addStyleNames="formRow">
 	        	<g:Label text="Postal Code"/>
 	        	<g:TextBox ui:field="postCodeBox"/>
 	        </g:HorizontalPanel>

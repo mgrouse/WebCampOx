@@ -5,7 +5,7 @@
 
 	<g:ScrollPanel>
 		
-			<g:CaptionPanel captionText="7: Shelter" styleName="formOneColumn">
+			<g:CaptionPanel captionText="7: Shelter" addStyleNames="formOneColumn">
 			
 				<g:VerticalPanel>
 				
@@ -25,20 +25,24 @@
 					
 					<g:HorizontalPanel>
 						<g:CheckBox ui:field="hasRv"/>
-						<g:Label ui:field="hsRvLabel" text="I am bringing an RV."/>
+						<g:Label ui:field="hsRvLabel" addStyleNames="longLabel" text="I am bringing an RV."/>
 					</g:HorizontalPanel>
 				
-					<g:HTML text="Please describe your RV in terms of size type etc."/> <!-- If you want Electric hook up for your RV please mention it in this box."/> -->
-			        <g:TextArea ui:field="rvInfo"/>
+					<g:VerticalPanel ui:field="rvInfoPanel">
+						<g:HTML text="Please describe your RV in terms of size type etc."/> <!-- If you want Electric hook up for your RV please mention it in this box."/> -->
+			        	<g:TextArea ui:field="rvInfo"/>
 						
-					<g:HTMLPanel>
-						<br/>
-						<br/>
-					</g:HTMLPanel>
+						<g:HTMLPanel>
+							<br/>
+							<br/>
+						</g:HTMLPanel>
+					</g:VerticalPanel>
+						
 					<g:HorizontalPanel>
 						<g:CheckBox ui:field="isInDormTent"/>	
-						<g:Label ui:field="isInDormTentLabel" text="I am planning on putting a tent (up to 3 person size) in the Dorm tent."/>
+						<g:Label ui:field="isInDormTentLabel" addStyleNames="longLabel" text="I am planning on putting a tent in the Dorm tent. (up to 3 person size)" />
 		        	</g:HorizontalPanel>	
+		        	
 		        	<g:HTMLPanel>
 						<br/>
 						<br/>
@@ -46,13 +50,15 @@
 		        	
 		        	<g:HorizontalPanel>
 						<g:CheckBox ui:field="hasStructure"/>
-						<g:Label ui:field="hasStructureLabel" text="I am bringing a free standing structure."/>
+						<g:Label ui:field="hasStructureLabel" addStyleNames="longLabel" text="I am bringing a free standing structure."/>
 		        	</g:HorizontalPanel>
 		        	
-					<g:Label text="Please describe your structure in terms of size, type etc."/>
-			        <g:TextArea ui:field="structureInfo"/>
-			        
-			        <g:Button ui:field="nextButton" styleName="right">Next</g:Button>
+		        	<g:VerticalPanel ui:field="structureInfoPanel">
+						<g:Label styleName="longLabel" text="Please describe your structure in terms of length, width, type etc."/>
+			        	<g:TextArea ui:field="structureInfo"/>
+			        </g:VerticalPanel>
+			        	
+			        <g:Button ui:field="nextButton" addStyleNames="right">Next</g:Button>
 			
 				</g:VerticalPanel>
 				

@@ -5,7 +5,7 @@
 
 	<g:ScrollPanel>
 			
-		<g:CaptionPanel captionText="6: Dietary" styleName="formOneColumn">
+		<g:CaptionPanel captionText="6: Dietary" addStyleNames="formOneColumn">
 			
 			<g:VerticalPanel>
 			
@@ -15,8 +15,8 @@
 			        </p>
 			    </g:HTMLPanel>
 			    
-				<g:HorizontalPanel>	
-		        	<g:Label ui:field="dietLabel" text="My Diet is best described as:" styleName="longLabel"/>
+				<g:HorizontalPanel verticalAlignment="ALIGN_MIDDLE" addStyleNames="formRow">	
+		        	<g:Label ui:field="dietLabel" text="My Diet is best described as:" addStyleNames="longLabel"/>
 		        	<w:DietListBox ui:field="dietType"/>
 				</g:HorizontalPanel>
 				
@@ -24,9 +24,9 @@
 					<p>Please check the box if you require a gluten free diet.</p>
 				</g:HTMLPanel>
 				
-				<g:HorizontalPanel>
+				<g:HorizontalPanel verticalAlignment="ALIGN_MIDDLE" addStyleNames="formRow">
 		        	<g:CheckBox ui:field="isGlutenFree"/>
-		        	<g:Label text="My diet is Gluten Free."/>
+		        	<g:Label text="My diet is Gluten Free." addStyleNames="longLabel"/>
 				</g:HorizontalPanel>
 				
 				<g:HTMLPanel>
@@ -54,9 +54,10 @@
 					</p>
 				</g:HTMLPanel>
 				
+				<g:Label text="Dietary Restrictions"/>
 		        <g:TextArea ui:field="dietaryRestrictions"/>
 		        
-		        <g:Button ui:field="nextButton" styleName="right">Next</g:Button>
+		        <g:Button ui:field="nextButton" addStyleNames="right">Next</g:Button>
 				
 			</g:VerticalPanel>
 			

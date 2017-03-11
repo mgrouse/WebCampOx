@@ -6,7 +6,7 @@
 
 	<g:ScrollPanel>
 			
-			<g:CaptionPanel captionText="4: Tickets" styleName="formOneColumn">
+			<g:CaptionPanel captionText="4: Tickets" addStyleNames="formOneColumn">
 			
 				<g:VerticalPanel>
 					
@@ -26,9 +26,9 @@
 						<br/>
 					</g:HTMLPanel>
 					
-					<g:HorizontalPanel>
+					<g:HorizontalPanel verticalAlignment="ALIGN_MIDDLE" addStyleNames="formRow">
 						<g:CheckBox ui:field="hasTicket"/>
-						<g:Label text="I have a ticket to Burning Man."/>
+						<g:Label addStyleNames="longLabel" text = "I have a ticket to Burning Man."/>
 					</g:HorizontalPanel>
 				
 					<g:HTMLPanel>
@@ -49,12 +49,12 @@
 						<br/>
 					</g:HTMLPanel>
 				
-					<g:HorizontalPanel>	
-			        	<g:Label ui:field="ticketTypeLabel" text="My Ticket is:"/>
+					<g:HorizontalPanel verticalAlignment="ALIGN_MIDDLE" addStyleNames="formRow">	
+			        	<g:Label ui:field="ticketTypeLabel" text="My Ticket is: "/>
 			        	<w:TicketTypeListBox ui:field="ticketType"/>
 					</g:HorizontalPanel>
 			        
-					<g:Button ui:field="nextButton" styleName="right">Next</g:Button>
+					<g:Button ui:field="nextButton" addStyleNames="right">Next</g:Button>
 					
 				</g:VerticalPanel>
 				

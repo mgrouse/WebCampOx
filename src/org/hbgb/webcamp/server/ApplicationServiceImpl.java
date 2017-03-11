@@ -39,6 +39,7 @@ import com.google.gwt.user.server.rpc.RemoteServiceServlet;
 public class ApplicationServiceImpl extends RemoteServiceServlet implements ApplicationService
 {
 	private static final int THIS_YEAR = 2017;
+	private static final ApplicationStatus noShows[] = { ApplicationStatus.ARCHIVED };
 
 	@Override
 	public Application getApplication(String encoded)
@@ -150,9 +151,25 @@ public class ApplicationServiceImpl extends RemoteServiceServlet implements Appl
 
 		List<Application> applications = getApplications();
 
+		Boolean add;
+
 		for (Application app : applications)
 		{
-			details.add(application2Details(app));
+			add = true;
+
+			for (ApplicationStatus bad : noShows)
+			{
+				if (bad == app.getStatus())
+				{
+					add = false;
+					break;
+				}
+			}
+
+			if (add)
+			{
+				details.add(application2Details(app));
+			}
 		}
 
 		Collections.sort(details);

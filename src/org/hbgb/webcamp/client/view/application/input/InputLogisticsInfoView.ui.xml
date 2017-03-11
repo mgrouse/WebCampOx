@@ -6,7 +6,7 @@
 
 	<g:ScrollPanel>
 		
-		<g:CaptionPanel captionText="8 Travel Plans" styleName="formOneColumn">
+		<g:CaptionPanel captionText="8 Travel Plans" addStyleNames="formOneColumn">
 			
 			<g:VerticalPanel>
 			    
@@ -18,37 +18,30 @@
 				    
 				<g:HorizontalPanel>
 				    
-			
-					<g:CaptionPanel captionText="Arrival" styleName="formTwoColumn">
+					<g:CaptionPanel captionText="Arrival" addStyleNames="formTwoColumn">
 					
 						<g:VerticalPanel>
 							
-							<g:HorizontalPanel>
+							<g:HorizontalPanel verticalAlignment="ALIGN_MIDDLE" addStyleNames="formRow">
 					        	<g:CheckBox ui:field="wantsEarlyTeam"/>
-					        	<g:Label text="I want to be on early team."/>
+					        	<g:Label addStyleNames="longLabel" text="I want to be on early team."/>
 							</g:HorizontalPanel>
 							
-							<g:HorizontalPanel>
+							<g:HorizontalPanel verticalAlignment="ALIGN_MIDDLE" addStyleNames="formRow">
 								<g:Label ui:field="transportationLabel" text="I will travel by: "/>
 					        	<w:TransportationListBox ui:field="transportation"/>
 							</g:HorizontalPanel>
 							
-							<g:HTMLPanel>
-								<br/>
-								<br/>
-							</g:HTMLPanel>
 							
-							<g:HorizontalPanel>
+							
+							<g:HorizontalPanel verticalAlignment="ALIGN_MIDDLE" addStyleNames="formRow">
 								<g:Label ui:field="arrivalDayLabel" text="I will arrive on: "/>
 					        	<w:DayOfEventListBox ui:field="arrivalDoE"/>
 							</g:HorizontalPanel>
 							
-							<g:HTMLPanel>
-								<br/>
-								<br/>
-							</g:HTMLPanel>
 							
-							 <g:HorizontalPanel>	
+							
+							 <g:HorizontalPanel verticalAlignment="ALIGN_MIDDLE" addStyleNames="formRow">	
 					        	<g:Label ui:field="arrivalTimeLabel" text="I will arrive: "/>
 					        	<w:PlayaTimeListBox ui:field="arrivalTime"/>
 							</g:HorizontalPanel>
@@ -57,33 +50,27 @@
 						
 					</g:CaptionPanel>
 							
-					<g:CaptionPanel captionText="Departure" styleName="formTwoColumn">	
+					<g:CaptionPanel captionText="Departure" addStyleNames="formTwoColumn">	
 					
 						<g:VerticalPanel>
 					
-							<g:HorizontalPanel>
+							<g:HorizontalPanel verticalAlignment="ALIGN_MIDDLE" addStyleNames="formRow">
 								<g:Label ui:field="departureDayLabel" text="I will leave on"/>
 					        	<w:DayOfEventListBox ui:field="departureDoE"/>
 							</g:HorizontalPanel>
 							
-							<g:HTMLPanel>
-								<br/>
-								<br/>
-							</g:HTMLPanel>
 							
-							 <g:HorizontalPanel>	
+							
+							 <g:HorizontalPanel verticalAlignment="ALIGN_MIDDLE" addStyleNames="formRow">	
 					        	<g:Label ui:field="departureTimeLabel" text="I will leave: "/>
 					        	<w:PlayaTimeListBox ui:field="departureTime"/>
 							</g:HorizontalPanel>
 							
-							<g:HTMLPanel>
-								<br/>
-								<br/>
-							</g:HTMLPanel>
+				
 							
-							<g:HorizontalPanel>
+							<g:HorizontalPanel verticalAlignment="ALIGN_MIDDLE" addStyleNames="formRow">
 					        	<g:CheckBox ui:field="wantsStrikeTeam"/>
-					        	<g:Label text="I plan on being on Strike team."/>
+					        	<g:Label addStyleNames="longLabel" text="I plan on being on Strike team."/>
 							</g:HorizontalPanel>
 							
 						</g:VerticalPanel>
@@ -92,7 +79,7 @@
 				
 				</g:HorizontalPanel>
 				
-				<g:Button ui:field="nextButton" styleName="right">Next</g:Button>
+				<g:Button ui:field="nextButton" addStyleNames="right">Next</g:Button>
 				
 			</g:VerticalPanel>
 		</g:CaptionPanel>

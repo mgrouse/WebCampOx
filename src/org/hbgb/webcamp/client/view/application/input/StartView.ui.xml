@@ -4,7 +4,7 @@
 
 	<g:ScrollPanel>
 	
-		<g:CaptionPanel captionText="1: Getting Started" styleName="formOneColumn">
+		<g:CaptionPanel captionText="1: Getting Started" addStyleNames="formOneColumn">
 		
 			<g:VerticalPanel>
 			
@@ -24,12 +24,12 @@
 				<g:HTML ui:field = "warning">
 				</g:HTML>
 				
-				<g:HorizontalPanel>	
+				<g:HorizontalPanel verticalAlignment="ALIGN_MIDDLE" addStyleNames="formRow">	
 		        	<g:Label text="Email"/>
 		        	<g:TextBox ui:field="emailBox"/>
 				</g:HorizontalPanel>
 				
-				<g:Button ui:field="nextButton" styleName="right">Next</g:Button>
+				<g:Button ui:field="nextButton" addStyleNames="right">Next</g:Button>
 			</g:VerticalPanel>
 			
 		</g:CaptionPanel>

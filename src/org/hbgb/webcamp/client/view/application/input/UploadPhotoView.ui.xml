@@ -4,7 +4,7 @@
 
 	<g:ScrollPanel>
 		
-		<g:CaptionPanel captionText="2: Photo" styleName="formOneColumn">
+		<g:CaptionPanel captionText="2: Photo" addStyleNames="formOneColumn">
 		
 			<g:VerticalPanel>
 			
@@ -16,7 +16,7 @@
 				</g:HTMLPanel>
 				
        			<g:FormPanel ui:field="uploadForm">
-       				<g:HorizontalPanel>
+       				<g:HorizontalPanel verticalAlignment="ALIGN_MIDDLE" addStyleNames="formRow">
            				<g:FileUpload ui:field="uploadField"></g:FileUpload>
            				<g:Button ui:field="uploadButton"></g:Button>
        				</g:HorizontalPanel>
@@ -24,7 +24,7 @@
       				
       			<g:Image ui:field="currentImage" url="http://storage.googleapis.com/hbgbwebcamp.appspot.com/AlexGreyMeditating.jpg" /> 
       			
-      			<g:Button ui:field="nextButton" styleName="right">Next</g:Button>
+      			<g:Button ui:field="nextButton" addStyleNames="right">Next</g:Button>
 			</g:VerticalPanel>
 			
 		</g:CaptionPanel>

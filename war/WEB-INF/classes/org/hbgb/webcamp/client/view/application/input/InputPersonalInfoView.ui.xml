@@ -5,47 +5,51 @@
 
 	<g:ScrollPanel>
 		
-		<g:CaptionPanel captionText="3: Personal Info" styleName="formOneColumn">
+		<g:CaptionPanel captionText="3: Personal Info" addStyleNames="formOneColumn">
 			
 			<g:VerticalPanel>		
 				
+			    <!-- <g:HTMLPanel ui:field="verifyWarning" >
+					<p>
+						<font color="red">Please answer the questions in RED below</font> 
+					</p>
+				</g:HTMLPanel> -->
+			    
 				<g:HorizontalPanel>	
 				
-					<g:CaptionPanel captionText="Demographics" styleName="formTwoColumn">
+					<g:CaptionPanel captionText="Demographics" addStyleNames="formTwoColumn">
 					
 						<g:VerticalPanel>
 						
-							<g:HorizontalPanel>	
+							<g:HorizontalPanel verticalAlignment="ALIGN_MIDDLE" addStyleNames="formRow">	
 					        	<g:Label text="Email"/>
 					        	<g:TextBox ui:field="emailBox"/>
 							</g:HorizontalPanel>
 							
-							<g:HorizontalPanel>
+							<g:HorizontalPanel verticalAlignment="ALIGN_MIDDLE" addStyleNames="formRow">
 								<g:Label text="First Name"/>
 					        	<g:TextBox ui:field="firstNameBox"/>
 					        </g:HorizontalPanel>
 					        
-					        <g:HorizontalPanel>
+					        <g:HorizontalPanel verticalAlignment="ALIGN_MIDDLE" addStyleNames="formRow">
 								<g:Label text="Last Name"/>
 					        	<g:TextBox ui:field="lastNameBox"/>
 							</g:HorizontalPanel>
 					        
-					        <g:HorizontalPanel>
+					        <g:HorizontalPanel verticalAlignment="ALIGN_MIDDLE" addStyleNames="formRow">
 					        	<g:Label text="Playa Name"/>
 					        	<g:TextBox ui:field="playaNameBox"/>
 					        </g:HorizontalPanel>
 					        
-							<g:HorizontalPanel>
+							<g:HorizontalPanel verticalAlignment="ALIGN_MIDDLE" addStyleNames="formRow">
 								<g:Label text="Gender"/>
 					        	<w:GenderListBox ui:field="genderBox"/>
 							</g:HorizontalPanel>
 							
-							<g:HorizontalPanel>
-								<g:Label text="Birth Date"/>
-					        	<w:BirthDateWidget ui:field="birthDate"/>
-							</g:HorizontalPanel>
+							<g:Label text="Birth Date:" addStyleNames="formRow"/>
+					        <w:BirthDateWidget ui:field="birthDate"/>
 							
-							<g:HorizontalPanel>
+							<g:HorizontalPanel verticalAlignment="ALIGN_MIDDLE" addStyleNames="formRow">
 								<g:Label text="Default World Job"/>
 					        	<g:TextBox ui:field="defaultWorldJobBox"/>
 							</g:HorizontalPanel>
@@ -60,7 +64,7 @@
 					</g:CaptionPanel>
 					
 					
-					<g:CaptionPanel captionText="Contact Info"  styleName="formTwoColumn">
+					<g:CaptionPanel captionText="Contact Info"  addStyleNames="formTwoColumn">
 					
 						<g:VerticalPanel>
 						
@@ -73,30 +77,30 @@
 								</p>
 							</g:HTMLPanel>
 											
-							<g:HorizontalPanel>
+							<g:HorizontalPanel verticalAlignment="ALIGN_MIDDLE" addStyleNames="formRow">
 								<g:Label text="Phone"/>
 					        	<g:TextBox ui:field="phoneBox"/>
 							</g:HorizontalPanel>
 							
-							<g:HorizontalPanel>
+							<g:HorizontalPanel verticalAlignment="ALIGN_MIDDLE" addStyleNames="formRow">
 								<g:Label text="Skype Name"/>
 					        	<g:TextBox ui:field="skypeNameBox"/>
 							</g:HorizontalPanel>
 							
-							<g:HorizontalPanel>
-								<g:Label text="Preferred Contact Method"/>
+							<g:HorizontalPanel verticalAlignment="ALIGN_MIDDLE" addStyleNames="formRow">
+								<g:Label addStyleNames="mediumLabel" text="Preferred Contact Method"/>
 					        	<w:ContactMethodListBox ui:field="contactMethodBox"/>
 							</g:HorizontalPanel>
 							
-							<g:HorizontalPanel>
-								<g:Label text="Preferred Contact Time"/>
+							<g:HorizontalPanel verticalAlignment="ALIGN_MIDDLE" addStyleNames="formRow">
+								<g:Label addStyleNames="mediumLabel" text="Preferred Contact Time"/>
 					        	<w:CallTimeListBox ui:field="contactTimeBox"/>
 							</g:HorizontalPanel>
 						</g:VerticalPanel>
 					</g:CaptionPanel>
 				</g:HorizontalPanel>
 				
-				<g:Button ui:field="nextButton" styleName="right">Next</g:Button>
+				<g:Button ui:field="nextButton" addStyleNames="right">Next</g:Button>
 				
 			</g:VerticalPanel>	
 		</g:CaptionPanel>

@@ -2,10 +2,22 @@
 <ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
 	         xmlns:g="urn:import:com.google.gwt.user.client.ui">
 
-	<g:HorizontalPanel>
-		<g:ListBox ui:field="month"/>
-		<g:ListBox ui:field="day"/>
-		<g:ListBox ui:field="year"/>
-	</g:HorizontalPanel>
+	<g:VerticalPanel>
+		<g:HorizontalPanel addStyleNames="formRow">
+			<g:Label text="month "/>
+			<g:ListBox ui:field="month"/>
+		</g:HorizontalPanel>
+		
+		<g:HorizontalPanel addStyleNames="formRow">
+			<g:Label text="day "/>
+			<g:ListBox ui:field="day"/>
+		</g:HorizontalPanel>
+		
+		<g:HorizontalPanel addStyleNames="formRow">
+			<g:Label text="year "/>
+			<g:ListBox ui:field="year"/>
+		</g:HorizontalPanel>
+		
+	</g:VerticalPanel>
 		
 </ui:UiBinder> 

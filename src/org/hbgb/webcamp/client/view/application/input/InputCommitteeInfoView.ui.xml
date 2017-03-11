@@ -5,10 +5,16 @@
 
 	<g:ScrollPanel>
 			
-		<g:CaptionPanel captionText="5: Committee" styleName="formOneColumn">
+		<g:CaptionPanel captionText="5: Committee" addStyleNames="formOneColumn">
 		
 			<g:VerticalPanel>
 		
+			    <!-- <g:HTMLPanel ui:field="verifyWarning" >
+					<p>
+						<font color="red">Please answer the questions in RED below</font> 
+					</p>
+				</g:HTMLPanel> -->
+			    
 				<g:HTMLPanel>
 					<p>
 						All HeeBees are placed on a committee. 
@@ -17,20 +23,20 @@
 					</p>
 				</g:HTMLPanel>
 		
-				<g:HorizontalPanel>	
+				<g:HorizontalPanel verticalAlignment="ALIGN_MIDDLE" addStyleNames="formRow">	
 		        	<g:Label text="First Choice"/>
 		        	<w:CommitteeListBox ui:field="committee1"/>
 				</g:HorizontalPanel>
 				
-				<g:HTML text="Why do you want to be on this committee?" styleName="longLabel"/>
+				<g:HTML text="Why do you want to be on this committee?" addStyleNames="longLabel"/>
 		        <g:TextArea ui:field="reason1"/>
 				
-				<g:HorizontalPanel>	
+				<g:HorizontalPanel verticalAlignment="ALIGN_MIDDLE" addStyleNames="formRow">	
 		        	<g:Label text="Second Choice"/>
 		        	<w:CommitteeListBox ui:field="committee2"/>
 				</g:HorizontalPanel>		        
 		        
-				<g:HTML text="Why do you want to be on this committee?"  styleName="longLabel"/>
+				<g:HTML text="Why do you want to be on this committee?"  addStyleNames="longLabel"/>
 		        <g:TextArea ui:field="reason2"/>				
 				
 				<g:VerticalPanel ui:field="healerSheetPanel">
@@ -49,37 +55,37 @@
 					
 					</g:HTMLPanel>
 				
-					<g:HorizontalPanel>	
-			        	<g:Label text="Avg. Session length in Minutes (45)"  styleName="longLabel"/>
+					<g:HorizontalPanel verticalAlignment="ALIGN_MIDDLE" addStyleNames="formRow">	
+			        	<g:Label text="Avg. Session length in Minutes (45)"  addStyleNames="longLabel"/>
 			        	<g:TextBox ui:field="sessionLength"/>
 					</g:HorizontalPanel>
 					
-					<g:HorizontalPanel>
-						<g:Label text="Modality 1 (Massage)"  styleName="longLabel"/>
+					<g:HorizontalPanel verticalAlignment="ALIGN_MIDDLE" addStyleNames="formRow">
+						<g:Label text="Modality 1 (Massage)"  addStyleNames="longLabel"/>
 			        	<g:TextBox ui:field="modality1"/>
 					</g:HorizontalPanel>
 					
-					<g:HorizontalPanel>
-						<g:Label text="Modality 2 (Reiki)" styleName="longLabel"/>
+					<g:HorizontalPanel verticalAlignment="ALIGN_MIDDLE" addStyleNames="formRow">
+						<g:Label text="Modality 2 (Reiki)" addStyleNames="longLabel"/>
 			        	<g:TextBox ui:field="modality2"/>
 					</g:HorizontalPanel>
 					
-					<g:HorizontalPanel>
-						<g:Label text="Modality 3 (Talk Therapy)"  styleName="longLabel"/>
+					<g:HorizontalPanel verticalAlignment="ALIGN_MIDDLE" addStyleNames="formRow">
+						<g:Label text="Modality 3 (Talk Therapy)"  addStyleNames="longLabel"/>
 			        	<g:TextBox ui:field="modality3"/>
 					</g:HorizontalPanel>
 					
-					<g:HorizontalPanel>
-						<g:Label text="Modality 4 (Chiropractic)"  styleName="longLabel"/>
+					<g:HorizontalPanel verticalAlignment="ALIGN_MIDDLE" addStyleNames="formRow">
+						<g:Label text="Modality 4 (Chiropractic)"  addStyleNames="longLabel"/>
 			        	<g:TextBox ui:field="modality4"/>
 					</g:HorizontalPanel>
 					
-					<g:HTML text="Please write a short healer bio"  styleName="longLabel"/>
+					<g:HTML text="Please write a short healer bio"  addStyleNames="longLabel"/>
 		        	<g:TextArea ui:field="bioBox"/>
 		        		
 		        </g:VerticalPanel> <!-- healer panel -->
 		        
-		        <g:Button ui:field="nextButton" styleName="right">Next</g:Button>
+		        <g:Button ui:field="nextButton" addStyleNames="right">Next</g:Button>
 			</g:VerticalPanel>
 			
 		</g:CaptionPanel>
