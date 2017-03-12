@@ -33,9 +33,9 @@ public class EmailServiceImpl extends RemoteServiceServlet implements EmailServi
 		Application app = appServ.getApplication(key);
 
 		// first to the Lead "michael.grouse@gmail.com"
-		// sendMail(getRegistrationLeadAddressAsText(), "HeeBee application
-		// received!", getNotificationEmailBody());
-		sendMail("michael.grouse@gmail.com", "HeeBee application received!", getNotificationEmailBody());
+		sendMail(getRegistrationLeadAddressAsText(), "HeeBee application received!", getNotificationEmailBody());
+		// sendMail("michael.grouse@gmail.com", "HeeBee application received!",
+		// getNotificationEmailBody());
 
 		// then to the camper
 		return sendMail(app.getEmail(), "Your HeeBee application was received!", getApplicationEmailBody());
@@ -70,8 +70,8 @@ public class EmailServiceImpl extends RemoteServiceServlet implements EmailServi
 	{
 		StringBuilder sb = new StringBuilder();
 		sb.append("A new application has been created.\n");
-		sb.append("<br><br>");
-		sb.append("Look at it in <a href=\"http://www.hbgbwebcamp.appspot.com/#admin\">Admin Land</a>.");
+		sb.append("\n\n");
+		sb.append("http://www.hbgbwebcamp.appspot.com/#admin");
 		return sb.toString();
 	}
 

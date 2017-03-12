@@ -8,7 +8,7 @@
 		
 			<g:VerticalPanel>
 			
-				<g:HTMLPanel>
+				<g:HTML>
 					<p>There will be nine steps to this process. at each step we will ask 
 					  	you some questions about you and what you would like to do with the HeeBees.
 					  	The entire process should take about 15 minutes.
@@ -19,7 +19,7 @@
 						Please provide one below. Note that we will send you emails, at this 
 						address, about your application process.
 					</p>
-				</g:HTMLPanel>
+				</g:HTML>
 				
 				<g:HTML ui:field = "warning">
 				</g:HTML>

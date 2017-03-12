@@ -70,12 +70,12 @@
 						
 							<w:AddressWidget ui:field="homeAddress"/>
 							
-							<g:HTMLPanel>	
+							<g:HTML>	
 								<p>
 									We will be contacting ALL Hee Bee applicants that we have not already met.
 									Please Let us know how best to contact you and when. All times are Pacific Standard Time.
 								</p>
-							</g:HTMLPanel>
+							</g:HTML>
 											
 							<g:HorizontalPanel verticalAlignment="ALIGN_MIDDLE" addStyleNames="formRow">
 								<g:Label text="Phone"/>

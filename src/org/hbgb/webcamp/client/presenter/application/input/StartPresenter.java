@@ -53,12 +53,13 @@ public class StartPresenter implements SequentialPresenterI
 	@Override
 	public void onNextButtonClicked()
 	{
+		view.setNextButtonActive(false);
 		setModel();
 		Boolean good = validateModel();
 
 		if (good)
 		{
-			view.setNextButtonActive(false);
+
 			rpcService.findOrAddApplication(email, new AsyncCallback<Application>()
 			{
 				@Override
@@ -99,7 +100,7 @@ public class StartPresenter implements SequentialPresenterI
 		} // end if good
 		else
 		{
-			// clear and add?
+			view.setNextButtonActive(true);
 		}
 	}
 
@@ -114,7 +115,7 @@ public class StartPresenter implements SequentialPresenterI
 
 		if ((null == email) || email.isEmpty())
 		{
-			view.setWarningText("<p>A valid email is required to continue.</p>");
+			view.setWarningText("<p style=\"color:red\">A valid email is required to continue.</p>");
 			retVal = false;
 		}
 

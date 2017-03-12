@@ -23,17 +23,23 @@ import com.google.gwt.user.client.ui.VerticalPanel;
 
 public abstract class AbstractPartView extends AbstractView implements IPartView
 {
-	Boolean isExpanded = false;
+
+	Boolean isExpanded = true;
+
+	// form is coded to be visible in ui.xml
+
 	@UiField
 	public VerticalPanel form;
+
 	@UiField
 	public HorizontalPanel buttonPanel;
+
 	@UiField
 	public Button expandButton;
-	@UiField
-	public Button editButton;
+
 	@UiField
 	public Button saveButton;
+
 	protected IPartPresenter presenter;
 
 	@Override
@@ -68,27 +74,20 @@ public abstract class AbstractPartView extends AbstractView implements IPartView
 	@Override
 	public void onExpandButtonClicked(ClickEvent event)
 	{
-		if (this.presenter != null)
+		if (isExpanded.booleanValue())
 		{
-			this.presenter.onExpandButtonClicked();
+			contract();
 		}
-		if (this.isExpanded.booleanValue())
+		else
 		{
-			this.contract();
-			return;
+			expand();
 		}
-		this.expand();
-	}
 
-	@UiHandler(value = { "editButton" })
-	@Override
-	public void onEditButtonClicked(ClickEvent event)
-	{
-		if (this.presenter == null)
-			return;
-		this.setEditButtonEnabled(false);
-		this.presenter.onEditButtonClicked();
-		this.setSaveButtonEnabled(true);
+		// TODO Not sure this is needed. Design, what would need to happen?
+		if (presenter != null)
+		{
+			presenter.onExpandButtonClicked();
+		}
 	}
 
 	@UiHandler(value = { "saveButton" })
@@ -105,12 +104,6 @@ public abstract class AbstractPartView extends AbstractView implements IPartView
 	public void setExpandButtonEnabled(Boolean enabled)
 	{
 		this.expandButton.setEnabled(enabled.booleanValue());
-	}
-
-	@Override
-	public void setEditButtonEnabled(Boolean enabled)
-	{
-		this.editButton.setEnabled(enabled.booleanValue());
 	}
 
 	@Override

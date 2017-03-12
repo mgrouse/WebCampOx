@@ -15,13 +15,13 @@
 					</p>
 				</g:HTMLPanel> -->
 			    
-				<g:HTMLPanel>
+				<g:HTML>
 					<p>
 						All HeeBees are placed on a committee. 
 					   	Please let us know which two committees you would like to be a working member of and your reason 
 					   	for wanting to be a part of those committees. We will try to give you your first choice if possible.
 					</p>
-				</g:HTMLPanel>
+				</g:HTML>
 		
 				<g:HorizontalPanel verticalAlignment="ALIGN_MIDDLE" addStyleNames="formRow">	
 		        	<g:Label text="First Choice"/>
@@ -41,19 +41,18 @@
 				
 				<g:VerticalPanel ui:field="healerSheetPanel">
 				
-				    <g:HTMLPanel>
-					<p>
-						 Since one of your choices is the Healer Committee,
-						 please enter the following data so we can print up your sign-up sheets.
-						 Modalities should just be the names, not descriptive sentences. 
-						 The Bio can be a paragraph including information about you, your training, 
-						 and more information about your modalities.
-					</p>
-					<p>
-						 Examples are in parentheses.
-					</p>
-					
-					</g:HTMLPanel>
+				    <g:HTML>
+						<p>
+							 Since one of your choices is the Healer Committee,
+							 please enter the following data so we can print up your sign-up sheets.
+							 Modalities should just be the names, not descriptive sentences. 
+							 The Bio can be a paragraph including information about you, your training, 
+							 and more information about your modalities.
+						</p>
+						<p>
+							 Examples are in parentheses.
+						</p>
+					</g:HTML>
 				
 					<g:HorizontalPanel verticalAlignment="ALIGN_MIDDLE" addStyleNames="formRow">	
 			        	<g:Label text="Avg. Session length in Minutes (45)"  addStyleNames="longLabel"/>

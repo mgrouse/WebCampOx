@@ -14,7 +14,5 @@ public interface IPartPresenter
 
 	public void onExpandButtonClicked();
 
-	public void onEditButtonClicked();
-
 	public void onSaveButtonClicked();
 }

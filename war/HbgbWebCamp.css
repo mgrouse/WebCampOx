@@ -83,7 +83,6 @@ gwt-CaptionPanel
 }
 
 
-
 .gwt-HTML
 {
 	/* width:  100%; */
@@ -99,19 +98,9 @@ gwt-CaptionPanel
     padding-right: 0px;
 }
 
-.gwt-HTMLPanel
+.p
 {
-	/* width:  100%; */
-	
-	margin-top: 5px;
-  	margin-bottom: 5px;
-  	margin-left: 15px;
-  	margin-right: 15px;
-  	
-    padding-top: 0px;
-    padding-bottom: 0px;
-    padding-left: 0px;
-    padding-right: 0px;
+	font: normal 14px tahoma, arial, helvetica, sans-serif;
 }
 
 .gwt-Label 
@@ -153,7 +142,7 @@ gwt-CaptionPanel
 
 .gwt-Button 
 {
-	height: 4.0em;
+	height: 3.0em;
 	
 	font-size: 12px;
 	font-family: arial, sans-serif;
@@ -207,7 +196,7 @@ gwt-CaptionPanel
 .gwt-TextArea
 {
 	height: 150px;
-	width:  70%;
+	width:  310px;
 	margin-top: 5px;
   	margin-bottom: 5px;
 	margin-left: 15px;

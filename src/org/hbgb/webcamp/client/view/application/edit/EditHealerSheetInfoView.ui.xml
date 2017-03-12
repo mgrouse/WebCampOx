@@ -3,47 +3,47 @@
 	         xmlns:g="urn:import:com.google.gwt.user.client.ui">
 
 	<g:CaptionPanel captionText="Healer Sheet">
-	<g:VerticalPanel>
-		<g:VerticalPanel ui:field="form">
+		<g:VerticalPanel>
+			<g:VerticalPanel ui:field="form">
+			
+				<g:HorizontalPanel>	
+		        	<g:Label text="Session Length"/>
+		        	<g:TextBox ui:field="sessionLength"/>
+				</g:HorizontalPanel>
+				
+				<g:HorizontalPanel>	
+		        	<g:Label text="Modality 1"/>
+		        	<g:TextBox ui:field="modality1"/>
+				</g:HorizontalPanel>
+				
+				<g:HorizontalPanel>	
+		        	<g:Label text="Modality 2"/>
+		        	<g:TextBox ui:field="modality2"/>
+				</g:HorizontalPanel>
+				
+				<g:HorizontalPanel>	
+		        	<g:Label text="Modality 3"/>
+		        	<g:TextBox ui:field="modality3"/>
+				</g:HorizontalPanel>
+				
+				<g:HorizontalPanel>	
+		        	<g:Label text="Modality 4"/>
+		        	<g:TextBox ui:field="modality4"/>
+				</g:HorizontalPanel>
+				
+				<g:VerticalPanel>
+					<g:HTML text="Healer's Bio"/>
+		        	<g:TextArea ui:field="bioBox"/>
+				</g:VerticalPanel>		
+				
+			</g:VerticalPanel>
 		
-			<g:HorizontalPanel>	
-	        	<g:Label text="Session Length"/>
-	        	<g:TextBox ui:field="sessionLength"/>
+			<g:HorizontalPanel ui:field="buttonPanel">
+				<g:Button ui:field="expandButton">+</g:Button>
+				<g:Button ui:field="saveButton">Save</g:Button>
 			</g:HorizontalPanel>
-			
-			<g:HorizontalPanel>	
-	        	<g:Label text="Modality 1"/>
-	        	<g:TextBox ui:field="modality1"/>
-			</g:HorizontalPanel>
-			
-			<g:HorizontalPanel>	
-	        	<g:Label text="Modality 2"/>
-	        	<g:TextBox ui:field="modality2"/>
-			</g:HorizontalPanel>
-			
-			<g:HorizontalPanel>	
-	        	<g:Label text="Modality 3"/>
-	        	<g:TextBox ui:field="modality3"/>
-			</g:HorizontalPanel>
-			
-			<g:HorizontalPanel>	
-	        	<g:Label text="Modality 4"/>
-	        	<g:TextBox ui:field="modality4"/>
-			</g:HorizontalPanel>
-			
-			<g:VerticalPanel>
-				<g:HTML text="Healer's Bio"/>
-	        	<g:TextArea ui:field="bioBox"/>
-			</g:VerticalPanel>		
-			
+				
 		</g:VerticalPanel>
-		
-		<g:HorizontalPanel ui:field="buttonPanel">
-			<g:Button ui:field="expandButton">+</g:Button>
-			<g:Button ui:field="editButton">Edit</g:Button>
-			<g:Button ui:field="saveButton">Save</g:Button>
-		</g:HorizontalPanel>	
-	</g:VerticalPanel>
 	</g:CaptionPanel>
 		
 </ui:UiBinder> 

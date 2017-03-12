@@ -16,24 +16,20 @@
 						</p>
 					</g:HTMLPanel>
 				    
-					<g:HTMLPanel>
+					<g:HTML>
 						<p>
 							Please check the box below if you ALREADY own a ticket. 
 							If you do not yet own a ticket you may continue your application. We will contact 
 							you later and may put you on a wait list if you do not own a ticket at that time. 
 						</p>
-						<br/>
-						<br/>
-					</g:HTMLPanel>
+					</g:HTML>
 					
 					<g:HorizontalPanel verticalAlignment="ALIGN_MIDDLE" addStyleNames="formRow">
 						<g:CheckBox ui:field="hasTicket"/>
 						<g:Label addStyleNames="longLabel" text = "I have a ticket to Burning Man."/>
 					</g:HorizontalPanel>
 				
-					<g:HTMLPanel>
-						<br/>
-						<br/>
+					<g:HTML>
 						<p>
 							A regular ticket is one that is in your hand, or will be mailed to you by the Burning Man Organization.
 						</p>
@@ -45,9 +41,7 @@
 						<p>
 							Financial assistance may be available to those with Low Income tickets.
 						</p>
-						<br/>
-						<br/>
-					</g:HTMLPanel>
+					</g:HTML>
 				
 					<g:HorizontalPanel verticalAlignment="ALIGN_MIDDLE" addStyleNames="formRow">	
 			        	<g:Label ui:field="ticketTypeLabel" text="My Ticket is: "/>

@@ -32,14 +32,10 @@
 					        	<w:TransportationListBox ui:field="transportation"/>
 							</g:HorizontalPanel>
 							
-							
-							
 							<g:HorizontalPanel verticalAlignment="ALIGN_MIDDLE" addStyleNames="formRow">
 								<g:Label ui:field="arrivalDayLabel" text="I will arrive on: "/>
 					        	<w:DayOfEventListBox ui:field="arrivalDoE"/>
 							</g:HorizontalPanel>
-							
-							
 							
 							 <g:HorizontalPanel verticalAlignment="ALIGN_MIDDLE" addStyleNames="formRow">	
 					        	<g:Label ui:field="arrivalTimeLabel" text="I will arrive: "/>
@@ -59,15 +55,11 @@
 					        	<w:DayOfEventListBox ui:field="departureDoE"/>
 							</g:HorizontalPanel>
 							
-							
-							
 							 <g:HorizontalPanel verticalAlignment="ALIGN_MIDDLE" addStyleNames="formRow">	
 					        	<g:Label ui:field="departureTimeLabel" text="I will leave: "/>
 					        	<w:PlayaTimeListBox ui:field="departureTime"/>
 							</g:HorizontalPanel>
-							
-				
-							
+														
 							<g:HorizontalPanel verticalAlignment="ALIGN_MIDDLE" addStyleNames="formRow">
 					        	<g:CheckBox ui:field="wantsStrikeTeam"/>
 					        	<g:Label addStyleNames="longLabel" text="I plan on being on Strike team."/>

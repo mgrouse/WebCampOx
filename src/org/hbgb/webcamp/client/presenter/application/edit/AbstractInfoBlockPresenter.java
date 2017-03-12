@@ -26,6 +26,7 @@ public abstract class AbstractInfoBlockPresenter implements IPartPresenter, IKey
 
 	public AbstractInfoBlockPresenter(IKeyedModel keyedModel, IPartView view)
 	{
+		view.setSaveButtonEnabled(false);
 		this.setView(view);
 		this.setKeyedModel(keyedModel);
 	}
@@ -64,14 +65,14 @@ public abstract class AbstractInfoBlockPresenter implements IPartPresenter, IKey
 	@Override
 	public void onDataFetched()
 	{
+		view.setSaveButtonEnabled(true);
 		this.setViewData();
 	}
 
 	@Override
 	public void onDataPut()
 	{
-		this.view.setEditButtonEnabled(true);
-		this.view.setSaveButtonEnabled(false);
+		view.setSaveButtonEnabled(true);
 	}
 
 	@Override
@@ -79,13 +80,10 @@ public abstract class AbstractInfoBlockPresenter implements IPartPresenter, IKey
 	{}
 
 	@Override
-	public void onEditButtonClicked()
-	{}
-
-	@Override
 	public void onSaveButtonClicked()
 	{
-		this.setModelData();
-		this.keyedModel.putData();
+		view.setSaveButtonEnabled(false);
+		setModelData();
+		keyedModel.putData();
 	}
 }

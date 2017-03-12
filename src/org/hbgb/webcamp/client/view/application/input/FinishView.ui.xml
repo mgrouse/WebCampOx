@@ -6,9 +6,9 @@
 	<g:ScrollPanel>
 		<g:CaptionPanel captionText="9: Finished" addStyleNames="formOneColumn">
 			<g:VerticalPanel>
-				<g:HTMLPanel >
+				<g:HTML>
 					<h1>Thanks!!!</h1>	
-				</g:HTMLPanel>
+				</g:HTML>
 			
 				<g:HTMLPanel ui:field="emailSuccess">
 					<p>
@@ -26,12 +26,12 @@
 					</p>
 				</g:HTMLPanel>
 				
-				<g:HTMLPanel >	
+				<g:HTML>	
 					<p>
 						Please return to: <a href="http://www.heebeegeebeehealers.org">www.HeeBeeGeeBeeHealers.org</a> 
 						and read up on camp life.
 					</p>
-				</g:HTMLPanel>
+				</g:HTML>
 			</g:VerticalPanel>
 		</g:CaptionPanel>				
 		

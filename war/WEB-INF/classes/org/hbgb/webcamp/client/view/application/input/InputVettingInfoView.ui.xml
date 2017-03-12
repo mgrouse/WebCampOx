@@ -4,14 +4,14 @@
 	         xmlns:w="urn:org.hbgb.webcamp.widget">
 
 	<g:ScrollPanel>
-	
-		
-		
-			<g:VerticalPanel>
 			
-				<g:CaptionPanel captionText="Vetting">
+		<g:CaptionPanel captionText="Vetting">
+		    
+		    <g:Label text="Vetting Info"/>
+	        <g:TextArea ui:field="reason1"/>
+		    
 				<g:HorizontalPanel>
-					<g:Label text="Are you a sparkle pony?"/>
+					<g:Label text="Example"/>
 		        	<g:CheckBox ui:field="isSparklePony"/>
 				</g:HorizontalPanel>
 				

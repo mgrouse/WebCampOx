@@ -19,7 +19,6 @@
 			<g:HorizontalPanel addStyleNames="buttonPanel" ui:field="buttonPanel">
 			
 				<g:Button ui:field="expandButton">+</g:Button>
-				<g:Button ui:field="editButton">Edit</g:Button>
 				<g:Button ui:field="saveButton">Save</g:Button>
 				
 			</g:HorizontalPanel>	

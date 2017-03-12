@@ -21,16 +21,22 @@ import com.google.gwt.user.client.ui.Widget;
 public class EditHealerSheetInfoBlockViewImpl extends AbstractPartView implements IEditHealerSheetInfoView
 {
 	private static UiBinder<Widget, EditHealerSheetInfoBlockViewImpl> binder = GWT.create(EditHealerSheetInfoBlockViewImplBinder.class);
+
 	@UiField
 	TextBox sessionLength;
+
 	@UiField
 	TextBox modality1;
+
 	@UiField
 	TextBox modality2;
+
 	@UiField
 	TextBox modality3;
+
 	@UiField
 	TextBox modality4;
+
 	@UiField
 	TextArea bioBox;
 
@@ -115,6 +121,7 @@ public class EditHealerSheetInfoBlockViewImpl extends AbstractPartView implement
 	@Override
 	public void clear()
 	{
+		this.setSessionLength("");
 		this.setModality1("");
 		this.setModality2("");
 		this.setModality3("");

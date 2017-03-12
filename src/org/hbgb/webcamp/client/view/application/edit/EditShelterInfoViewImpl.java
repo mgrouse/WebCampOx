@@ -20,15 +20,24 @@ import com.google.gwt.user.client.ui.Widget;
 
 public class EditShelterInfoViewImpl extends AbstractPartView implements IEditShelterInfoView
 {
+	@UiTemplate(value = "EditShelterInfoView.ui.xml")
+	static interface EditShelterInfoViewImplBinder extends UiBinder<Widget, EditShelterInfoViewImpl>
+	{}
+
 	private static UiBinder<Widget, EditShelterInfoViewImpl> binder = GWT.create(EditShelterInfoViewImplBinder.class);
+
 	@UiField
 	CheckBox hasRv;
+
 	@UiField
 	TextArea rvInfo;
+
 	@UiField
 	CheckBox isInDormTent;
+
 	@UiField
 	CheckBox hasStructure;
+
 	@UiField
 	TextArea structureInfo;
 
@@ -97,9 +106,5 @@ public class EditShelterInfoViewImpl extends AbstractPartView implements IEditSh
 	{
 		return this.structureInfo.getText();
 	}
-
-	@UiTemplate(value = "EditShelterInfoView.ui.xml")
-	static interface EditShelterInfoViewImplBinder extends UiBinder<Widget, EditShelterInfoViewImpl>
-	{}
 
 }

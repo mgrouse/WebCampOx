@@ -24,10 +24,6 @@ public interface IPartView extends IView
 
 	public void setExpandButtonEnabled(Boolean var1);
 
-	public void onEditButtonClicked(ClickEvent var1);
-
-	public void setEditButtonEnabled(Boolean var1);
-
 	public void onSaveButtonClicked(ClickEvent var1);
 
 	public void setSaveButtonEnabled(Boolean var1);

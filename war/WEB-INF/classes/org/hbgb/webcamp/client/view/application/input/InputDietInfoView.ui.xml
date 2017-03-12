@@ -29,7 +29,7 @@
 		        	<g:Label text="My diet is Gluten Free." addStyleNames="longLabel"/>
 				</g:HorizontalPanel>
 				
-				<g:HTMLPanel>
+				<g:HTML>
 					<h2>Do you have other dietary restriction(s) we need to be aware of?</h2>
 					
 					<p>
@@ -52,7 +52,7 @@
 					<p>	  
 						Bad examples: I have been type 2 Diabetic since I was 5, I don't like onions, Green beans give me gass."
 					</p>
-				</g:HTMLPanel>
+				</g:HTML>
 				
 				<g:Label text="Dietary Restrictions"/>
 		        <g:TextArea ui:field="dietaryRestrictions"/>

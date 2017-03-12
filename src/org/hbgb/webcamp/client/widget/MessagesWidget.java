@@ -23,9 +23,15 @@ import com.google.gwt.user.client.ui.Widget;
 
 public class MessagesWidget extends Composite implements HasText, IMessages
 {
+	@UiTemplate(value = "MessagesWidget.ui.xml")
+	static interface MessagesWidgetBinder extends UiBinder<Widget, MessagesWidget>
+	{}
+
 	private static UiBinder<Widget, MessagesWidget> binder = GWT.create(MessagesWidgetBinder.class);
+
 	@UiField
 	HTML msgSpace;
+
 	ArrayList<String> messages;
 
 	public MessagesWidget()
@@ -89,9 +95,5 @@ public class MessagesWidget extends Composite implements HasText, IMessages
 		}
 		this.msgSpace.setText(sb.toString());
 	}
-
-	@UiTemplate(value = "MessagesWidget.ui.xml")
-	static interface MessagesWidgetBinder extends UiBinder<Widget, MessagesWidget>
-	{}
 
 }
