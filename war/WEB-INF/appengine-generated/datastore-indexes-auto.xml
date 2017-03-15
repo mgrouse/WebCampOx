@@ -1,4 +1,4 @@
-<!-- Indices written at Sat, 11 Mar 2017 16:23:23 PST -->
+<!-- Indices written at Sat, 11 Mar 2017 23:27:01 PST -->
 
 <datastore-indexes>
 
@@ -6,12 +6,6 @@
     <datastore-index kind="Application" ancestor="false" source="auto">
         <property name="email" direction="asc"/>
         <property name="year" direction="desc"/>
-    </datastore-index>
-
-    <!-- Used 1 time in query history -->
-    <datastore-index kind="Application" ancestor="false" source="auto">
-        <property name="year" direction="asc"/>
-        <property name="status" direction="asc"/>
     </datastore-index>
 
 </datastore-indexes>

@@ -40,4 +40,6 @@ public interface InputLogisticsInfoView extends IView
 	public void setDepartureTime(PlayaTime var1);
 
 	public PlayaTime getDepartureTime();
+
+	public void removeETDates();
 }

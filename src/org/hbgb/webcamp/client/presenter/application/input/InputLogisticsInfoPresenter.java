@@ -116,28 +116,51 @@ public class InputLogisticsInfoPresenter implements SequentialPresenterI
 	public void onNextButtonClicked()
 	{
 		setModel();
-		rpcService.updateApplicantsLogisticsInfoBlock(logisticsInfoBlock, new AsyncCallback<Boolean>()
+		if (modelValidates())
 		{
 
-			@Override
-			public void onSuccess(Boolean saved)
+			rpcService.updateApplicantsLogisticsInfoBlock(logisticsInfoBlock, new AsyncCallback<Boolean>()
 			{
-				if (saved.booleanValue())
-				{
-					screen.clear();
-					nextPresenter.setKey(key);
-					nextPresenter.go(screen);
-					return;
-				}
-				Window.alert("DB Error saving Applicant's Shelter Info");
-			}
 
-			@Override
-			public void onFailure(Throwable caught)
-			{
-				Window.alert("RPC Error saving Applicant's Shelter Info");
-			}
-		});
+				@Override
+				public void onSuccess(Boolean saved)
+				{
+					if (saved.booleanValue())
+					{
+						screen.clear();
+						nextPresenter.setKey(key);
+						nextPresenter.go(screen);
+						return;
+					}
+					Window.alert("DB Error saving Applicant's Shelter Info");
+				}
+
+				@Override
+				public void onFailure(Throwable caught)
+				{
+					Window.alert("RPC Error saving Applicant's Shelter Info");
+				}
+			});
+		}
+	}
+
+	/**
+	 * @return
+	 */
+	private Boolean modelValidates()
+	{
+		Boolean retVal = true;
+
+		// negative integer means arrival less than departure, which is good
+		if (logisticsInfoBlock.getArrivalDoE().compareTo(logisticsInfoBlock.getDepartureDoE()) >= 0)
+		{
+			retVal = false;
+			// set specific message in messages Obj
+		}
+
+		// wants strike but leaves before monday
+
+		return retVal;
 	}
 
 }

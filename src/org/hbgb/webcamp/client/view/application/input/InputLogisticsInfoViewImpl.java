@@ -200,15 +200,24 @@ public class InputLogisticsInfoViewImpl extends AbstractView implements InputLog
 	}
 
 	@Override
+	public void removeETDates()
+	{
+		arrivalDoE.removeETDates();
+		departureDoE.removeETDates();
+	}
+
+	@Override
 	protected Boolean isFormComplete()
 	{
 		Boolean retVal = true;
 
+		setAllLabelsNormal();
+
 		if (getArrivalDate() == null)
 		{
 			retVal = false;
-			this.arrivalDayLabel.getElement().getStyle().setColor("red");
-			this.verifyWarning.setVisible(true);
+			arrivalDayLabel.getElement().getStyle().setColor("red");
+			verifyWarning.setVisible(true);
 		}
 
 		if (getArrivalTime() == null)
@@ -221,8 +230,8 @@ public class InputLogisticsInfoViewImpl extends AbstractView implements InputLog
 		if (getDepartureDate() == null)
 		{
 			retVal = false;
-			this.departureDayLabel.getElement().getStyle().setColor("red");
-			this.verifyWarning.setVisible(true);
+			departureDayLabel.getElement().getStyle().setColor("red");
+			verifyWarning.setVisible(true);
 		}
 
 		if (getDepartureTime() == null)
@@ -234,4 +243,11 @@ public class InputLogisticsInfoViewImpl extends AbstractView implements InputLog
 		return retVal;
 	}
 
+	private void setAllLabelsNormal()
+	{
+		arrivalDayLabel.getElement().getStyle().setColor("black");
+		arrivalTimeLabel.getElement().getStyle().setColor("black");
+		departureDayLabel.getElement().getStyle().setColor("black");
+		departureTimeLabel.getElement().getStyle().setColor("black");
+	}
 }

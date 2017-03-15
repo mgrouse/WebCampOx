@@ -36,6 +36,14 @@ public class DayOfEventListBox extends Composite
 		this.initWidget(binder.createAndBindUi(this));
 	}
 
+	public void removeETDates()
+	{
+		for (int i = 0; i < 8; ++i)
+		{
+			list.removeItem(0);
+		}
+	}
+
 	public void setSelectedValue(DayOfEvent value)
 	{
 		this.list.setSelectedValue(value);
