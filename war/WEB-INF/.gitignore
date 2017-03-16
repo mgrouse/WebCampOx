@@ -1,4 +1,4 @@
-/appengine-generated/
-/classes/
-/deploy/
-/lib/
+appengine-generated/
+classes/
+deploy/
+lib/
