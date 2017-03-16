@@ -3,8 +3,6 @@
 
 *.bin
 
-war/WEB-INF/appengine-generated/local_db.bin
-
 *.class
 
-war/hbgbwebcamp/
+
