@@ -1,10 +1,4 @@
-*.class
 /test-classes/
 /gwt-unitCache/
-*.bin
-
-
-
-
-
 *.class
+*.bin
