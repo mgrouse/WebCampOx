@@ -3,9 +3,9 @@
  */
 package org.hbgb.webcamp.client.view;
 
-import org.hbgb.webcamp.client.presenter.SequentialPresenterI;
+import org.hbgb.webcamp.client.presenter.ISequentialPresenter;
 
 public interface ISequentialView
 {
-	public void setPresenter(SequentialPresenterI var1);
+	public void setPresenter(ISequentialPresenter var1);
 }

@@ -62,6 +62,7 @@ public class ApplicationProcessApplet implements IApplet
 	public void run(HasWidgets container)
 	{
 		screen = container;
-		enter.go(screen);
+		enter.setScreen(screen);
+		enter.go();
 	}
 }

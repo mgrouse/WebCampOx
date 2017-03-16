@@ -14,7 +14,7 @@ package org.hbgb.webcamp.client.view.application.input;
 
 import java.util.Date;
 
-import org.hbgb.webcamp.client.presenter.SequentialPresenterI;
+import org.hbgb.webcamp.client.presenter.ISequentialPresenter;
 import org.hbgb.webcamp.client.view.AbstractView;
 import org.hbgb.webcamp.client.widget.AddressWidget;
 import org.hbgb.webcamp.client.widget.BirthDateWidget;
@@ -87,7 +87,7 @@ public class InputPersonalInfoViewImpl extends AbstractView implements InputPers
 	@UiField
 	Button nextButton;
 
-	private SequentialPresenterI presenter;
+	private ISequentialPresenter presenter;
 
 	public InputPersonalInfoViewImpl()
 	{
@@ -96,7 +96,7 @@ public class InputPersonalInfoViewImpl extends AbstractView implements InputPers
 	}
 
 	@Override
-	public void setPresenter(SequentialPresenterI presenter)
+	public void setPresenter(ISequentialPresenter presenter)
 	{
 		this.presenter = presenter;
 	}

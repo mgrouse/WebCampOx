@@ -13,7 +13,7 @@
  */
 package org.hbgb.webcamp.client.view.application.input;
 
-import org.hbgb.webcamp.client.presenter.SequentialPresenterI;
+import org.hbgb.webcamp.client.presenter.ISequentialPresenter;
 import org.hbgb.webcamp.client.view.AbstractView;
 import org.hbgb.webcamp.client.widget.DietListBox;
 import org.hbgb.webcamp.shared.enums.DietType;
@@ -25,7 +25,7 @@ import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.uibinder.client.UiHandler;
 import com.google.gwt.uibinder.client.UiTemplate;
 import com.google.gwt.user.client.ui.CheckBox;
-import com.google.gwt.user.client.ui.HTMLPanel;
+import com.google.gwt.user.client.ui.HTML;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.TextArea;
 import com.google.gwt.user.client.ui.Widget;
@@ -40,7 +40,7 @@ public class InputDietInfoViewImpl extends AbstractView implements InputDietInfo
 	private static UiBinder<Widget, InputDietInfoViewImpl> binder = GWT.create(EditDietInfoViewImplBinder.class);
 
 	@UiField
-	HTMLPanel verifyWarning;
+	HTML verifyWarning;
 
 	@UiField
 	Label dietLabel;
@@ -54,7 +54,7 @@ public class InputDietInfoViewImpl extends AbstractView implements InputDietInfo
 	@UiField
 	TextArea dietaryRestrictions;
 
-	private SequentialPresenterI presenter;
+	private ISequentialPresenter presenter;
 
 	public InputDietInfoViewImpl()
 	{
@@ -64,7 +64,7 @@ public class InputDietInfoViewImpl extends AbstractView implements InputDietInfo
 	}
 
 	@Override
-	public void setPresenter(SequentialPresenterI presenter)
+	public void setPresenter(ISequentialPresenter presenter)
 	{
 		this.presenter = presenter;
 	}

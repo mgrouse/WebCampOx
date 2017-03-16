@@ -9,20 +9,20 @@ package org.hbgb.webcamp.client.presenter.application;
 
 import org.hbgb.webcamp.client.async.AsyncServiceFinder;
 import org.hbgb.webcamp.client.async.HealerSheetServiceAsync;
-import org.hbgb.webcamp.client.presenter.KeyPresenterI;
-import org.hbgb.webcamp.client.presenter.SequentialPresenterI;
+import org.hbgb.webcamp.client.presenter.IKeyPresenter;
+import org.hbgb.webcamp.client.presenter.ISequentialPresenter;
 import org.hbgb.webcamp.shared.HealerSheetInfoBlock;
 
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.HasWidgets;
 
-public class CreateHealerSheetInfoPresenter implements SequentialPresenterI
+public class CreateHealerSheetInfoPresenter implements ISequentialPresenter
 {
 	private final HealerSheetServiceAsync rpcService = AsyncServiceFinder.getHealerSheetService();
 	private String email;
 	private HasWidgets screen;
-	private KeyPresenterI nextPresenter;
+	private IKeyPresenter nextPresenter;
 	private HealerSheetInfoBlock model;
 
 	@Override
@@ -34,33 +34,38 @@ public class CreateHealerSheetInfoPresenter implements SequentialPresenterI
 	}
 
 	@Override
-	public void go(HasWidgets container)
+	public void go()
 	{
-		this.screen = container;
+
 		this.screen.clear();
 		this.rpcService.addHealerSheetInfoBlock(this.model, new AsyncCallback<HealerSheetInfoBlock>()
 		{
 
+			@Override
 			public void onSuccess(HealerSheetInfoBlock block)
 			{
 				if (block != null)
 				{
-					CreateHealerSheetInfoPresenter.this.nextPresenter.setKey(block.getEncodedKey());
-					CreateHealerSheetInfoPresenter.this.nextPresenter.go(CreateHealerSheetInfoPresenter.this.screen);
-					return;
+					nextPresenter.setKey(block.getEncodedKey());
+					nextPresenter.setScreen(screen);
+					nextPresenter.go();
 				}
-				Window.alert((String) "DB Error saving Healer Sheet Info");
+				else
+				{
+					Window.alert("DB Error: HealerSheetInfoBlock returned as NULL");
+				}
 			}
 
+			@Override
 			public void onFailure(Throwable caught)
 			{
-				Window.alert((String) "RPC Error saving Healer Sheet Info");
+				Window.alert("RPC Error: " + caught.getMessage());
 			}
 		});
 	}
 
 	@Override
-	public void setNextPresenter(KeyPresenterI next)
+	public void setNextPresenter(IKeyPresenter next)
 	{
 		this.nextPresenter = next;
 	}
@@ -68,5 +73,11 @@ public class CreateHealerSheetInfoPresenter implements SequentialPresenterI
 	@Override
 	public void onNextButtonClicked()
 	{}
+
+	@Override
+	public void setScreen(HasWidgets container)
+	{
+		screen = container;
+	}
 
 }

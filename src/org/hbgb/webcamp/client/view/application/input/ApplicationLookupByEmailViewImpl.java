@@ -12,7 +12,7 @@
  */
 package org.hbgb.webcamp.client.view.application.input;
 
-import org.hbgb.webcamp.client.presenter.SequentialPresenterI;
+import org.hbgb.webcamp.client.presenter.ISequentialPresenter;
 import org.hbgb.webcamp.client.view.AbstractView;
 
 import com.google.gwt.core.client.GWT;
@@ -43,7 +43,7 @@ public class ApplicationLookupByEmailViewImpl extends AbstractView implements Ap
 	@UiField
 	Button nextButton;
 
-	private SequentialPresenterI presenter;
+	private ISequentialPresenter presenter;
 
 	public ApplicationLookupByEmailViewImpl()
 	{
@@ -52,7 +52,7 @@ public class ApplicationLookupByEmailViewImpl extends AbstractView implements Ap
 	}
 
 	@Override
-	public void setPresenter(SequentialPresenterI presenter)
+	public void setPresenter(ISequentialPresenter presenter)
 	{
 		this.presenter = presenter;
 	}

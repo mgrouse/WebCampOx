@@ -6,21 +6,22 @@
  */
 package org.hbgb.webcamp.client.presenter.application;
 
-import org.hbgb.webcamp.client.presenter.KeyPresenterI;
+import org.hbgb.webcamp.client.presenter.IKeyPresenter;
 import org.hbgb.webcamp.client.view.application.ThankYouView;
 import org.hbgb.webcamp.client.view.application.ThankYouViewImpl;
 
 import com.google.gwt.user.client.ui.HasWidgets;
 
-public class ThankYouPresenter implements KeyPresenterI
+@Deprecated
+public class ThankYouPresenter implements IKeyPresenter
 {
 	private ThankYouView view = new ThankYouViewImpl();
 	private HasWidgets screen;
 
 	@Override
-	public void go(HasWidgets container)
+	public void go()
 	{
-		this.screen = container;
+		// this.screen = container;
 		this.screen.clear();
 		this.screen.add(this.view.asWidget());
 	}
@@ -28,4 +29,18 @@ public class ThankYouPresenter implements KeyPresenterI
 	@Override
 	public void setKey(String key)
 	{}
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * org.hbgb.webcamp.client.presenter.IPresenter#setScreen(com.google.gwt.
+	 * user.client.ui.HasWidgets)
+	 */
+	@Override
+	public void setScreen(HasWidgets var1)
+	{
+		// TODO Auto-generated method stub
+
+	}
 }

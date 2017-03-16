@@ -8,7 +8,7 @@ package org.hbgb.webcamp.client.presenter;
 
 import com.google.gwt.user.client.ui.HasWidgets;
 
-// @Deprecated
+@Deprecated
 public interface PresenterI
 {
 	public void go(HasWidgets var1);

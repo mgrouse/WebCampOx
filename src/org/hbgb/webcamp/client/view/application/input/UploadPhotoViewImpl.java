@@ -19,7 +19,7 @@ package org.hbgb.webcamp.client.view.application.input;
 
 import org.hbgb.webcamp.client.async.AsyncServiceFinder;
 import org.hbgb.webcamp.client.async.BlobStoreUploadURLServiceAsync;
-import org.hbgb.webcamp.client.presenter.SequentialPresenterI;
+import org.hbgb.webcamp.client.presenter.ISequentialPresenter;
 import org.hbgb.webcamp.client.view.AbstractView;
 
 import com.google.gwt.core.client.GWT;
@@ -28,6 +28,7 @@ import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.uibinder.client.UiHandler;
 import com.google.gwt.uibinder.client.UiTemplate;
+import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.FileUpload;
@@ -38,34 +39,45 @@ import com.google.gwt.user.client.ui.Widget;
 public class UploadPhotoViewImpl extends AbstractView implements UploadPhotoView
 {
 	private static final String IMAGE_NOT_AVAIALABLE = "http://storage.googleapis.com/hbgbwebcamp.appspot.com/PhotoNotAvailable.jpg";
+
+	@UiTemplate(value = "UploadPhotoView.ui.xml")
+	static interface PictureUploadViewImplBinder extends UiBinder<Widget, UploadPhotoViewImpl>
+	{}
+
 	private static UiBinder<Widget, UploadPhotoViewImpl> binder = GWT.create(PictureUploadViewImplBinder.class);
+
 	BlobStoreUploadURLServiceAsync imageServ;
+
 	@UiField
 	Button uploadButton;
+
 	@UiField
 	FormPanel uploadForm;
+
 	@UiField
 	FileUpload uploadField;
+
 	@UiField
 	Image currentImage;
-	private SequentialPresenterI presenter;
+
+	private ISequentialPresenter presenter;
 
 	public UploadPhotoViewImpl()
 	{
-		this.initWidget(binder.createAndBindUi(this));
-		this.imageServ = AsyncServiceFinder.getBlobStoreUploadURLService();
-		this.uploadField.setName("image");
-		this.startNewBlobstoreSession();
-		this.uploadForm.addSubmitCompleteHandler(new FormPanel.SubmitCompleteHandler()
+		initWidget(binder.createAndBindUi(this));
+		imageServ = AsyncServiceFinder.getBlobStoreUploadURLService();
+		uploadField.setName("image");
+		startNewBlobstoreSession();
+		uploadForm.addSubmitCompleteHandler(new FormPanel.SubmitCompleteHandler()
 		{
 
 			@Override
 			public void onSubmitComplete(FormPanel.SubmitCompleteEvent event)
 			{
 				String imageUrl = event.getResults();
-				UploadPhotoViewImpl.this.setImageURL(imageUrl);
-				UploadPhotoViewImpl.this.uploadForm.reset();
-				UploadPhotoViewImpl.this.startNewBlobstoreSession();
+				setImageURL(imageUrl);
+				uploadForm.reset();
+				startNewBlobstoreSession();
 			}
 		});
 	}
@@ -78,37 +90,39 @@ public class UploadPhotoViewImpl extends AbstractView implements UploadPhotoView
 			@Override
 			public void onSuccess(String result)
 			{
-				UploadPhotoViewImpl.this.uploadForm.setAction(result);
-				UploadPhotoViewImpl.this.uploadForm.setEncoding("multipart/form-data");
-				UploadPhotoViewImpl.this.uploadForm.setMethod("post");
-				UploadPhotoViewImpl.this.uploadButton.setText("Upload");
-				UploadPhotoViewImpl.this.uploadButton.setEnabled(true);
+				uploadForm.setAction(result);
+				uploadForm.setEncoding("multipart/form-data");
+				uploadForm.setMethod("post");
+				uploadButton.setText("Upload");
+				uploadButton.setEnabled(true);
 			}
 
 			@Override
 			public void onFailure(Throwable caught)
-			{}
+			{
+				Window.alert("RPC Failure: " + caught.getMessage());
+			}
 		});
 	}
 
 	@UiHandler(value = { "uploadButton" })
 	void onSubmit(ClickEvent e)
 	{
-		this.uploadButton.setText("Loading...");
-		this.uploadButton.setEnabled(false);
-		this.uploadForm.submit();
+		uploadButton.setText("Loading...");
+		uploadButton.setEnabled(false);
+		uploadForm.submit();
 	}
 
 	@UiHandler(value = { "nextButton" })
 	void onNext(ClickEvent e)
 	{
-		this.presenter.onNextButtonClicked();
+		presenter.onNextButtonClicked();
 	}
 
 	@Override
-	public void setPresenter(SequentialPresenterI presenter)
+	public void setPresenter(ISequentialPresenter sp)
 	{
-		this.presenter = presenter;
+		presenter = sp;
 	}
 
 	@Override
@@ -116,10 +130,12 @@ public class UploadPhotoViewImpl extends AbstractView implements UploadPhotoView
 	{
 		if (imageURL != null && !imageURL.isEmpty())
 		{
-			this.currentImage.setUrl(imageURL);
-			return;
+			currentImage.setUrl(imageURL);
 		}
-		this.currentImage.setUrl("http://storage.googleapis.com/hbgbwebcamp.appspot.com/PhotoNotAvailable.jpg");
+		else
+		{
+			currentImage.setUrl("http://storage.googleapis.com/hbgbwebcamp.appspot.com/PhotoNotAvailable.jpg");
+		}
 	}
 
 	@Override
@@ -127,18 +143,5 @@ public class UploadPhotoViewImpl extends AbstractView implements UploadPhotoView
 	{
 		return this.currentImage.getUrl();
 	}
-
-	private void deleteOldImage()
-	{
-		if (this.currentImage.getUrl() == null)
-			return;
-		if (this.currentImage.getUrl().isEmpty())
-			return;
-		this.currentImage.getUrl().equals("http://storage.googleapis.com/hbgbwebcamp.appspot.com/PhotoNotAvailable.jpg");
-	}
-
-	@UiTemplate(value = "UploadPhotoView.ui.xml")
-	static interface PictureUploadViewImplBinder extends UiBinder<Widget, UploadPhotoViewImpl>
-	{}
 
 }

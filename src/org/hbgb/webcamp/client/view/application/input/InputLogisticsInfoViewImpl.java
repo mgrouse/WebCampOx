@@ -13,9 +13,10 @@
  */
 package org.hbgb.webcamp.client.view.application.input;
 
-import org.hbgb.webcamp.client.presenter.SequentialPresenterI;
+import org.hbgb.webcamp.client.presenter.ISequentialPresenter;
 import org.hbgb.webcamp.client.view.AbstractView;
 import org.hbgb.webcamp.client.widget.DayOfEventListBox;
+import org.hbgb.webcamp.client.widget.MessagesWidget;
 import org.hbgb.webcamp.client.widget.PlayaTimeListBox;
 import org.hbgb.webcamp.client.widget.TransportationListBox;
 import org.hbgb.webcamp.shared.enums.DayOfEvent;
@@ -30,7 +31,6 @@ import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.uibinder.client.UiHandler;
 import com.google.gwt.uibinder.client.UiTemplate;
 import com.google.gwt.user.client.ui.CheckBox;
-import com.google.gwt.user.client.ui.HTMLPanel;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.Widget;
 
@@ -43,7 +43,7 @@ public class InputLogisticsInfoViewImpl extends AbstractView implements InputLog
 	private static UiBinder<Widget, InputLogisticsInfoViewImpl> binder = GWT.create(InputLogisticsInfoViewImplBinder.class);
 
 	@UiField
-	HTMLPanel verifyWarning;
+	MessagesWidget errMessages;
 
 	@UiField
 	CheckBox wantsEarlyTeam;
@@ -81,18 +81,21 @@ public class InputLogisticsInfoViewImpl extends AbstractView implements InputLog
 	@UiField
 	PlayaTimeListBox departureTime;
 
-	private SequentialPresenterI presenter;
+	private ISequentialPresenter presenter;
 
 	public InputLogisticsInfoViewImpl()
 	{
-		this.initWidget(binder.createAndBindUi(this));
-		this.verifyWarning.setVisible(false);
+		initWidget(binder.createAndBindUi(this));
+
+		errMessages.setVisible(false);
+		errMessages.clear();
+		setAllLabelsNormal();
 	}
 
 	@Override
-	public void setPresenter(SequentialPresenterI presenter)
+	public void setPresenter(ISequentialPresenter sp)
 	{
-		this.presenter = presenter;
+		presenter = sp;
 	}
 
 	@Override
@@ -104,9 +107,9 @@ public class InputLogisticsInfoViewImpl extends AbstractView implements InputLog
 	@UiHandler(value = { "nextButton" })
 	void onNextButtonClicked(ClickEvent event)
 	{
-		if (this.isFormComplete() == true)
+		if (isFormComplete() == true)
 		{
-			if (this.presenter != null)
+			if (presenter != null)
 			{
 				presenter.onNextButtonClicked();
 			}
@@ -116,43 +119,43 @@ public class InputLogisticsInfoViewImpl extends AbstractView implements InputLog
 	@Override
 	public void setWantsEarlyTeam(Boolean bool)
 	{
-		this.wantsEarlyTeam.setValue(bool, false);
+		wantsEarlyTeam.setValue(bool, false);
 	}
 
 	@Override
 	public Boolean getWantsEarlyTeam()
 	{
-		return this.wantsEarlyTeam.getValue();
+		return wantsEarlyTeam.getValue();
 	}
 
 	@Override
 	public void setWantsStrikeTeam(Boolean bool)
 	{
-		this.wantsStrikeTeam.setValue(bool, false);
+		wantsStrikeTeam.setValue(bool, false);
 	}
 
 	@Override
 	public Boolean getWantsStrikeTeam()
 	{
-		return this.wantsStrikeTeam.getValue();
+		return wantsStrikeTeam.getValue();
 	}
 
 	@Override
 	public void setTransportation(Transportation t)
 	{
-		this.transportation.setSelectedValue(t);
+		transportation.setSelectedValue(t);
 	}
 
 	@Override
 	public Transportation getTransportation()
 	{
-		return this.transportation.getSelectedValue();
+		return transportation.getSelectedValue();
 	}
 
 	@Override
 	public void setArrivalDate(DayOfEvent doe)
 	{
-		this.arrivalDoE.setSelectedValue(doe);
+		arrivalDoE.setSelectedValue(doe);
 	}
 
 	@Override
@@ -165,38 +168,38 @@ public class InputLogisticsInfoViewImpl extends AbstractView implements InputLog
 	@Override
 	public void setArrivalTime(PlayaTime pt)
 	{
-		this.arrivalTime.setSelectedValue(pt);
+		arrivalTime.setSelectedValue(pt);
 	}
 
 	@Override
 	public PlayaTime getArrivalTime()
 	{
 
-		return this.arrivalTime.getSelectedValue();
+		return arrivalTime.getSelectedValue();
 	}
 
 	@Override
 	public void setDepartureDate(DayOfEvent doe)
 	{
-		this.departureDoE.setSelectedValue(doe);
+		departureDoE.setSelectedValue(doe);
 	}
 
 	@Override
 	public DayOfEvent getDepartureDate()
 	{
-		return this.departureDoE.getSelectedValue();
+		return departureDoE.getSelectedValue();
 	}
 
 	@Override
 	public void setDepartureTime(PlayaTime pt)
 	{
-		this.departureTime.setSelectedValue(pt);
+		departureTime.setSelectedValue(pt);
 	}
 
 	@Override
 	public PlayaTime getDepartureTime()
 	{
-		return this.departureTime.getSelectedValue();
+		return departureTime.getSelectedValue();
 	}
 
 	@Override
@@ -217,28 +220,28 @@ public class InputLogisticsInfoViewImpl extends AbstractView implements InputLog
 		{
 			retVal = false;
 			arrivalDayLabel.getElement().getStyle().setColor("red");
-			verifyWarning.setVisible(true);
+			showMessage("Please answer the questions in red.");
 		}
 
 		if (getArrivalTime() == null)
 		{
 			retVal = false;
-			this.arrivalTimeLabel.getElement().getStyle().setColor("red");
-			this.verifyWarning.setVisible(true);
+			arrivalTimeLabel.getElement().getStyle().setColor("red");
+			showMessage("Please answer the questions in red.");
 		}
 
 		if (getDepartureDate() == null)
 		{
 			retVal = false;
 			departureDayLabel.getElement().getStyle().setColor("red");
-			verifyWarning.setVisible(true);
+			showMessage("Please answer the questions in red.");
 		}
 
 		if (getDepartureTime() == null)
 		{
 			retVal = false;
 			departureTimeLabel.getElement().getStyle().setColor("red");
-			verifyWarning.setVisible(true);
+			showMessage("Please answer the questions in red.");
 		}
 		return retVal;
 	}
@@ -249,5 +252,19 @@ public class InputLogisticsInfoViewImpl extends AbstractView implements InputLog
 		arrivalTimeLabel.getElement().getStyle().setColor("black");
 		departureDayLabel.getElement().getStyle().setColor("black");
 		departureTimeLabel.getElement().getStyle().setColor("black");
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * org.hbgb.webcamp.client.view.application.input.InputLogisticsInfoView#
+	 * showMessage(java.lang.String)
+	 */
+	@Override
+	public void showMessage(String message)
+	{
+		errMessages.addMessageIfUnique(message);
+		errMessages.setVisible(true);
 	}
 }

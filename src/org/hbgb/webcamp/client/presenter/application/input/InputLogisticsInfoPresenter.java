@@ -9,8 +9,8 @@ package org.hbgb.webcamp.client.presenter.application.input;
 
 import org.hbgb.webcamp.client.async.ApplicationServiceAsync;
 import org.hbgb.webcamp.client.async.AsyncServiceFinder;
-import org.hbgb.webcamp.client.presenter.KeyPresenterI;
-import org.hbgb.webcamp.client.presenter.SequentialPresenterI;
+import org.hbgb.webcamp.client.presenter.IKeyPresenter;
+import org.hbgb.webcamp.client.presenter.ISequentialPresenter;
 import org.hbgb.webcamp.client.view.ViewFinder;
 import org.hbgb.webcamp.client.view.application.input.InputLogisticsInfoView;
 import org.hbgb.webcamp.shared.LogisticsInfoBlock;
@@ -20,14 +20,14 @@ import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.HasWidgets;
 
-public class InputLogisticsInfoPresenter implements SequentialPresenterI
+public class InputLogisticsInfoPresenter implements ISequentialPresenter
 {
 	private final ApplicationServiceAsync rpcService = AsyncServiceFinder.getApplicationService();
 	private final InputLogisticsInfoView view;
 	private String key;
 	private LogisticsInfoBlock logisticsInfoBlock;
 	private HasWidgets screen;
-	private KeyPresenterI nextPresenter;
+	private IKeyPresenter nextPresenter;
 
 	public InputLogisticsInfoPresenter(String key)
 	{
@@ -74,7 +74,7 @@ public class InputLogisticsInfoPresenter implements SequentialPresenterI
 	}
 
 	@Override
-	public void setNextPresenter(KeyPresenterI next)
+	public void setNextPresenter(IKeyPresenter next)
 	{
 		nextPresenter = next;
 	}
@@ -156,6 +156,7 @@ public class InputLogisticsInfoPresenter implements SequentialPresenterI
 		{
 			retVal = false;
 			// set specific message in messages Obj
+			view.showMessage("Your arrival date is after or equal to your departure date.");
 		}
 
 		// wants strike but leaves before monday

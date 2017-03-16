@@ -9,8 +9,8 @@ package org.hbgb.webcamp.client.presenter.application.input;
 
 import org.hbgb.webcamp.client.async.ApplicationServiceAsync;
 import org.hbgb.webcamp.client.async.AsyncServiceFinder;
-import org.hbgb.webcamp.client.presenter.KeyPresenterI;
-import org.hbgb.webcamp.client.presenter.SequentialPresenterI;
+import org.hbgb.webcamp.client.presenter.IKeyPresenter;
+import org.hbgb.webcamp.client.presenter.ISequentialPresenter;
 import org.hbgb.webcamp.client.view.ViewFinder;
 import org.hbgb.webcamp.client.view.application.input.InputShelterInfoView;
 import org.hbgb.webcamp.shared.ShelterInfoBlock;
@@ -20,119 +20,127 @@ import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.HasWidgets;
 
-public class InputShelterInfoPresenter implements SequentialPresenterI
+public class InputShelterInfoPresenter implements ISequentialPresenter
 {
 	private final ApplicationServiceAsync rpcService = AsyncServiceFinder.getApplicationService();
 	private final InputShelterInfoView view;
 	private String key;
 	private ShelterInfoBlock shelterInfoBlock;
 	private HasWidgets screen;
-	private KeyPresenterI nextPresenter;
+	private IKeyPresenter nextPresenter;
 
-	public InputShelterInfoPresenter(String key)
+	public InputShelterInfoPresenter(String k)
 	{
-		this.key = key;
-		this.view = ViewFinder.getShelterInfoView();
-		this.view.setPresenter(this);
-		this.view.setVisibility(SecurityRole.USER);
+		key = k;
+		view = ViewFinder.getShelterInfoView();
+		view.setPresenter(this);
+		view.setVisibility(SecurityRole.USER);
 	}
 
 	@Override
-	public void setKey(String key)
+	public void setKey(String k)
 	{
-		this.key = key;
+		key = k;
+	}
+
+	@Override
+	public void setScreen(HasWidgets container)
+	{
+		screen = container;
 	}
 
 	private void setView()
 	{
-		this.view.setHasRv(this.shelterInfoBlock.getIsBringingRv());
-		this.view.setRvInfoText(this.shelterInfoBlock.getRvInfo());
-		this.view.setIsInDormTent(this.shelterInfoBlock.getIsInDormTent());
-		this.view.setHasStructure(this.shelterInfoBlock.getHasStructure());
-		this.view.setStructureInfoText(this.shelterInfoBlock.getStructureInfo());
+		view.setHasRv(shelterInfoBlock.getIsBringingRv());
+		view.setRvInfoText(shelterInfoBlock.getRvInfo());
+		view.setIsInDormTent(shelterInfoBlock.getIsInDormTent());
+		view.setHasStructure(shelterInfoBlock.getHasStructure());
+		view.setStructureInfoText(shelterInfoBlock.getStructureInfo());
 	}
 
 	private void setModel()
 	{
-		this.shelterInfoBlock.setIsBringingRv(this.view.getHasRv());
-		this.shelterInfoBlock.setRvInfo(this.view.getRvInfoText());
-		this.shelterInfoBlock.setIsInDormTent(this.view.getIsInDormTent());
-		this.shelterInfoBlock.setHasStructure(this.view.getHasStructure());
-		this.shelterInfoBlock.setStructureInfo(this.view.getStructureInfoText());
+		shelterInfoBlock.setIsBringingRv(view.getHasRv());
+		shelterInfoBlock.setRvInfo(view.getRvInfoText());
+		shelterInfoBlock.setIsInDormTent(view.getIsInDormTent());
+		shelterInfoBlock.setHasStructure(view.getHasStructure());
+		shelterInfoBlock.setStructureInfo(view.getStructureInfoText());
 	}
 
 	@Override
-	public void go(HasWidgets container)
+	public void go()
 	{
-		this.screen = container;
-		this.fetchData();
-		this.screen.clear();
+		fetchData();
+		screen.clear();
 	}
 
 	@Override
-	public void setNextPresenter(KeyPresenterI next)
+	public void setNextPresenter(IKeyPresenter next)
 	{
-		this.nextPresenter = next;
+		nextPresenter = next;
 	}
 
 	public void fetchData()
 	{
-		if (this.key != null)
+		if (key != null)
 		{
-			this.rpcService.getApplicantsShelterInfoBlock(this.key, new AsyncCallback<ShelterInfoBlock>()
+			rpcService.getApplicantsShelterInfoBlock(key, new AsyncCallback<ShelterInfoBlock>()
 			{
 
+				@Override
 				public void onSuccess(ShelterInfoBlock result)
 				{
 					if (result == null)
 					{
-						Window.alert((String) "Applicant's Payment Info reurned as null");
-						return;
+						Window.alert("Applicant's Payment Info reurned as null");
 					}
-					InputShelterInfoPresenter.access$0(InputShelterInfoPresenter.this, result);
-					InputShelterInfoPresenter.this.setView();
-					InputShelterInfoPresenter.this.screen.add(InputShelterInfoPresenter.this.view.asWidget());
+					else
+					{
+						shelterInfoBlock = result;
+						setView();
+						screen.add(view.asWidget());
+					}
 				}
 
+				@Override
 				public void onFailure(Throwable caught)
 				{
-					Window.alert((String) "DB Error retrieving Applicant's Payment Info");
+					Window.alert("DB Error retrieving Applicant's Payment Info");
 				}
 			});
 			return;
 		}
-		Window.alert((String) "Error no key for Applicant's Application!");
+		Window.alert("Error no key for Applicant's Application!");
 	}
 
 	@Override
 	public void onNextButtonClicked()
 	{
-		this.setModel();
-		this.rpcService.updateApplicantsShelterInfoBlock(this.shelterInfoBlock, new AsyncCallback<Boolean>()
+		setModel();
+		rpcService.updateApplicantsShelterInfoBlock(shelterInfoBlock, new AsyncCallback<Boolean>()
 		{
 
+			@Override
 			public void onSuccess(Boolean saved)
 			{
-				if (saved.booleanValue())
+				if (saved)
 				{
-					InputShelterInfoPresenter.this.screen.clear();
-					InputShelterInfoPresenter.this.nextPresenter.setKey(InputShelterInfoPresenter.this.key);
-					InputShelterInfoPresenter.this.nextPresenter.go(InputShelterInfoPresenter.this.screen);
-					return;
+					screen.clear();
+					nextPresenter.setKey(key);
+					nextPresenter.setScreen(screen);
+					nextPresenter.go();
 				}
-				Window.alert((String) "DB Error saving Applicant's Shelter Info");
+				else
+				{
+					Window.alert("DB Error saving Applicant's Shelter Info");
+				}
 			}
 
+			@Override
 			public void onFailure(Throwable caught)
 			{
-				Window.alert((String) "RPC Error saving Applicant's Shelter Info");
+				Window.alert("RPC Error: " + caught.getMessage());
 			}
 		});
 	}
-
-	static /* synthetic */ void access$0(InputShelterInfoPresenter inputShelterInfoPresenter, ShelterInfoBlock shelterInfoBlock)
-	{
-		inputShelterInfoPresenter.shelterInfoBlock = shelterInfoBlock;
-	}
-
 }

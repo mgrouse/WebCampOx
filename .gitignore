@@ -3,14 +3,8 @@
 
 *.bin
 
-gwt-unitCache/gwt-unitCache-c04dfa348afbdd12c2a9ddc3bc36901a78fa6812-0000015ABB50DD67
-
-*.bin
-
-war/WEB-INF/appengine-generated/local_db.bin
-
 war/WEB-INF/appengine-generated/local_db.bin
 
 *.class
 
-war/hbgbwebcamp/hbgbwebcamp.nocache.js
+war/hbgbwebcamp/

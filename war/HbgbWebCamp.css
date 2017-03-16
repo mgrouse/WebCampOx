@@ -245,6 +245,11 @@ gwt-CaptionPanel
 } */
 
 
+.red
+{
+	 color: red;
+}
+
 .left
 {
 	float:left;

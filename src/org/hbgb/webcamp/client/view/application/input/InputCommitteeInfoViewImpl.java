@@ -14,7 +14,7 @@
  */
 package org.hbgb.webcamp.client.view.application.input;
 
-import org.hbgb.webcamp.client.presenter.SequentialPresenterI;
+import org.hbgb.webcamp.client.presenter.ISequentialPresenter;
 import org.hbgb.webcamp.client.view.AbstractView;
 import org.hbgb.webcamp.client.widget.CommitteeListBox;
 import org.hbgb.webcamp.shared.enums.Committee;
@@ -73,7 +73,7 @@ public class InputCommitteeInfoViewImpl extends AbstractView implements InputCom
 	@UiField
 	TextArea bioBox;
 
-	private SequentialPresenterI presenter;
+	private ISequentialPresenter presenter;
 
 	public InputCommitteeInfoViewImpl()
 	{
@@ -85,7 +85,7 @@ public class InputCommitteeInfoViewImpl extends AbstractView implements InputCom
 	}
 
 	@Override
-	public void setPresenter(SequentialPresenterI presenter)
+	public void setPresenter(ISequentialPresenter presenter)
 	{
 		this.presenter = presenter;
 	}

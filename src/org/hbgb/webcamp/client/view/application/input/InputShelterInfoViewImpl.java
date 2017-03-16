@@ -13,7 +13,7 @@
  */
 package org.hbgb.webcamp.client.view.application.input;
 
-import org.hbgb.webcamp.client.presenter.SequentialPresenterI;
+import org.hbgb.webcamp.client.presenter.ISequentialPresenter;
 import org.hbgb.webcamp.client.view.AbstractView;
 
 import com.google.gwt.core.client.GWT;
@@ -63,7 +63,7 @@ public class InputShelterInfoViewImpl extends AbstractView implements InputShelt
 	@UiField
 	TextArea structureInfo;
 
-	private SequentialPresenterI presenter;
+	private ISequentialPresenter presenter;
 
 	public InputShelterInfoViewImpl()
 	{
@@ -72,7 +72,7 @@ public class InputShelterInfoViewImpl extends AbstractView implements InputShelt
 	}
 
 	@Override
-	public void setPresenter(SequentialPresenterI presenter)
+	public void setPresenter(ISequentialPresenter presenter)
 	{
 		this.presenter = presenter;
 	}

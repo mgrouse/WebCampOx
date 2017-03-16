@@ -3,5 +3,5 @@
  */
 package org.hbgb.webcamp.client.presenter;
 
-public abstract class AbstractSequentialPresenter implements SequentialPresenterI
+public abstract class AbstractSequentialPresenter implements ISequentialPresenter
 {}

@@ -3,13 +3,13 @@
  */
 package org.hbgb.webcamp.client.view.application.input;
 
-import org.hbgb.webcamp.client.presenter.SequentialPresenterI;
+import org.hbgb.webcamp.client.presenter.ISequentialPresenter;
 import org.hbgb.webcamp.client.view.IView;
 import org.hbgb.webcamp.shared.enums.Committee;
 
 public interface InputCommitteeInfoView extends IView
 {
-	public void setPresenter(SequentialPresenterI var1);
+	public void setPresenter(ISequentialPresenter var1);
 
 	public void setCommittee1(Committee var1);
 

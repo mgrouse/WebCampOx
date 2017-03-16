@@ -10,11 +10,7 @@
 			
 			<g:VerticalPanel>
 			    
-			    <g:HTMLPanel ui:field="verifyWarning">
-					<p>
-				    	Please answer the questions in RED.
-				    </p>
-				</g:HTMLPanel>
+				<w:MessagesWidget ui:field="errMessages"/>
 				    
 				<g:HorizontalPanel>
 				    

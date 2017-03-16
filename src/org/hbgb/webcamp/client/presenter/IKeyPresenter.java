@@ -3,7 +3,7 @@
  */
 package org.hbgb.webcamp.client.presenter;
 
-public interface KeyPresenterI extends PresenterI
+public interface IKeyPresenter extends IPresenter
 {
 	public void setKey(String var1);
 }

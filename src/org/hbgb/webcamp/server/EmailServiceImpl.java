@@ -55,12 +55,13 @@ public class EmailServiceImpl extends RemoteServiceServlet implements EmailServi
 			msg.setText(message);
 			msg.setReplyTo(new InternetAddress[] { this.getRegistrationLeadAddress() });
 			Transport.send(msg);
-			return output;
 		}
 		catch (Exception e)
 		{
 			return e.toString();
 		}
+
+		return output;
 	}
 
 	/**

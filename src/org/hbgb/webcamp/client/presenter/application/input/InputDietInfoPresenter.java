@@ -9,8 +9,8 @@ package org.hbgb.webcamp.client.presenter.application.input;
 
 import org.hbgb.webcamp.client.async.ApplicationServiceAsync;
 import org.hbgb.webcamp.client.async.AsyncServiceFinder;
-import org.hbgb.webcamp.client.presenter.KeyPresenterI;
-import org.hbgb.webcamp.client.presenter.SequentialPresenterI;
+import org.hbgb.webcamp.client.presenter.IKeyPresenter;
+import org.hbgb.webcamp.client.presenter.ISequentialPresenter;
 import org.hbgb.webcamp.client.view.ViewFinder;
 import org.hbgb.webcamp.client.view.application.input.InputDietInfoView;
 import org.hbgb.webcamp.shared.DietInfoBlock;
@@ -20,14 +20,14 @@ import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.HasWidgets;
 
-public class InputDietInfoPresenter implements SequentialPresenterI
+public class InputDietInfoPresenter implements ISequentialPresenter
 {
 	private final ApplicationServiceAsync rpcService = AsyncServiceFinder.getApplicationService();
 	private final InputDietInfoView view;
 	private String key;
 	private DietInfoBlock dietInfoBlock;
 	private HasWidgets screen;
-	private KeyPresenterI nextPresenter;
+	private IKeyPresenter nextPresenter;
 
 	public InputDietInfoPresenter(String key)
 	{
@@ -66,7 +66,7 @@ public class InputDietInfoPresenter implements SequentialPresenterI
 	}
 
 	@Override
-	public void setNextPresenter(KeyPresenterI next)
+	public void setNextPresenter(IKeyPresenter next)
 	{
 		this.nextPresenter = next;
 	}

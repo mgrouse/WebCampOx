@@ -9,8 +9,8 @@ package org.hbgb.webcamp.client.presenter.application.input;
 
 import org.hbgb.webcamp.client.async.ApplicationServiceAsync;
 import org.hbgb.webcamp.client.async.AsyncServiceFinder;
-import org.hbgb.webcamp.client.presenter.KeyPresenterI;
-import org.hbgb.webcamp.client.presenter.SequentialPresenterI;
+import org.hbgb.webcamp.client.presenter.IKeyPresenter;
+import org.hbgb.webcamp.client.presenter.ISequentialPresenter;
 import org.hbgb.webcamp.client.view.ViewFinder;
 import org.hbgb.webcamp.client.view.application.input.UploadPhotoView;
 import org.hbgb.webcamp.shared.Application;
@@ -20,51 +20,56 @@ import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.HasWidgets;
 
-public class UploadPhotoPresenter implements SequentialPresenterI
+public class UploadPhotoPresenter implements ISequentialPresenter
 {
 	private final ApplicationServiceAsync rpcService = AsyncServiceFinder.getApplicationService();
 	private String key;
 	private final UploadPhotoView view;
 	private HasWidgets screen;
-	private KeyPresenterI nextPresenter;
+	private IKeyPresenter nextPresenter;
 	private Application app;
 
-	public UploadPhotoPresenter(String key)
+	public UploadPhotoPresenter(String k)
 	{
-		this.key = key;
-		this.view = ViewFinder.getUploadPhotoView();
-		this.view.setPresenter(this);
-		this.view.setVisibility(SecurityRole.USER);
+		key = k;
+		view = ViewFinder.getUploadPhotoView();
+		view.setPresenter(this);
+		view.setVisibility(SecurityRole.USER);
 	}
 
 	@Override
-	public void setKey(String key)
+	public void setKey(String k)
 	{
-		this.key = key;
+		key = k;
 	}
 
 	@Override
-	public void setNextPresenter(KeyPresenterI next)
+	public void setScreen(HasWidgets container)
 	{
-		this.nextPresenter = next;
+		screen = container;
+	}
+
+	@Override
+	public void setNextPresenter(IKeyPresenter next)
+	{
+		nextPresenter = next;
 	}
 
 	private void setView()
 	{
-		this.view.setImageURL(this.app.getImageURL());
+		view.setImageURL(app.getImageURL());
 	}
 
 	private void setModel()
 	{
-		this.app.setImageURL(this.view.getImageURL());
+		app.setImageURL(view.getImageURL());
 	}
 
 	@Override
-	public void go(HasWidgets container)
+	public void go()
 	{
-		this.screen = container;
-		this.fetchData();
-		this.screen.clear();
+		fetchData();
+		screen.clear();
 	}
 
 	public void fetchData()
@@ -74,26 +79,29 @@ public class UploadPhotoPresenter implements SequentialPresenterI
 			this.rpcService.getApplication(this.key, new AsyncCallback<Application>()
 			{
 
+				@Override
 				public void onSuccess(Application result)
 				{
 					if (result == null)
 					{
-						Window.alert((String) "Applicant's Info reurned as null");
-						return;
+						Window.alert("Applicant's Info reurned as null");
 					}
-					UploadPhotoPresenter.access$0(UploadPhotoPresenter.this, result);
-					UploadPhotoPresenter.this.setView();
-					UploadPhotoPresenter.this.screen.add(UploadPhotoPresenter.this.view.asWidget());
+					else
+					{
+						setView();
+						screen.add(view.asWidget());
+					}
 				}
 
+				@Override
 				public void onFailure(Throwable caught)
 				{
-					Window.alert((String) "DB Error retrieving Applicant's Info");
+					Window.alert("RPC Error: " + caught.getMessage());
 				}
 			});
 			return;
 		}
-		Window.alert((String) "Error no key for the applicant's Application!");
+		Window.alert("Error no key for the applicant's Application!");
 	}
 
 	@Override
@@ -103,28 +111,25 @@ public class UploadPhotoPresenter implements SequentialPresenterI
 		this.rpcService.updateApplication(this.app, new AsyncCallback<Boolean>()
 		{
 
+			@Override
 			public void onSuccess(Boolean saved)
 			{
 				if (saved.booleanValue())
 				{
-					UploadPhotoPresenter.this.screen.clear();
-					UploadPhotoPresenter.this.nextPresenter.setKey(UploadPhotoPresenter.this.key);
-					UploadPhotoPresenter.this.nextPresenter.go(UploadPhotoPresenter.this.screen);
+					screen.clear();
+					nextPresenter.setKey(UploadPhotoPresenter.this.key);
+					nextPresenter.setScreen(screen);
+					nextPresenter.go();
 					return;
 				}
-				Window.alert((String) "DB Error saving Applicant's Picture Info");
+				Window.alert("DB Error saving Applicant's Picture Info");
 			}
 
+			@Override
 			public void onFailure(Throwable caught)
 			{
-				Window.alert((String) "RPC Error saving Applicant's Picture Info");
+				Window.alert("RPC Error: " + caught.getMessage());
 			}
 		});
 	}
-
-	static /* synthetic */ void access$0(UploadPhotoPresenter uploadPhotoPresenter, Application application)
-	{
-		uploadPhotoPresenter.app = application;
-	}
-
 }

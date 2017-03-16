@@ -9,8 +9,8 @@ package org.hbgb.webcamp.client.presenter.application.input;
 import org.hbgb.webcamp.client.model.CommitteeInfoBlockModel;
 import org.hbgb.webcamp.client.model.HealerSheetInfoBlockModel;
 import org.hbgb.webcamp.client.presenter.IKeyedModelPresenter;
-import org.hbgb.webcamp.client.presenter.KeyPresenterI;
-import org.hbgb.webcamp.client.presenter.SequentialPresenterI;
+import org.hbgb.webcamp.client.presenter.IKeyPresenter;
+import org.hbgb.webcamp.client.presenter.ISequentialPresenter;
 import org.hbgb.webcamp.client.view.ViewFinder;
 import org.hbgb.webcamp.client.view.application.input.InputCommitteeInfoView;
 import org.hbgb.webcamp.shared.CommitteeInfoBlock;
@@ -19,7 +19,7 @@ import org.hbgb.webcamp.shared.enums.SecurityRole;
 
 import com.google.gwt.user.client.ui.HasWidgets;
 
-public class InputCommitteeNHealerSheetInfoPresenter implements SequentialPresenterI, IKeyedModelPresenter
+public class InputCommitteeNHealerSheetInfoPresenter implements ISequentialPresenter, IKeyedModelPresenter
 {
 	private static final int THIS_YEAR = 2017;
 	private static final int NUM_MODELS = 2;
@@ -27,7 +27,7 @@ public class InputCommitteeNHealerSheetInfoPresenter implements SequentialPresen
 	private String key;
 	private InputCommitteeInfoView view;
 	private HasWidgets screen;
-	private KeyPresenterI nextPresenter;
+	private IKeyPresenter nextPresenter;
 	private HealerSheetInfoBlockModel hsModel;
 	private CommitteeInfoBlockModel ciModel;
 
@@ -81,7 +81,7 @@ public class InputCommitteeNHealerSheetInfoPresenter implements SequentialPresen
 	}
 
 	@Override
-	public void setNextPresenter(KeyPresenterI next)
+	public void setNextPresenter(IKeyPresenter next)
 	{
 		this.nextPresenter = next;
 	}

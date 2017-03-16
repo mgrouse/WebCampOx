@@ -32,68 +32,107 @@ public class MessagesWidget extends Composite implements HasText, IMessages
 	@UiField
 	HTML msgSpace;
 
-	ArrayList<String> messages;
+	ArrayList<String> messages = new ArrayList<>();
 
 	public MessagesWidget()
 	{
-		this.initWidget(binder.createAndBindUi(this));
+		initWidget(binder.createAndBindUi(this));
 	}
 
 	@Override
 	public void setText(String text)
 	{
-		this.msgSpace.setText(text);
+		msgSpace.setText(text);
 	}
 
 	@Override
 	public String getText()
 	{
-		return this.msgSpace.getText();
+		return msgSpace.getText();
 	}
 
 	@Override
 	public void addMessage(String text)
 	{
-		this.messages.add(text);
+		messages.add(text);
 	}
 
 	@Override
 	public void addMessageAndFlush(String text)
 	{
-		this.messages.add(text);
-		this.flush();
+		messages.add(text);
+		flush();
 	}
 
 	@Override
 	public void removeMessage(String text)
 	{
-		for (String msg : this.messages)
+		for (String msg : messages)
 		{
-			if (!msg.contentEquals(text))
-				continue;
-			this.messages.remove(msg);
-			break;
+			if (msg.contentEquals(text))
+			{
+				messages.remove(msg);
+				break;
+			}
 		}
-		this.clear();
-		this.flush();
+		clear();
+		flush();
 	}
 
 	@Override
 	public void clear()
 	{
-		this.messages.clear();
-		this.msgSpace.setText("");
+		messages.clear();
+		msgSpace.setText("");
 	}
 
 	private void flush()
 	{
-		this.msgSpace.setText("");
+		msgSpace.setText("");
 		StringBuilder sb = new StringBuilder();
-		for (String message : this.messages)
+		for (String message : messages)
 		{
+			sb.append("<p>");
 			sb.append(message);
+			sb.append("</p>");
 		}
-		this.msgSpace.setText(sb.toString());
+		msgSpace.setText(sb.toString());
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * org.hbgb.webcamp.client.widget.IMessages#addMessageIfUnique(java.lang.
+	 * String)
+	 */
+	@Override
+	public void addMessageIfUnique(String var1)
+	{
+		if (!messageExists(var1))
+		{
+			addMessageAndFlush(var1);
+		}
+	}
+
+	/**
+	 * @param var1
+	 * @return
+	 */
+	private Boolean messageExists(String text)
+	{
+		Boolean retVal = false;
+
+		for (String msg : messages)
+		{
+			if (msg.contentEquals(text))
+			{
+				retVal = true;
+				break;
+			}
+		}
+
+		return retVal;
 	}
 
 }

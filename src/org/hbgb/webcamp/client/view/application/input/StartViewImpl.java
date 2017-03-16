@@ -12,49 +12,102 @@
  */
 package org.hbgb.webcamp.client.view.application.input;
 
-import org.hbgb.webcamp.client.presenter.SequentialPresenterI;
+import org.hbgb.webcamp.client.presenter.ISequentialPresenter;
 import org.hbgb.webcamp.client.view.AbstractView;
+import org.hbgb.webcamp.client.widget.MessagesWidget;
 
 import com.google.gwt.core.client.GWT;
+import com.google.gwt.event.dom.client.ChangeEvent;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.uibinder.client.UiHandler;
 import com.google.gwt.uibinder.client.UiTemplate;
 import com.google.gwt.user.client.ui.Button;
-import com.google.gwt.user.client.ui.HTML;
+import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.TextBox;
 import com.google.gwt.user.client.ui.Widget;
 
-public class StartViewImpl extends AbstractView implements StartViewI
+public class StartViewImpl extends AbstractView implements IStartView
 {
+	@UiTemplate(value = "StartView.ui.xml")
+	static interface EnterViewImplBinder extends UiBinder<Widget, StartViewImpl>
+	{}
+
 	private static UiBinder<Widget, StartViewImpl> binder = GWT.create(EnterViewImplBinder.class);
+
 	@UiField
-	HTML warning;
+	MessagesWidget messages;
+
+	@UiField
+	Label emailLabel;
+
 	@UiField
 	TextBox emailBox;
+
 	@UiField
 	Button nextButton;
-	private SequentialPresenterI presenter;
+
+	private ISequentialPresenter presenter;
 
 	public StartViewImpl()
 	{
-		this.initWidget(binder.createAndBindUi(this));
-		this.warning.setVisible(false);
+		initWidget(binder.createAndBindUi(this));
+		messages.setVisible(false);
 	}
 
 	@Override
-	public void setPresenter(SequentialPresenterI presenter)
+	public void setPresenter(ISequentialPresenter sp)
 	{
-		this.presenter = presenter;
+		presenter = sp;
+	}
+
+	@UiHandler(value = { "emailBox" })
+	protected void onEmailBoxChange(ChangeEvent event)
+	{
+		emailLabel.getElement().getStyle().setColor("black");
 	}
 
 	@UiHandler(value = { "nextButton" })
-	void onNextButtonClicked(ClickEvent event)
+	protected void onNextButtonClicked(ClickEvent event)
 	{
-		if (this.presenter == null)
-			return;
-		this.presenter.onNextButtonClicked();
+		if ((presenter != null) && (formIsValid()))
+		{
+			nextButton.setEnabled(false);
+			presenter.onNextButtonClicked();
+		}
+	}
+
+	/**
+	 * @return
+	 */
+	private boolean formIsValid()
+	{
+		Boolean retVal = true;
+
+		if ((null == getEmailText()) || getEmailText().isEmpty() || (!emailWellFormatted()))
+		{
+			addMessage("A valid email is required to continue.");
+			emailLabel.getElement().getStyle().setColor("red");
+			retVal = false;
+		}
+
+		return retVal;
+	}
+
+	/**
+	 * @return
+	 */
+	private Boolean emailWellFormatted()
+	{
+		Boolean retVal = false;
+
+		if (getEmailText().matches("^([a-zA-Z0-9_\\-\\.]+)@([a-zA-Z0-9_\\-\\.]+)\\.([a-zA-Z]{2,5})$"))
+		{
+			retVal = true;
+		}
+
+		return retVal;
 	}
 
 	@Override
@@ -66,25 +119,17 @@ public class StartViewImpl extends AbstractView implements StartViewI
 	@Override
 	public String getEmailText()
 	{
-		return this.emailBox.getText().trim().toLowerCase();
-	}
-
-	private void setWarningVisible(Boolean bool)
-	{
-		this.warning.setVisible(bool.booleanValue());
+		return emailBox.getText().trim().toLowerCase();
 	}
 
 	@Override
-	public void setWarningText(String text)
+	public void addMessage(String text)
 	{
 		if (text != null && !text.isEmpty())
 		{
-			this.warning.setHTML(text);
-			this.setWarningVisible(true);
-			return;
+			messages.addMessageIfUnique(text);
+			messages.setVisible(true);
 		}
-		this.warning.setHTML("");
-		this.setWarningVisible(false);
 	}
 
 	@Override
@@ -96,12 +141,7 @@ public class StartViewImpl extends AbstractView implements StartViewI
 	@Override
 	public void clear()
 	{
-		this.setEmailText("");
-		this.setWarningText("");
+		setEmailText("");
+		messages.clear();
 	}
-
-	@UiTemplate(value = "StartView.ui.xml")
-	static interface EnterViewImplBinder extends UiBinder<Widget, StartViewImpl>
-	{}
-
 }

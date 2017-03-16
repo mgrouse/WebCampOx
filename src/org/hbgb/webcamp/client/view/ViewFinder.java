@@ -27,7 +27,7 @@ import org.hbgb.webcamp.client.view.application.input.InputPersonalInfoView;
 import org.hbgb.webcamp.client.view.application.input.InputPersonalInfoViewImpl;
 import org.hbgb.webcamp.client.view.application.input.InputShelterInfoView;
 import org.hbgb.webcamp.client.view.application.input.InputShelterInfoViewImpl;
-import org.hbgb.webcamp.client.view.application.input.StartViewI;
+import org.hbgb.webcamp.client.view.application.input.IStartView;
 import org.hbgb.webcamp.client.view.application.input.StartViewImpl;
 import org.hbgb.webcamp.client.view.application.input.UploadPhotoView;
 import org.hbgb.webcamp.client.view.application.input.UploadPhotoViewImpl;
@@ -42,7 +42,7 @@ public class ViewFinder
 	private static UserListView<HbgbUserDetails> listUserView;
 	private static IEditApplicationView editApplicationView;
 	private static ApplicationListView<ApplicationDetails> listApplicationListView;
-	private static StartViewI enterView;
+	private static IStartView enterView;
 	private static InputLogisticsInfoView editLogisticsView;
 	private static InputShelterInfoView editShelterView;
 	private static InputDietInfoView editDietView;
@@ -119,7 +119,7 @@ public class ViewFinder
 		return editPersonalView;
 	}
 
-	public static StartViewI getEnterView()
+	public static IStartView getEnterView()
 	{
 		if (enterView != null)
 			return enterView;
