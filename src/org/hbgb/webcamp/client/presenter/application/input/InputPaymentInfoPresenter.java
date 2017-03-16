@@ -33,7 +33,7 @@ public class InputPaymentInfoPresenter implements ISequentialPresenter
 	{
 		this.key = key;
 		this.view = ViewFinder.getPaymentInfoView();
-		this.view.setPresenter(this);
+		view.setPresenter(this);
 		this.view.setVisibility(SecurityRole.USER);
 	}
 
@@ -41,6 +41,12 @@ public class InputPaymentInfoPresenter implements ISequentialPresenter
 	public void setKey(String key)
 	{
 		this.key = key;
+	}
+
+	@Override
+	public void setScreen(HasWidgets container)
+	{
+		screen = container;
 	}
 
 	private void setView()
@@ -58,9 +64,8 @@ public class InputPaymentInfoPresenter implements ISequentialPresenter
 	}
 
 	@Override
-	public void go(HasWidgets container)
+	public void go()
 	{
-		this.screen = container;
 		this.fetchData();
 		this.screen.clear();
 	}
@@ -86,9 +91,10 @@ public class InputPaymentInfoPresenter implements ISequentialPresenter
 						Window.alert("Applicant's Payment Info reurned as null");
 						return;
 					}
-					InputPaymentInfoPresenter.access$0(InputPaymentInfoPresenter.this, result);
-					InputPaymentInfoPresenter.this.setView();
-					InputPaymentInfoPresenter.this.screen.add(InputPaymentInfoPresenter.this.view.asWidget());
+
+					paymentInfo = result;
+					setView();
+					screen.add(view.asWidget());
 				}
 
 				@Override
@@ -114,9 +120,10 @@ public class InputPaymentInfoPresenter implements ISequentialPresenter
 			{
 				if (saved.booleanValue())
 				{
-					InputPaymentInfoPresenter.this.screen.clear();
-					InputPaymentInfoPresenter.this.nextPresenter.setKey(InputPaymentInfoPresenter.this.key);
-					InputPaymentInfoPresenter.this.nextPresenter.go(InputPaymentInfoPresenter.this.screen);
+					screen.clear();
+					nextPresenter.setKey(key);
+					nextPresenter.setScreen(screen);
+					nextPresenter.go();
 					return;
 				}
 				Window.alert("DB Error saving Applicant's Payment Info");
@@ -128,11 +135,6 @@ public class InputPaymentInfoPresenter implements ISequentialPresenter
 				Window.alert("RPC Error saving Applicant's Payment Info");
 			}
 		});
-	}
-
-	static /* synthetic */ void access$0(InputPaymentInfoPresenter inputPaymentInfoPresenter, PaymentInfoBlock paymentInfoBlock)
-	{
-		inputPaymentInfoPresenter.paymentInfo = paymentInfoBlock;
 	}
 
 }
