@@ -9,20 +9,20 @@
 			
 			<g:VerticalPanel>
 			
-			    <g:HTMLPanel ui:field="verifyWarning">
+			    <g:HTML ui:field="verifyWarning">
 			        <p>
 			            Please answer the questions in RED.
 			        </p>
-			    </g:HTMLPanel>
+			    </g:HTML>
 			    
 				<g:HorizontalPanel verticalAlignment="ALIGN_MIDDLE" addStyleNames="formRow">	
 		        	<g:Label ui:field="dietLabel" text="My Diet is best described as:" addStyleNames="longLabel"/>
 		        	<w:DietListBox ui:field="dietType"/>
 				</g:HorizontalPanel>
 				
-				<g:HTMLPanel>
+				<g:HTML>
 					<p>Please check the box if you require a gluten free diet.</p>
-				</g:HTMLPanel>
+				</g:HTML>
 				
 				<g:HorizontalPanel verticalAlignment="ALIGN_MIDDLE" addStyleNames="formRow">
 		        	<g:CheckBox ui:field="isGlutenFree"/>
@@ -54,7 +54,7 @@
 					</p>
 				</g:HTML>
 				
-				<g:Label text="Dietary Restrictions"/>
+				<g:Label text="Dietary Restrictions" addStyleNames="mediumLabel"/>
 		        <g:TextArea ui:field="dietaryRestrictions"/>
 		        
 		        <g:Button ui:field="nextButton" addStyleNames="right">Next</g:Button>

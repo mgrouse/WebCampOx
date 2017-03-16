@@ -3,6 +3,6 @@
 	         xmlns:g="urn:import:com.google.gwt.user.client.ui">	
 	
 	<g:HTMLPanel>		
-		<g:HTML styleName="" ui:field="msgSpace" />
+		<g:HTML addStyleNames="red" ui:field="msgSpace" />
 	</g:HTMLPanel>
 </ui:UiBinder> 

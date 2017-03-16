@@ -21,6 +21,8 @@ import org.hbgb.webcamp.client.async.AsyncServiceFinder;
 import org.hbgb.webcamp.client.async.BlobStoreUploadURLServiceAsync;
 import org.hbgb.webcamp.client.presenter.ISequentialPresenter;
 import org.hbgb.webcamp.client.view.AbstractView;
+import org.hbgb.webcamp.client.view.ISequentialView;
+import org.hbgb.webcamp.client.view.IView;
 
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.dom.client.ClickEvent;
@@ -36,7 +38,7 @@ import com.google.gwt.user.client.ui.FormPanel;
 import com.google.gwt.user.client.ui.Image;
 import com.google.gwt.user.client.ui.Widget;
 
-public class UploadPhotoViewImpl extends AbstractView implements UploadPhotoView
+public class UploadPhotoViewImpl extends AbstractView implements UploadPhotoView, ISequentialView, IView
 {
 	private static final String IMAGE_NOT_AVAIALABLE = "http://storage.googleapis.com/hbgbwebcamp.appspot.com/PhotoNotAvailable.jpg";
 
@@ -86,7 +88,6 @@ public class UploadPhotoViewImpl extends AbstractView implements UploadPhotoView
 	{
 		this.imageServ.getBlobstoreUploadUrl(new AsyncCallback<String>()
 		{
-
 			@Override
 			public void onSuccess(String result)
 			{

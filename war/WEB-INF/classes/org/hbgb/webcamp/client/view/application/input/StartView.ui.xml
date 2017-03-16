@@ -1,6 +1,7 @@
 <!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
 <ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
-	         xmlns:g="urn:import:com.google.gwt.user.client.ui">
+	         xmlns:g="urn:import:com.google.gwt.user.client.ui"
+	         xmlns:w="urn:import:org.hbgb.webcamp.client.widget">
 
 	<g:ScrollPanel>
 	
@@ -21,11 +22,10 @@
 					</p>
 				</g:HTML>
 				
-				<g:HTML ui:field = "warning">
-				</g:HTML>
+				<w:MessagesWidget ui:field="messages"/>
 				
 				<g:HorizontalPanel verticalAlignment="ALIGN_MIDDLE" addStyleNames="formRow">	
-		        	<g:Label addStyleNames="textLengthLabel" text="Email"/>
+		        	<g:Label ui:field="emailLabel" addStyleNames="textLengthLabel" text="Email"/>
 		        	<g:TextBox ui:field="emailBox"/>
 				</g:HorizontalPanel>
 				
