@@ -1,2 +1,0 @@
-serviceClass: org.hbgb.webcamp.client.async.HealerSheetService
-path: AC718E49527BFF7D2159C872069BE68A.gwt.rpc

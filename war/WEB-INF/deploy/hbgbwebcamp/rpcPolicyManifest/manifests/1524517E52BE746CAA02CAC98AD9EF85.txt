@@ -1,2 +1,0 @@
-serviceClass: org.hbgb.webcamp.client.async.BlobStoreUploadURLService
-path: 02D3823411B7BECBF713B05C3FF6F09F.gwt.rpc
