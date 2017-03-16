@@ -43,6 +43,25 @@ public class InputLogisticsInfoPresenter implements ISequentialPresenter
 		this.key = key;
 	}
 
+	@Override
+	public void setScreen(HasWidgets container)
+	{
+		screen = container;
+	}
+
+	@Override
+	public void setNextPresenter(IKeyPresenter next)
+	{
+		nextPresenter = next;
+	}
+
+	@Override
+	public void go()
+	{
+		fetchData();
+		screen.clear();
+	}
+
 	private void setView()
 	{
 		view.setWantsEarlyTeam(logisticsInfoBlock.getWantsEarlyTeam());
@@ -63,20 +82,6 @@ public class InputLogisticsInfoPresenter implements ISequentialPresenter
 		logisticsInfoBlock.setArrivalTime(view.getArrivalTime());
 		logisticsInfoBlock.setDepartureDoE(view.getDepartureDate());
 		logisticsInfoBlock.setDepartureTime(view.getDepartureTime());
-	}
-
-	@Override
-	public void go(HasWidgets container)
-	{
-		screen = container;
-		fetchData();
-		screen.clear();
-	}
-
-	@Override
-	public void setNextPresenter(IKeyPresenter next)
-	{
-		nextPresenter = next;
 	}
 
 	public void fetchData()
@@ -129,7 +134,7 @@ public class InputLogisticsInfoPresenter implements ISequentialPresenter
 					{
 						screen.clear();
 						nextPresenter.setKey(key);
-						nextPresenter.go(screen);
+						nextPresenter.go();
 						return;
 					}
 					Window.alert("DB Error saving Applicant's Shelter Info");
@@ -163,5 +168,4 @@ public class InputLogisticsInfoPresenter implements ISequentialPresenter
 
 		return retVal;
 	}
-
 }

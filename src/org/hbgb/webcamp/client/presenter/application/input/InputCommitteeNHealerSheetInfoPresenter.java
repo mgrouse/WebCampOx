@@ -8,8 +8,8 @@ package org.hbgb.webcamp.client.presenter.application.input;
 
 import org.hbgb.webcamp.client.model.CommitteeInfoBlockModel;
 import org.hbgb.webcamp.client.model.HealerSheetInfoBlockModel;
-import org.hbgb.webcamp.client.presenter.IKeyedModelPresenter;
 import org.hbgb.webcamp.client.presenter.IKeyPresenter;
+import org.hbgb.webcamp.client.presenter.IKeyedModelPresenter;
 import org.hbgb.webcamp.client.presenter.ISequentialPresenter;
 import org.hbgb.webcamp.client.view.ViewFinder;
 import org.hbgb.webcamp.client.view.application.input.InputCommitteeInfoView;
@@ -31,109 +31,118 @@ public class InputCommitteeNHealerSheetInfoPresenter implements ISequentialPrese
 	private HealerSheetInfoBlockModel hsModel;
 	private CommitteeInfoBlockModel ciModel;
 
-	public InputCommitteeNHealerSheetInfoPresenter(String key)
+	public InputCommitteeNHealerSheetInfoPresenter(String k)
 	{
-		this.key = key;
-		this.hsModel = new HealerSheetInfoBlockModel();
-		this.ciModel = new CommitteeInfoBlockModel();
-		this.hsModel.setPresenter(this);
-		this.ciModel.setPresenter(this);
-		this.view = ViewFinder.getCommitteeInfoView();
-		this.view.setVisibility(SecurityRole.USER);
-		this.view.setPresenter(this);
+		key = k;
+		hsModel = new HealerSheetInfoBlockModel();
+		ciModel = new CommitteeInfoBlockModel();
+		hsModel.setPresenter(this);
+		ciModel.setPresenter(this);
+		view = ViewFinder.getCommitteeInfoView();
+		view.setVisibility(SecurityRole.USER);
+		view.setPresenter(this);
 	}
 
 	@Override
-	public void setKey(String key)
+	public void setKey(String k)
 	{
-		this.key = key;
-		this.num_calls = 0;
+		key = k;
+		num_calls = 0;
 	}
 
 	@Override
-	public void go(HasWidgets container)
+	public void setScreen(HasWidgets container)
 	{
-		this.screen = container;
-		this.screen.clear();
-		this.view.clear();
-		this.hsModel.fetchDataByAppKey(this.key);
-		this.ciModel.fetchData(this.key);
+		screen = container;
+	}
+
+	@Override
+	public void go()
+	{
+		screen.clear();
+		view.clear();
+		hsModel.fetchDataByAppKey(key);
+		ciModel.fetchData(key);
 	}
 
 	@Override
 	public void onDataFetched()
 	{
-		this.setView();
-		this.screen.clear();
-		this.screen.add(this.view.asWidget());
+		setView();
+		screen.clear();
+		screen.add(view.asWidget());
 	}
 
 	@Override
 	public void onDataPut()
 	{
-		++this.num_calls;
-		if (NUM_MODELS == this.num_calls)
+		++num_calls;
+		if (NUM_MODELS == num_calls)
 		{
-			this.screen.clear();
-			this.nextPresenter.setKey(this.key);
-			this.nextPresenter.go(this.screen);
+			screen.clear();
+			nextPresenter.setKey(key);
+			nextPresenter.setScreen(screen);
+			nextPresenter.go();
 		}
 	}
 
 	@Override
 	public void setNextPresenter(IKeyPresenter next)
 	{
-		this.nextPresenter = next;
+		nextPresenter = next;
 	}
 
 	@Override
 	public void onNextButtonClicked()
 	{
-		this.setModel();
-		this.hsModel.putData();
-		this.ciModel.putData();
+		setModel();
+		hsModel.putData();
+		ciModel.putData();
 	}
 
 	private void setView()
 	{
-		CommitteeInfoBlock ciBlock;
-		HealerSheetInfoBlock hsBlock = this.hsModel.getData();
+		CommitteeInfoBlock ciBlock = ciModel.getData();
+		HealerSheetInfoBlock hsBlock = hsModel.getData();
+
 		if (hsBlock != null)
 		{
-			this.view.setSessionLength(hsBlock.getSessionLength());
-			this.view.setModality1(hsBlock.getModality1());
-			this.view.setModality2(hsBlock.getModality2());
-			this.view.setModality3(hsBlock.getModality3());
-			this.view.setModality4(hsBlock.getModality4());
-			this.view.setBioBoxText(hsBlock.getBio());
+			view.setSessionLength(hsBlock.getSessionLength());
+			view.setModality1(hsBlock.getModality1());
+			view.setModality2(hsBlock.getModality2());
+			view.setModality3(hsBlock.getModality3());
+			view.setModality4(hsBlock.getModality4());
+			view.setBioBoxText(hsBlock.getBio());
 		}
-		if ((ciBlock = this.ciModel.getData()) == null)
-			return;
-		this.view.setReason1(ciBlock.getReason1());
-		this.view.setReason2(ciBlock.getReason2());
-		this.view.setCommittee1(ciBlock.getCommittee1());
-		this.view.setCommittee2(ciBlock.getCommittee2());
 
+		if (ciBlock != null)
+		{
+			view.setReason1(ciBlock.getReason1());
+			view.setReason2(ciBlock.getReason2());
+			view.setCommittee1(ciBlock.getCommittee1());
+			view.setCommittee2(ciBlock.getCommittee2());
+		}
 	}
 
 	private void setModel()
 	{
-		HealerSheetInfoBlock block = this.hsModel.getData();
-		block.setSessionLength(this.view.getSessionLength());
-		block.setModality1(this.view.getModality1());
-		block.setModality2(this.view.getModality2());
-		block.setModality3(this.view.getModality3());
-		block.setModality4(this.view.getModality4());
-		block.setBio(this.view.getBioBoxText());
+		HealerSheetInfoBlock block = hsModel.getData();
+		block.setSessionLength(view.getSessionLength());
+		block.setModality1(view.getModality1());
+		block.setModality2(view.getModality2());
+		block.setModality3(view.getModality3());
+		block.setModality4(view.getModality4());
+		block.setBio(view.getBioBoxText());
 
-		this.hsModel.setData(block);
+		hsModel.setData(block);
 
-		CommitteeInfoBlock ciBlock = this.ciModel.getData();
-		ciBlock.setReason1(this.view.getReason1());
-		ciBlock.setReason2(this.view.getReason2());
-		ciBlock.setCommittee1(this.view.getCommittee1());
-		ciBlock.setCommittee2(this.view.getCommittee2());
+		CommitteeInfoBlock ciBlock = ciModel.getData();
+		ciBlock.setReason1(view.getReason1());
+		ciBlock.setReason2(view.getReason2());
+		ciBlock.setCommittee1(view.getCommittee1());
+		ciBlock.setCommittee2(view.getCommittee2());
 
-		this.ciModel.setData(ciBlock);
+		ciModel.setData(ciBlock);
 	}
+
 }

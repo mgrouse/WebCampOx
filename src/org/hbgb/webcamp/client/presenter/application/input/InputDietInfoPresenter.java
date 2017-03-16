@@ -29,106 +29,115 @@ public class InputDietInfoPresenter implements ISequentialPresenter
 	private HasWidgets screen;
 	private IKeyPresenter nextPresenter;
 
-	public InputDietInfoPresenter(String key)
+	public InputDietInfoPresenter(String k)
 	{
-		this.key = key;
-		this.view = ViewFinder.getDietInfoView();
-		this.view.setVisibility(SecurityRole.USER);
-		this.view.setPresenter(this);
+		key = k;
+		view = ViewFinder.getDietInfoView();
+		view.setVisibility(SecurityRole.USER);
+		view.setPresenter(this);
 	}
 
 	@Override
 	public void setKey(String key)
 	{
-		this.key = key;
+		key = key;
+	}
+
+	@Override
+	public void setScreen(HasWidgets container)
+	{
+		screen = container;
+	}
+
+	@Override
+	public void go()
+	{
+		fetchData();
+		screen.clear();
 	}
 
 	private void setView()
 	{
-		this.view.setDietType(this.dietInfoBlock.getDietType());
-		this.view.setIsGlutenFree(this.dietInfoBlock.getIsGlutenFree());
-		this.view.setDietaryRestrictions(this.dietInfoBlock.getDietaryRestrictions());
+		view.setDietType(dietInfoBlock.getDietType());
+		view.setIsGlutenFree(dietInfoBlock.getIsGlutenFree());
+		view.setDietaryRestrictions(dietInfoBlock.getDietaryRestrictions());
 	}
 
 	private void setModel()
 	{
-		this.dietInfoBlock.setDietType(this.view.getDietType());
-		this.dietInfoBlock.setIsGlutenFree(this.view.getIsGlutenFree());
-		this.dietInfoBlock.setDietaryRestrictions(this.view.getDietaryRestrictions());
-	}
-
-	@Override
-	public void go(HasWidgets container)
-	{
-		this.screen = container;
-		this.fetchData();
-		this.screen.clear();
+		dietInfoBlock.setDietType(view.getDietType());
+		dietInfoBlock.setIsGlutenFree(view.getIsGlutenFree());
+		dietInfoBlock.setDietaryRestrictions(view.getDietaryRestrictions());
 	}
 
 	@Override
 	public void setNextPresenter(IKeyPresenter next)
 	{
-		this.nextPresenter = next;
+		nextPresenter = next;
 	}
 
 	public void fetchData()
 	{
-		if (this.key != null)
+		if (key != null)
 		{
-			this.rpcService.getApplicantsDietInfoBlock(this.key, new AsyncCallback<DietInfoBlock>()
+			rpcService.getApplicantsDietInfoBlock(key, new AsyncCallback<DietInfoBlock>()
 			{
 
+				@Override
 				public void onSuccess(DietInfoBlock result)
 				{
 					if (result == null)
 					{
-						Window.alert((String) "Applicant's Payment Info reurned as null");
-						return;
+						Window.alert("Applicant's Payment Info reurned as null");
 					}
-					InputDietInfoPresenter.access$0(InputDietInfoPresenter.this, result);
-					InputDietInfoPresenter.this.setView();
-					InputDietInfoPresenter.this.screen.add(InputDietInfoPresenter.this.view.asWidget());
+					else
+					{
+						dietInfoBlock = result;
+						setView();
+						screen.add(view.asWidget());
+					}
 				}
 
+				@Override
 				public void onFailure(Throwable caught)
 				{
-					Window.alert((String) "DB Error retrieving Applicant's Payment Info");
+					Window.alert("DB Error retrieving Applicant's Payment Info");
 				}
 			});
 			return;
 		}
-		Window.alert((String) "Error no key for Applicant's Application!");
+		Window.alert("Error no key for Applicant's Application!");
 	}
 
 	@Override
 	public void onNextButtonClicked()
 	{
-		this.setModel();
-		this.rpcService.updateApplicantsDietInfoBlock(this.dietInfoBlock, new AsyncCallback<Boolean>()
+		setModel();
+		rpcService.updateApplicantsDietInfoBlock(dietInfoBlock, new AsyncCallback<Boolean>()
 		{
 
+			@Override
 			public void onSuccess(Boolean saved)
 			{
 				if (saved.booleanValue())
 				{
-					InputDietInfoPresenter.this.screen.clear();
-					InputDietInfoPresenter.this.nextPresenter.setKey(InputDietInfoPresenter.this.key);
-					InputDietInfoPresenter.this.nextPresenter.go(InputDietInfoPresenter.this.screen);
-					return;
+					screen.clear();
+					nextPresenter.setKey(key);
+					nextPresenter.setScreen(screen);
+					nextPresenter.go();
 				}
-				Window.alert((String) "DB Error saving Applicant's Payment Info");
+				else
+				{
+					Window.alert("DB Error saving Applicant's Payment Info");
+				}
 			}
 
+			@Override
 			public void onFailure(Throwable caught)
 			{
-				Window.alert((String) "RPC Error saving Applicant's Payment Info");
+				Window.alert("RPC Error saving Applicant's Payment Info");
 			}
 		});
-	}
-
-	static /* synthetic */ void access$0(InputDietInfoPresenter inputDietInfoPresenter, DietInfoBlock dietInfoBlock)
-	{
-		inputDietInfoPresenter.dietInfoBlock = dietInfoBlock;
 	}
 
 }
