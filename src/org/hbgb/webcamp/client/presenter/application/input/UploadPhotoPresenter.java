@@ -68,13 +68,17 @@ public class UploadPhotoPresenter implements ISequentialPresenter
 	@Override
 	public void go()
 	{
-		fetchData();
 		screen.clear();
+		fetchData();
 	}
 
 	public void fetchData()
 	{
-		if (this.key != null)
+		if (this.key == null)
+		{
+			Window.alert("Error no key for the applicant's Application!");
+		}
+		else
 		{
 			this.rpcService.getApplication(this.key, new AsyncCallback<Application>()
 			{
@@ -88,6 +92,7 @@ public class UploadPhotoPresenter implements ISequentialPresenter
 					}
 					else
 					{
+						app = result;
 						setView();
 						screen.add(view.asWidget());
 					}
@@ -99,9 +104,8 @@ public class UploadPhotoPresenter implements ISequentialPresenter
 					Window.alert("RPC Error: " + caught.getMessage());
 				}
 			});
-			return;
+
 		}
-		Window.alert("Error no key for the applicant's Application!");
 	}
 
 	@Override

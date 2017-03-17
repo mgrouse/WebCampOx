@@ -17,8 +17,8 @@ import org.hbgb.webcamp.client.view.AbstractView;
 import org.hbgb.webcamp.client.widget.MessagesWidget;
 
 import com.google.gwt.core.client.GWT;
-import com.google.gwt.event.dom.client.ChangeEvent;
 import com.google.gwt.event.dom.client.ClickEvent;
+import com.google.gwt.event.dom.client.KeyUpEvent;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.uibinder.client.UiHandler;
@@ -53,7 +53,7 @@ public class StartViewImpl extends AbstractView implements IStartView
 	public StartViewImpl()
 	{
 		initWidget(binder.createAndBindUi(this));
-		messages.setVisible(false);
+		messages.clear();
 	}
 
 	@Override
@@ -63,9 +63,9 @@ public class StartViewImpl extends AbstractView implements IStartView
 	}
 
 	@UiHandler(value = { "emailBox" })
-	protected void onEmailBoxChange(ChangeEvent event)
+	protected void onEmailBoxChange(KeyUpEvent event)
 	{
-		emailLabel.getElement().getStyle().setColor("black");
+		clearErrorState();
 	}
 
 	@UiHandler(value = { "nextButton" })
@@ -73,6 +73,8 @@ public class StartViewImpl extends AbstractView implements IStartView
 	{
 		if ((presenter != null) && (formIsValid()))
 		{
+			clearErrorState();
+
 			nextButton.setEnabled(false);
 			presenter.onNextButtonClicked();
 		}
@@ -142,6 +144,13 @@ public class StartViewImpl extends AbstractView implements IStartView
 	public void clear()
 	{
 		setEmailText("");
+		messages.clear();
+	}
+
+	private void clearErrorState()
+	{
+		// set things back to normal mode
+		emailLabel.getElement().getStyle().setColor("black");
 		messages.clear();
 	}
 }

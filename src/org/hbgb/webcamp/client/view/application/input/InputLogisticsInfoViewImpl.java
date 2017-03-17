@@ -43,7 +43,7 @@ public class InputLogisticsInfoViewImpl extends AbstractView implements InputLog
 	private static UiBinder<Widget, InputLogisticsInfoViewImpl> binder = GWT.create(InputLogisticsInfoViewImplBinder.class);
 
 	@UiField
-	MessagesWidget errMessages;
+	MessagesWidget messages;
 
 	@UiField
 	CheckBox wantsEarlyTeam;
@@ -87,8 +87,8 @@ public class InputLogisticsInfoViewImpl extends AbstractView implements InputLog
 	{
 		initWidget(binder.createAndBindUi(this));
 
-		errMessages.setVisible(false);
-		errMessages.clear();
+		messages.setVisible(false);
+		messages.clear();
 		setAllLabelsNormal();
 	}
 
@@ -264,7 +264,7 @@ public class InputLogisticsInfoViewImpl extends AbstractView implements InputLog
 	@Override
 	public void showMessage(String message)
 	{
-		errMessages.addMessageIfUnique(message);
-		errMessages.setVisible(true);
+		messages.addMessageIfUnique(message);
+		messages.setVisible(true);
 	}
 }

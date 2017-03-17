@@ -17,6 +17,7 @@ package org.hbgb.webcamp.client.view.application.input;
 import org.hbgb.webcamp.client.presenter.ISequentialPresenter;
 import org.hbgb.webcamp.client.view.AbstractView;
 import org.hbgb.webcamp.client.widget.CommitteeListBox;
+import org.hbgb.webcamp.client.widget.MessagesWidget;
 import org.hbgb.webcamp.shared.enums.Committee;
 import org.hbgb.webcamp.shared.enums.SecurityRole;
 
@@ -39,6 +40,9 @@ public class InputCommitteeInfoViewImpl extends AbstractView implements InputCom
 	{}
 
 	private static UiBinder<Widget, InputCommitteeInfoViewImpl> binder = GWT.create(EditComitteeInfoViewImplBinder.class);
+
+	@UiField
+	MessagesWidget messages;
 
 	@UiField
 	CommitteeListBox committee1;

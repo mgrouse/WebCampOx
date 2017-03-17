@@ -15,6 +15,7 @@ package org.hbgb.webcamp.client.view.application.input;
 
 import org.hbgb.webcamp.client.presenter.ISequentialPresenter;
 import org.hbgb.webcamp.client.view.AbstractView;
+import org.hbgb.webcamp.client.widget.MessagesWidget;
 
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.dom.client.ClickEvent;
@@ -23,7 +24,6 @@ import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.uibinder.client.UiHandler;
 import com.google.gwt.uibinder.client.UiTemplate;
 import com.google.gwt.user.client.ui.CheckBox;
-import com.google.gwt.user.client.ui.HTMLPanel;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.TextArea;
 import com.google.gwt.user.client.ui.Widget;
@@ -37,7 +37,7 @@ public class InputShelterInfoViewImpl extends AbstractView implements InputShelt
 	private static UiBinder<Widget, InputShelterInfoViewImpl> binder = GWT.create(EditShelterInfoViewBinder.class);
 
 	@UiField
-	HTMLPanel verifyWarning;
+	MessagesWidget messages;
 
 	@UiField
 	Label hsRvLabel;
@@ -68,7 +68,6 @@ public class InputShelterInfoViewImpl extends AbstractView implements InputShelt
 	public InputShelterInfoViewImpl()
 	{
 		this.initWidget(binder.createAndBindUi(this));
-		this.verifyWarning.setVisible(false);
 	}
 
 	@Override

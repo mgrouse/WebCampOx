@@ -10,7 +10,7 @@
 			
 			<g:VerticalPanel>
 			    
-				<w:MessagesWidget ui:field="errMessages"/>
+				<w:MessagesWidget ui:field="messages"/>
 				    
 				<g:HorizontalPanel>
 				    

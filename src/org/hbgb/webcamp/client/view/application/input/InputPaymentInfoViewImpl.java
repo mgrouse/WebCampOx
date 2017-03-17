@@ -17,6 +17,7 @@ package org.hbgb.webcamp.client.view.application.input;
 
 import org.hbgb.webcamp.client.presenter.ISequentialPresenter;
 import org.hbgb.webcamp.client.view.AbstractView;
+import org.hbgb.webcamp.client.widget.MessagesWidget;
 import org.hbgb.webcamp.client.widget.TicketTypeListBox;
 import org.hbgb.webcamp.shared.enums.SecurityRole;
 import org.hbgb.webcamp.shared.enums.TicketType;
@@ -28,7 +29,6 @@ import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.uibinder.client.UiHandler;
 import com.google.gwt.uibinder.client.UiTemplate;
 import com.google.gwt.user.client.ui.CheckBox;
-import com.google.gwt.user.client.ui.HTMLPanel;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.Widget;
 
@@ -36,7 +36,7 @@ public class InputPaymentInfoViewImpl extends AbstractView implements InputPayme
 {
 	private static UiBinder<Widget, InputPaymentInfoViewImpl> binder = GWT.create(EditPaymentInfoViewImplBinder.class);
 	@UiField
-	HTMLPanel verifyWarning;
+	MessagesWidget messages;
 
 	@UiField
 	CheckBox hasTicket;
@@ -52,7 +52,7 @@ public class InputPaymentInfoViewImpl extends AbstractView implements InputPayme
 	public InputPaymentInfoViewImpl()
 	{
 		this.initWidget(binder.createAndBindUi(this));
-		this.verifyWarning.setVisible(false);
+
 	}
 
 	@Override
@@ -117,5 +117,19 @@ public class InputPaymentInfoViewImpl extends AbstractView implements InputPayme
 	@UiTemplate(value = "InputPaymentInfoView.ui.xml")
 	static interface EditPaymentInfoViewImplBinder extends UiBinder<Widget, InputPaymentInfoViewImpl>
 	{}
+
+	@Override
+	public void addMessage(String var1)
+	{
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void setNextButtonActive(boolean var1)
+	{
+		// TODO Auto-generated method stub
+
+	}
 
 }

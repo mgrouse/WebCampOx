@@ -9,11 +9,7 @@
 			
 			<g:VerticalPanel>		
 				
-			    <!-- <g:HTMLPanel ui:field="verifyWarning" >
-					<p>
-						<font color="red">Please answer the questions in RED below</font> 
-					</p>
-				</g:HTMLPanel> -->
+			    <w:MessagesWidget ui:field="messages"/>
 			    
 				<g:HorizontalPanel>	
 				

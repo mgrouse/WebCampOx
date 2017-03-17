@@ -9,11 +9,7 @@
 			
 			<g:VerticalPanel>
 				
-			    <g:HTMLPanel ui:field="verifyWarning" >
-					<p>
-						<font color="red">Please answer the questions in RED below</font> 
-					</p>
-				</g:HTMLPanel>
+				<w:MessagesWidget ui:field="messages"/>
 			    
 				<g:HTML>
 					<p>
@@ -31,7 +27,6 @@
 				<g:VerticalPanel ui:field="rvInfoPanel">
 					<g:HTML text="Please describe your RV in terms of size type etc."/> <!-- If you want Electric hook up for your RV please mention it in this box."/> -->
 		        	<g:TextArea ui:field="rvInfo"/>
-					
 				</g:VerticalPanel>
 					
 				<g:HorizontalPanel>

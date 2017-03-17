@@ -64,59 +64,45 @@ public class StartPresenter implements ISequentialPresenter
 	{
 		view.setNextButtonActive(false);
 		setModel();
-		Boolean good = validateModel();
 
-		if (good)
+		rpcService.findOrAddApplication(email, new AsyncCallback<Application>()
 		{
-
-			rpcService.findOrAddApplication(email, new AsyncCallback<Application>()
+			@Override
+			public void onSuccess(Application result)
 			{
-				@Override
-				public void onSuccess(Application result)
+				if (null == result)
 				{
-					if (null == result)
+					Window.alert("Applicant's Info came back as NULL.");
+				}
+				else
+				{
+					key = result.getEncodedKey();
+
+					if (null == key)
 					{
-						Window.alert("Applicant's Info came back as NULL.");
+						Window.alert("Applicant's Info came back with null key");
 					}
 					else
 					{
-						key = result.getEncodedKey();
-
-						if (null == key)
-						{
-							Window.alert("Applicant's Info came back with null key");
-						}
-						else
-						{
-							screen.clear();
-							nextPresenter.setKey(key);
-							nextPresenter.setScreen(screen);
-							nextPresenter.go();
-						}
+						screen.clear();
+						nextPresenter.setKey(key);
+						nextPresenter.setScreen(screen);
+						nextPresenter.go();
 					}
 				}
+			}
 
-				@Override
-				public void onFailure(Throwable caught)
-				{
-					Window.alert("RPC Error saving Applicant's Info" + caught.getMessage());
-				}
-			});
-		} // end if good
-		else
-		{
-			view.setNextButtonActive(true);
-		}
+			@Override
+			public void onFailure(Throwable caught)
+			{
+				Window.alert("RPC Error saving Applicant's Info" + caught.getMessage());
+			}
+		});
 	}
 
 	private void setModel()
 	{
 		email = view.getEmailText();
-	}
-
-	private Boolean validateModel()
-	{
-		return true;
 	}
 
 }

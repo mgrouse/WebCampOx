@@ -16,6 +16,7 @@ package org.hbgb.webcamp.client.view.application.input;
 import org.hbgb.webcamp.client.presenter.ISequentialPresenter;
 import org.hbgb.webcamp.client.view.AbstractView;
 import org.hbgb.webcamp.client.widget.DietListBox;
+import org.hbgb.webcamp.client.widget.MessagesWidget;
 import org.hbgb.webcamp.shared.enums.DietType;
 
 import com.google.gwt.core.client.GWT;
@@ -25,7 +26,6 @@ import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.uibinder.client.UiHandler;
 import com.google.gwt.uibinder.client.UiTemplate;
 import com.google.gwt.user.client.ui.CheckBox;
-import com.google.gwt.user.client.ui.HTML;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.TextArea;
 import com.google.gwt.user.client.ui.Widget;
@@ -40,7 +40,7 @@ public class InputDietInfoViewImpl extends AbstractView implements InputDietInfo
 	private static UiBinder<Widget, InputDietInfoViewImpl> binder = GWT.create(EditDietInfoViewImplBinder.class);
 
 	@UiField
-	HTML verifyWarning;
+	MessagesWidget messages;
 
 	@UiField
 	Label dietLabel;

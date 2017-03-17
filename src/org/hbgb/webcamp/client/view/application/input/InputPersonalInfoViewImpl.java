@@ -21,6 +21,7 @@ import org.hbgb.webcamp.client.widget.BirthDateWidget;
 import org.hbgb.webcamp.client.widget.CallTimeListBox;
 import org.hbgb.webcamp.client.widget.ContactMethodListBox;
 import org.hbgb.webcamp.client.widget.GenderListBox;
+import org.hbgb.webcamp.client.widget.MessagesWidget;
 import org.hbgb.webcamp.shared.Address;
 import org.hbgb.webcamp.shared.enums.CallTime;
 import org.hbgb.webcamp.shared.enums.ContactMethod;
@@ -44,6 +45,9 @@ public class InputPersonalInfoViewImpl extends AbstractView implements InputPers
 	{}
 
 	private static UiBinder<Widget, InputPersonalInfoViewImpl> binder = GWT.create(InputPersonalInfoViewImplBinder.class);
+
+	@UiField
+	MessagesWidget messages;
 
 	@UiField
 	TextBox emailBox;
@@ -104,9 +108,10 @@ public class InputPersonalInfoViewImpl extends AbstractView implements InputPers
 	@UiHandler(value = { "nextButton" })
 	void onNextButtonClicked(ClickEvent event)
 	{
-		if (this.presenter == null)
-			return;
-		this.presenter.onNextButtonClicked();
+		if (this.presenter != null)
+		{
+			this.presenter.onNextButtonClicked();
+		}
 	}
 
 	@Override

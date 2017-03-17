@@ -18,10 +18,10 @@ import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.uibinder.client.UiTemplate;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.HTML;
-import com.google.gwt.user.client.ui.HasText;
+import com.google.gwt.user.client.ui.HTMLPanel;
 import com.google.gwt.user.client.ui.Widget;
 
-public class MessagesWidget extends Composite implements HasText, IMessages
+public class MessagesWidget extends Composite implements IMessages // HasText
 {
 	@UiTemplate(value = "MessagesWidget.ui.xml")
 	static interface MessagesWidgetBinder extends UiBinder<Widget, MessagesWidget>
@@ -30,25 +30,13 @@ public class MessagesWidget extends Composite implements HasText, IMessages
 	private static UiBinder<Widget, MessagesWidget> binder = GWT.create(MessagesWidgetBinder.class);
 
 	@UiField
-	HTML msgSpace;
+	HTMLPanel msgSpace;
 
 	ArrayList<String> messages = new ArrayList<>();
 
 	public MessagesWidget()
 	{
 		initWidget(binder.createAndBindUi(this));
-	}
-
-	@Override
-	public void setText(String text)
-	{
-		msgSpace.setText(text);
-	}
-
-	@Override
-	public String getText()
-	{
-		return msgSpace.getText();
 	}
 
 	@Override
@@ -83,29 +71,19 @@ public class MessagesWidget extends Composite implements HasText, IMessages
 	public void clear()
 	{
 		messages.clear();
-		msgSpace.setText("");
+		msgSpace.clear();
 	}
 
 	private void flush()
 	{
-		msgSpace.setText("");
-		StringBuilder sb = new StringBuilder();
-		for (String message : messages)
+		msgSpace.clear();
+
+		for (String msg : messages)
 		{
-			sb.append("<p>");
-			sb.append(message);
-			sb.append("</p>");
+			msgSpace.add(new HTML("<p>" + msg + "</p>"));
 		}
-		msgSpace.setText(sb.toString());
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see
-	 * org.hbgb.webcamp.client.widget.IMessages#addMessageIfUnique(java.lang.
-	 * String)
-	 */
 	@Override
 	public void addMessageIfUnique(String var1)
 	{
@@ -131,7 +109,6 @@ public class MessagesWidget extends Composite implements HasText, IMessages
 				break;
 			}
 		}
-
 		return retVal;
 	}
 

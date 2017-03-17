@@ -23,6 +23,7 @@ import org.hbgb.webcamp.client.presenter.ISequentialPresenter;
 import org.hbgb.webcamp.client.view.AbstractView;
 import org.hbgb.webcamp.client.view.ISequentialView;
 import org.hbgb.webcamp.client.view.IView;
+import org.hbgb.webcamp.client.widget.MessagesWidget;
 
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.dom.client.ClickEvent;
@@ -49,6 +50,9 @@ public class UploadPhotoViewImpl extends AbstractView implements UploadPhotoView
 	private static UiBinder<Widget, UploadPhotoViewImpl> binder = GWT.create(PictureUploadViewImplBinder.class);
 
 	BlobStoreUploadURLServiceAsync imageServ;
+
+	@UiField
+	MessagesWidget messages;
 
 	@UiField
 	Button uploadButton;
@@ -143,6 +147,18 @@ public class UploadPhotoViewImpl extends AbstractView implements UploadPhotoView
 	public String getImageURL()
 	{
 		return this.currentImage.getUrl();
+	}
+
+	@Override
+	public void addMessage(String var1)
+	{
+
+	}
+
+	@Override
+	public void setNextButtonActive(boolean var1)
+	{
+
 	}
 
 }

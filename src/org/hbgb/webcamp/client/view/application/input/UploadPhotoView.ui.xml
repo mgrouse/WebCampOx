@@ -1,6 +1,7 @@
 <!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
 <ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
-	         xmlns:g="urn:import:com.google.gwt.user.client.ui">
+	         xmlns:g="urn:import:com.google.gwt.user.client.ui"
+	         xmlns:w="urn:import:org.hbgb.webcamp.client.widget">
 
 	<g:ScrollPanel>
 		
@@ -8,12 +9,13 @@
 		
 			<g:VerticalPanel>
 			
-				<g:HTMLPanel>
+				<g:HTML>
 					<p>
 						Please upload a picture of yourself. Please make it a picture of your face without sunglasses.
 					</p>
-					<br/>
-				</g:HTMLPanel>
+				</g:HTML>
+				
+				<w:MessagesWidget ui:field="messages"/>
 				
        			<g:FormPanel ui:field="uploadForm">
        				<g:HorizontalPanel verticalAlignment="ALIGN_MIDDLE" addStyleNames="formRow">

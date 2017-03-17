@@ -10,21 +10,21 @@
 					<h1>Thanks!!!</h1>	
 				</g:HTML>
 			
-				<g:HTMLPanel ui:field="emailSuccess">
+				<g:HTML ui:field="emailSuccess">
 					<p>
 						We have emailed: <br/> 
 						Our camp leaders, to let them know you have applied.<br/>
 						You, to let you know the process completed, and remind you of some steps you should take to connect with the HeeBee tribe.
 					</p>
-				</g:HTMLPanel>
+				</g:HTML>
 				
-				<g:HTMLPanel ui:field="emailFailure">
+				<g:HTML ui:field="emailFailure">
 					<p>
 						NOTICE! There has been an email failure. <br/>
 						Don't worry, your application has most likely been saved, we probably just had an email glitch.<br/>
 						Please <a href="mailto:michael.grouse@gmail.com?Subject=Email%20Failure">email Scarab</a>, and make note of the email address you have used for this application.<br/>
 					</p>
-				</g:HTMLPanel>
+				</g:HTML>
 				
 				<g:HTML>	
 					<p>
@@ -32,7 +32,9 @@
 						and read up on camp life.
 					</p>
 				</g:HTML>
+				
 			</g:VerticalPanel>
+			
 		</g:CaptionPanel>				
 		
 	</g:ScrollPanel>
