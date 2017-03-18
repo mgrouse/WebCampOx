@@ -59,7 +59,7 @@ public class InputDietInfoViewImpl extends AbstractView implements InputDietInfo
 	public InputDietInfoViewImpl()
 	{
 		this.initWidget(binder.createAndBindUi(this));
-		this.verifyWarning.setVisible(false);
+
 		this.dietaryRestrictions.getElement().setAttribute("maxlength", "250");
 	}
 
@@ -72,11 +72,13 @@ public class InputDietInfoViewImpl extends AbstractView implements InputDietInfo
 	@UiHandler(value = { "nextButton" })
 	void onNextButtonClicked(ClickEvent event)
 	{
-		if (this.isFormComplete() == false)
-			return;
-		if (this.presenter == null)
-			return;
-		this.presenter.onNextButtonClicked();
+		if (presenter != null)
+		{
+			if (isFormComplete())
+			{
+				presenter.onNextButtonClicked();
+			}
+		}
 	}
 
 	@Override
@@ -119,12 +121,16 @@ public class InputDietInfoViewImpl extends AbstractView implements InputDietInfo
 	protected Boolean isFormComplete()
 	{
 		Boolean retVal = true;
-		DietType dt = this.getDietType();
-		if (dt != null)
-			return retVal;
-		retVal = false;
-		this.dietLabel.getElement().getStyle().setColor("red");
-		this.verifyWarning.setVisible(true);
+		DietType dt = getDietType();
+
+		if (dt == null)
+		{
+			dietLabel.getElement().getStyle().setColor("red");
+			messages.setVisible(true);
+
+			retVal = false;
+		}
+
 		return retVal;
 	}
 

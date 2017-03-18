@@ -79,11 +79,13 @@ public class InputShelterInfoViewImpl extends AbstractView implements InputShelt
 	@UiHandler(value = { "nextButton" })
 	void onNextButtonClicked(ClickEvent event)
 	{
-		if (this.isFormComplete() == false)
-			return;
-		if (this.presenter == null)
-			return;
-		this.presenter.onNextButtonClicked();
+		if (presenter != null)
+		{
+			if (isFormComplete())
+			{
+				presenter.onNextButtonClicked();
+			}
+		}
 	}
 
 	@Override
@@ -150,17 +152,22 @@ public class InputShelterInfoViewImpl extends AbstractView implements InputShelt
 	protected Boolean isFormComplete()
 	{
 		Boolean retVal = true;
-		if (this.getHasRv() != false)
-			return retVal;
-		if (this.getIsInDormTent() != false)
-			return retVal;
-		if (this.getHasStructure() != false)
-			return retVal;
-		retVal = false;
-		this.hsRvLabel.getElement().getStyle().setColor("red");
-		this.isInDormTentLabel.getElement().getStyle().setColor("red");
-		this.hasStructureLabel.getElement().getStyle().setColor("red");
-		this.verifyWarning.setVisible(true);
+
+		if (!getHasRv() && !getIsInDormTent() && !getHasStructure())
+		{
+			retVal = false;
+
+			this.hsRvLabel.getElement().getStyle().setColor("red");
+			this.isInDormTentLabel.getElement().getStyle().setColor("red");
+			this.hasStructureLabel.getElement().getStyle().setColor("red");
+
+			messages.addMessageIfUnique("Please pick at least one option in red");
+		}
+
+		// if rv is checked better have a rvInfo
+
+		// if Structure is checked better have a structureInfo
+
 		return retVal;
 	}
 

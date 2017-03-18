@@ -34,7 +34,12 @@ import com.google.gwt.user.client.ui.Widget;
 
 public class InputPaymentInfoViewImpl extends AbstractView implements InputPaymentInfoView
 {
+	@UiTemplate(value = "InputPaymentInfoView.ui.xml")
+	static interface EditPaymentInfoViewImplBinder extends UiBinder<Widget, InputPaymentInfoViewImpl>
+	{}
+
 	private static UiBinder<Widget, InputPaymentInfoViewImpl> binder = GWT.create(EditPaymentInfoViewImplBinder.class);
+
 	@UiField
 	MessagesWidget messages;
 
@@ -52,7 +57,6 @@ public class InputPaymentInfoViewImpl extends AbstractView implements InputPayme
 	public InputPaymentInfoViewImpl()
 	{
 		this.initWidget(binder.createAndBindUi(this));
-
 	}
 
 	@Override
@@ -70,11 +74,13 @@ public class InputPaymentInfoViewImpl extends AbstractView implements InputPayme
 	@UiHandler(value = { "nextButton" })
 	void onNextButtonClicked(ClickEvent event)
 	{
-		if (this.isFormComplete() == false)
-			return;
-		if (this.presenter == null)
-			return;
-		this.presenter.onNextButtonClicked();
+		if (presenter != null)
+		{
+			if (isFormComplete())
+			{
+				presenter.onNextButtonClicked();
+			}
+		}
 	}
 
 	@Override
@@ -105,18 +111,17 @@ public class InputPaymentInfoViewImpl extends AbstractView implements InputPayme
 	protected Boolean isFormComplete()
 	{
 		Boolean retVal = true;
-		TicketType tt = this.getTicketType();
-		if (tt != null)
-			return retVal;
-		retVal = false;
-		this.ticketTypeLabel.getElement().getStyle().setColor("red");
-		this.verifyWarning.setVisible(true);
+		TicketType tt = getTicketType();
+
+		if (tt == null)
+		{
+			retVal = false;
+
+			ticketTypeLabel.getElement().getStyle().setColor("red");
+			messages.setVisible(true);
+		}
 		return retVal;
 	}
-
-	@UiTemplate(value = "InputPaymentInfoView.ui.xml")
-	static interface EditPaymentInfoViewImplBinder extends UiBinder<Widget, InputPaymentInfoViewImpl>
-	{}
 
 	@Override
 	public void addMessage(String var1)
