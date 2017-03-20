@@ -111,7 +111,7 @@ public class InputLogisticsInfoViewImpl extends AbstractView implements InputLog
 	@UiHandler(value = { "nextButton" })
 	void onNextButtonClicked(ClickEvent event)
 	{
-		if (isFormComplete() == true)
+		if (formIsValid() == true)
 		{
 			if (presenter != null)
 			{
@@ -213,8 +213,7 @@ public class InputLogisticsInfoViewImpl extends AbstractView implements InputLog
 		departureDoE.removeETDates();
 	}
 
-	@Override
-	protected Boolean isFormComplete()
+	protected Boolean formIsValid()
 	{
 		Boolean retVal = true;
 

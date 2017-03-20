@@ -23,11 +23,6 @@ public abstract class AbstractView extends Composite implements IView
 	public void clear()
 	{}
 
-	protected Boolean isFormComplete()
-	{
-		return true;
-	}
-
 	@Override
 	public void setVisibility(SecurityRole role)
 	{}

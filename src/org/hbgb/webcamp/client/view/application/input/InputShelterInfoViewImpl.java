@@ -152,7 +152,6 @@ public class InputShelterInfoViewImpl extends AbstractView implements InputShelt
 		return this.structureInfo.getText();
 	}
 
-	@Override
 	protected Boolean isFormComplete()
 	{
 		Boolean retVal = true;

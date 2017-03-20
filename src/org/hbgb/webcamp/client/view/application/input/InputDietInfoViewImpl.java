@@ -78,7 +78,7 @@ public class InputDietInfoViewImpl extends AbstractView implements InputDietInfo
 	{
 		if (presenter != null)
 		{
-			if (isFormComplete())
+			if (formIsValid())
 			{
 				presenter.onNextButtonClicked();
 			}
@@ -121,8 +121,7 @@ public class InputDietInfoViewImpl extends AbstractView implements InputDietInfo
 		return this.dietaryRestrictions.getText();
 	}
 
-	@Override
-	protected Boolean isFormComplete()
+	protected Boolean formIsValid()
 	{
 		Boolean retVal = true;
 		DietType dt = getDietType();

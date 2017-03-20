@@ -23,12 +23,12 @@
 							</g:HorizontalPanel>
 							
 							<g:HorizontalPanel verticalAlignment="ALIGN_MIDDLE" addStyleNames="formRow">
-								<g:Label text="First Name"/>
+								<g:Label ui:field="firstNameLabel" text="First Name"/>
 					        	<g:TextBox ui:field="firstNameBox"/>
 					        </g:HorizontalPanel>
 					        
 					        <g:HorizontalPanel verticalAlignment="ALIGN_MIDDLE" addStyleNames="formRow">
-								<g:Label text="Last Name"/>
+								<g:Label ui:field="lastNameLabel" text="Last Name"/>
 					        	<g:TextBox ui:field="lastNameBox"/>
 							</g:HorizontalPanel>
 					        
@@ -38,7 +38,7 @@
 					        </g:HorizontalPanel>
 					        
 							<g:HorizontalPanel verticalAlignment="ALIGN_MIDDLE" addStyleNames="formRow">
-								<g:Label text="Gender"/>
+								<g:Label ui:field="genderLabel" text="Gender"/>
 					        	<w:GenderListBox ui:field="genderBox"/>
 							</g:HorizontalPanel>
 							
@@ -74,22 +74,22 @@
 							</g:HTML>
 											
 							<g:HorizontalPanel verticalAlignment="ALIGN_MIDDLE" addStyleNames="formRow">
-								<g:Label text="Phone"/>
+								<g:Label ui:field="phoneLabel" text="Phone"/>
 					        	<g:TextBox ui:field="phoneBox"/>
 							</g:HorizontalPanel>
 							
 							<g:HorizontalPanel verticalAlignment="ALIGN_MIDDLE" addStyleNames="formRow">
-								<g:Label text="Skype Name"/>
+								<g:Label ui:field="skypeLabel" text="Skype Name"/>
 					        	<g:TextBox ui:field="skypeNameBox"/>
 							</g:HorizontalPanel>
 							
 							<g:HorizontalPanel verticalAlignment="ALIGN_MIDDLE" addStyleNames="formRow">
-								<g:Label addStyleNames="mediumLabel" text="Preferred Contact Method"/>
+								<g:Label ui:field="contactMethodLabel" addStyleNames="mediumLabel" text="Preferred Contact Method"/>
 					        	<w:ContactMethodListBox ui:field="contactMethodBox"/>
 							</g:HorizontalPanel>
 							
 							<g:HorizontalPanel verticalAlignment="ALIGN_MIDDLE" addStyleNames="formRow">
-								<g:Label addStyleNames="mediumLabel" text="Preferred Contact Time"/>
+								<g:Label ui:field="contactTimeLabel" addStyleNames="mediumLabel" text="Preferred Contact Time"/>
 					        	<w:CallTimeListBox ui:field="contactTimeBox"/>
 							</g:HorizontalPanel>
 						</g:VerticalPanel>

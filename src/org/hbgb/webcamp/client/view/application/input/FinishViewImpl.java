@@ -54,12 +54,6 @@ public class FinishViewImpl extends AbstractView implements FinishViewI
 		this.emailFailure.setVisible(visible.booleanValue());
 	}
 
-	@Override
-	protected Boolean isFormComplete()
-	{
-		return true;
-	}
-
 	@UiTemplate(value = "FinishView.ui.xml")
 	static interface ExitViewImplBinder extends UiBinder<Widget, FinishViewImpl>
 	{}

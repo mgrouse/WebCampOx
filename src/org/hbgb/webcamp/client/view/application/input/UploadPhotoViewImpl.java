@@ -21,8 +21,6 @@ import org.hbgb.webcamp.client.async.AsyncServiceFinder;
 import org.hbgb.webcamp.client.async.BlobStoreUploadURLServiceAsync;
 import org.hbgb.webcamp.client.presenter.ISequentialPresenter;
 import org.hbgb.webcamp.client.view.AbstractView;
-import org.hbgb.webcamp.client.view.ISequentialView;
-import org.hbgb.webcamp.client.view.IView;
 import org.hbgb.webcamp.client.widget.MessagesWidget;
 
 import com.google.gwt.core.client.GWT;
@@ -39,7 +37,7 @@ import com.google.gwt.user.client.ui.FormPanel;
 import com.google.gwt.user.client.ui.Image;
 import com.google.gwt.user.client.ui.Widget;
 
-public class UploadPhotoViewImpl extends AbstractView implements UploadPhotoView, ISequentialView, IView
+public class UploadPhotoViewImpl extends AbstractView implements UploadPhotoView
 {
 	private static final String IMAGE_NOT_AVAIALABLE = "http://storage.googleapis.com/hbgbwebcamp.appspot.com/PhotoNotAvailable.jpg";
 
@@ -65,6 +63,9 @@ public class UploadPhotoViewImpl extends AbstractView implements UploadPhotoView
 
 	@UiField
 	Image currentImage;
+
+	@UiField
+	Button nextButton;
 
 	private ISequentialPresenter presenter;
 
@@ -150,15 +151,19 @@ public class UploadPhotoViewImpl extends AbstractView implements UploadPhotoView
 	}
 
 	@Override
-	public void addMessage(String var1)
+	public void addMessage(String text)
 	{
-
+		if (text != null && !text.isEmpty())
+		{
+			messages.addMessageIfUnique(text);
+			messages.setVisible(true);
+		}
 	}
 
 	@Override
-	public void setNextButtonActive(boolean var1)
+	public void setNextButtonActive(boolean b)
 	{
-
+		nextButton.setEnabled(b);
 	}
 
 }

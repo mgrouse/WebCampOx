@@ -111,7 +111,6 @@ public class InputPaymentInfoViewImpl extends AbstractView implements InputPayme
 		return this.ticketType.getSelectedValue();
 	}
 
-	@Override
 	protected Boolean isFormComplete()
 	{
 		Boolean retVal = true;

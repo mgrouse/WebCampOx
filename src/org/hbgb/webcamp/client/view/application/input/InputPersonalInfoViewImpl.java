@@ -34,6 +34,7 @@ import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.uibinder.client.UiHandler;
 import com.google.gwt.uibinder.client.UiTemplate;
 import com.google.gwt.user.client.ui.Button;
+import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.TextArea;
 import com.google.gwt.user.client.ui.TextBox;
 import com.google.gwt.user.client.ui.Widget;
@@ -53,13 +54,22 @@ public class InputPersonalInfoViewImpl extends AbstractView implements InputPers
 	TextBox emailBox;
 
 	@UiField
+	Label firstNameLabel;
+
+	@UiField
 	TextBox firstNameBox;
+
+	@UiField
+	Label lastNameLabel;
 
 	@UiField
 	TextBox lastNameBox;
 
 	@UiField
 	TextBox playaNameBox;
+
+	@UiField
+	Label genderLabel;
 
 	@UiField
 	GenderListBox genderBox;
@@ -77,13 +87,25 @@ public class InputPersonalInfoViewImpl extends AbstractView implements InputPers
 	AddressWidget homeAddress;
 
 	@UiField
+	Label phoneLabel;
+
+	@UiField
 	TextBox phoneBox;
+
+	@UiField
+	Label skypeLabel;
 
 	@UiField
 	TextBox skypeNameBox;
 
 	@UiField
+	Label contactMethodLabel;
+
+	@UiField
 	ContactMethodListBox contactMethodBox;
+
+	@UiField
+	Label contactTimeLabel;
 
 	@UiField
 	CallTimeListBox contactTimeBox;
@@ -95,8 +117,14 @@ public class InputPersonalInfoViewImpl extends AbstractView implements InputPers
 
 	public InputPersonalInfoViewImpl()
 	{
-		this.initWidget(binder.createAndBindUi(this));
-		this.bioBox.getElement().setAttribute("maxlength", "250");
+		initWidget(binder.createAndBindUi(this));
+
+		bioBox.getElement().setAttribute("maxlength", "250");
+		// at this point an applicant cannot change their email address as this
+		// is their username
+		emailBox.setEnabled(false);
+
+		messages.clear();
 	}
 
 	@Override
@@ -108,10 +136,94 @@ public class InputPersonalInfoViewImpl extends AbstractView implements InputPers
 	@UiHandler(value = { "nextButton" })
 	void onNextButtonClicked(ClickEvent event)
 	{
-		if (this.presenter != null)
+		if ((this.presenter != null) && (formIsValid()))
 		{
-			this.presenter.onNextButtonClicked();
+			clearErrorState();
+
+			nextButton.setEnabled(false);
+			presenter.onNextButtonClicked();
 		}
+	}
+
+	private boolean formIsValid()
+	{
+		Boolean retVal = true;
+
+		// firstNameBox
+		if ((null == getFirstNameText()) || getFirstNameText().isEmpty())
+		{
+			addMessage("Please answer the question(s) in red.");
+			firstNameLabel.getElement().getStyle().setColor("red");
+			retVal = false;
+		}
+
+		// lastNameBox
+		if ((null == getFirstNameText()) || getFirstNameText().isEmpty())
+		{
+			addMessage("Please answer the question(s) in red.");
+			lastNameLabel.getElement().getStyle().setColor("red");
+			retVal = false;
+		}
+
+		// genderBox
+		if (null == genderBox.getSelectedValue())
+		{
+			addMessage("Please answer the question(s) in red.");
+			genderLabel.getElement().getStyle().setColor("red");
+			retVal = false;
+		}
+
+		// contactMethodBox
+		if (null == contactMethodBox.getSelectedValue())
+		{
+			addMessage("Please answer the question(s) in red.");
+			contactMethodLabel.getElement().getStyle().setColor("red");
+			retVal = false;
+		}
+
+		// phone number
+		if (ContactMethod.Phone == contactMethodBox.getSelectedValue())
+		{
+			if ((null == phoneBox.getText()) || (phoneBox.getText().isEmpty()))
+			{
+				addMessage("Please answer the question(s) in red.");
+				phoneLabel.getElement().getStyle().setColor("red");
+				retVal = false;
+			}
+		}
+
+		// skype name
+		if (ContactMethod.Skype == contactMethodBox.getSelectedValue())
+		{
+			if ((null == phoneBox.getText()) || (phoneBox.getText().isEmpty()))
+			{
+				addMessage("Please answer the question(s) in red.");
+				skypeLabel.getElement().getStyle().setColor("red");
+				retVal = false;
+			}
+		}
+
+		// contactTimeBox
+		if (null == contactTimeBox.getSelectedValue())
+		{
+			addMessage("Please answer the question(s) in red.");
+			contactTimeLabel.getElement().getStyle().setColor("red");
+			retVal = false;
+		}
+
+		return retVal;
+	}
+
+	private void clearErrorState()
+	{
+		firstNameLabel.getElement().getStyle().setColor("black");
+		lastNameLabel.getElement().getStyle().setColor("black");
+		genderLabel.getElement().getStyle().setColor("black");
+		contactMethodLabel.getElement().getStyle().setColor("black");
+		phoneLabel.getElement().getStyle().setColor("black");
+		skypeLabel.getElement().getStyle().setColor("black");
+
+		messages.clear();
 	}
 
 	@Override
