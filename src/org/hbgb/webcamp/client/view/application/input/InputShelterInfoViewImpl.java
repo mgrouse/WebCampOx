@@ -32,10 +32,10 @@ import com.google.gwt.user.client.ui.Widget;
 public class InputShelterInfoViewImpl extends AbstractView implements InputShelterInfoView
 {
 	@UiTemplate(value = "InputShelterInfoView.ui.xml")
-	static interface EditShelterInfoViewBinder extends UiBinder<Widget, InputShelterInfoViewImpl>
+	static interface InputShelterInfoViewBinder extends UiBinder<Widget, InputShelterInfoViewImpl>
 	{}
 
-	private static UiBinder<Widget, InputShelterInfoViewImpl> binder = GWT.create(EditShelterInfoViewBinder.class);
+	private static UiBinder<Widget, InputShelterInfoViewImpl> binder = GWT.create(InputShelterInfoViewBinder.class);
 
 	@UiField
 	MessagesWidget messages;

@@ -16,7 +16,7 @@ import com.google.gwt.core.client.GWT;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.uibinder.client.UiTemplate;
-import com.google.gwt.user.client.ui.HTMLPanel;
+import com.google.gwt.user.client.ui.HTML;
 import com.google.gwt.user.client.ui.Widget;
 
 public class FinishViewImpl extends AbstractView implements FinishViewI
@@ -24,10 +24,10 @@ public class FinishViewImpl extends AbstractView implements FinishViewI
 	private static UiBinder<Widget, FinishViewImpl> binder = GWT.create(ExitViewImplBinder.class);
 
 	@UiField
-	HTMLPanel emailSuccess;
+	HTML emailSuccess;
 
 	@UiField
-	HTMLPanel emailFailure;
+	HTML emailFailure;
 
 	private PresenterI presenter;
 

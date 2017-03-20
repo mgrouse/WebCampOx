@@ -28,7 +28,9 @@ import org.hbgb.webcamp.shared.enums.ContactMethod;
 import org.hbgb.webcamp.shared.enums.Gender;
 
 import com.google.gwt.core.client.GWT;
+import com.google.gwt.event.dom.client.ChangeEvent;
 import com.google.gwt.event.dom.client.ClickEvent;
+import com.google.gwt.event.dom.client.KeyUpEvent;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.uibinder.client.UiHandler;
@@ -133,6 +135,18 @@ public class InputPersonalInfoViewImpl extends AbstractView implements InputPers
 		this.presenter = presenter;
 	}
 
+	@UiHandler(value = { "firstNameBox", "lastNameBox" })
+	protected void onEmailBoxChange(KeyUpEvent event)
+	{
+		clearErrorState();
+	}
+
+	@UiHandler(value = { "firstNameBox", "lastNameBox" })
+	protected void onListBoxChange(ChangeEvent event)
+	{
+		clearErrorState();
+	}
+
 	@UiHandler(value = { "nextButton" })
 	void onNextButtonClicked(ClickEvent event)
 	{
@@ -195,7 +209,7 @@ public class InputPersonalInfoViewImpl extends AbstractView implements InputPers
 		// skype name
 		if (ContactMethod.Skype == contactMethodBox.getSelectedValue())
 		{
-			if ((null == phoneBox.getText()) || (phoneBox.getText().isEmpty()))
+			if ((null == skypeNameBox.getText()) || (skypeNameBox.getText().isEmpty()))
 			{
 				addMessage("Please answer the question(s) in red.");
 				skypeLabel.getElement().getStyle().setColor("red");
