@@ -25,6 +25,7 @@ import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.uibinder.client.UiHandler;
 import com.google.gwt.uibinder.client.UiTemplate;
+import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.CheckBox;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.TextArea;
@@ -53,6 +54,9 @@ public class InputDietInfoViewImpl extends AbstractView implements InputDietInfo
 
 	@UiField
 	TextArea dietaryRestrictions;
+
+	@UiField
+	Button nextButton;
 
 	private ISequentialPresenter presenter;
 
@@ -132,6 +136,22 @@ public class InputDietInfoViewImpl extends AbstractView implements InputDietInfo
 		}
 
 		return retVal;
+	}
+
+	@Override
+	public void addMessage(String text)
+	{
+		if (text != null && !text.isEmpty())
+		{
+			messages.addMessageIfUnique(text);
+			messages.setVisible(true);
+		}
+	}
+
+	@Override
+	public void setNextButtonActive(boolean b)
+	{
+		nextButton.setEnabled(b);
 	}
 
 }

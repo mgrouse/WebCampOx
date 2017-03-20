@@ -270,4 +270,20 @@ public class InputPersonalInfoViewImpl extends AbstractView implements InputPers
 		return this.contactTimeBox.getSelectedValue();
 	}
 
+	@Override
+	public void addMessage(String text)
+	{
+		if (text != null && !text.isEmpty())
+		{
+			messages.addMessageIfUnique(text);
+			messages.setVisible(true);
+		}
+	}
+
+	@Override
+	public void setNextButtonActive(boolean b)
+	{
+		nextButton.setEnabled(b);
+	}
+
 }

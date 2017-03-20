@@ -28,6 +28,7 @@ import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.uibinder.client.UiHandler;
 import com.google.gwt.uibinder.client.UiTemplate;
+import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.Panel;
 import com.google.gwt.user.client.ui.TextArea;
 import com.google.gwt.user.client.ui.TextBox;
@@ -76,6 +77,9 @@ public class InputCommitteeInfoViewImpl extends AbstractView implements InputCom
 
 	@UiField
 	TextArea bioBox;
+
+	@UiField
+	Button nextButton;
 
 	private ISequentialPresenter presenter;
 
@@ -253,6 +257,22 @@ public class InputCommitteeInfoViewImpl extends AbstractView implements InputCom
 		this.setModality2("");
 		this.setModality3("");
 		this.setModality4("");
+	}
+
+	@Override
+	public void addMessage(String text)
+	{
+		if (text != null && !text.isEmpty())
+		{
+			messages.addMessageIfUnique(text);
+			messages.setVisible(true);
+		}
+	}
+
+	@Override
+	public void setNextButtonActive(boolean b)
+	{
+		nextButton.setEnabled(b);
 	}
 
 }

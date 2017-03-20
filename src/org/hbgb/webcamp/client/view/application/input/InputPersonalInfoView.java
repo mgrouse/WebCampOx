@@ -6,14 +6,16 @@ package org.hbgb.webcamp.client.view.application.input;
 import java.util.Date;
 
 import org.hbgb.webcamp.client.presenter.ISequentialPresenter;
+import org.hbgb.webcamp.client.view.ISequentialView;
 import org.hbgb.webcamp.client.view.IView;
 import org.hbgb.webcamp.shared.Address;
 import org.hbgb.webcamp.shared.enums.CallTime;
 import org.hbgb.webcamp.shared.enums.ContactMethod;
 import org.hbgb.webcamp.shared.enums.Gender;
 
-public interface InputPersonalInfoView extends IView
+public interface InputPersonalInfoView extends ISequentialView, IView
 {
+	@Override
 	public void setPresenter(ISequentialPresenter var1);
 
 	public void setEmailText(String var1);

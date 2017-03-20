@@ -28,6 +28,7 @@ import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.uibinder.client.UiHandler;
 import com.google.gwt.uibinder.client.UiTemplate;
+import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.CheckBox;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.Widget;
@@ -51,6 +52,9 @@ public class InputPaymentInfoViewImpl extends AbstractView implements InputPayme
 
 	@UiField
 	TicketTypeListBox ticketType;
+
+	@UiField
+	Button nextButton;
 
 	private ISequentialPresenter presenter;
 
@@ -124,17 +128,19 @@ public class InputPaymentInfoViewImpl extends AbstractView implements InputPayme
 	}
 
 	@Override
-	public void addMessage(String var1)
+	public void addMessage(String text)
 	{
-		// TODO Auto-generated method stub
-
+		if (text != null && !text.isEmpty())
+		{
+			messages.addMessageIfUnique(text);
+			messages.setVisible(true);
+		}
 	}
 
 	@Override
-	public void setNextButtonActive(boolean var1)
+	public void setNextButtonActive(boolean b)
 	{
-		// TODO Auto-generated method stub
-
+		nextButton.setEnabled(b);
 	}
 
 }

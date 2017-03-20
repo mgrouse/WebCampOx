@@ -161,7 +161,7 @@ public class InputLogisticsInfoPresenter implements ISequentialPresenter
 		{
 			retVal = false;
 			// set specific message in messages Obj
-			view.showMessage("Your arrival date is after or equal to your departure date.");
+			view.addMessage("Your arrival date is after or equal to your departure date.");
 		}
 
 		// wants strike but leaves before monday

@@ -4,10 +4,12 @@
 package org.hbgb.webcamp.client.view.application.input;
 
 import org.hbgb.webcamp.client.presenter.ISequentialPresenter;
+import org.hbgb.webcamp.client.view.ISequentialView;
 import org.hbgb.webcamp.client.view.IView;
 
-public interface InputShelterInfoView extends IView
+public interface InputShelterInfoView extends ISequentialView, IView
 {
+	@Override
 	public void setPresenter(ISequentialPresenter var1);
 
 	public void setHasRv(Boolean var1);

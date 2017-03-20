@@ -137,7 +137,7 @@ public class StartViewImpl extends AbstractView implements IStartView
 	@Override
 	public void setNextButtonActive(boolean b)
 	{
-		this.nextButton.setEnabled(b);
+		nextButton.setEnabled(b);
 	}
 
 	@Override

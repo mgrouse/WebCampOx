@@ -30,6 +30,7 @@ import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.uibinder.client.UiHandler;
 import com.google.gwt.uibinder.client.UiTemplate;
+import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.CheckBox;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.Widget;
@@ -80,6 +81,9 @@ public class InputLogisticsInfoViewImpl extends AbstractView implements InputLog
 
 	@UiField
 	PlayaTimeListBox departureTime;
+
+	@UiField
+	Button nextButton;
 
 	private ISequentialPresenter presenter;
 
@@ -220,28 +224,28 @@ public class InputLogisticsInfoViewImpl extends AbstractView implements InputLog
 		{
 			retVal = false;
 			arrivalDayLabel.getElement().getStyle().setColor("red");
-			showMessage("Please answer the questions in red.");
+			addMessage("Please answer the questions in red.");
 		}
 
 		if (getArrivalTime() == null)
 		{
 			retVal = false;
 			arrivalTimeLabel.getElement().getStyle().setColor("red");
-			showMessage("Please answer the questions in red.");
+			addMessage("Please answer the questions in red.");
 		}
 
 		if (getDepartureDate() == null)
 		{
 			retVal = false;
 			departureDayLabel.getElement().getStyle().setColor("red");
-			showMessage("Please answer the questions in red.");
+			addMessage("Please answer the questions in red.");
 		}
 
 		if (getDepartureTime() == null)
 		{
 			retVal = false;
 			departureTimeLabel.getElement().getStyle().setColor("red");
-			showMessage("Please answer the questions in red.");
+			addMessage("Please answer the questions in red.");
 		}
 		return retVal;
 	}
@@ -254,17 +258,19 @@ public class InputLogisticsInfoViewImpl extends AbstractView implements InputLog
 		departureTimeLabel.getElement().getStyle().setColor("black");
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see
-	 * org.hbgb.webcamp.client.view.application.input.InputLogisticsInfoView#
-	 * showMessage(java.lang.String)
-	 */
 	@Override
-	public void showMessage(String message)
+	public void addMessage(String text)
 	{
-		messages.addMessageIfUnique(message);
-		messages.setVisible(true);
+		if (text != null && !text.isEmpty())
+		{
+			messages.addMessageIfUnique(text);
+			messages.setVisible(true);
+		}
+	}
+
+	@Override
+	public void setNextButtonActive(boolean b)
+	{
+		nextButton.setEnabled(b);
 	}
 }

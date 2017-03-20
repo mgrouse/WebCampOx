@@ -8,7 +8,7 @@ import org.hbgb.webcamp.client.view.IView;
 
 public interface IStartView extends ISequentialView, IView
 {
-	public void setEmailText(String var1);
+	public void setEmailText(String text);
 
 	public String getEmailText();
 }

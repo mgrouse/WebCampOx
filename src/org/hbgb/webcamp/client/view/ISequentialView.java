@@ -7,9 +7,9 @@ import org.hbgb.webcamp.client.presenter.ISequentialPresenter;
 
 public interface ISequentialView
 {
-	public void setPresenter(ISequentialPresenter var1);
+	public void setPresenter(ISequentialPresenter sp);
 
-	public void addMessage(String var1);
+	public void addMessage(String text);
 
-	public void setNextButtonActive(boolean var1);
+	public void setNextButtonActive(boolean b);
 }
