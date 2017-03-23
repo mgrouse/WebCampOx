@@ -38,9 +38,9 @@ public class InputLogisticsInfoPresenter implements ISequentialPresenter
 	}
 
 	@Override
-	public void setKey(String key)
+	public void setKey(String k)
 	{
-		this.key = key;
+		key = k;
 	}
 
 	@Override

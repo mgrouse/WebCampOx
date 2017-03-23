@@ -29,18 +29,18 @@ public class InputPaymentInfoPresenter implements ISequentialPresenter
 	private HasWidgets screen;
 	private IKeyPresenter nextPresenter;
 
-	public InputPaymentInfoPresenter(String key)
+	public InputPaymentInfoPresenter(String k)
 	{
-		key = key;
+		key = k;
 		view = ViewFinder.getPaymentInfoView();
 		view.setPresenter(this);
 		view.setVisibility(SecurityRole.USER);
 	}
 
 	@Override
-	public void setKey(String key)
+	public void setKey(String k)
 	{
-		key = key;
+		key = k;
 	}
 
 	@Override
