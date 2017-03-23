@@ -18,7 +18,9 @@ import org.hbgb.webcamp.client.presenter.ISequentialPresenter;
 import org.hbgb.webcamp.client.view.AbstractView;
 import org.hbgb.webcamp.client.widget.AddressWidget;
 import org.hbgb.webcamp.client.widget.BirthDateWidget;
-import org.hbgb.webcamp.client.widget.EnumListBox;
+import org.hbgb.webcamp.client.widget.CallTimeListBox;
+import org.hbgb.webcamp.client.widget.ContactMethodListBox;
+import org.hbgb.webcamp.client.widget.GenderListBox;
 import org.hbgb.webcamp.client.widget.MessagesWidget;
 import org.hbgb.webcamp.shared.Address;
 import org.hbgb.webcamp.shared.enums.CallTime;
@@ -28,7 +30,6 @@ import org.hbgb.webcamp.shared.enums.Gender;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.dom.client.ChangeEvent;
 import com.google.gwt.event.dom.client.ClickEvent;
-import com.google.gwt.event.dom.client.KeyUpEvent;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.uibinder.client.UiHandler;
@@ -72,7 +73,7 @@ public class InputPersonalInfoViewImpl extends AbstractView implements InputPers
 	Label genderLabel;
 
 	@UiField
-	EnumListBox<Gender> genderBox;
+	GenderListBox genderBox;
 
 	@UiField
 	BirthDateWidget birthDate;
@@ -102,13 +103,13 @@ public class InputPersonalInfoViewImpl extends AbstractView implements InputPers
 	Label contactMethodLabel;
 
 	@UiField
-	EnumListBox<ContactMethod> contactMethodBox;
+	ContactMethodListBox contactMethodBox;
 
 	@UiField
 	Label contactTimeLabel;
 
 	@UiField
-	EnumListBox<CallTime> contactTimeBox;
+	CallTimeListBox contactTimeBox;
 
 	@UiField
 	Button nextButton;
@@ -133,27 +134,28 @@ public class InputPersonalInfoViewImpl extends AbstractView implements InputPers
 		this.presenter = presenter;
 	}
 
-	@UiHandler(value = { "firstNameBox", "lastNameBox" })
-	protected void onEmailBoxChange(KeyUpEvent event)
-	{
-		clearErrorState();
-	}
+	// @UiHandler(value = { "firstNameBox", "lastNameBox", "phoneBox",
+	// "skypeNameBox" })
+	// protected void onTextBoxChange(KeyUpEvent event)
+	// {
+	// clearErrorState();
+	// formIsValid();
+	// }
 
 	// Phone and Skype IFF their labels are red or contactMethodBox indicates?
 
-	@UiHandler(value = { "genderBox", "contactMethodBox", "contactTimeBox" })
+	@UiHandler(value = { "genderBox", "contactMethodBox", "contactTimeBox", "firstNameBox", "lastNameBox", "phoneBox", "skypeNameBox" })
 	protected void onListBoxChange(ChangeEvent event)
 	{
-		clearErrorState();
+		// clearErrorState();
+		// formIsValid();
 	}
 
 	@UiHandler(value = { "nextButton" })
 	void onNextButtonClicked(ClickEvent event)
 	{
-		if ((this.presenter != null) && (formIsValid()))
+		if ((presenter != null) && (formIsValid()))
 		{
-			clearErrorState();
-
 			nextButton.setEnabled(false);
 			presenter.onNextButtonClicked();
 		}
@@ -162,6 +164,7 @@ public class InputPersonalInfoViewImpl extends AbstractView implements InputPers
 	private boolean formIsValid()
 	{
 		Boolean retVal = true;
+		clearErrorState();
 
 		// firstNameBox
 		if ((null == getFirstNameText()) || getFirstNameText().isEmpty())
@@ -172,7 +175,7 @@ public class InputPersonalInfoViewImpl extends AbstractView implements InputPers
 		}
 
 		// lastNameBox
-		if ((null == getFirstNameText()) || getFirstNameText().isEmpty())
+		if ((null == getLastNameText()) || getLastNameText().isEmpty())
 		{
 			addMessage("Please answer the question(s) in red.");
 			lastNameLabel.getElement().getStyle().setColor("red");
@@ -180,7 +183,7 @@ public class InputPersonalInfoViewImpl extends AbstractView implements InputPers
 		}
 
 		// genderBox
-		if (null == genderBox.getSelectedValue())
+		if (null == genderBox.getSelectedEnumValue())
 		{
 			addMessage("Please answer the question(s) in red.");
 			genderLabel.getElement().getStyle().setColor("red");
@@ -188,7 +191,7 @@ public class InputPersonalInfoViewImpl extends AbstractView implements InputPers
 		}
 
 		// contactMethodBox
-		if (null == contactMethodBox.getSelectedValue())
+		if (null == contactMethodBox.getSelectedEnumValue())
 		{
 			addMessage("Please answer the question(s) in red.");
 			contactMethodLabel.getElement().getStyle().setColor("red");
@@ -218,7 +221,7 @@ public class InputPersonalInfoViewImpl extends AbstractView implements InputPers
 		}
 
 		// contactTimeBox
-		if (null == contactTimeBox.getSelectedValue())
+		if (null == contactTimeBox.getSelectedEnumValue())
 		{
 			addMessage("Please answer the question(s) in red.");
 			contactTimeLabel.getElement().getStyle().setColor("red");
@@ -233,9 +236,11 @@ public class InputPersonalInfoViewImpl extends AbstractView implements InputPers
 		firstNameLabel.getElement().getStyle().setColor("black");
 		lastNameLabel.getElement().getStyle().setColor("black");
 		genderLabel.getElement().getStyle().setColor("black");
-		contactMethodLabel.getElement().getStyle().setColor("black");
+
 		phoneLabel.getElement().getStyle().setColor("black");
 		skypeLabel.getElement().getStyle().setColor("black");
+		contactMethodLabel.getElement().getStyle().setColor("black");
+		contactTimeLabel.getElement().getStyle().setColor("black");
 
 		messages.clear();
 	}
@@ -411,23 +416,5 @@ public class InputPersonalInfoViewImpl extends AbstractView implements InputPers
 	{
 		nextButton.setEnabled(b);
 	}
-
-	// @UiFactory
-	// EnumListBox<E> genderListBoxFactory(E e)
-	// {
-	// return new EnumListBox<>(Gender.class);
-	// }
-	//
-	// @UiFactory
-	// EnumListBox<ContactMethod> contactMethodListBoxFactory()
-	// {
-	// return new EnumListBox<>(ContactMethod.class);
-	// }
-	//
-	// @UiFactory
-	// EnumListBox<CallTime> callTimeListBoxFactory()
-	// {
-	// return new EnumListBox<>(CallTime.class);
-	// }
 
 }

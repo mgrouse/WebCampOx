@@ -134,6 +134,7 @@ public class InputLogisticsInfoPresenter implements ISequentialPresenter
 					{
 						screen.clear();
 						nextPresenter.setKey(key);
+						nextPresenter.setScreen(screen);
 						nextPresenter.go();
 						return;
 					}

@@ -13,7 +13,7 @@
 			    
 				<g:HorizontalPanel verticalAlignment="ALIGN_MIDDLE" addStyleNames="formRow">	
 		        	<g:Label ui:field="dietLabel" text="My Diet is best described as:" addStyleNames="longLabel"/>
-		        	<w:EnumListBox ui:field="dietType"/>
+		        	<w:DietListBox ui:field="dietType"/>
 				</g:HorizontalPanel>
 				
 				<g:HTML>

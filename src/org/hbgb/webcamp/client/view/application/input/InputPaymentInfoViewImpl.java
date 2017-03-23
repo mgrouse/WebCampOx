@@ -17,15 +17,14 @@ package org.hbgb.webcamp.client.view.application.input;
 
 import org.hbgb.webcamp.client.presenter.ISequentialPresenter;
 import org.hbgb.webcamp.client.view.AbstractView;
-import org.hbgb.webcamp.client.widget.EnumListBox;
 import org.hbgb.webcamp.client.widget.MessagesWidget;
+import org.hbgb.webcamp.client.widget.TicketTypeListBox;
 import org.hbgb.webcamp.shared.enums.SecurityRole;
 import org.hbgb.webcamp.shared.enums.TicketType;
 
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.uibinder.client.UiBinder;
-import com.google.gwt.uibinder.client.UiFactory;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.uibinder.client.UiHandler;
 import com.google.gwt.uibinder.client.UiTemplate;
@@ -52,7 +51,7 @@ public class InputPaymentInfoViewImpl extends AbstractView implements InputPayme
 	Label ticketTypeLabel;
 
 	@UiField
-	EnumListBox<TicketType> ticketType;
+	TicketTypeListBox ticketType;
 
 	@UiField
 	Button nextButton;
@@ -122,7 +121,7 @@ public class InputPaymentInfoViewImpl extends AbstractView implements InputPayme
 			retVal = false;
 
 			ticketTypeLabel.getElement().getStyle().setColor("red");
-			messages.setVisible(true);
+			messages.addMessage("Please answer the question(s) in red");
 		}
 		return retVal;
 	}
@@ -141,11 +140,5 @@ public class InputPaymentInfoViewImpl extends AbstractView implements InputPayme
 	public void setNextButtonActive(boolean b)
 	{
 		nextButton.setEnabled(b);
-	}
-
-	@UiFactory
-	EnumListBox<TicketType> listBoxFactory()
-	{
-		return new EnumListBox<>(TicketType.class);
 	}
 }

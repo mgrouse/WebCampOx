@@ -16,7 +16,7 @@ package org.hbgb.webcamp.client.view.application.input;
 
 import org.hbgb.webcamp.client.presenter.ISequentialPresenter;
 import org.hbgb.webcamp.client.view.AbstractView;
-import org.hbgb.webcamp.client.widget.EnumListBox;
+import org.hbgb.webcamp.client.widget.CommitteeListBox;
 import org.hbgb.webcamp.client.widget.MessagesWidget;
 import org.hbgb.webcamp.shared.enums.Committee;
 import org.hbgb.webcamp.shared.enums.SecurityRole;
@@ -25,7 +25,6 @@ import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.dom.client.ChangeEvent;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.uibinder.client.UiBinder;
-import com.google.gwt.uibinder.client.UiFactory;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.uibinder.client.UiHandler;
 import com.google.gwt.uibinder.client.UiTemplate;
@@ -47,13 +46,13 @@ public class InputCommitteeInfoViewImpl extends AbstractView implements InputCom
 	MessagesWidget messages;
 
 	@UiField
-	EnumListBox<Committee> committee1;
+	CommitteeListBox committee1;
 
 	@UiField
 	TextArea reason1;
 
 	@UiField
-	EnumListBox<Committee> committee2;
+	CommitteeListBox committee2;
 
 	@UiField
 	TextArea reason2;
@@ -277,12 +276,6 @@ public class InputCommitteeInfoViewImpl extends AbstractView implements InputCom
 	public void setNextButtonActive(boolean b)
 	{
 		nextButton.setEnabled(b);
-	}
-
-	@UiFactory
-	EnumListBox<Committee> callTimeListBoxFactory()
-	{
-		return new EnumListBox<>(Committee.class);
 	}
 
 }

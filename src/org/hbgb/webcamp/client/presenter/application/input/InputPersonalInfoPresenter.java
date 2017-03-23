@@ -107,16 +107,18 @@ public class InputPersonalInfoPresenter implements ISequentialPresenter
 					Window.alert("Error retrieving Applicant");
 				}
 			});
-			return;
 		}
-		Window.alert("Error no key for Applicant's Application!");
+		else
+		{
+			Window.alert("Error no key for Applicant's Application!");
+		}
 	}
 
 	@Override
 	public void go()
 	{
-		fetchData();
 		screen.clear();
+		fetchData();
 	}
 
 	@Override
@@ -135,15 +137,17 @@ public class InputPersonalInfoPresenter implements ISequentialPresenter
 			@Override
 			public void onSuccess(Boolean saved)
 			{
-				if (saved.booleanValue())
+				if (saved)
 				{
 					screen.clear();
 					nextPresenter.setKey(key);
 					nextPresenter.setScreen(screen);
 					nextPresenter.go();
-					return;
 				}
-				Window.alert("DB Error saving Applicant's Info");
+				else
+				{
+					Window.alert("DB Error saving Applicant's Info");
+				}
 			}
 
 			@Override

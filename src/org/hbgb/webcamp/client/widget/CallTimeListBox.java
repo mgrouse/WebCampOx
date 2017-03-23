@@ -20,11 +20,17 @@ public class CallTimeListBox extends EnumListBox<CallTime>
 		super(CallTime.class);
 	}
 
-	// private static UiBinder<Widget, CallTimeListBox> binder =
-	// GWT.create(CallTimeListBoxBinder.class);
-	// @UiField
-	// ListBox list;
-	//
+	@Override
+	public CallTime getSelectedEnumValue()
+	{
+		CallTime ct = null;
+
+		String temp = getSelectedItemText();
+		ct = CallTime.reverseLookup(temp);
+
+		return ct;
+	}
+
 	// CallTimeListBox()
 	// {
 	// this.initWidget(binder.createAndBindUi(this));

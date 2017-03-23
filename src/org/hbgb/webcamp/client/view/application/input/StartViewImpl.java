@@ -86,6 +86,7 @@ public class StartViewImpl extends AbstractView implements IStartView
 	private boolean formIsValid()
 	{
 		Boolean retVal = true;
+		clearErrorState();
 
 		if ((null == getEmailText()) || getEmailText().isEmpty() || (!emailWellFormatted()))
 		{

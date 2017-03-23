@@ -21,7 +21,7 @@
 		
 				<g:HorizontalPanel verticalAlignment="ALIGN_MIDDLE" addStyleNames="formRow">	
 		        	<g:Label text="First Choice"/>
-		        	<w:EnumListBox ui:field="committee1"/>
+		        	<w:CommitteeListBox ui:field="committee1"/>
 				</g:HorizontalPanel>
 				
 				<g:HTML text="Why do you want to be on this committee?" addStyleNames="longLabel"/>
@@ -29,7 +29,7 @@
 				
 				<g:HorizontalPanel verticalAlignment="ALIGN_MIDDLE" addStyleNames="formRow">	
 		        	<g:Label text="Second Choice"/>
-		        	<w:EnumListBox ui:field="committee2"/>
+		        	<w:CommitteeListBox ui:field="committee2"/>
 				</g:HorizontalPanel>		        
 		        
 				<g:HTML text="Why do you want to be on this committee?"  addStyleNames="longLabel"/>

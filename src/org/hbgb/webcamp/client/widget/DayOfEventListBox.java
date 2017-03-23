@@ -24,6 +24,17 @@ public class DayOfEventListBox extends EnumListBox<DayOfEvent>
 
 	}
 
+	@Override
+	public DayOfEvent getSelectedEnumValue()
+	{
+		DayOfEvent doe = null;
+
+		String temp = getSelectedItemText();
+		doe = DayOfEvent.reverseLookup(temp);
+
+		return doe;
+	}
+
 	// @UiTemplate(value = "DayOfEventListBox.ui.xml")
 	// static interface DayOfEventListBoxBinder extends UiBinder<Widget,
 	// DayOfEventListBox>

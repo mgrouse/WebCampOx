@@ -281,21 +281,4 @@ public class InputLogisticsInfoViewImpl extends AbstractView implements InputLog
 		nextButton.setEnabled(b);
 	}
 
-	// @UiFactory
-	// EnumListBox<Transportation> tansportListBoxFactory()
-	// {
-	// return new EnumListBox<>(Transportation.class);
-	// }
-	//
-	// @UiFactory
-	// EnumListBox<DayOfEvent> dayOfEventListBoxFactory()
-	// {
-	// return new EnumListBox<>(DayOfEvent.class);
-	// }
-	//
-	// @UiFactory
-	// EnumListBox<PlayaTime> playaTimeListBoxFactory()
-	// {
-	// return new EnumListBox<>(PlayaTime.class);
-	// }
 }

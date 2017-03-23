@@ -41,7 +41,7 @@
 				
 					<g:HorizontalPanel verticalAlignment="ALIGN_MIDDLE" addStyleNames="formRow">	
 			        	<g:Label ui:field="ticketTypeLabel" text="My Ticket is: "/>
-			        	<w:EnumListBox ui:field="ticketType"/>
+			        	<w:TicketTypeListBox ui:field="ticketType"/>
 					</g:HorizontalPanel>
 			        
 					<g:Button ui:field="nextButton" addStyleNames="right">Next</g:Button>

@@ -31,16 +31,16 @@ public class InputPaymentInfoPresenter implements ISequentialPresenter
 
 	public InputPaymentInfoPresenter(String key)
 	{
-		this.key = key;
-		this.view = ViewFinder.getPaymentInfoView();
+		key = key;
+		view = ViewFinder.getPaymentInfoView();
 		view.setPresenter(this);
-		this.view.setVisibility(SecurityRole.USER);
+		view.setVisibility(SecurityRole.USER);
 	}
 
 	@Override
 	public void setKey(String key)
 	{
-		this.key = key;
+		key = key;
 	}
 
 	@Override
@@ -51,36 +51,36 @@ public class InputPaymentInfoPresenter implements ISequentialPresenter
 
 	private void setView()
 	{
-		this.view.setHasTicket(this.paymentInfo.getHasTicket());
-		this.view.setTicketType(this.paymentInfo.getTicketType());
+		view.setHasTicket(paymentInfo.getHasTicket());
+		view.setTicketType(paymentInfo.getTicketType());
 
 	}
 
 	private void setModel()
 	{
-		this.paymentInfo.setHasTicket(this.view.getHasTicket());
-		this.paymentInfo.setTicketType(this.view.getTicketType());
+		paymentInfo.setHasTicket(view.getHasTicket());
+		paymentInfo.setTicketType(view.getTicketType());
 
 	}
 
 	@Override
 	public void go()
 	{
-		this.fetchData();
-		this.screen.clear();
+		fetchData();
+		screen.clear();
 	}
 
 	@Override
 	public void setNextPresenter(IKeyPresenter next)
 	{
-		this.nextPresenter = next;
+		nextPresenter = next;
 	}
 
 	public void fetchData()
 	{
-		if (this.key != null)
+		if (key != null)
 		{
-			this.rpcService.getApplicantsPaymentInfoBlock(this.key, new AsyncCallback<PaymentInfoBlock>()
+			rpcService.getApplicantsPaymentInfoBlock(key, new AsyncCallback<PaymentInfoBlock>()
 			{
 
 				@Override
@@ -111,8 +111,8 @@ public class InputPaymentInfoPresenter implements ISequentialPresenter
 	@Override
 	public void onNextButtonClicked()
 	{
-		this.setModel();
-		this.rpcService.updateApplicantsPaymentInfoBlock(this.paymentInfo, new AsyncCallback<Boolean>()
+		setModel();
+		rpcService.updateApplicantsPaymentInfoBlock(paymentInfo, new AsyncCallback<Boolean>()
 		{
 
 			@Override

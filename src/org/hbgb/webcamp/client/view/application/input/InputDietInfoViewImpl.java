@@ -15,14 +15,13 @@ package org.hbgb.webcamp.client.view.application.input;
 
 import org.hbgb.webcamp.client.presenter.ISequentialPresenter;
 import org.hbgb.webcamp.client.view.AbstractView;
-import org.hbgb.webcamp.client.widget.EnumListBox;
+import org.hbgb.webcamp.client.widget.DietListBox;
 import org.hbgb.webcamp.client.widget.MessagesWidget;
 import org.hbgb.webcamp.shared.enums.DietType;
 
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.uibinder.client.UiBinder;
-import com.google.gwt.uibinder.client.UiFactory;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.uibinder.client.UiHandler;
 import com.google.gwt.uibinder.client.UiTemplate;
@@ -48,7 +47,7 @@ public class InputDietInfoViewImpl extends AbstractView implements InputDietInfo
 	Label dietLabel;
 
 	@UiField
-	EnumListBox<DietType> dietType;
+	DietListBox dietType;
 
 	@UiField
 	CheckBox isGlutenFree;
@@ -154,9 +153,4 @@ public class InputDietInfoViewImpl extends AbstractView implements InputDietInfo
 		nextButton.setEnabled(b);
 	}
 
-	@UiFactory
-	EnumListBox<DietType> listBoxFactory()
-	{
-		return new EnumListBox<>(DietType.class);
-	}
 }

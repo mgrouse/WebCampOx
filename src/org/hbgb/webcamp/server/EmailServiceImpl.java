@@ -84,7 +84,7 @@ public class EmailServiceImpl extends RemoteServiceServlet implements EmailServi
 		sb.append(getRegistrationLeadAddressAsText());
 		sb.append("\nPlease don't reply to this email address.\n");
 		sb.append("Meet the rest of us by joining the HeeBeeGeeBee Healers Facebook Group at: ");
-		sb.append("https://www.facebook.com/groups/23767999265/?ref=bookmarks\n");
+		sb.append("https://www.facebook.com/groups/23767999265 \n");
 		sb.append("\n");
 		sb.append("This year's co-leads, \n");
 		sb.append("Quiggles and Dragonheart\n");
