@@ -18,6 +18,7 @@ import org.hbgb.webcamp.client.view.AbstractView;
 import org.hbgb.webcamp.client.widget.MessagesWidget;
 
 import com.google.gwt.core.client.GWT;
+import com.google.gwt.event.dom.client.ChangeEvent;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
@@ -71,13 +72,16 @@ public class InputShelterInfoViewImpl extends AbstractView implements InputShelt
 
 	public InputShelterInfoViewImpl()
 	{
-		this.initWidget(binder.createAndBindUi(this));
+		initWidget(binder.createAndBindUi(this));
+
+		rvInfo.setVisible(false);
+		structureInfo.setVisible(false);
 	}
 
 	@Override
-	public void setPresenter(ISequentialPresenter presenter)
+	public void setPresenter(ISequentialPresenter sp)
 	{
-		this.presenter = presenter;
+		presenter = sp;
 	}
 
 	@UiHandler(value = { "nextButton" })
@@ -92,66 +96,6 @@ public class InputShelterInfoViewImpl extends AbstractView implements InputShelt
 		}
 	}
 
-	@Override
-	public void setHasRv(Boolean bool)
-	{
-		this.hasRv.setValue(bool, false);
-	}
-
-	@Override
-	public Boolean getHasRv()
-	{
-		return this.hasRv.getValue();
-	}
-
-	@Override
-	public void setRvInfoText(String text)
-	{
-		this.rvInfo.setText(text);
-	}
-
-	@Override
-	public String getRvInfoText()
-	{
-		return this.rvInfo.getText();
-	}
-
-	@Override
-	public void setIsInDormTent(Boolean bool)
-	{
-		this.isInDormTent.setValue(bool, false);
-	}
-
-	@Override
-	public Boolean getIsInDormTent()
-	{
-		return this.isInDormTent.getValue();
-	}
-
-	@Override
-	public void setHasStructure(Boolean bool)
-	{
-		this.hasStructure.setValue(bool, false);
-	}
-
-	@Override
-	public Boolean getHasStructure()
-	{
-		return this.hasStructure.getValue();
-	}
-
-	@Override
-	public void setStructureInfoText(String text)
-	{
-		this.structureInfo.setText(text);
-	}
-
-	@Override
-	public String getStructureInfoText()
-	{
-		return this.structureInfo.getText();
-	}
-
 	protected Boolean isFormComplete()
 	{
 		Boolean retVal = true;
@@ -160,9 +104,9 @@ public class InputShelterInfoViewImpl extends AbstractView implements InputShelt
 		{
 			retVal = false;
 
-			this.hsRvLabel.getElement().getStyle().setColor("red");
-			this.isInDormTentLabel.getElement().getStyle().setColor("red");
-			this.hasStructureLabel.getElement().getStyle().setColor("red");
+			hsRvLabel.getElement().getStyle().setColor("red");
+			isInDormTentLabel.getElement().getStyle().setColor("red");
+			hasStructureLabel.getElement().getStyle().setColor("red");
 
 			messages.addMessageIfUnique("Please pick at least one option in red");
 		}
@@ -172,6 +116,74 @@ public class InputShelterInfoViewImpl extends AbstractView implements InputShelt
 		// if Structure is checked better have a structureInfo
 
 		return retVal;
+	}
+
+	@UiHandler(value = { "hasRv", "isInDormTent", "hasStructure" })
+	protected void onListBoxChange(ChangeEvent event)
+	{
+		// if RV
+
+		// if Structure
+	}
+
+	@Override
+	public void setHasRv(Boolean bool)
+	{
+		hasRv.setValue(bool, false);
+	}
+
+	@Override
+	public Boolean getHasRv()
+	{
+		return hasRv.getValue();
+	}
+
+	@Override
+	public void setRvInfoText(String text)
+	{
+		rvInfo.setText(text);
+	}
+
+	@Override
+	public String getRvInfoText()
+	{
+		return rvInfo.getText();
+	}
+
+	@Override
+	public void setIsInDormTent(Boolean bool)
+	{
+		isInDormTent.setValue(bool, false);
+	}
+
+	@Override
+	public Boolean getIsInDormTent()
+	{
+		return isInDormTent.getValue();
+	}
+
+	@Override
+	public void setHasStructure(Boolean bool)
+	{
+		hasStructure.setValue(bool, false);
+	}
+
+	@Override
+	public Boolean getHasStructure()
+	{
+		return hasStructure.getValue();
+	}
+
+	@Override
+	public void setStructureInfoText(String text)
+	{
+		structureInfo.setText(text);
+	}
+
+	@Override
+	public String getStructureInfoText()
+	{
+		return structureInfo.getText();
 	}
 
 	@Override

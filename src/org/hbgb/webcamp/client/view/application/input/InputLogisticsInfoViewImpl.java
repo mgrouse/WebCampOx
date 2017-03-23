@@ -91,7 +91,6 @@ public class InputLogisticsInfoViewImpl extends AbstractView implements InputLog
 	{
 		initWidget(binder.createAndBindUi(this));
 
-		messages.setVisible(false);
 		messages.clear();
 		setAllLabelsNormal();
 	}

@@ -129,9 +129,9 @@ public class InputPersonalInfoViewImpl extends AbstractView implements InputPers
 	}
 
 	@Override
-	public void setPresenter(ISequentialPresenter presenter)
+	public void setPresenter(ISequentialPresenter sp)
 	{
-		this.presenter = presenter;
+		presenter = sp;
 	}
 
 	// @UiHandler(value = { "firstNameBox", "lastNameBox", "phoneBox",
@@ -147,6 +147,9 @@ public class InputPersonalInfoViewImpl extends AbstractView implements InputPers
 	@UiHandler(value = { "genderBox", "contactMethodBox", "contactTimeBox", "firstNameBox", "lastNameBox", "phoneBox", "skypeNameBox" })
 	protected void onListBoxChange(ChangeEvent event)
 	{
+		// find the source of event and set the label to black
+
+		// was....
 		// clearErrorState();
 		// formIsValid();
 	}
@@ -166,8 +169,8 @@ public class InputPersonalInfoViewImpl extends AbstractView implements InputPers
 		Boolean retVal = true;
 		clearErrorState();
 
-		// firstNameBox
-		if ((null == getFirstNameText()) || getFirstNameText().isEmpty())
+		// firstNameBox (null == getFirstNameText()) ||
+		if (getFirstNameText().isEmpty())
 		{
 			addMessage("Please answer the question(s) in red.");
 			firstNameLabel.getElement().getStyle().setColor("red");

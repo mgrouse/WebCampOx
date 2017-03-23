@@ -29,6 +29,8 @@ import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.uibinder.client.UiHandler;
 import com.google.gwt.uibinder.client.UiTemplate;
 import com.google.gwt.user.client.ui.Button;
+import com.google.gwt.user.client.ui.HTML;
+import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.Panel;
 import com.google.gwt.user.client.ui.TextArea;
 import com.google.gwt.user.client.ui.TextBox;
@@ -37,22 +39,34 @@ import com.google.gwt.user.client.ui.Widget;
 public class InputCommitteeInfoViewImpl extends AbstractView implements InputCommitteeInfoView
 {
 	@UiTemplate(value = "InputCommitteeInfoView.ui.xml")
-	static interface EditComitteeInfoViewImplBinder extends UiBinder<Widget, InputCommitteeInfoViewImpl>
+	static interface InputComitteeInfoViewImplBinder extends UiBinder<Widget, InputCommitteeInfoViewImpl>
 	{}
 
-	private static UiBinder<Widget, InputCommitteeInfoViewImpl> binder = GWT.create(EditComitteeInfoViewImplBinder.class);
+	private static UiBinder<Widget, InputCommitteeInfoViewImpl> binder = GWT.create(InputComitteeInfoViewImplBinder.class);
 
 	@UiField
 	MessagesWidget messages;
 
 	@UiField
-	CommitteeListBox committee1;
+	Label committee1Label;
+
+	@UiField
+	CommitteeListBox committee1ListBox;
+
+	@UiField
+	HTML reason1HTML;
 
 	@UiField
 	TextArea reason1;
 
 	@UiField
-	CommitteeListBox committee2;
+	Label committee2Label;
+
+	@UiField
+	CommitteeListBox committee2ListBox;
+
+	@UiField
+	HTML reason2HTML;
 
 	@UiField
 	TextArea reason2;
@@ -61,7 +75,13 @@ public class InputCommitteeInfoViewImpl extends AbstractView implements InputCom
 	Panel healerSheetPanel;
 
 	@UiField
+	Label sessionLengthLabel;
+
+	@UiField
 	TextBox sessionLength;
+
+	@UiField
+	Label modality1Label;
 
 	@UiField
 	TextBox modality1;
@@ -76,6 +96,9 @@ public class InputCommitteeInfoViewImpl extends AbstractView implements InputCom
 	TextBox modality4;
 
 	@UiField
+	HTML bioHTML;
+
+	@UiField
 	TextArea bioBox;
 
 	@UiField
@@ -86,9 +109,14 @@ public class InputCommitteeInfoViewImpl extends AbstractView implements InputCom
 	public InputCommitteeInfoViewImpl()
 	{
 		initWidget(binder.createAndBindUi(this));
-		healerSheetPanel.setVisible(false);
+
+		messages.clear();
+
 		reason1.getElement().setAttribute("maxlength", "250");
 		reason2.getElement().setAttribute("maxlength", "250");
+
+		healerSheetPanel.setVisible(false);
+
 		bioBox.getElement().setAttribute("maxlength", "500");
 	}
 
@@ -104,7 +132,7 @@ public class InputCommitteeInfoViewImpl extends AbstractView implements InputCom
 
 	}
 
-	@UiHandler(value = { "committee1", "committee2" })
+	@UiHandler(value = { "committee1ListBox", "committee2ListBox" })
 	void onCommitteeChosen(ChangeEvent event)
 	{
 		setHealerSheetPanelVisibility();
@@ -113,14 +141,16 @@ public class InputCommitteeInfoViewImpl extends AbstractView implements InputCom
 	@UiHandler(value = { "nextButton" })
 	void onNextButtonClicked(ClickEvent event)
 	{
-		if (presenter == null)
-			return;
-		presenter.onNextButtonClicked();
+		if ((presenter != null) && (formIsValid()))
+		{
+			nextButton.setEnabled(false);
+			presenter.onNextButtonClicked();
+		}
 	}
 
 	private void setHealerSheetPanelVisibility()
 	{
-		if (committee1.getSelectedEnumValue() == Committee.Healers || committee2.getSelectedEnumValue() == Committee.Healers)
+		if (committee1ListBox.getSelectedEnumValue() == Committee.Healers || committee2ListBox.getSelectedEnumValue() == Committee.Healers)
 		{
 			healerSheetPanel.setVisible(true);
 		}
@@ -131,17 +161,95 @@ public class InputCommitteeInfoViewImpl extends AbstractView implements InputCom
 
 	}
 
+	private boolean formIsValid()
+	{
+		Boolean retVal = true;
+
+		clearErrorState();
+
+		// committee1ListBox
+		if (null == committee1ListBox.getSelectedEnumValue())
+		{
+			addMessage("Please answer the question(s) in red.");
+			committee1Label.getElement().getStyle().setColor("red");
+			retVal = false;
+		}
+
+		// committee2ListBox
+		if (null == committee2ListBox.getSelectedEnumValue())
+		{
+			addMessage("Please answer the question(s) in red.");
+			committee2Label.getElement().getStyle().setColor("red");
+			retVal = false;
+		}
+
+		// reason1
+		if (reason1.getText().isEmpty())
+		{
+			addMessage("Please answer the question(s) in red.");
+			reason1HTML.getElement().getStyle().setColor("red");
+			retVal = false;
+		}
+
+		// reason2
+		if (reason2.getText().isEmpty())
+		{
+			addMessage("Please answer the question(s) in red.");
+			reason2HTML.getElement().getStyle().setColor("red");
+			retVal = false;
+		}
+
+		// sessionLength
+		if ((healerSheetPanel.isVisible()) && (getSessionLength().isEmpty()))
+		{
+			addMessage("Please answer the question(s) in red.");
+			sessionLengthLabel.getElement().getStyle().setColor("red");
+			retVal = false;
+		}
+
+		// modality1
+		if ((healerSheetPanel.isVisible()) && getModality1().isEmpty())
+		{
+			addMessage("Please answer the question(s) in red.");
+			modality1Label.getElement().getStyle().setColor("red");
+			retVal = false;
+		}
+
+		// bioBox
+		if ((healerSheetPanel.isVisible()) && getBioBoxText().isEmpty())
+		{
+			addMessage("Please answer the question(s) in red.");
+			bioHTML.getElement().getStyle().setColor("red");
+			retVal = false;
+		}
+
+		return retVal;
+	}
+
+	private void clearErrorState()
+	{
+		committee1Label.getElement().getStyle().setColor("black");
+		reason1HTML.getElement().getStyle().setColor("black");
+
+		committee2Label.getElement().getStyle().setColor("black");
+		reason2HTML.getElement().getStyle().setColor("black");
+
+		sessionLengthLabel.getElement().getStyle().setColor("black");
+		modality1Label.getElement().getStyle().setColor("black");
+		bioHTML.getElement().getStyle().setColor("black");
+	}
+
 	@Override
 	public void setCommittee1(Committee c)
 	{
-		committee1.setSelectedValue(c);
+		committee1ListBox.setSelectedValue(c);
 		setHealerSheetPanelVisibility();
 	}
 
 	@Override
 	public Committee getCommittee1()
 	{
-		return committee1.getSelectedEnumValue();
+		return committee1ListBox.getSelectedEnumValue();
 	}
 
 	@Override
@@ -159,14 +267,14 @@ public class InputCommitteeInfoViewImpl extends AbstractView implements InputCom
 	@Override
 	public void setCommittee2(Committee c)
 	{
-		committee2.setSelectedValue(c);
+		committee2ListBox.setSelectedValue(c);
 		setHealerSheetPanelVisibility();
 	}
 
 	@Override
 	public Committee getCommittee2()
 	{
-		return committee2.getSelectedEnumValue();
+		return committee2ListBox.getSelectedEnumValue();
 	}
 
 	@Override
