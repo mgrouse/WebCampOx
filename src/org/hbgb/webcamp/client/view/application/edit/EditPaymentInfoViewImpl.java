@@ -55,56 +55,56 @@ public class EditPaymentInfoViewImpl extends AbstractPartView implements IEditPa
 
 	public EditPaymentInfoViewImpl()
 	{
-		this.initWidget(binder.createAndBindUi(this));
-		this.expand();
+		initWidget(binder.createAndBindUi(this));
+		expand();
 	}
 
 	@Override
 	public void setHasTicket(Boolean bool)
 	{
-		this.hasTicket.setValue(bool, false);
+		hasTicket.setValue(bool, false);
 	}
 
 	@Override
 	public Boolean getHasTicket()
 	{
-		return this.hasTicket.getValue();
+		return hasTicket.getValue();
 	}
 
 	@Override
 	public void setTicketType(TicketType type)
 	{
-		this.ticketType.setSelectedValue(type);
+		ticketType.setSelectedValue(type);
 	}
 
 	@Override
 	public TicketType getTicketType()
 	{
-		return this.ticketType.getSelectedValue();
+		return ticketType.getSelectedEnumValue();
 	}
 
 	// @Override
 	// public void setHasBeenInvoiced(Boolean bool)
 	// {
-	// this.hasBeenInvoiced.setValue(bool, false);
+	// hasBeenInvoiced.setValue(bool, false);
 	// }
 	//
 	// @Override
 	// public Boolean getHasBeenInvoiced()
 	// {
-	// return this.hasBeenInvoiced.getValue();
+	// return hasBeenInvoiced.getValue();
 	// }
 	//
 	// @Override
 	// public void setHasPaidDues(Boolean bool)
 	// {
-	// this.hasPaidDues.setValue(bool, false);
+	// hasPaidDues.setValue(bool, false);
 	// }
 	//
 	// @Override
 	// public Boolean getHasPaidDues()
 	// {
-	// return this.hasPaidDues.getValue();
+	// return hasPaidDues.getValue();
 	// }
 	//
 	// @Override
@@ -112,55 +112,55 @@ public class EditPaymentInfoViewImpl extends AbstractPartView implements IEditPa
 	// {
 	// if (d != null)
 	// {
-	// this.paidDate.setText(d.toString());
+	// paidDate.setText(d.toString());
 	// return;
 	// }
-	// this.paidDate.setText("");
+	// paidDate.setText("");
 	// }
 	//
 	// @Override
 	// public Date getPaidDate()
 	// {
 	// Date retVal = null;
-	// if (this.paidDate.getText().isEmpty())
+	// if (paidDate.getText().isEmpty())
 	// return retVal;
-	// return new Date(Date.parse(this.paidDate.getText()));
+	// return new Date(Date.parse(paidDate.getText()));
 	// }
 	//
 	// @Override
 	// public void setWasSubsidized(Boolean bool)
 	// {
-	// this.wasSubsidized.setValue(bool, false);
+	// wasSubsidized.setValue(bool, false);
 	// }
 	//
 	// @Override
 	// public Boolean getWasSubsidized()
 	// {
-	// return this.wasSubsidized.getValue();
+	// return wasSubsidized.getValue();
 	// }
 	//
 	// @Override
 	// public void setSubsidyAmt(Integer amt)
 	// {
-	// this.subsidyAmt.setValue(amt.toString(), false);
+	// subsidyAmt.setValue(amt.toString(), false);
 	// }
 	//
 	// @Override
 	// public Integer getSubsidyAmt()
 	// {
-	// return Integer.valueOf(this.subsidyAmt.getValue());
+	// return Integer.valueOf(subsidyAmt.getValue());
 	// }
 	//
 	// @Override
 	// public void setSubsidyReason(String r)
 	// {
-	// this.subsidyReason.setValue(r, false);
+	// subsidyReason.setValue(r, false);
 	// }
 	//
 	// @Override
 	// public String getSubsidyReason()
 	// {
-	// return this.subsidyReason.getValue();
+	// return subsidyReason.getValue();
 	// }
 
 }

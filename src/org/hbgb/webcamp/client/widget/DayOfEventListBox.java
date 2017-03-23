@@ -12,56 +12,60 @@ package org.hbgb.webcamp.client.widget;
 
 import org.hbgb.webcamp.shared.enums.DayOfEvent;
 
-import com.google.gwt.core.client.GWT;
-import com.google.gwt.uibinder.client.UiBinder;
-import com.google.gwt.uibinder.client.UiFactory;
-import com.google.gwt.uibinder.client.UiField;
-import com.google.gwt.uibinder.client.UiTemplate;
-import com.google.gwt.user.client.ui.Composite;
-import com.google.gwt.user.client.ui.Widget;
-
-public class DayOfEventListBox extends Composite
+public class DayOfEventListBox extends EnumListBox<DayOfEvent>
 {
-	@UiTemplate(value = "DayOfEventListBox.ui.xml")
-	static interface DayOfEventListBoxBinder extends UiBinder<Widget, DayOfEventListBox>
-	{}
 
-	private static UiBinder<Widget, DayOfEventListBox> binder = GWT.create(DayOfEventListBoxBinder.class);
-
-	@UiField
-	EnumListBox<DayOfEvent> list;
-
-	DayOfEventListBox()
+	/**
+	 * @param eclass
+	 */
+	public DayOfEventListBox()
 	{
-		this.initWidget(binder.createAndBindUi(this));
+		super(DayOfEvent.class);
+
 	}
 
-	public void removeETDates()
-	{
-		for (int i = 0; i < 8; ++i)
-		{
-			list.removeItem(0);
-		}
-	}
-
-	public void setSelectedValue(DayOfEvent value)
-	{
-		this.list.setSelectedValue(value);
-	}
-
-	public DayOfEvent getSelectedValue()
-	{
-		DayOfEvent doe = null;
-		String temp = list.getSelectedItemText();
-		doe = DayOfEvent.reverseLookup(temp);
-
-		return doe;
-	}
-
-	@UiFactory
-	EnumListBox<DayOfEvent> listBoxFactory()
-	{
-		return new EnumListBox<>(DayOfEvent.class);
-	}
+	// @UiTemplate(value = "DayOfEventListBox.ui.xml")
+	// static interface DayOfEventListBoxBinder extends UiBinder<Widget,
+	// DayOfEventListBox>
+	// {}
+	//
+	// private static UiBinder<Widget, DayOfEventListBox> binder =
+	// GWT.create(DayOfEventListBoxBinder.class);
+	//
+	// @UiField
+	// EnumListBox<DayOfEvent> list;
+	//
+	// DayOfEventListBox()
+	// {
+	// this.initWidget(binder.createAndBindUi(this));
+	// }
+	//
+	// public void removeETDates()
+	// {
+	// for (int i = 0; i < 8; ++i)
+	// {
+	// list.removeItem(0);
+	// }
+	// }
+	//
+	// public void setSelectedValue(DayOfEvent value)
+	// {
+	// this.list.setSelectedValue(value);
+	// }
+	//
+	// public DayOfEvent getSelectedValue()
+	// {
+	// DayOfEvent doe = null;
+	// String temp = list.getSelectedItemText();
+	// doe = DayOfEvent.reverseLookup(temp);
+	//
+	// return doe;
+	// }
+	//
+	// @UiFactory
+	// EnumListBox<DayOfEvent> listBoxFactory()
+	// {
+	// return new EnumListBox<>(DayOfEvent.class);
+	// }
 
 }

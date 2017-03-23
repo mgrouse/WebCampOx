@@ -50,80 +50,80 @@ public class EditCommitteeInfoViewImpl extends AbstractPartView implements IEdit
 
 	public EditCommitteeInfoViewImpl()
 	{
-		this.initWidget(binder.createAndBindUi(this));
-		this.expand();
+		initWidget(binder.createAndBindUi(this));
+		expand();
 	}
 
 	@Override
 	public void setCommittee1(Committee c)
 	{
-		this.committee1.setSelectedValue(c);
+		committee1.setSelectedValue(c);
 	}
 
 	@Override
 	public Committee getCommittee1()
 	{
-		return this.committee1.getSelectedValue();
+		return committee1.getSelectedEnumValue();
 	}
 
 	@Override
 	public void setReason1(String text)
 	{
-		this.reason1.setValue(text, false);
+		reason1.setValue(text, false);
 	}
 
 	@Override
 	public String getReason1()
 	{
-		return this.reason1.getText();
+		return reason1.getText();
 	}
 
 	@Override
 	public void setCommittee2(Committee c)
 	{
-		this.committee2.setSelectedValue(c);
+		committee2.setSelectedValue(c);
 	}
 
 	@Override
 	public Committee getCommittee2()
 	{
-		return this.committee2.getSelectedValue();
+		return committee2.getSelectedEnumValue();
 	}
 
 	@Override
 	public void setReason2(String text)
 	{
-		this.reason2.setValue(text, false);
+		reason2.setValue(text, false);
 	}
 
 	@Override
 	public String getReason2()
 	{
-		return this.reason2.getText();
+		return reason2.getText();
 	}
 
 	@Override
 	public void setAssignedCommittee(Committee c)
 	{
-		this.assignedCommittee.setSelectedValue(c);
+		assignedCommittee.setSelectedValue(c);
 	}
 
 	@Override
 	public Committee getAssignedCommittee()
 	{
-		return this.assignedCommittee.getSelectedValue();
+		return assignedCommittee.getSelectedEnumValue();
 	}
 
 	@Override
 	public void setIsAssignedLead(Boolean bool)
 	{
-		this.isAssignedLead.setValue(bool, false);
+		isAssignedLead.setValue(bool, false);
 	}
 
 	@Override
 	public Boolean getIsAssignedLead()
 	{
-		return this.isAssignedLead.getValue();
+		return isAssignedLead.getValue();
 	}
 
 	@Override

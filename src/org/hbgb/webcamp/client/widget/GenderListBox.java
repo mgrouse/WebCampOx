@@ -12,43 +12,54 @@ package org.hbgb.webcamp.client.widget;
 
 import org.hbgb.webcamp.shared.enums.Gender;
 
-import com.google.gwt.core.client.GWT;
-import com.google.gwt.uibinder.client.UiBinder;
-import com.google.gwt.uibinder.client.UiFactory;
-import com.google.gwt.uibinder.client.UiField;
-import com.google.gwt.uibinder.client.UiTemplate;
-import com.google.gwt.user.client.ui.Composite;
-import com.google.gwt.user.client.ui.Widget;
-
-public class GenderListBox extends Composite
+public class GenderListBox extends EnumListBox<Gender> // implements //
+														// HasChangeHandlers
 {
-	private static UiBinder<Widget, GenderListBox> binder = GWT.create(GenderListBoxBinder.class);
-	@UiField
-	EnumListBox<Gender> list;
 
-	GenderListBox()
+	public GenderListBox()
 	{
-		this.initWidget(binder.createAndBindUi(this));
+		super(Gender.class);
 	}
 
-	public void setSelectedValue(Gender value)
-	{
-		this.list.setSelectedValue(value);
-	}
-
-	public Gender getSelectedValue()
-	{
-		return this.list.getSelectedEnumValue();
-	}
-
-	@UiFactory
-	EnumListBox<Gender> listBoxFactory()
-	{
-		return new EnumListBox<>(Gender.class);
-	}
-
-	@UiTemplate(value = "GenderListBox.ui.xml")
-	static interface GenderListBoxBinder extends UiBinder<Widget, GenderListBox>
-	{}
-
+	// @UiTemplate(value = "GenderListBox.ui.xml")
+	// static interface GenderListBoxBinder extends UiBinder<Widget,
+	// GenderListBox>
+	// {}
+	//
+	// private static UiBinder<Widget, GenderListBox> binder =
+	// GWT.create(GenderListBoxBinder.class);
+	// @UiField
+	// EnumListBox<Gender> list;
+	//
+	// // GenderListBox()
+	// // {
+	// // EnumListBox<Gender>();
+	// // //initWidget(binder.createAndBindUi(this));
+	// // }
+	//
+	// GenderListBox()
+	// {
+	// this.initWidget(binder.createAndBindUi(this));
+	// }
+	//
+	// public void setSelectedValue(Gender value)
+	// {
+	// list.setSelectedValue(value);
+	// }
+	//
+	// public Gender getSelectedValue()
+	// {
+	// return list.getSelectedEnumValue();
+	// }
+	//
+	// @UiFactory
+	// EnumListBox<Gender> listBoxFactory()
+	// {
+	// return new EnumListBox<>(Gender.class);
+	// }
+	//
+	// public HandlerRegistration addChangeHandler(ChangeHandler handler)
+	// {
+	// return list.addChangeHandler(handler);
+	// }
 }

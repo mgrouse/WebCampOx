@@ -16,7 +16,7 @@ package org.hbgb.webcamp.client.view.application.input;
 
 import org.hbgb.webcamp.client.presenter.ISequentialPresenter;
 import org.hbgb.webcamp.client.view.AbstractView;
-import org.hbgb.webcamp.client.widget.CommitteeListBox;
+import org.hbgb.webcamp.client.widget.EnumListBox;
 import org.hbgb.webcamp.client.widget.MessagesWidget;
 import org.hbgb.webcamp.shared.enums.Committee;
 import org.hbgb.webcamp.shared.enums.SecurityRole;
@@ -25,6 +25,7 @@ import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.dom.client.ChangeEvent;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.uibinder.client.UiBinder;
+import com.google.gwt.uibinder.client.UiFactory;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.uibinder.client.UiHandler;
 import com.google.gwt.uibinder.client.UiTemplate;
@@ -46,13 +47,13 @@ public class InputCommitteeInfoViewImpl extends AbstractView implements InputCom
 	MessagesWidget messages;
 
 	@UiField
-	CommitteeListBox committee1;
+	EnumListBox<Committee> committee1;
 
 	@UiField
 	TextArea reason1;
 
 	@UiField
-	CommitteeListBox committee2;
+	EnumListBox<Committee> committee2;
 
 	@UiField
 	TextArea reason2;
@@ -85,17 +86,17 @@ public class InputCommitteeInfoViewImpl extends AbstractView implements InputCom
 
 	public InputCommitteeInfoViewImpl()
 	{
-		this.initWidget(binder.createAndBindUi(this));
-		this.healerSheetPanel.setVisible(false);
-		this.reason1.getElement().setAttribute("maxlength", "250");
-		this.reason2.getElement().setAttribute("maxlength", "250");
-		this.bioBox.getElement().setAttribute("maxlength", "500");
+		initWidget(binder.createAndBindUi(this));
+		healerSheetPanel.setVisible(false);
+		reason1.getElement().setAttribute("maxlength", "250");
+		reason2.getElement().setAttribute("maxlength", "250");
+		bioBox.getElement().setAttribute("maxlength", "500");
 	}
 
 	@Override
-	public void setPresenter(ISequentialPresenter presenter)
+	public void setPresenter(ISequentialPresenter sp)
 	{
-		this.presenter = presenter;
+		presenter = sp;
 	}
 
 	@Override
@@ -107,156 +108,159 @@ public class InputCommitteeInfoViewImpl extends AbstractView implements InputCom
 	@UiHandler(value = { "committee1", "committee2" })
 	void onCommitteeChosen(ChangeEvent event)
 	{
-		this.setHealerSheetPanelVisibility();
+		setHealerSheetPanelVisibility();
 	}
 
 	@UiHandler(value = { "nextButton" })
 	void onNextButtonClicked(ClickEvent event)
 	{
-		if (this.presenter == null)
+		if (presenter == null)
 			return;
-		this.presenter.onNextButtonClicked();
+		presenter.onNextButtonClicked();
 	}
 
 	private void setHealerSheetPanelVisibility()
 	{
-		if (this.committee1.getSelectedValue() != Committee.Healers && this.committee2.getSelectedValue() != Committee.Healers)
+		if (committee1.getSelectedEnumValue() == Committee.Healers || committee2.getSelectedEnumValue() == Committee.Healers)
 		{
-			this.healerSheetPanel.setVisible(false);
-			return;
+			healerSheetPanel.setVisible(true);
 		}
-		this.healerSheetPanel.setVisible(true);
+		else
+		{
+			healerSheetPanel.setVisible(false);
+		}
+
 	}
 
 	@Override
 	public void setCommittee1(Committee c)
 	{
-		this.committee1.setSelectedValue(c);
-		this.setHealerSheetPanelVisibility();
+		committee1.setSelectedValue(c);
+		setHealerSheetPanelVisibility();
 	}
 
 	@Override
 	public Committee getCommittee1()
 	{
-		return this.committee1.getSelectedValue();
+		return committee1.getSelectedEnumValue();
 	}
 
 	@Override
 	public void setReason1(String text)
 	{
-		this.reason1.setValue(text, false);
+		reason1.setValue(text, false);
 	}
 
 	@Override
 	public String getReason1()
 	{
-		return this.reason1.getText();
+		return reason1.getText();
 	}
 
 	@Override
 	public void setCommittee2(Committee c)
 	{
-		this.committee2.setSelectedValue(c);
-		this.setHealerSheetPanelVisibility();
+		committee2.setSelectedValue(c);
+		setHealerSheetPanelVisibility();
 	}
 
 	@Override
 	public Committee getCommittee2()
 	{
-		return this.committee2.getSelectedValue();
+		return committee2.getSelectedEnumValue();
 	}
 
 	@Override
 	public void setReason2(String text)
 	{
-		this.reason2.setValue(text, false);
+		reason2.setValue(text, false);
 	}
 
 	@Override
 	public String getReason2()
 	{
-		return this.reason2.getText();
+		return reason2.getText();
 	}
 
 	@Override
 	public void setSessionLength(String text)
 	{
-		this.sessionLength.setText(text);
+		sessionLength.setText(text);
 	}
 
 	@Override
 	public String getSessionLength()
 	{
-		return this.sessionLength.getText();
+		return sessionLength.getText();
 	}
 
 	@Override
 	public void setModality1(String text)
 	{
-		this.modality1.setText(text);
+		modality1.setText(text);
 	}
 
 	@Override
 	public String getModality1()
 	{
-		return this.modality1.getText();
+		return modality1.getText();
 	}
 
 	@Override
 	public void setModality2(String text)
 	{
-		this.modality2.setText(text);
+		modality2.setText(text);
 	}
 
 	@Override
 	public String getModality2()
 	{
-		return this.modality2.getText();
+		return modality2.getText();
 	}
 
 	@Override
 	public void setModality3(String text)
 	{
-		this.modality3.setText(text);
+		modality3.setText(text);
 	}
 
 	@Override
 	public String getModality3()
 	{
-		return this.modality3.getText();
+		return modality3.getText();
 	}
 
 	@Override
 	public void setModality4(String text)
 	{
-		this.modality4.setText(text);
+		modality4.setText(text);
 	}
 
 	@Override
 	public String getModality4()
 	{
-		return this.modality4.getText();
+		return modality4.getText();
 	}
 
 	@Override
 	public void setBioBoxText(String text)
 	{
-		this.bioBox.setValue(text, false);
+		bioBox.setValue(text, false);
 	}
 
 	@Override
 	public String getBioBoxText()
 	{
-		return this.bioBox.getText();
+		return bioBox.getText();
 	}
 
 	@Override
 	public void clear()
 	{
-		this.setModality1("");
-		this.setModality2("");
-		this.setModality3("");
-		this.setModality4("");
+		setModality1("");
+		setModality2("");
+		setModality3("");
+		setModality4("");
 	}
 
 	@Override
@@ -273,6 +277,12 @@ public class InputCommitteeInfoViewImpl extends AbstractView implements InputCom
 	public void setNextButtonActive(boolean b)
 	{
 		nextButton.setEnabled(b);
+	}
+
+	@UiFactory
+	EnumListBox<Committee> callTimeListBoxFactory()
+	{
+		return new EnumListBox<>(Committee.class);
 	}
 
 }

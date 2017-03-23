@@ -41,44 +41,44 @@ public class EditDietInfoViewImpl extends AbstractPartView implements IEditDietI
 
 	public EditDietInfoViewImpl()
 	{
-		this.initWidget(binder.createAndBindUi(this));
-		this.expand();
+		initWidget(binder.createAndBindUi(this));
+		expand();
 	}
 
 	@Override
 	public void setDietType(DietType type)
 	{
-		this.dietType.setSelectedValue(type);
+		dietType.setSelectedValue(type);
 	}
 
 	@Override
 	public DietType getDietType()
 	{
-		return this.dietType.getSelectedValue();
+		return dietType.getSelectedEnumValue();
 	}
 
 	@Override
 	public void setIsGlutenFree(Boolean bool)
 	{
-		this.isGlutenFree.setValue(bool, false);
+		isGlutenFree.setValue(bool, false);
 	}
 
 	@Override
 	public Boolean getIsGlutenFree()
 	{
-		return this.isGlutenFree.getValue();
+		return isGlutenFree.getValue();
 	}
 
 	@Override
 	public void setDietaryRestrictions(String text)
 	{
-		this.dietaryRestrictions.setValue(text, false);
+		dietaryRestrictions.setValue(text, false);
 	}
 
 	@Override
 	public String getDietaryRestrictions()
 	{
-		return this.dietaryRestrictions.getText();
+		return dietaryRestrictions.getText();
 	}
 
 }

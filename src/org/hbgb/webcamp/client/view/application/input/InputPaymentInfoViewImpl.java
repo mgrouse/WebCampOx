@@ -17,14 +17,15 @@ package org.hbgb.webcamp.client.view.application.input;
 
 import org.hbgb.webcamp.client.presenter.ISequentialPresenter;
 import org.hbgb.webcamp.client.view.AbstractView;
+import org.hbgb.webcamp.client.widget.EnumListBox;
 import org.hbgb.webcamp.client.widget.MessagesWidget;
-import org.hbgb.webcamp.client.widget.TicketTypeListBox;
 import org.hbgb.webcamp.shared.enums.SecurityRole;
 import org.hbgb.webcamp.shared.enums.TicketType;
 
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.uibinder.client.UiBinder;
+import com.google.gwt.uibinder.client.UiFactory;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.uibinder.client.UiHandler;
 import com.google.gwt.uibinder.client.UiTemplate;
@@ -51,7 +52,7 @@ public class InputPaymentInfoViewImpl extends AbstractView implements InputPayme
 	Label ticketTypeLabel;
 
 	@UiField
-	TicketTypeListBox ticketType;
+	EnumListBox<TicketType> ticketType;
 
 	@UiField
 	Button nextButton;
@@ -60,13 +61,13 @@ public class InputPaymentInfoViewImpl extends AbstractView implements InputPayme
 
 	public InputPaymentInfoViewImpl()
 	{
-		this.initWidget(binder.createAndBindUi(this));
+		initWidget(binder.createAndBindUi(this));
 	}
 
 	@Override
-	public void setPresenter(ISequentialPresenter presenter)
+	public void setPresenter(ISequentialPresenter sp)
 	{
-		this.presenter = presenter;
+		presenter = sp;
 	}
 
 	@Override
@@ -90,25 +91,25 @@ public class InputPaymentInfoViewImpl extends AbstractView implements InputPayme
 	@Override
 	public void setHasTicket(Boolean bool)
 	{
-		this.hasTicket.setValue(bool, false);
+		hasTicket.setValue(bool, false);
 	}
 
 	@Override
 	public Boolean getHasTicket()
 	{
-		return this.hasTicket.getValue();
+		return hasTicket.getValue();
 	}
 
 	@Override
 	public void setTicketType(TicketType type)
 	{
-		this.ticketType.setSelectedValue(type);
+		ticketType.setSelectedValue(type);
 	}
 
 	@Override
 	public TicketType getTicketType()
 	{
-		return this.ticketType.getSelectedValue();
+		return ticketType.getSelectedEnumValue();
 	}
 
 	protected Boolean isFormComplete()
@@ -142,4 +143,9 @@ public class InputPaymentInfoViewImpl extends AbstractView implements InputPayme
 		nextButton.setEnabled(b);
 	}
 
+	@UiFactory
+	EnumListBox<TicketType> listBoxFactory()
+	{
+		return new EnumListBox<>(TicketType.class);
+	}
 }

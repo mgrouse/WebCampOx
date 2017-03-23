@@ -153,7 +153,7 @@ public class InputLogisticsInfoViewImpl extends AbstractView implements InputLog
 	@Override
 	public Transportation getTransportation()
 	{
-		return transportation.getSelectedValue();
+		return transportation.getSelectedEnumValue();
 	}
 
 	@Override
@@ -165,7 +165,7 @@ public class InputLogisticsInfoViewImpl extends AbstractView implements InputLog
 	@Override
 	public DayOfEvent getArrivalDate()
 	{
-		DayOfEvent doe = arrivalDoE.getSelectedValue();
+		DayOfEvent doe = arrivalDoE.getSelectedEnumValue();
 		return doe;
 	}
 
@@ -179,7 +179,7 @@ public class InputLogisticsInfoViewImpl extends AbstractView implements InputLog
 	public PlayaTime getArrivalTime()
 	{
 
-		return arrivalTime.getSelectedValue();
+		return arrivalTime.getSelectedEnumValue();
 	}
 
 	@Override
@@ -191,7 +191,7 @@ public class InputLogisticsInfoViewImpl extends AbstractView implements InputLog
 	@Override
 	public DayOfEvent getDepartureDate()
 	{
-		return departureDoE.getSelectedValue();
+		return departureDoE.getSelectedEnumValue();
 	}
 
 	@Override
@@ -203,14 +203,22 @@ public class InputLogisticsInfoViewImpl extends AbstractView implements InputLog
 	@Override
 	public PlayaTime getDepartureTime()
 	{
-		return departureTime.getSelectedValue();
+		return departureTime.getSelectedEnumValue();
 	}
 
 	@Override
 	public void removeETDates()
 	{
-		arrivalDoE.removeETDates();
-		departureDoE.removeETDates();
+		// arrivalDoE.removeETDates();
+		for (int i = 0; i < 8; ++i)
+		{
+			arrivalDoE.removeItem(0);
+		}
+		// departureDoE.removeETDates();
+		for (int i = 0; i < 8; ++i)
+		{
+			departureDoE.removeItem(0);
+		}
 	}
 
 	protected Boolean formIsValid()
@@ -272,4 +280,22 @@ public class InputLogisticsInfoViewImpl extends AbstractView implements InputLog
 	{
 		nextButton.setEnabled(b);
 	}
+
+	// @UiFactory
+	// EnumListBox<Transportation> tansportListBoxFactory()
+	// {
+	// return new EnumListBox<>(Transportation.class);
+	// }
+	//
+	// @UiFactory
+	// EnumListBox<DayOfEvent> dayOfEventListBoxFactory()
+	// {
+	// return new EnumListBox<>(DayOfEvent.class);
+	// }
+	//
+	// @UiFactory
+	// EnumListBox<PlayaTime> playaTimeListBoxFactory()
+	// {
+	// return new EnumListBox<>(PlayaTime.class);
+	// }
 }

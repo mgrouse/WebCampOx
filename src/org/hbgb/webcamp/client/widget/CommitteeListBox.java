@@ -14,50 +14,48 @@ package org.hbgb.webcamp.client.widget;
 
 import org.hbgb.webcamp.shared.enums.Committee;
 
-import com.google.gwt.core.client.GWT;
-import com.google.gwt.event.dom.client.ChangeHandler;
-import com.google.gwt.event.shared.HandlerRegistration;
-import com.google.gwt.uibinder.client.UiBinder;
-import com.google.gwt.uibinder.client.UiFactory;
-import com.google.gwt.uibinder.client.UiField;
-import com.google.gwt.uibinder.client.UiTemplate;
-import com.google.gwt.user.client.ui.Composite;
-import com.google.gwt.user.client.ui.Widget;
-
-public class CommitteeListBox extends Composite
+public class CommitteeListBox extends EnumListBox<Committee>
 {
-	private static UiBinder<Widget, CommitteeListBox> binder = GWT.create(CommitteeListBoxBinder.class);
-	@UiField
-	EnumListBox<Committee> list;
 
-	CommitteeListBox()
+	public CommitteeListBox()
 	{
-		this.initWidget(binder.createAndBindUi(this));
+		super(Committee.class);
 	}
 
-	public void setSelectedValue(Committee value)
-	{
-		this.list.setSelectedValue(value);
-	}
-
-	public Committee getSelectedValue()
-	{
-		return this.list.getSelectedEnumValue();
-	}
-
-	public HandlerRegistration addChangeHandler(ChangeHandler handler)
-	{
-		return this.list.addChangeHandler(handler);
-	}
-
-	@UiFactory
-	EnumListBox<Committee> listBoxFactory()
-	{
-		return new EnumListBox<>(Committee.class);
-	}
-
-	@UiTemplate(value = "CommitteeListBox.ui.xml")
-	static interface CommitteeListBoxBinder extends UiBinder<Widget, CommitteeListBox>
-	{}
+	// private static UiBinder<Widget, CommitteeListBox> binder =
+	// GWT.create(CommitteeListBoxBinder.class);
+	// @UiField
+	// EnumListBox<Committee> list;
+	//
+	// CommitteeListBox()
+	// {
+	// this.initWidget(binder.createAndBindUi(this));
+	// }
+	//
+	// public void setSelectedValue(Committee value)
+	// {
+	// this.list.setSelectedValue(value);
+	// }
+	//
+	// public Committee getSelectedValue()
+	// {
+	// return this.list.getSelectedEnumValue();
+	// }
+	//
+	// public HandlerRegistration addChangeHandler(ChangeHandler handler)
+	// {
+	// return this.list.addChangeHandler(handler);
+	// }
+	//
+	// @UiFactory
+	// EnumListBox<Committee> listBoxFactory()
+	// {
+	// return new EnumListBox<>(Committee.class);
+	// }
+	//
+	// @UiTemplate(value = "CommitteeListBox.ui.xml")
+	// static interface CommitteeListBoxBinder extends UiBinder<Widget,
+	// CommitteeListBox>
+	// {}
 
 }

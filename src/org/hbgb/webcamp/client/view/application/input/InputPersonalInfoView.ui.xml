@@ -39,7 +39,7 @@
 					        
 							<g:HorizontalPanel verticalAlignment="ALIGN_MIDDLE" addStyleNames="formRow">
 								<g:Label ui:field="genderLabel" text="Gender"/>
-					        	<w:GenderListBox ui:field="genderBox"/>
+					        	<w:EnumListBox ui:field="genderBox"/>
 							</g:HorizontalPanel>
 							
 							<g:Label text="Birth Date:" addStyleNames="formRow"/>
@@ -85,12 +85,12 @@
 							
 							<g:HorizontalPanel verticalAlignment="ALIGN_MIDDLE" addStyleNames="formRow">
 								<g:Label ui:field="contactMethodLabel" addStyleNames="mediumLabel" text="Preferred Contact Method"/>
-					        	<w:ContactMethodListBox ui:field="contactMethodBox"/>
+					        	<w:EnumListBox ui:field="contactMethodBox"/>
 							</g:HorizontalPanel>
 							
 							<g:HorizontalPanel verticalAlignment="ALIGN_MIDDLE" addStyleNames="formRow">
 								<g:Label ui:field="contactTimeLabel" addStyleNames="mediumLabel" text="Preferred Contact Time"/>
-					        	<w:CallTimeListBox ui:field="contactTimeBox"/>
+					        	<w:EnumListBox ui:field="contactTimeBox"/>
 							</g:HorizontalPanel>
 						</g:VerticalPanel>
 					</g:CaptionPanel>

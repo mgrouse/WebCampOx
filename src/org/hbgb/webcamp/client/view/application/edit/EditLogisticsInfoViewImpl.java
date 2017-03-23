@@ -106,7 +106,7 @@ public class EditLogisticsInfoViewImpl extends AbstractPartView implements IEdit
 	@Override
 	public Transportation getTransportation()
 	{
-		return this.transportation.getSelectedValue();
+		return transportation.getSelectedEnumValue();
 	}
 
 	@Override
@@ -118,7 +118,7 @@ public class EditLogisticsInfoViewImpl extends AbstractPartView implements IEdit
 	@Override
 	public DayOfEvent getArrivalDate()
 	{
-		return this.arrivalDoE.getSelectedValue();
+		return this.arrivalDoE.getSelectedEnumValue();
 	}
 
 	@Override
@@ -130,7 +130,7 @@ public class EditLogisticsInfoViewImpl extends AbstractPartView implements IEdit
 	@Override
 	public PlayaTime getArrivalTime()
 	{
-		return this.arrivalTime.getSelectedValue();
+		return this.arrivalTime.getSelectedEnumValue();
 	}
 
 	@Override
@@ -142,7 +142,7 @@ public class EditLogisticsInfoViewImpl extends AbstractPartView implements IEdit
 	@Override
 	public DayOfEvent getDepartureDate()
 	{
-		return this.departureDoE.getSelectedValue();
+		return this.departureDoE.getSelectedEnumValue();
 	}
 
 	@Override
@@ -154,7 +154,7 @@ public class EditLogisticsInfoViewImpl extends AbstractPartView implements IEdit
 	@Override
 	public PlayaTime getDepartureTime()
 	{
-		return this.departureTime.getSelectedValue();
+		return this.departureTime.getSelectedEnumValue();
 	}
 
 }

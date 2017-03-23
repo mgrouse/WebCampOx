@@ -37,20 +37,20 @@ public class EditApplicationInfoViewImpl extends AbstractPartView implements IEd
 
 	public EditApplicationInfoViewImpl()
 	{
-		this.initWidget(binder.createAndBindUi(this));
-		this.expand();
+		initWidget(binder.createAndBindUi(this));
+		expand();
 	}
 
 	@Override
 	public void setApplicationStatus(ApplicationStatus s)
 	{
-		this.applicationStatus.setSelectedValue(s);
+		applicationStatus.setSelectedValue(s);
 	}
 
 	@Override
 	public ApplicationStatus getApplicationStatus()
 	{
-		return this.applicationStatus.getSelectedValue();
+		return applicationStatus.getSelectedEnumValue();
 	}
 
 	@Override
@@ -58,18 +58,18 @@ public class EditApplicationInfoViewImpl extends AbstractPartView implements IEd
 	{
 		if (imageURL != null && !imageURL.isEmpty())
 		{
-			this.currentImage.setUrl(imageURL);
+			currentImage.setUrl(imageURL);
 		}
 		else
 		{
-			this.currentImage.setUrl(IMAGE_NOT_AVAIALABLE);
+			currentImage.setUrl(IMAGE_NOT_AVAIALABLE);
 		}
 	}
 
 	@Override
 	public String getImageURL()
 	{
-		return this.currentImage.getUrl();
+		return currentImage.getUrl();
 	}
 
 }

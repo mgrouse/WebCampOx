@@ -66,125 +66,127 @@ public class UserEditViewImpl extends AbstractView implements IUserEditView
 
 	public UserEditViewImpl()
 	{
-		this.initWidget(uiBinder.createAndBindUi(this));
+		initWidget(uiBinder.createAndBindUi(this));
 	}
 
 	@Override
-	public void setPresenter(IUserEditView.Presenter presenter)
+	public void setPresenter(IUserEditView.Presenter evp)
 	{
-		this.presenter = presenter;
+		presenter = evp;
 	}
 
 	@UiHandler(value = { "saveButton" })
 	void onSaveButtonClicked(ClickEvent event)
 	{
-		if (this.presenter == null)
-			return;
-		this.presenter.onSaveButtonClicked();
+		if (presenter != null)
+		{
+			presenter.onSaveButtonClicked();
+		}
 	}
 
 	@UiHandler(value = { "cancelButton" })
 	void onCancelButtonClicked(ClickEvent event)
 	{
-		if (this.presenter == null)
-			return;
-		this.presenter.onCancelButtonClicked();
+		if (presenter != null)
+		{
+			presenter.onCancelButtonClicked();
+		}
 	}
 
 	@Override
 	public void setFirstNameText(String firstName)
 	{
-		this.firstNameBox.setText(firstName);
+		firstNameBox.setText(firstName);
 	}
 
 	@Override
 	public String getFirstNameText()
 	{
-		return this.firstNameBox.getText();
+		return firstNameBox.getText();
 	}
 
 	@Override
 	public void setLastNameText(String lastName)
 	{
-		this.lastNameBox.setText(lastName);
+		lastNameBox.setText(lastName);
 	}
 
 	@Override
 	public String getLastNameText()
 	{
-		return this.lastNameBox.getText();
+		return lastNameBox.getText();
 	}
 
 	@Override
 	public String getPlayaNameText()
 	{
-		return this.playaNameBox.getText();
+		return playaNameBox.getText();
 	}
 
 	@Override
 	public void setPlayaNameText(String playaName)
 	{
-		this.playaNameBox.setText(playaName);
+		playaNameBox.setText(playaName);
 	}
 
 	@Override
 	public void setIsEarlyTeam(Boolean bool)
 	{
-		this.etCheckBox.setValue(bool, false);
+		etCheckBox.setValue(bool, false);
 	}
 
 	@Override
 	public Boolean getIsEarlyTeam()
 	{
-		return this.etCheckBox.getValue();
+		return etCheckBox.getValue();
 	}
 
 	@Override
 	public void setEmailText(String email)
 	{
-		this.emailBox.setText(email);
+		emailBox.setText(email);
 	}
 
 	@Override
 	public String getEmailText()
 	{
-		return this.emailBox.getText();
+		return emailBox.getText();
 	}
 
 	@Override
 	public void setPasswordText(String password)
 	{
-		this.passwordBox.setValue(password, false);
+		passwordBox.setValue(password, false);
 	}
 
 	@Override
 	public String getPasswordText()
 	{
-		return this.passwordBox.getValue();
+		return passwordBox.getValue();
 	}
 
 	@Override
 	public void setSecurityRole(SecurityRole securityRole)
 	{
-		this.securityRoleBox.setSelectedValue(securityRole);
+		securityRoleBox.setSelectedValue(securityRole);
 	}
 
 	@Override
 	public SecurityRole getSecurityRole()
 	{
-		return this.securityRoleBox.getSelectedValue();
+		return securityRoleBox.getSelectedEnumValue();
 	}
 
 	@Override
 	public void clear()
 	{
-		this.setFirstNameText("");
-		this.setLastNameText("");
-		this.setPlayaNameText("");
-		this.setIsEarlyTeam(false);
-		this.setEmailText("");
-		this.setPasswordText("");
-		this.setSecurityRole(null);
+		setFirstNameText("");
+		setLastNameText("");
+		setPlayaNameText("");
+		setIsEarlyTeam(false);
+		setEmailText("");
+		setPasswordText("");
+		setSecurityRole(null);
 	}
 
 }

@@ -12,44 +12,43 @@ package org.hbgb.webcamp.client.widget;
 
 import org.hbgb.webcamp.shared.enums.DietType;
 
-import com.google.gwt.core.client.GWT;
-import com.google.gwt.uibinder.client.UiBinder;
-import com.google.gwt.uibinder.client.UiFactory;
-import com.google.gwt.uibinder.client.UiField;
-import com.google.gwt.uibinder.client.UiTemplate;
-import com.google.gwt.user.client.ui.Composite;
-import com.google.gwt.user.client.ui.Widget;
-
-public class DietListBox extends Composite
+public class DietListBox extends EnumListBox<DietType>
 {
-	private static UiBinder<Widget, DietListBox> binder = GWT.create(DietListBoxBinder.class);
 
-	@UiField
-	EnumListBox<DietType> list;
-
-	DietListBox()
+	public DietListBox()
 	{
-		this.initWidget(binder.createAndBindUi(this));
+		super(DietType.class);
 	}
 
-	public void setSelectedValue(DietType value)
-	{
-		this.list.setSelectedValue(value);
-	}
-
-	public DietType getSelectedValue()
-	{
-		return this.list.getSelectedEnumValue();
-	}
-
-	@UiFactory
-	EnumListBox<DietType> listBoxFactory()
-	{
-		return new EnumListBox<>(DietType.class);
-	}
-
-	@UiTemplate(value = "DietListBox.ui.xml")
-	static interface DietListBoxBinder extends UiBinder<Widget, DietListBox>
-	{}
+	// private static UiBinder<Widget, DietListBox> binder =
+	// GWT.create(DietListBoxBinder.class);
+	//
+	// @UiField
+	// EnumListBox<DietType> list;
+	//
+	// DietListBox()
+	// {
+	// this.initWidget(binder.createAndBindUi(this));
+	// }
+	//
+	// public void setSelectedValue(DietType value)
+	// {
+	// this.list.setSelectedValue(value);
+	// }
+	//
+	// public DietType getSelectedValue()
+	// {
+	// return this.list.getSelectedEnumValue();
+	// }
+	//
+	// @UiFactory
+	// EnumListBox<DietType> listBoxFactory()
+	// {
+	// return new EnumListBox<>(DietType.class);
+	// }
+	//
+	// @UiTemplate(value = "DietListBox.ui.xml")
+	// static interface DietListBoxBinder extends UiBinder<Widget, DietListBox>
+	// {}
 
 }

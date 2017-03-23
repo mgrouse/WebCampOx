@@ -80,163 +80,163 @@ public class EditPersonalInfoViewImpl extends AbstractPartView implements IEditP
 
 	public EditPersonalInfoViewImpl()
 	{
-		this.initWidget(binder.createAndBindUi(this));
-		this.expand();
+		initWidget(binder.createAndBindUi(this));
+		expand();
 	}
 
 	@Override
 	public void setEmailText(String text)
 	{
-		this.emailBox.setValue(text, false);
+		emailBox.setValue(text, false);
 	}
 
 	@Override
 	public String getEmailText()
 	{
-		return this.emailBox.getText();
+		return emailBox.getText();
 	}
 
 	@Override
 	public void setFirstNameText(String text)
 	{
-		this.firstNameBox.setText(text);
+		firstNameBox.setText(text);
 	}
 
 	@Override
 	public String getFirstNameText()
 	{
-		return this.firstNameBox.getText();
+		return firstNameBox.getText();
 	}
 
 	@Override
 	public void setLastNameText(String text)
 	{
-		this.lastNameBox.setText(text);
+		lastNameBox.setText(text);
 	}
 
 	@Override
 	public String getLastNameText()
 	{
-		return this.lastNameBox.getText();
+		return lastNameBox.getText();
 	}
 
 	@Override
 	public void setPlayaNameText(String text)
 	{
-		this.playaNameBox.setText(text);
+		playaNameBox.setText(text);
 	}
 
 	@Override
 	public String getPlayaNameText()
 	{
-		return this.playaNameBox.getText();
+		return playaNameBox.getText();
 	}
 
 	@Override
 	public void setGender(Gender gender)
 	{
-		this.genderBox.setSelectedValue(gender);
+		genderBox.setSelectedValue(gender);
 	}
 
 	@Override
 	public Gender getGender()
 	{
-		return this.genderBox.getSelectedValue();
+		return genderBox.getSelectedEnumValue();
 	}
 
 	@Override
 	public void setBirthDate(Date date)
 	{
-		this.birthDate.setSelectedValue(date);
+		birthDate.setSelectedValue(date);
 	}
 
 	@Override
 	public Date getBirthDate()
 	{
-		return this.birthDate.getSelectedValue();
+		return birthDate.getSelectedValue();
 	}
 
 	@Override
 	public void setAddress(Address adress)
 	{
-		this.homeAddress.setAllValues(adress);
+		homeAddress.setAllValues(adress);
 	}
 
 	@Override
 	public Address getAddress()
 	{
-		return this.homeAddress.getAllValues();
+		return homeAddress.getAllValues();
 	}
 
 	@Override
 	public void setDefaultWorldJobText(String text)
 	{
-		this.defaultWorldJobBox.setText(text);
+		defaultWorldJobBox.setText(text);
 	}
 
 	@Override
 	public String getDefaultWorldJobText()
 	{
-		return this.defaultWorldJobBox.getText();
+		return defaultWorldJobBox.getText();
 	}
 
 	@Override
 	public void setBioText(String text)
 	{
-		this.bioBox.setText(text);
+		bioBox.setText(text);
 	}
 
 	@Override
 	public String getBioText()
 	{
-		return this.bioBox.getText();
+		return bioBox.getText();
 	}
 
 	@Override
 	public void setPhoneText(String text)
 	{
-		this.phoneBox.setText(text);
+		phoneBox.setText(text);
 	}
 
 	@Override
 	public String getPhoneText()
 	{
-		return this.phoneBox.getText();
+		return phoneBox.getText();
 	}
 
 	@Override
 	public void setSkypeNameText(String text)
 	{
-		this.skypeNameBox.setText(text);
+		skypeNameBox.setText(text);
 	}
 
 	@Override
 	public String getSkypeNameText()
 	{
-		return this.skypeNameBox.getText();
+		return skypeNameBox.getText();
 	}
 
 	@Override
 	public ContactMethod getContactMethod()
 	{
-		return this.contactMethodBox.getSelectedValue();
+		return contactMethodBox.getSelectedEnumValue();
 	}
 
 	@Override
 	public void setContactMethod(ContactMethod contactMethod)
 	{
-		this.contactMethodBox.setSelectedValue(contactMethod);
+		contactMethodBox.setSelectedValue(contactMethod);
 	}
 
 	@Override
 	public void setCallTime(CallTime time)
 	{
-		this.contactTimeBox.setSelectedValue(time);
+		contactTimeBox.setSelectedValue(time);
 	}
 
 	@Override
 	public CallTime getCallTime()
 	{
-		return this.contactTimeBox.getSelectedValue();
+		return contactTimeBox.getSelectedEnumValue();
 	}
 }
