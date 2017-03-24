@@ -18,7 +18,6 @@ import org.hbgb.webcamp.client.view.AbstractView;
 import org.hbgb.webcamp.client.widget.MessagesWidget;
 
 import com.google.gwt.core.client.GWT;
-import com.google.gwt.event.dom.client.ChangeEvent;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
@@ -26,8 +25,10 @@ import com.google.gwt.uibinder.client.UiHandler;
 import com.google.gwt.uibinder.client.UiTemplate;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.CheckBox;
+import com.google.gwt.user.client.ui.HTML;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.TextArea;
+import com.google.gwt.user.client.ui.VerticalPanel;
 import com.google.gwt.user.client.ui.Widget;
 
 public class InputShelterInfoViewImpl extends AbstractView implements InputShelterInfoView
@@ -42,10 +43,16 @@ public class InputShelterInfoViewImpl extends AbstractView implements InputShelt
 	MessagesWidget messages;
 
 	@UiField
-	Label hsRvLabel;
+	Label hasRvLabel;
 
 	@UiField
 	CheckBox hasRv;
+
+	@UiField
+	VerticalPanel rvInfoPanel;
+
+	@UiField
+	HTML rvInfoHTML;
 
 	@UiField
 	TextArea rvInfo;
@@ -63,6 +70,12 @@ public class InputShelterInfoViewImpl extends AbstractView implements InputShelt
 	CheckBox hasStructure;
 
 	@UiField
+	VerticalPanel structureInfoPanel;
+
+	@UiField
+	HTML structureInfoHTML;
+
+	@UiField
 	TextArea structureInfo;
 
 	@UiField
@@ -74,8 +87,10 @@ public class InputShelterInfoViewImpl extends AbstractView implements InputShelt
 	{
 		initWidget(binder.createAndBindUi(this));
 
-		rvInfo.setVisible(false);
-		structureInfo.setVisible(false);
+		structureInfo.getElement().setAttribute("maxlength", "50");
+		rvInfo.getElement().setAttribute("maxlength", "50");
+
+		messages.clear();
 	}
 
 	@Override
@@ -99,37 +114,83 @@ public class InputShelterInfoViewImpl extends AbstractView implements InputShelt
 	protected Boolean isFormComplete()
 	{
 		Boolean retVal = true;
+		clearErrorState();
 
 		if (!getHasRv() && !getIsInDormTent() && !getHasStructure())
 		{
 			retVal = false;
 
-			hsRvLabel.getElement().getStyle().setColor("red");
+			hasRvLabel.getElement().getStyle().setColor("red");
 			isInDormTentLabel.getElement().getStyle().setColor("red");
 			hasStructureLabel.getElement().getStyle().setColor("red");
 
-			messages.addMessageIfUnique("Please pick at least one option in red");
+			addMessage("Please pick at least one option in red");
 		}
 
 		// if rv is checked better have a rvInfo
+		if (getHasRv() && this.getRvInfoText().isEmpty())
+		{
+			retVal = false;
+
+			rvInfoHTML.getElement().getStyle().setColor("red");
+			addMessage("Please describe your RV");
+		}
 
 		// if Structure is checked better have a structureInfo
+		if (getHasStructure() && this.getStructureInfoText().isEmpty())
+		{
+			retVal = false;
+
+			structureInfoHTML.getElement().getStyle().setColor("red");
+			addMessage("Please describe your Structure");
+		}
 
 		return retVal;
 	}
 
-	@UiHandler(value = { "hasRv", "isInDormTent", "hasStructure" })
-	protected void onListBoxChange(ChangeEvent event)
+	private void clearErrorState()
+	{
+		hasRvLabel.getElement().getStyle().setColor("black");
+		isInDormTentLabel.getElement().getStyle().setColor("black");
+		hasStructureLabel.getElement().getStyle().setColor("black");
+
+		rvInfoHTML.getElement().getStyle().setColor("black");
+		structureInfoHTML.getElement().getStyle().setColor("black");
+
+		messages.clear();
+	}
+
+	@UiHandler(value = { "hasRv", "hasStructure" })
+	protected void onCheckBoxChange(ClickEvent event)
 	{
 		// if RV
+		if (getHasRv())
+		{
+
+			rvInfoPanel.setVisible(true);
+		}
+		else
+		{
+			rvInfoPanel.setVisible(false);
+		}
 
 		// if Structure
+		if (getHasStructure())
+		{
+			structureInfoPanel.setVisible(true);
+		}
+		else
+		{
+			structureInfoPanel.setVisible(false);
+		}
+
 	}
 
 	@Override
 	public void setHasRv(Boolean bool)
 	{
-		hasRv.setValue(bool, false);
+		hasRv.setValue(bool, true);
+		onCheckBoxChange(null);
 	}
 
 	@Override
@@ -165,7 +226,8 @@ public class InputShelterInfoViewImpl extends AbstractView implements InputShelt
 	@Override
 	public void setHasStructure(Boolean bool)
 	{
-		hasStructure.setValue(bool, false);
+		hasStructure.setValue(bool, true);
+		onCheckBoxChange(null);
 	}
 
 	@Override

@@ -40,7 +40,7 @@
 					</g:HTML>
 				
 					<g:HorizontalPanel verticalAlignment="ALIGN_MIDDLE" addStyleNames="formRow">	
-			        	<g:Label ui:field="ticketTypeLabel" text="My Ticket is: "/>
+			        	<g:Label ui:field="ticketTypeLabel" addStyleNames="longLabel" text="My ticket is, or will be: "/>
 			        	<w:TicketTypeListBox ui:field="ticketType"/>
 					</g:HorizontalPanel>
 			        

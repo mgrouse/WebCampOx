@@ -21,11 +21,11 @@
 				
 				<g:HorizontalPanel>
 					<g:CheckBox ui:field="hasRv"/>
-					<g:Label ui:field="hsRvLabel" addStyleNames="longLabel" text="I am bringing an RV."/>
+					<g:Label ui:field="hasRvLabel" addStyleNames="longLabel" text="I am bringing an RV."/>
 				</g:HorizontalPanel>
 			
 				<g:VerticalPanel ui:field="rvInfoPanel">
-					<g:HTML text="Please describe your RV in terms of size type etc."/> <!-- If you want Electric hook up for your RV please mention it in this box."/> -->
+					<g:HTML ui:field="rvInfoHTML" text="Please describe your RV in terms of size type etc."/> <!-- If you want Electric hook up for your RV please mention it in this box."/> -->
 		        	<g:TextArea ui:field="rvInfo"/>
 				</g:VerticalPanel>
 					
@@ -40,7 +40,7 @@
 	        	</g:HorizontalPanel>
 	        	
 	        	<g:VerticalPanel ui:field="structureInfoPanel">
-					<g:Label styleName="longLabel" text="Please describe your structure in terms of length, width, type etc."/>
+					<g:HTML ui:field="structureInfoHTML" styleName="longLabel" text="Please describe your structure in terms of length, width, type etc."/>
 		        	<g:TextArea ui:field="structureInfo"/>
 		        </g:VerticalPanel>
 		        	

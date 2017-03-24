@@ -50,29 +50,31 @@
 						</p>
 					</g:HTML>
 				
+				    <!-- maybe the Horiz Panels need to be width 100%? -->
+				    
 					<g:HorizontalPanel verticalAlignment="ALIGN_MIDDLE" addStyleNames="formRow">	
 			        	<g:Label ui:field="sessionLengthLabel" text="Avg. Session length in Minutes (45)"  addStyleNames="longLabel"/>
-			        	<g:TextBox ui:field="sessionLength"/>
+			        	<g:TextBox ui:field="sessionLength" addStyleNames="right"/>
 					</g:HorizontalPanel>
 					
 					<g:HorizontalPanel verticalAlignment="ALIGN_MIDDLE" addStyleNames="formRow">
 						<g:Label ui:field="modality1Label" text="Modality 1 (Massage)"  addStyleNames="longLabel"/>
-			        	<g:TextBox ui:field="modality1"/>
+			        	<g:TextBox ui:field="modality1" addStyleNames="right"/>
 					</g:HorizontalPanel>
 					
 					<g:HorizontalPanel verticalAlignment="ALIGN_MIDDLE" addStyleNames="formRow">
 						<g:Label text="Modality 2 (Reiki)" addStyleNames="longLabel"/>
-			        	<g:TextBox ui:field="modality2"/>
+			        	<g:TextBox ui:field="modality2" addStyleNames="right"/>
 					</g:HorizontalPanel>
 					
 					<g:HorizontalPanel verticalAlignment="ALIGN_MIDDLE" addStyleNames="formRow">
 						<g:Label text="Modality 3 (Talk Therapy)"  addStyleNames="longLabel"/>
-			        	<g:TextBox ui:field="modality3"/>
+			        	<g:TextBox ui:field="modality3" addStyleNames="right"/>
 					</g:HorizontalPanel>
 					
 					<g:HorizontalPanel verticalAlignment="ALIGN_MIDDLE" addStyleNames="formRow">
 						<g:Label text="Modality 4 (Chiropractic)"  addStyleNames="longLabel"/>
-			        	<g:TextBox ui:field="modality4"/>
+			        	<g:TextBox ui:field="modality4" addStyleNames="right"/>
 					</g:HorizontalPanel>
 					
 					<g:HTML ui:field="bioHTML" text="Please write a short healer bio"  addStyleNames="longLabel"/>

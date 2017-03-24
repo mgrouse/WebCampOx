@@ -237,6 +237,8 @@ public class InputCommitteeInfoViewImpl extends AbstractView implements InputCom
 		sessionLengthLabel.getElement().getStyle().setColor("black");
 		modality1Label.getElement().getStyle().setColor("black");
 		bioHTML.getElement().getStyle().setColor("black");
+
+		messages.clear();
 	}
 
 	@Override

@@ -91,6 +91,8 @@ public class InputLogisticsInfoViewImpl extends AbstractView implements InputLog
 	{
 		initWidget(binder.createAndBindUi(this));
 
+		removeETDates();
+
 		messages.clear();
 		setAllLabelsNormal();
 	}
@@ -209,12 +211,12 @@ public class InputLogisticsInfoViewImpl extends AbstractView implements InputLog
 	public void removeETDates()
 	{
 		// arrivalDoE.removeETDates();
-		for (int i = 0; i < 8; ++i)
+		for (int i = 0; i < 9; ++i)
 		{
 			arrivalDoE.removeItem(0);
 		}
 		// departureDoE.removeETDates();
-		for (int i = 0; i < 8; ++i)
+		for (int i = 0; i < 9; ++i)
 		{
 			departureDoE.removeItem(0);
 		}
