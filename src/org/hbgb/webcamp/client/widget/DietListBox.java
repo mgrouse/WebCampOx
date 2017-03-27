@@ -20,35 +20,4 @@ public class DietListBox extends EnumListBox<DietType>
 		super(DietType.class);
 	}
 
-	// private static UiBinder<Widget, DietListBox> binder =
-	// GWT.create(DietListBoxBinder.class);
-	//
-	// @UiField
-	// EnumListBox<DietType> list;
-	//
-	// DietListBox()
-	// {
-	// this.initWidget(binder.createAndBindUi(this));
-	// }
-	//
-	// public void setSelectedValue(DietType value)
-	// {
-	// this.list.setSelectedValue(value);
-	// }
-	//
-	// public DietType getSelectedValue()
-	// {
-	// return this.list.getSelectedEnumValue();
-	// }
-	//
-	// @UiFactory
-	// EnumListBox<DietType> listBoxFactory()
-	// {
-	// return new EnumListBox<>(DietType.class);
-	// }
-	//
-	// @UiTemplate(value = "DietListBox.ui.xml")
-	// static interface DietListBoxBinder extends UiBinder<Widget, DietListBox>
-	// {}
-
 }

@@ -14,43 +14,8 @@ import org.hbgb.webcamp.shared.enums.Transportation;
 
 public class TransportationListBox extends EnumListBox<Transportation>
 {
-
-	/**
-	 * @param eclass
-	 */
 	public TransportationListBox()
 	{
 		super(Transportation.class);
 	}
-	// private static UiBinder<Widget, TransportationListBox> binder =
-	// GWT.create(TransportationListBoxBinder.class);
-	// @UiField
-	// EnumListBox<Transportation> list;
-	//
-	// TransportationListBox()
-	// {
-	// this.initWidget(binder.createAndBindUi(this));
-	// }
-	//
-	// public void setSelectedValue(Transportation value)
-	// {
-	// this.list.setSelectedValue(value);
-	// }
-	//
-	// public Transportation getSelectedValue()
-	// {
-	// return this.list.getSelectedEnumValue();
-	// }
-	//
-	// @UiFactory
-	// EnumListBox<Transportation> listBoxFactory()
-	// {
-	// return new EnumListBox<>(Transportation.class);
-	// }
-	//
-	// @UiTemplate(value = "TransportationListBox.ui.xml")
-	// static interface TransportationListBoxBinder extends UiBinder<Widget,
-	// TransportationListBox>
-	// {}
-
 }

@@ -19,36 +19,4 @@ public class ContactMethodListBox extends EnumListBox<ContactMethod>
 	{
 		super(ContactMethod.class);
 	}
-
-	// private static UiBinder<Widget, ContactMethodListBox> binder =
-	// GWT.create(ContactMethodListBoxBinder.class);
-	// @UiField
-	// EnumListBox<ContactMethod> list;
-	//
-	// ContactMethodListBox()
-	// {
-	// this.initWidget(binder.createAndBindUi(this));
-	// }
-	//
-	// public void setSelectedValue(ContactMethod value)
-	// {
-	// this.list.setSelectedValue(value);
-	// }
-	//
-	// public ContactMethod getSelectedValue()
-	// {
-	// return this.list.getSelectedEnumValue();
-	// }
-	//
-	// @UiFactory
-	// EnumListBox<ContactMethod> listBoxFactory()
-	// {
-	// return new EnumListBox<>(ContactMethod.class);
-	// }
-	//
-	// @UiTemplate(value = "EnumListBox.ui.xml")
-	// static interface ContactMethodListBoxBinder extends UiBinder<Widget,
-	// ContactMethodListBox>
-	// {}
-
 }

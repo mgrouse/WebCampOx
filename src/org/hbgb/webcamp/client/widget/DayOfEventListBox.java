@@ -15,9 +15,6 @@ import org.hbgb.webcamp.shared.enums.DayOfEvent;
 public class DayOfEventListBox extends EnumListBox<DayOfEvent>
 {
 
-	/**
-	 * @param eclass
-	 */
 	public DayOfEventListBox()
 	{
 		super(DayOfEvent.class);

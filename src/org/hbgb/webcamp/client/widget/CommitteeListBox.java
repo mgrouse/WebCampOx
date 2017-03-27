@@ -16,46 +16,8 @@ import org.hbgb.webcamp.shared.enums.Committee;
 
 public class CommitteeListBox extends EnumListBox<Committee>
 {
-
 	public CommitteeListBox()
 	{
 		super(Committee.class);
 	}
-
-	// private static UiBinder<Widget, CommitteeListBox> binder =
-	// GWT.create(CommitteeListBoxBinder.class);
-	// @UiField
-	// EnumListBox<Committee> list;
-	//
-	// CommitteeListBox()
-	// {
-	// this.initWidget(binder.createAndBindUi(this));
-	// }
-	//
-	// public void setSelectedValue(Committee value)
-	// {
-	// this.list.setSelectedValue(value);
-	// }
-	//
-	// public Committee getSelectedValue()
-	// {
-	// return this.list.getSelectedEnumValue();
-	// }
-	//
-	// public HandlerRegistration addChangeHandler(ChangeHandler handler)
-	// {
-	// return this.list.addChangeHandler(handler);
-	// }
-	//
-	// @UiFactory
-	// EnumListBox<Committee> listBoxFactory()
-	// {
-	// return new EnumListBox<>(Committee.class);
-	// }
-	//
-	// @UiTemplate(value = "CommitteeListBox.ui.xml")
-	// static interface CommitteeListBoxBinder extends UiBinder<Widget,
-	// CommitteeListBox>
-	// {}
-
 }
