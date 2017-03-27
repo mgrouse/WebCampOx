@@ -13,5 +13,5 @@ import com.google.gwt.user.client.rpc.RemoteServiceRelativePath;
 @RemoteServiceRelativePath(value = "emailService")
 public interface EmailService extends RemoteService
 {
-	public String sendApplicationRecievedEmail(String var1);
+	public String sendApplicationRecievedEmail(String var1) throws Exception;
 }

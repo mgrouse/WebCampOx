@@ -183,6 +183,16 @@ public class InputCommitteeInfoViewImpl extends AbstractView implements InputCom
 			retVal = false;
 		}
 
+		// comittee choices different?
+		if (null != committee1ListBox.getSelectedEnumValue()
+				&& (committee1ListBox.getSelectedEnumValue() == committee2ListBox.getSelectedEnumValue()))
+		{
+			addMessage("Please pick two different committees.");
+			committee1Label.getElement().getStyle().setColor("red");
+			committee2Label.getElement().getStyle().setColor("red");
+			retVal = false;
+		}
+
 		// reason1
 		if (reason1.getText().isEmpty())
 		{

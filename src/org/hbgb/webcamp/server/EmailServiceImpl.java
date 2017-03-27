@@ -10,6 +10,7 @@
 package org.hbgb.webcamp.server;
 
 import java.util.Properties;
+import java.util.logging.Logger;
 
 import javax.mail.Authenticator;
 import javax.mail.Message;
@@ -26,13 +27,16 @@ import com.google.gwt.user.server.rpc.RemoteServiceServlet;
 @SuppressWarnings("serial")
 public class EmailServiceImpl extends RemoteServiceServlet implements EmailService
 {
+
+	private static final Logger log = Logger.getLogger(EmailServiceImpl.class.getName());
+
 	@Override
-	public String sendApplicationRecievedEmail(String key)
+	public String sendApplicationRecievedEmail(String key) throws Exception
 	{
 		ApplicationServiceImpl appServ = new ApplicationServiceImpl();
 		Application app = appServ.getApplication(key);
 
-		// first to the Lead "michael.grouse@gmail.com"
+		// first to the Lead
 		sendMail(getRegistrationLeadAddressAsText(), "HeeBee application received!", getNotificationEmailBody());
 		// sendMail("michael.grouse@gmail.com", "HeeBee application received!",
 		// getNotificationEmailBody());
@@ -41,7 +45,7 @@ public class EmailServiceImpl extends RemoteServiceServlet implements EmailServi
 		return sendMail(app.getEmail(), "Your HeeBee application was received!", getApplicationEmailBody());
 	}
 
-	private String sendMail(String to, String subject, String message)
+	private String sendMail(String to, String subject, String message) throws Exception
 	{
 		String output = "Success";
 		Properties props = new Properties();
@@ -49,8 +53,11 @@ public class EmailServiceImpl extends RemoteServiceServlet implements EmailServi
 		try
 		{
 			MimeMessage msg = new MimeMessage(session);
-			msg.setFrom(this.getWebmasterAddress());
+			msg.setFrom(getWebmasterAddress());
+
 			msg.addRecipient(Message.RecipientType.TO, new InternetAddress(to));
+			msg.addRecipient(Message.RecipientType.BCC, getWebmasterAddress());
+
 			msg.setSubject(subject);
 			msg.setText(message);
 			msg.setReplyTo(new InternetAddress[] { this.getRegistrationLeadAddress() });
@@ -58,7 +65,9 @@ public class EmailServiceImpl extends RemoteServiceServlet implements EmailServi
 		}
 		catch (Exception e)
 		{
-			return e.toString();
+			// log error
+			log.severe(e.getMessage());
+			throw e;
 		}
 
 		return output;

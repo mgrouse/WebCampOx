@@ -35,48 +35,12 @@ public class DayOfEventListBox extends EnumListBox<DayOfEvent>
 		return doe;
 	}
 
-	// @UiTemplate(value = "DayOfEventListBox.ui.xml")
-	// static interface DayOfEventListBoxBinder extends UiBinder<Widget,
-	// DayOfEventListBox>
-	// {}
-	//
-	// private static UiBinder<Widget, DayOfEventListBox> binder =
-	// GWT.create(DayOfEventListBoxBinder.class);
-	//
-	// @UiField
-	// EnumListBox<DayOfEvent> list;
-	//
-	// DayOfEventListBox()
-	// {
-	// this.initWidget(binder.createAndBindUi(this));
-	// }
-	//
-	// public void removeETDates()
-	// {
-	// for (int i = 0; i < 8; ++i)
-	// {
-	// list.removeItem(0);
-	// }
-	// }
-	//
-	// public void setSelectedValue(DayOfEvent value)
-	// {
-	// this.list.setSelectedValue(value);
-	// }
-	//
-	// public DayOfEvent getSelectedValue()
-	// {
-	// DayOfEvent doe = null;
-	// String temp = list.getSelectedItemText();
-	// doe = DayOfEvent.reverseLookup(temp);
-	//
-	// return doe;
-	// }
-	//
-	// @UiFactory
-	// EnumListBox<DayOfEvent> listBoxFactory()
-	// {
-	// return new EnumListBox<>(DayOfEvent.class);
-	// }
+	public void removeETDates()
+	{
+		for (int i = 0; i < 8; ++i)
+		{
+			removeItem(1);
+		}
+	}
 
 }

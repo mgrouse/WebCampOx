@@ -10,7 +10,7 @@ public enum DayOfEvent
 	Early_Monday("Early Team Monday 8/21"), Early_Tuesday("Early Team Tuesday 8/22"), Early_Wednesday("Early Team Wednesday 8/23"), Early_Thursday(
 			"Early Team Thursday 8/24"), Early_Friday("Early Team Friday 8/25"), Early_Saturday("Early Team Saturday 8/26"),
 
-	Early_Sunday("Early Team Sunday 8/27"), Burn_Monday("Burn Monday 8/28"), Burn_Tuesday("Burn Tuesday 8/29"), Burn_Wednesday(
+	Early_Sunday("Gate Opens Sunday 8/27"), Burn_Monday("Burn Monday 8/28"), Burn_Tuesday("Burn Tuesday 8/29"), Burn_Wednesday(
 			"Burn Wednesday 8/30"), Burn_Thursday(
 					"Burn Thursday 8/31"), Burn_Friday("Burn Friday 9/1"), Burn_Saturday("Burn Saturday 9/2"), Burn_Sunday("Burn Sunday 9/3"),
 

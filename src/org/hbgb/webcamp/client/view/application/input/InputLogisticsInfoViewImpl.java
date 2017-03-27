@@ -210,16 +210,8 @@ public class InputLogisticsInfoViewImpl extends AbstractView implements InputLog
 	@Override
 	public void removeETDates()
 	{
-		// arrivalDoE.removeETDates();
-		for (int i = 0; i < 9; ++i)
-		{
-			arrivalDoE.removeItem(0);
-		}
-		// departureDoE.removeETDates();
-		for (int i = 0; i < 9; ++i)
-		{
-			departureDoE.removeItem(0);
-		}
+		arrivalDoE.removeETDates();
+		departureDoE.removeETDates();
 	}
 
 	protected Boolean formIsValid()

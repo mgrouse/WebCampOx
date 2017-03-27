@@ -45,7 +45,6 @@ public class FinishPresenter implements IKeyPresenter
 	@Override
 	public void go()
 	{
-
 		screen.clear();
 		sendEmail();
 	}
@@ -59,7 +58,7 @@ public class FinishPresenter implements IKeyPresenter
 			{
 				if (result == null)
 				{
-					Window.alert("RPC Error: Result is returned as NULL");
+					Window.alert("RPC Error: Email Result is returned as NULL");
 				}
 				else
 				{
@@ -79,7 +78,7 @@ public class FinishPresenter implements IKeyPresenter
 			@Override
 			public void onFailure(Throwable caught)
 			{
-				Window.alert("RPC Error: " + caught.getMessage());
+				view.setFailureMessageVisability(true);
 			}
 		});
 	}
