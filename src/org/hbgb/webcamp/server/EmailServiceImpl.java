@@ -37,12 +37,14 @@ public class EmailServiceImpl extends RemoteServiceServlet implements EmailServi
 		Application app = appServ.getApplication(key);
 
 		// first to the Lead
-		sendMail(getRegistrationLeadAddressAsText(), "HeeBee application received!", getNotificationEmailBody());
+		sendMail(getRegistrationLeadAddressAsText(),
+				"HeeBee application received! for: " + app.getEmail(), getNotificationEmailBody());
 		// sendMail("michael.grouse@gmail.com", "HeeBee application received!",
 		// getNotificationEmailBody());
 
 		// then to the camper
-		return sendMail(app.getEmail(), "Your HeeBee application was received!", getApplicationEmailBody());
+		return sendMail(app.getEmail(), "Your HeeBee application was received!",
+				getApplicationEmailBody());
 	}
 
 	private String sendMail(String to, String subject, String message) throws Exception

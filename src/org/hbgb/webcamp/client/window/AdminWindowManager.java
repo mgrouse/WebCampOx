@@ -44,8 +44,12 @@ public class AdminWindowManager extends ResizeComposite implements StatusHandler
 	private static UiBinder<Widget, AdminWindowManager> binder = GWT.create(AdminWindowManagerBinder.class);
 
 	private static final String CAMPERS_APPLICATIONS = "campers-applications";
+	private static final String CAMPERS_APPLICATIONS_FANCY = "campers-applications-fancy";
+
 	private static final String REPORT_MEALS = "report-meals";
+
 	private static final String UTILS_EARLY_TEAM = "utils-early-team";
+
 	private static final String DEV_USERS = "dev-users";
 
 	@UiField
@@ -83,6 +87,10 @@ public class AdminWindowManager extends ResizeComposite implements StatusHandler
 				openApplications();
 				break;
 
+			case CAMPERS_APPLICATIONS_FANCY:
+				openApplicationsFancy();
+				break;
+
 			case REPORT_MEALS:
 				openMealseReport();
 				break;
@@ -96,6 +104,30 @@ public class AdminWindowManager extends ResizeComposite implements StatusHandler
 				break;
 
 		}
+
+	}
+
+	/**
+	 * 
+	 */
+	private void openApplicationsFancy()
+	{
+		GWT.runAsync(new RunAsyncCallback()
+		{
+
+			@Override
+			public void onFailure(Throwable caught)
+			{}
+
+			@Override
+			public void onSuccess()
+			{
+				WorkTab wTab = new WorkTab();
+				ApplicationListApplet appList = new ApplicationListApplet();
+				appList.run(wTab.getScrollPanel());
+				contentPanel.addTab("Fancy Application List", wTab);
+			}
+		});
 
 	}
 

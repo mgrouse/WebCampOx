@@ -1,12 +1,13 @@
 /*
- * Decompiled with CFR 0_115.
- * 
- * Could not load the following classes:
- * com.google.gwt.event.shared.EventHandler com.google.gwt.event.shared.GwtEvent
- * com.google.gwt.event.shared.GwtEvent$Type
- * com.google.gwt.event.shared.HandlerManager
- * com.google.gwt.event.shared.HandlerRegistration
- * com.google.gwt.user.client.ui.HasWidgets
+ * This is an unpublished work protected by the United States copyright laws and
+ * is proprietary to Michael A. Grouse. Disclosure, copying, reproduction,
+ * merger translation, modification, enhancement or use by anyone other than
+ * authorized employees or licensees of Michael A. Grouse without prior written
+ * consent of Michael A. Grouse is prohibited.
+ *
+ * Copyright (C) 1992 - 2017 Michael A. Grouse, All Rights Reserved.
+ *
+ * This copyright notice should not be construed as evidence of publication.
  */
 package org.hbgb.webcamp.client.applet;
 
@@ -20,14 +21,18 @@ import org.hbgb.webcamp.client.presenter.application.EditWholeApplicationPresent
 import com.google.gwt.event.shared.HandlerManager;
 import com.google.gwt.user.client.ui.HasWidgets;
 
-public class ApplicationListApplet implements IApplet
+/**
+ * @author Michael
+ *
+ */
+public class ApplicationListFancyApplet implements IApplet
 {
 	private final HandlerManager eventBus = new HandlerManager(null);
 	private HasWidgets screen;
 	private final ApplicationListPresenter applicationListPresenter = new ApplicationListPresenter(eventBus);
 	private final EditWholeApplicationPresenter editWholeApplicationPresenter = new EditWholeApplicationPresenter(eventBus);
 
-	public ApplicationListApplet()
+	public ApplicationListFancyApplet()
 	{
 		registerEvents();
 	}

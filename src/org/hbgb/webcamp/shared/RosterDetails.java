@@ -18,7 +18,8 @@ public class RosterDetails implements Comparable<RosterDetails>, Serializable
 		new RosterDetails(null, "", "", "", "", "", "");
 	}
 
-	public RosterDetails(String key, String photoURL, String playaName, String firstName, String homeTown, String committee, String bio)
+	public RosterDetails(String key, String photoURL, String playaName, String firstName,
+			String homeTown, String committee, String bio)
 	{
 		this.encodedKey = key;
 		this.photoURL = photoURL;
@@ -104,8 +105,18 @@ public class RosterDetails implements Comparable<RosterDetails>, Serializable
 	{
 		int retval = 0;
 
-		retval = this.playaName.compareTo(rd.playaName);
+		retval = playaName.compareTo(rd.playaName);
+
+		if (isEmpty(playaName) && isEmpty(rd.playaName))
+		{
+			retval = firstName.compareTo(rd.firstName);
+		}
 
 		return retval;
+	}
+
+	private Boolean isEmpty(String text)
+	{
+		return ((null == text) || (text.isEmpty()));
 	}
 }

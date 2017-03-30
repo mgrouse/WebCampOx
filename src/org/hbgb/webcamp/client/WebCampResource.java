@@ -16,7 +16,7 @@ import com.google.gwt.resources.client.ImageResource;
 
 public interface WebCampResource extends ClientBundle
 {
-	public static final WebCampResource INSTANCE = (WebCampResource) GWT.create(WebCampResource.class);
+	public static final WebCampResource INSTANCE = GWT.create(WebCampResource.class);
 
 	@Source(value = { "org/hbgb/webcamp/client/images/bean.png" })
 	public ImageResource bean();

@@ -22,29 +22,29 @@ public class HealerSheetPrintPresenter implements IPresenter
 	private HTMLPanelView view;
 	private HasWidgets screen;
 
-	public HealerSheetPrintPresenter(HandlerManager eventBus)
+	public HealerSheetPrintPresenter(HandlerManager eb)
 	{
-		this.eventBus = eventBus;
-		this.view = new HTMLPanelViewImpl();
+		eventBus = eb;
+		view = new HTMLPanelViewImpl();
 	}
 
 	@Override
 	public void setScreen(HasWidgets container)
 	{
-		this.screen = container;
+		screen = container;
 	}
 
 	public void setHealerSheetDetails(HealerSheetDetails details)
 	{
-		this.details = details;
+		details = details;
 	}
 
 	@Override
 	public void go()
 	{
-		this.screen.clear();
-		this.printSheetToView();
-		this.screen.add(this.view.asWidget());
+		screen.clear();
+		printSheetToView();
+		screen.add(view.asWidget());
 	}
 
 	private void printSheetToView()
@@ -53,55 +53,61 @@ public class HealerSheetPrintPresenter implements IPresenter
 		html.append("<div>");
 		html.append("<table cellspacing = \"0\" cellpadding = \"0px\">");
 		html.append("<tr>");
-		html.append("<td><img src=\"http://storage.googleapis.com/hbgbwebcamp.appspot.com/HeeBeeManAndFlames.jpg\"></td>");
-		html.append("<td><img src=\"http://storage.googleapis.com/hbgbwebcamp.appspot.com/HBGB_ChangeWorldOneBurnerHorizTxt.jpg\"></td>");
-		html.append("<td><img src=\"http://storage.googleapis.com/hbgbwebcamp.appspot.com/HBGBHealersTxt.jpg\"></td>");
-		html.append("<td><img src=\"http://storage.googleapis.com/hbgbwebcamp.appspot.com/HBGB_ChangeWorldOneBurnerHorizTxt.jpg\"></td>");
-		html.append("<td><img src=\"http://storage.googleapis.com/hbgbwebcamp.appspot.com/HeeBeeManAndFlames.jpg\"></td>");
+		html.append(
+				"<td><img src=\"http://storage.googleapis.com/hbgbwebcamp.appspot.com/HeeBeeManAndFlames.jpg\"></td>");
+		html.append(
+				"<td><img src=\"http://storage.googleapis.com/hbgbwebcamp.appspot.com/HBGB_ChangeWorldOneBurnerHorizTxt.jpg\"></td>");
+		html.append(
+				"<td><img src=\"http://storage.googleapis.com/hbgbwebcamp.appspot.com/HBGBHealersTxt.jpg\"></td>");
+		html.append(
+				"<td><img src=\"http://storage.googleapis.com/hbgbwebcamp.appspot.com/HBGB_ChangeWorldOneBurnerHorizTxt.jpg\"></td>");
+		html.append(
+				"<td><img src=\"http://storage.googleapis.com/hbgbwebcamp.appspot.com/HeeBeeManAndFlames.jpg\"></td>");
 		html.append("</tr>");
 		html.append("</table>");
 		html.append("</div>");
 		html.append("<div>");
 		html.append("<div class= \"modality\">");
-		html.append("<h2>Sign up sheet for " + this.details.getPlayaName() + "</h2>");
+		html.append("<h2>Sign up sheet for " + details.getPlayaName() + "</h2>");
 		html.append("<ul>");
-		if (!this.details.getModality1().isEmpty())
+		if (!details.getModality1().isEmpty())
 		{
-			html.append("<li>" + this.details.getModality1() + "</li>");
+			html.append("<li>" + details.getModality1() + "</li>");
 		}
-		if (!this.details.getModality2().isEmpty())
+		if (!details.getModality2().isEmpty())
 		{
-			html.append("<li>" + this.details.getModality2() + "</li>");
+			html.append("<li>" + details.getModality2() + "</li>");
 		}
-		if (!this.details.getModality3().isEmpty())
+		if (!details.getModality3().isEmpty())
 		{
-			html.append("<li>" + this.details.getModality3() + "</li>");
+			html.append("<li>" + details.getModality3() + "</li>");
 		}
-		if (!this.details.getModality4().isEmpty())
+		if (!details.getModality4().isEmpty())
 		{
-			html.append("<li>" + this.details.getModality4() + "</li>");
+			html.append("<li>" + details.getModality4() + "</li>");
 		}
 		html.append("</ul>");
 		html.append("<div class= \"sessionTiming\">");
 		html.append("<p class= \"sessionTiming\"> Sessions average ");
-		if (!this.details.getSessionLength().isEmpty())
+		if (!details.getSessionLength().isEmpty())
 		{
-			html.append("<u>" + this.details.getSessionLength() + "</u>");
+			html.append("<u>" + details.getSessionLength() + "</u>");
 		}
 		else
 		{
 			html.append("<u>&nbsp;&nbsp;&nbsp;&nbsp;</u>");
 		}
 		html.append(" minutes.<br>");
-		html.append("Please be patient... timing is approximate.<br><b>Sign up for a session below</b> </p>");
+		html.append(
+				"Please be patient... timing is approximate.<br><b>Sign up for a session below</b> </p>");
 		html.append("</div>");
 		html.append("</div>");
 		html.append("<div class = \"picture\">");
-		html.append("<img src=" + this.details.getImageURL() + "=s300-c>");
+		html.append("<img src=" + details.getImageURL() + "=s300-c>");
 		html.append("</div>");
 		html.append("<div class = \"whoIs\">");
-		html.append("<h1>Who is " + this.details.getPlayaName() + " ?</h1>");
-		html.append("<p class= \"bio\">" + this.details.getBio() + "</p>");
+		html.append("<h1>Who is " + details.getPlayaName() + " ?</h1>");
+		html.append("<p class= \"bio\">" + details.getBio() + "</p>");
 		html.append("</div>");
 		html.append("</div>");
 		html.append("<div class = \"clearFloats\"></div>");
@@ -118,6 +124,6 @@ public class HealerSheetPrintPresenter implements IPresenter
 		html.append("<tr> <td class=\"sigCell\">8)</td> <td class=\"timeCell\">&nbsp;</td> </tr>");
 		html.append("</table>");
 		html.append("</div>");
-		this.view.setHTML(html.toString());
+		view.setHTML(html.toString());
 	}
 }

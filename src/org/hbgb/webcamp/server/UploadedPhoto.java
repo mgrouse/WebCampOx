@@ -1,4 +1,4 @@
-package org.hbgb.webcamp.shared;
+package org.hbgb.webcamp.server;
 
 import java.io.Serializable;
 import java.util.Date;

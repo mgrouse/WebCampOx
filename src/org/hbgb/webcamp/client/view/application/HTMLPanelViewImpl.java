@@ -10,6 +10,7 @@
  */
 package org.hbgb.webcamp.client.view.application;
 
+import org.hbgb.webcamp.client.widget.LoadingPopup;
 import org.hbgb.webcamp.shared.enums.SecurityRole;
 
 import com.google.gwt.core.client.GWT;
@@ -27,26 +28,34 @@ public class HTMLPanelViewImpl extends Composite implements HTMLPanelView
 	static interface HTMLPanelViewImplBinder extends UiBinder<Widget, HTMLPanelViewImpl>
 	{}
 
-	private static UiBinder<Widget, HTMLPanelViewImpl> binder = GWT.create(HTMLPanelViewImplBinder.class);
+	private static UiBinder<Widget, HTMLPanelViewImpl> binder = GWT
+			.create(HTMLPanelViewImplBinder.class);
 
 	@UiField
 	HTMLPanel panel;
 
+	LoadingPopup loadPop;
+
 	public HTMLPanelViewImpl()
 	{
-		this.initWidget(binder.createAndBindUi(this));
+		initWidget(binder.createAndBindUi(this));
+		loadPop = new LoadingPopup();
 	}
 
 	@Override
 	public void setHTML(String html)
 	{
-		this.panel.clear();
-		this.panel.add(new HTML(html));
+		panel.clear();
+		panel.add(new HTML(html));
+
+		loadPop.stop();
 	}
 
 	@Override
 	public void clear()
-	{}
+	{
+		loadPop.go();
+	}
 
 	@Override
 	public void setVisibility(SecurityRole role)

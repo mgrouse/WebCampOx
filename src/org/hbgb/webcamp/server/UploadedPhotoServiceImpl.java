@@ -15,18 +15,15 @@ import java.util.List;
 import javax.jdo.PersistenceManager;
 import javax.jdo.Query;
 
-import org.hbgb.webcamp.client.async.UploadedPhotoService;
-import org.hbgb.webcamp.shared.UploadedPhoto;
-
 import com.google.appengine.api.blobstore.BlobstoreService;
 import com.google.appengine.api.blobstore.BlobstoreServiceFactory;
 import com.google.gwt.user.server.rpc.RemoteServiceServlet;
 
 @SuppressWarnings("serial")
-public class UploadedPhotoServiceImpl extends RemoteServiceServlet implements UploadedPhotoService
+public class UploadedPhotoServiceImpl extends RemoteServiceServlet
 {
-	@Override
-	public UploadedPhoto getUploadedPhoto(String encoded)
+
+	public Boolean getUploadedPhoto(String encoded)
 	{
 		UploadedPhoto photo = null;
 		PersistenceManager pm = getPM();
@@ -41,11 +38,10 @@ public class UploadedPhotoServiceImpl extends RemoteServiceServlet implements Up
 			pm.close();
 		}
 
-		return photo;
+		return true;
 	}
 
-	@Override
-	public UploadedPhoto addUploadedPhoto(UploadedPhoto photo)
+	public Boolean addUploadedPhoto(UploadedPhoto photo)
 	{
 		PersistenceManager pm = getPM();
 
@@ -63,10 +59,9 @@ public class UploadedPhotoServiceImpl extends RemoteServiceServlet implements Up
 			pm.close();
 		}
 
-		return photo;
+		return true;
 	}
 
-	@Override
 	public Boolean deleteUploadedPhotoByKey(String encoded)
 	{
 		BlobstoreService blobstoreService = BlobstoreServiceFactory.getBlobstoreService();
@@ -113,7 +108,6 @@ public class UploadedPhotoServiceImpl extends RemoteServiceServlet implements Up
 		return photo;
 	}
 
-	@Override
 	public Boolean deleteUploadedPhotoByURL(String url)
 	{
 		UploadedPhoto photo = this.findUploadedPhotoByURL(url);

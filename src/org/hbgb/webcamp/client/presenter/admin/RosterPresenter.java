@@ -29,30 +29,32 @@ public class RosterPresenter implements IPresenter
 	@Override
 	public void setScreen(HasWidgets container)
 	{
-		this.screen = container;
+		screen = container;
 	}
 
 	@Override
 	public void go()
 	{
-		this.view.clear();
-		this.fetchData();
+		view.clear();
+		fetchData();
 	}
 
 	private void fetchData()
 	{
-		this.rpcService.getAcceptedRosterDetailsByYear("2016", new AsyncCallback<List<RosterDetails>>()
+		rpcService.getAcceptedRosterDetailsByYear("2017", new AsyncCallback<List<RosterDetails>>()
 		{
 
+			@Override
 			public void onSuccess(List<RosterDetails> result)
 			{
-				RosterPresenter.this.setViewHTML(result);
-				RosterPresenter.this.screen.add(RosterPresenter.this.view.asWidget());
+				setViewHTML(result);
+				screen.add(view.asWidget());
 			}
 
+			@Override
 			public void onFailure(Throwable caught)
 			{
-				Window.alert((String) "Error fetching RosterDetails");
+				Window.alert("Error fetching RosterDetails");
 			}
 		});
 	}
@@ -60,30 +62,52 @@ public class RosterPresenter implements IPresenter
 	private void setViewHTML(List<RosterDetails> roster)
 	{
 		StringBuilder html = new StringBuilder();
-		html.append("<table border=1><tr><td align='center'> <b>Photo</b> </td><td align='center'> <b>Stats</b> </td></tr>");
-		for (RosterDetails details : roster)
+		html.append(
+				"<table border=1><tr><td align='center'> <b>Photo</b> </td><td align='center'> <b>Stats</b> </td></tr>");
+
+		if (roster.isEmpty())
 		{
 			html.append("<tr>");
-			html.append("<td>");
-			html.append("<img src=" + details.getPhotoURL() + ">");
+
+			html.append("<td class=\"rosterBio\">");
+			html.append("No Data to Display.");
 			html.append("</td>");
-			html.append("<td>");
-			if (details.getPlayaName() != null && !details.getPlayaName().isEmpty())
-			{
-				html.append("<h2>Playa Name: " + details.getPlayaName() + " </h2> <br/>");
-			}
-			else
-			{
-				html.append("<h2>First Name: " + details.getFirstName() + " </h2> <br/>");
-			}
-			html.append("Home town: " + details.getHomeTown() + " <br/>");
-			html.append("Committee: " + details.getCommittee() + " <br/>");
-			html.append("Bio: " + details.getBio());
-			html.append("</td>");
+
 			html.append("</tr>");
 		}
+		else
+		{
+			for (RosterDetails details : roster)
+			{
+				html.append("<tr>");
+
+				// html.append("<img src=" + details.getPhotoURL() + ">");
+				html.append(
+						"<td  style=\"background-image:url('" + details.getPhotoURL() + "')\";  ");
+				html.append(" class=\"rosterPic\">");
+
+				html.append("</td>");
+
+				html.append("<td class=\"rosterBio\">");
+
+				if (details.getPlayaName() != null && !details.getPlayaName().isEmpty())
+				{
+					html.append("<h2>Playa Name: " + details.getPlayaName() + " </h2> <br/>");
+				}
+				else
+				{
+					html.append("<h2>First Name: " + details.getFirstName() + " </h2> <br/>");
+				}
+
+				html.append("Home town: " + details.getHomeTown() + " <br/>");
+				html.append("Committee: " + details.getCommittee() + " <br/>");
+				html.append("Bio: " + details.getBio());
+				html.append("</td>");
+				html.append("</tr>");
+			}
+		}
 		html.append("</table>");
-		this.view.setHTML(html.toString());
+		view.setHTML(html.toString());
 	}
 
 }

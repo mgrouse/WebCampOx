@@ -24,9 +24,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.hbgb.webcamp.client.async.UploadedPhotoService;
-import org.hbgb.webcamp.shared.UploadedPhoto;
-
 import com.google.appengine.api.blobstore.BlobKey;
 import com.google.appengine.api.blobstore.BlobstoreService;
 import com.google.appengine.api.blobstore.BlobstoreServiceFactory;
@@ -42,7 +39,8 @@ public class BlobStoreUploadServlet extends HttpServlet
 	private BlobstoreService blobstoreService = BlobstoreServiceFactory.getBlobstoreService();
 
 	@Override
-	public void doPost(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException
+	public void doPost(HttpServletRequest req, HttpServletResponse res)
+			throws ServletException, IOException
 	{
 		Map<String, List<BlobKey>> blobs = blobstoreService.getUploads(req);
 		List<BlobKey> blobKeyList = blobs.get("image");
@@ -61,7 +59,7 @@ public class BlobStoreUploadServlet extends HttpServlet
 			String imageUrl = imagesService.getServingUrl(options);
 
 			// Create the UserPhoto object using the Service
-			UploadedPhotoService photoServ = new UploadedPhotoServiceImpl();
+			UploadedPhotoServiceImpl photoServ = new UploadedPhotoServiceImpl();
 
 			UploadedPhoto photo = new UploadedPhoto();
 			photo.setCreated(new Date());
@@ -76,7 +74,8 @@ public class BlobStoreUploadServlet extends HttpServlet
 	}
 
 	@Override
-	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
+			throws ServletException, IOException
 	{
 
 		String imageUrl = req.getParameter("imageUrl");
