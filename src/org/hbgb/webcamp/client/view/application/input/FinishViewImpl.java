@@ -9,7 +9,7 @@
  */
 package org.hbgb.webcamp.client.view.application.input;
 
-import org.hbgb.webcamp.client.presenter.PresenterI;
+import org.hbgb.webcamp.client.presenter.IPresenter;
 import org.hbgb.webcamp.client.view.AbstractView;
 
 import com.google.gwt.core.client.GWT;
@@ -29,7 +29,7 @@ public class FinishViewImpl extends AbstractView implements FinishViewI
 	@UiField
 	HTML emailFailure;
 
-	private PresenterI presenter;
+	private IPresenter presenter;
 
 	public FinishViewImpl()
 	{
@@ -37,7 +37,7 @@ public class FinishViewImpl extends AbstractView implements FinishViewI
 	}
 
 	@Override
-	public void setPresenter(PresenterI presenter)
+	public void setPresenter(IPresenter presenter)
 	{
 		this.presenter = presenter;
 	}

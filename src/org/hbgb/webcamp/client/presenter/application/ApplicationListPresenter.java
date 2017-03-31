@@ -27,7 +27,8 @@ import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.HasWidgets;
 
-public class ApplicationListPresenter implements IPresenter, ApplicationListView.Presenter<ApplicationDetails>
+public class ApplicationListPresenter
+		implements IPresenter, ApplicationListView.Presenter<ApplicationDetails>
 {
 	private List<ApplicationDetails> applicationDetails;
 	private final ApplicationServiceAsync rpcService = AsyncServiceFinder.getApplicationService();
@@ -36,13 +37,14 @@ public class ApplicationListPresenter implements IPresenter, ApplicationListView
 	private final SelectionModel<ApplicationDetails> selectionModel;
 	private HasWidgets screen;
 
-	public ApplicationListPresenter(HandlerManager eventBus)
+	public ApplicationListPresenter(HandlerManager bus)
 	{
-		this.eventBus = eventBus;
-		this.view = ViewFinder.getApplicationListView();
-		this.selectionModel = new SelectionModel<>();
-		this.view.setPresenter(this);
-		this.view.setColumnDefinitions(ApplicationColumnDefinitionsFactory.getApplicationColumnDefinitions());
+		eventBus = bus;
+		view = ViewFinder.getApplicationListView();
+		selectionModel = new SelectionModel<>();
+		view.setPresenter(this);
+		view.setColumnDefinitions(
+				ApplicationColumnDefinitionsFactory.getApplicationColumnDefinitions());
 	}
 
 	@Override

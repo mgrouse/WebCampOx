@@ -13,7 +13,7 @@ import org.hbgb.webcamp.client.async.AsyncServiceFinder;
 import org.hbgb.webcamp.client.async.LoginServiceAsync;
 import org.hbgb.webcamp.client.event.AuthenticatedEvent;
 import org.hbgb.webcamp.client.event.SingletonEventBus;
-import org.hbgb.webcamp.client.presenter.PresenterI;
+import org.hbgb.webcamp.client.presenter.IPresenter;
 import org.hbgb.webcamp.client.view.auth.LoginView;
 import org.hbgb.webcamp.shared.HbgbUser;
 
@@ -21,57 +21,64 @@ import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.HasWidgets;
 import com.google.gwt.user.client.ui.PopupPanel;
 
-public class LoginPresenter implements PresenterI, LoginView.Presenter
+public class LoginPresenter implements IPresenter, LoginView.Presenter
 {
 	private final LoginServiceAsync loginService = AsyncServiceFinder.getLoginService();
 	private final LoginView view;
 	PopupPanel pop;
 
-	public LoginPresenter(LoginView view)
+	public LoginPresenter(LoginView v)
 	{
-		this.view = view;
+		view = v;
 		view.setPresenter(this);
 	}
 
 	public void authenticate()
 	{
-		this.loginService.authenticate(this.view.getEmailText(), this.view.getPasswordText(), new AsyncCallback<HbgbUser>()
-		{
-
-			@Override
-			public void onFailure(Throwable caught)
-			{}
-
-			@Override
-			public void onSuccess(HbgbUser user)
-			{
-				if (user == null)
+		loginService.authenticate(view.getEmailText(), view.getPasswordText(),
+				new AsyncCallback<HbgbUser>()
 				{
-					LoginPresenter.this.view.setMessage("Wrong! try Email: go");
-					LoginPresenter.this.view.enableLogin();
-					return;
-				}
-				LoginPresenter.this.pop.hide();
-				SingletonEventBus.get().fireEvent(new AuthenticatedEvent(user));
-			}
-		});
+
+					@Override
+					public void onFailure(Throwable caught)
+					{}
+
+					@Override
+					public void onSuccess(HbgbUser user)
+					{
+						if (user == null)
+						{
+							view.setMessage("Wrong! try Email: go");
+							view.enableLogin();
+							return;
+						}
+						pop.hide();
+						SingletonEventBus.get().fireEvent(new AuthenticatedEvent(user));
+					}
+				});
 	}
 
 	@Override
 	public void onLoginButtonClicked()
 	{
-		this.view.disableLogin();
-		this.authenticate();
+		view.disableLogin();
+		authenticate();
 	}
 
 	@Override
-	public void go(HasWidgets container)
+	public void go()
 	{
-		this.view.enableLogin();
-		this.pop = new PopupPanel(true);
-		this.pop.setGlassEnabled(true);
-		this.pop.setWidget(this.view.asWidget());
-		this.pop.center();
+		view.enableLogin();
+		pop = new PopupPanel(true);
+		pop.setGlassEnabled(true);
+		pop.setWidget(view.asWidget());
+		pop.center();
+	}
+
+	@Override
+	public void setScreen(HasWidgets container)
+	{
+
 	}
 
 }

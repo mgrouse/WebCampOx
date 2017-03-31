@@ -23,7 +23,7 @@ public class ApplicationModel implements IKeyedModel
 	@Override
 	public void setPresenter(IKeyedModelPresenter p)
 	{
-		this.presenter = p;
+		presenter = p;
 	}
 
 	@Override
@@ -31,61 +31,65 @@ public class ApplicationModel implements IKeyedModel
 	{
 		if (key != null)
 		{
-			this.rpcService.getApplication(key, new AsyncCallback<Application>()
+			rpcService.getApplication(key, new AsyncCallback<Application>()
 			{
 
+				@Override
 				public void onSuccess(Application result)
 				{
 					if (result == null)
 					{
-						Window.alert((String) "Applicant's Info reurned as null");
+						Window.alert("Applicant's Info reurned as null");
 						return;
 					}
-					ApplicationModel.this.model = result;
-					ApplicationModel.this.presenter.onDataFetched();
+					model = result;
+					presenter.onDataFetched();
 				}
 
+				@Override
 				public void onFailure(Throwable caught)
 				{
-					Window.alert((String) "DB Error retrieving Applicant's Info");
+					Window.alert("DB Error retrieving Applicant's Info");
 				}
 			});
 			return;
 		}
-		Window.alert((String) "Error no key for Applicant's Application!");
+		Window.alert("Error no key for Applicant's Application!");
 	}
 
 	@Override
 	public void putData()
 	{
-		this.rpcService.updateApplication(this.model, new AsyncCallback<Boolean>()
+		rpcService.updateApplication(model, new AsyncCallback<Boolean>()
 		{
 
+			@Override
 			public void onSuccess(Boolean saved)
 			{
 				if (saved.booleanValue())
 				{
-					ApplicationModel.this.presenter.onDataPut();
+					presenter.onDataPut();
 					return;
 				}
-				Window.alert((String) "DB Error saving Applicant's Info");
+				Window.alert("DB Error saving Applicant's Info");
 			}
 
+			@Override
 			public void onFailure(Throwable caught)
 			{
-				Window.alert((String) "RPC Error saving Applicant's Info");
+				Window.alert("RPC Error saving Applicant's Info");
 			}
 		});
 	}
 
 	public Application getData()
 	{
-		return this.model;
+		return model;
 	}
 
 	public void setData(Application t)
 	{
-		this.model = t;
+		model = t;
 	}
 
 }

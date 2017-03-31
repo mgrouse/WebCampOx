@@ -10,7 +10,7 @@ import com.google.gwt.user.client.ui.HasWidgets;
 
 public interface IPresenter
 {
-	public void setScreen(HasWidgets var1);
+	public void setScreen(HasWidgets container);
 
 	public void go();
 }
