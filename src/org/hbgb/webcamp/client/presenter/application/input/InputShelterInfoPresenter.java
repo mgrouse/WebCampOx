@@ -14,7 +14,6 @@ import org.hbgb.webcamp.client.presenter.ISequentialPresenter;
 import org.hbgb.webcamp.client.view.ViewFinder;
 import org.hbgb.webcamp.client.view.application.input.InputShelterInfoView;
 import org.hbgb.webcamp.shared.ShelterInfoBlock;
-import org.hbgb.webcamp.shared.enums.SecurityRole;
 
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.rpc.AsyncCallback;
@@ -34,7 +33,6 @@ public class InputShelterInfoPresenter implements ISequentialPresenter
 		key = k;
 		view = ViewFinder.getShelterInfoView();
 		view.setPresenter(this);
-		view.setVisibility(SecurityRole.USER);
 	}
 
 	@Override

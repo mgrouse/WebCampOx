@@ -19,6 +19,7 @@ import org.hbgb.webcamp.client.async.ApplicationService;
 import org.hbgb.webcamp.shared.Address;
 import org.hbgb.webcamp.shared.Application;
 import org.hbgb.webcamp.shared.ApplicationDetails;
+import org.hbgb.webcamp.shared.ApplicationRow;
 import org.hbgb.webcamp.shared.Burner;
 import org.hbgb.webcamp.shared.CommitteeInfoBlock;
 import org.hbgb.webcamp.shared.ContactInfo;
@@ -175,6 +176,66 @@ public class ApplicationServiceImpl extends RemoteServiceServlet implements Appl
 		Collections.sort(details);
 
 		return details;
+	}
+
+	@Override
+	public ArrayList<ApplicationRow> getApplicationRows()
+	{
+		ArrayList<ApplicationRow> rows = new ArrayList<>();
+
+		List<Application> applications = purgeNoShows(getApplications());
+
+		for (Application app : applications)
+		{
+			rows.add(Application2Row(app));
+		}
+
+		return rows;
+	}
+
+	private List<Application> purgeNoShows(List<Application> list)
+	{
+		for (Application row : list)
+		{
+			for (ApplicationStatus status : noShows)
+			{
+				if (status == row.getStatus())
+				{
+					list.remove(row);
+					break;
+				}
+			}
+		}
+
+		return list;
+	}
+
+	private ApplicationRow Application2Row(Application app)
+	{
+		ApplicationRow row = new ApplicationRow();
+
+		row.setEncodedKey(app.getEncodedKey());
+		row.setStatus(app.getStatus());
+
+		row.setFirstName(app.getApplicant().getDemographics().getFirstName());
+		row.setFirstName(app.getApplicant().getDemographics().getLastName());
+		row.setFirstName(app.getApplicant().getDemographics().getPlayaName());
+
+		row.setEmail(app.getEmail());
+
+		row.setCommittee(app.getCommitteeInfoBlock().getAssignedCommittee());
+
+		row.setDiet(app.getDietInfoBlock().getDietType());
+
+		row.setHasTicket(app.getPaymentInfoBlock().getHasTicket());
+
+		row.setIsET(app.getLogisticsInfoBlock().getIsAssignedEarlyTeam());
+		row.setIsStrike(app.getLogisticsInfoBlock().getWantsStrikeTeam());
+
+		row.setHasRV(app.getShelterInfoBlock().getIsBringingRv());
+		row.setHasStructure(app.getShelterInfoBlock().getHasStructure());
+
+		return row;
 	}
 
 	// this only lets you add if its not in there already
@@ -355,7 +416,8 @@ public class ApplicationServiceImpl extends RemoteServiceServlet implements Appl
 			for (Application app : entries)
 			{
 				CommitteeInfoBlock cib = app.getCommitteeInfoBlock();
-				if (cib != null && com == cib.getAssignedCommittee() && app.getEmail() != null && !app.getEmail().isEmpty())
+				if (cib != null && com == cib.getAssignedCommittee() && app.getEmail() != null
+						&& !app.getEmail().isEmpty())
 				{
 					emails.add(app.getEmail());
 				}
@@ -409,7 +471,8 @@ public class ApplicationServiceImpl extends RemoteServiceServlet implements Appl
 
 		String email = a.getEmail();
 
-		ApplicationDetails d = new ApplicationDetails(encodedKey, status, displayName, playaName, committee, ticket, invoiced, paid, diet, email);
+		ApplicationDetails d = new ApplicationDetails(encodedKey, status, displayName, playaName,
+				committee, ticket, invoiced, paid, diet, email);
 
 		return d;
 	}
@@ -730,19 +793,22 @@ public class ApplicationServiceImpl extends RemoteServiceServlet implements Appl
 		}
 
 		String homeTown = "";
-		if ((null != dude) && (null != dude.getContactInfo()) && (null != dude.getContactInfo().getAddress()))
+		if ((null != dude) && (null != dude.getContactInfo())
+				&& (null != dude.getContactInfo().getAddress()))
 		{
 			Address add = dude.getContactInfo().getAddress();
 			homeTown = add.getCity() + ", " + add.getState();
 		}
 
 		String committee = "None";
-		if ((null != app.getCommitteeInfoBlock()) && (null != app.getCommitteeInfoBlock().getAssignedCommittee()))
+		if ((null != app.getCommitteeInfoBlock())
+				&& (null != app.getCommitteeInfoBlock().getAssignedCommittee()))
 		{
 			committee = app.getCommitteeInfoBlock().getAssignedCommittee().toString();
 		}
 
-		RosterDetails d = new RosterDetails(encodedKey, photoURL, playaName, firstName, homeTown, committee, bio);
+		RosterDetails d = new RosterDetails(encodedKey, photoURL, playaName, firstName, homeTown,
+				committee, bio);
 
 		return d;
 	}
@@ -763,4 +829,5 @@ public class ApplicationServiceImpl extends RemoteServiceServlet implements Appl
 
 		return details;
 	}
+
 }

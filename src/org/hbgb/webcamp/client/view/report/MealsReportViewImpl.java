@@ -18,7 +18,6 @@ import org.hbgb.webcamp.shared.Meal;
 import org.hbgb.webcamp.shared.MealsReport;
 import org.hbgb.webcamp.shared.Week;
 import org.hbgb.webcamp.shared.enums.DietType;
-import org.hbgb.webcamp.shared.enums.SecurityRole;
 
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.uibinder.client.UiBinder;
@@ -31,7 +30,8 @@ import com.google.gwt.user.client.ui.Widget;
 
 public class MealsReportViewImpl extends Composite implements IMealsReportView
 {
-	private static UiBinder<Widget, MealsReportViewImpl> binder = GWT.create(MealsReportViewImplBinder.class);
+	private static UiBinder<Widget, MealsReportViewImpl> binder = GWT
+			.create(MealsReportViewImplBinder.class);
 	@UiField
 	FlexTable table;
 	IReportPresenter presenter;
@@ -112,10 +112,6 @@ public class MealsReportViewImpl extends Composite implements IMealsReportView
 
 	@Override
 	public void clear()
-	{}
-
-	@Override
-	public void setVisibility(SecurityRole role)
 	{}
 
 	@UiTemplate(value = "MealsReportView.ui.xml")

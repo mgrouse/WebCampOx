@@ -18,7 +18,6 @@ package org.hbgb.webcamp.client.view.application;
 import java.util.List;
 
 import org.hbgb.webcamp.client.common.ColumnDefinition;
-import org.hbgb.webcamp.shared.enums.SecurityRole;
 
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.dom.client.ClickEvent;
@@ -39,7 +38,8 @@ public class HealerSheetListViewImpl<T> extends Composite implements HealerSheet
 	static interface HealerSheetListViewImplBinder extends UiBinder<Widget, HealerSheetListViewImpl>
 	{}
 
-	private static UiBinder<Widget, HealerSheetListViewImpl> binder = GWT.create(HealerSheetListViewImplBinder.class);
+	private static UiBinder<Widget, HealerSheetListViewImpl> binder = GWT
+			.create(HealerSheetListViewImplBinder.class);
 
 	@UiField
 	FlexTable table;
@@ -105,7 +105,8 @@ public class HealerSheetListViewImpl<T> extends Composite implements HealerSheet
 			{
 				if (shouldFireClickEvent(cell))
 				{
-					presenter.onItemClicked(rowData.get(cell.getRowIndex() - 1), cell.getCellIndex());
+					presenter.onItemClicked(rowData.get(cell.getRowIndex() - 1),
+							cell.getCellIndex());
 				}
 
 				if (shouldFireSelectEvent(cell))
@@ -152,10 +153,6 @@ public class HealerSheetListViewImpl<T> extends Composite implements HealerSheet
 
 	@Override
 	public void clear()
-	{}
-
-	@Override
-	public void setVisibility(SecurityRole role)
 	{}
 
 }

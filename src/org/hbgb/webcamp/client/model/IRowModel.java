@@ -9,29 +9,15 @@
  *
  * This copyright notice should not be construed as evidence of publication.
  */
-package org.hbgb.webcamp.client.view.admin;
+package org.hbgb.webcamp.client.model;
 
-import com.google.gwt.user.client.ui.Widget;
+import org.hbgb.webcamp.client.presenter.IModelPresenter;
 
 /**
  * @author Michael
  *
  */
-public class ApplicationListTableViewImpl implements ApplicationListTableView
+public interface IRowModel<T> extends IModel<T>
 {
-
-	@Override
-	public Widget asWidget()
-	{
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public void clear()
-	{
-		// TODO Auto-generated method stub
-
-	}
-
+	public void setPresenter(IModelPresenter mp);
 }

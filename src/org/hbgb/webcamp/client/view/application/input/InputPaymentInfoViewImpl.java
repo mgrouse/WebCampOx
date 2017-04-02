@@ -19,7 +19,6 @@ import org.hbgb.webcamp.client.presenter.ISequentialPresenter;
 import org.hbgb.webcamp.client.view.AbstractView;
 import org.hbgb.webcamp.client.widget.MessagesWidget;
 import org.hbgb.webcamp.client.widget.TicketTypeListBox;
-import org.hbgb.webcamp.shared.enums.SecurityRole;
 import org.hbgb.webcamp.shared.enums.TicketType;
 
 import com.google.gwt.core.client.GWT;
@@ -36,10 +35,12 @@ import com.google.gwt.user.client.ui.Widget;
 public class InputPaymentInfoViewImpl extends AbstractView implements InputPaymentInfoView
 {
 	@UiTemplate(value = "InputPaymentInfoView.ui.xml")
-	static interface EditPaymentInfoViewImplBinder extends UiBinder<Widget, InputPaymentInfoViewImpl>
+	static interface EditPaymentInfoViewImplBinder
+			extends UiBinder<Widget, InputPaymentInfoViewImpl>
 	{}
 
-	private static UiBinder<Widget, InputPaymentInfoViewImpl> binder = GWT.create(EditPaymentInfoViewImplBinder.class);
+	private static UiBinder<Widget, InputPaymentInfoViewImpl> binder = GWT
+			.create(EditPaymentInfoViewImplBinder.class);
 
 	@UiField
 	MessagesWidget messages;
@@ -67,12 +68,6 @@ public class InputPaymentInfoViewImpl extends AbstractView implements InputPayme
 	public void setPresenter(ISequentialPresenter sp)
 	{
 		presenter = sp;
-	}
-
-	@Override
-	public void setVisibility(SecurityRole role)
-	{
-
 	}
 
 	@UiHandler(value = { "nextButton" })

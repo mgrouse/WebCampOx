@@ -3,5 +3,11 @@
  */
 package org.hbgb.webcamp.client.presenter;
 
-public interface IModelPresenter
-{}
+public interface IModelPresenter extends IPresenter
+{
+
+	public void onFetchComplete();
+
+	public void onPutComplete();
+
+}

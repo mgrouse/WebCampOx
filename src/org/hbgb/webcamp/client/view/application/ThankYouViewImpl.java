@@ -8,8 +8,6 @@
  */
 package org.hbgb.webcamp.client.view.application;
 
-import org.hbgb.webcamp.shared.enums.SecurityRole;
-
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiTemplate;
@@ -22,7 +20,8 @@ public class ThankYouViewImpl extends Composite implements ThankYouView
 	static interface ThankYouViewImplBinder extends UiBinder<Widget, ThankYouViewImpl>
 	{}
 
-	private static UiBinder<Widget, ThankYouViewImpl> binder = GWT.create(ThankYouViewImplBinder.class);
+	private static UiBinder<Widget, ThankYouViewImpl> binder = GWT
+			.create(ThankYouViewImplBinder.class);
 
 	public ThankYouViewImpl()
 	{
@@ -37,10 +36,6 @@ public class ThankYouViewImpl extends Composite implements ThankYouView
 
 	@Override
 	public void clear()
-	{}
-
-	@Override
-	public void setVisibility(SecurityRole role)
 	{}
 
 }

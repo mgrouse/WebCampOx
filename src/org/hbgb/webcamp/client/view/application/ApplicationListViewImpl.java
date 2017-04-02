@@ -21,7 +21,6 @@ import org.hbgb.webcamp.client.common.ColumnDefinition;
 import org.hbgb.webcamp.shared.ApplicationDetails;
 import org.hbgb.webcamp.shared.enums.ApplicationStatus;
 import org.hbgb.webcamp.shared.enums.Committee;
-import org.hbgb.webcamp.shared.enums.SecurityRole;
 
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.dom.client.ClickEvent;
@@ -295,9 +294,5 @@ public class ApplicationListViewImpl<T> extends Composite implements Application
 	{
 		this.table.removeAllRows();
 	}
-
-	@Override
-	public void setVisibility(SecurityRole role)
-	{}
 
 }

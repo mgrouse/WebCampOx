@@ -14,7 +14,6 @@ import org.hbgb.webcamp.client.presenter.ISequentialPresenter;
 import org.hbgb.webcamp.client.view.ViewFinder;
 import org.hbgb.webcamp.client.view.application.input.InputLogisticsInfoView;
 import org.hbgb.webcamp.shared.LogisticsInfoBlock;
-import org.hbgb.webcamp.shared.enums.SecurityRole;
 
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.rpc.AsyncCallback;
@@ -33,7 +32,6 @@ public class InputLogisticsInfoPresenter implements ISequentialPresenter
 	{
 		this.key = key;
 		view = ViewFinder.getLogisticsInfoView();
-		view.setVisibility(SecurityRole.USER);
 		view.setPresenter(this);
 	}
 
@@ -124,29 +122,30 @@ public class InputLogisticsInfoPresenter implements ISequentialPresenter
 		if (modelValidates())
 		{
 
-			rpcService.updateApplicantsLogisticsInfoBlock(logisticsInfoBlock, new AsyncCallback<Boolean>()
-			{
-
-				@Override
-				public void onSuccess(Boolean saved)
-				{
-					if (saved.booleanValue())
+			rpcService.updateApplicantsLogisticsInfoBlock(logisticsInfoBlock,
+					new AsyncCallback<Boolean>()
 					{
-						screen.clear();
-						nextPresenter.setKey(key);
-						nextPresenter.setScreen(screen);
-						nextPresenter.go();
-						return;
-					}
-					Window.alert("DB Error saving Applicant's Shelter Info");
-				}
 
-				@Override
-				public void onFailure(Throwable caught)
-				{
-					Window.alert("RPC Error saving Applicant's Shelter Info");
-				}
-			});
+						@Override
+						public void onSuccess(Boolean saved)
+						{
+							if (saved.booleanValue())
+							{
+								screen.clear();
+								nextPresenter.setKey(key);
+								nextPresenter.setScreen(screen);
+								nextPresenter.go();
+								return;
+							}
+							Window.alert("DB Error saving Applicant's Shelter Info");
+						}
+
+						@Override
+						public void onFailure(Throwable caught)
+						{
+							Window.alert("RPC Error saving Applicant's Shelter Info");
+						}
+					});
 		}
 	}
 

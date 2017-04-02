@@ -12,6 +12,7 @@ import java.util.List;
 
 import org.hbgb.webcamp.shared.Application;
 import org.hbgb.webcamp.shared.ApplicationDetails;
+import org.hbgb.webcamp.shared.ApplicationRow;
 import org.hbgb.webcamp.shared.Burner;
 import org.hbgb.webcamp.shared.CommitteeInfoBlock;
 import org.hbgb.webcamp.shared.DietInfoBlock;
@@ -35,6 +36,8 @@ public interface ApplicationService extends RemoteService
 	public Application getApplication(String var1);
 
 	public ArrayList<ApplicationDetails> getApplicationDetails();
+
+	public ArrayList<ApplicationRow> getApplicationRows();
 
 	public List<RosterDetails> getAcceptedRosterDetailsByYear(String var1);
 

@@ -19,7 +19,6 @@ import org.hbgb.webcamp.client.view.AbstractView;
 import org.hbgb.webcamp.client.widget.CommitteeListBox;
 import org.hbgb.webcamp.client.widget.MessagesWidget;
 import org.hbgb.webcamp.shared.enums.Committee;
-import org.hbgb.webcamp.shared.enums.SecurityRole;
 
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.dom.client.ChangeEvent;
@@ -39,10 +38,12 @@ import com.google.gwt.user.client.ui.Widget;
 public class InputCommitteeInfoViewImpl extends AbstractView implements InputCommitteeInfoView
 {
 	@UiTemplate(value = "InputCommitteeInfoView.ui.xml")
-	static interface InputComitteeInfoViewImplBinder extends UiBinder<Widget, InputCommitteeInfoViewImpl>
+	static interface InputComitteeInfoViewImplBinder
+			extends UiBinder<Widget, InputCommitteeInfoViewImpl>
 	{}
 
-	private static UiBinder<Widget, InputCommitteeInfoViewImpl> binder = GWT.create(InputComitteeInfoViewImplBinder.class);
+	private static UiBinder<Widget, InputCommitteeInfoViewImpl> binder = GWT
+			.create(InputComitteeInfoViewImplBinder.class);
 
 	@UiField
 	MessagesWidget messages;
@@ -126,12 +127,6 @@ public class InputCommitteeInfoViewImpl extends AbstractView implements InputCom
 		presenter = sp;
 	}
 
-	@Override
-	public void setVisibility(SecurityRole role)
-	{
-
-	}
-
 	@UiHandler(value = { "committee1ListBox", "committee2ListBox" })
 	void onCommitteeChosen(ChangeEvent event)
 	{
@@ -150,7 +145,8 @@ public class InputCommitteeInfoViewImpl extends AbstractView implements InputCom
 
 	private void setHealerSheetPanelVisibility()
 	{
-		if (committee1ListBox.getSelectedEnumValue() == Committee.Healers || committee2ListBox.getSelectedEnumValue() == Committee.Healers)
+		if (committee1ListBox.getSelectedEnumValue() == Committee.Healers
+				|| committee2ListBox.getSelectedEnumValue() == Committee.Healers)
 		{
 			healerSheetPanel.setVisible(true);
 		}
@@ -184,8 +180,8 @@ public class InputCommitteeInfoViewImpl extends AbstractView implements InputCom
 		}
 
 		// comittee choices different?
-		if (null != committee1ListBox.getSelectedEnumValue()
-				&& (committee1ListBox.getSelectedEnumValue() == committee2ListBox.getSelectedEnumValue()))
+		if (null != committee1ListBox.getSelectedEnumValue() && (committee1ListBox
+				.getSelectedEnumValue() == committee2ListBox.getSelectedEnumValue()))
 		{
 			addMessage("Please pick two different committees.");
 			committee1Label.getElement().getStyle().setColor("red");

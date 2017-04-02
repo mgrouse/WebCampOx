@@ -15,11 +15,11 @@ import org.hbgb.webcamp.client.view.ViewFinder;
 import org.hbgb.webcamp.client.view.application.input.InputCommitteeInfoView;
 import org.hbgb.webcamp.shared.CommitteeInfoBlock;
 import org.hbgb.webcamp.shared.HealerSheetInfoBlock;
-import org.hbgb.webcamp.shared.enums.SecurityRole;
 
 import com.google.gwt.user.client.ui.HasWidgets;
 
-public class InputCommitteeNHealerSheetInfoPresenter implements ISequentialPresenter, IKeyedModelPresenter
+public class InputCommitteeNHealerSheetInfoPresenter
+		implements ISequentialPresenter, IKeyedModelPresenter
 {
 	private static final int THIS_YEAR = 2017;
 	private static final int NUM_MODELS = 2;
@@ -39,7 +39,6 @@ public class InputCommitteeNHealerSheetInfoPresenter implements ISequentialPrese
 		hsModel.setPresenter(this);
 		ciModel.setPresenter(this);
 		view = ViewFinder.getCommitteeInfoView();
-		view.setVisibility(SecurityRole.USER);
 		view.setPresenter(this);
 	}
 

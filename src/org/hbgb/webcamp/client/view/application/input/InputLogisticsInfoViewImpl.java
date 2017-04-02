@@ -21,7 +21,6 @@ import org.hbgb.webcamp.client.widget.PlayaTimeListBox;
 import org.hbgb.webcamp.client.widget.TransportationListBox;
 import org.hbgb.webcamp.shared.enums.DayOfEvent;
 import org.hbgb.webcamp.shared.enums.PlayaTime;
-import org.hbgb.webcamp.shared.enums.SecurityRole;
 import org.hbgb.webcamp.shared.enums.Transportation;
 
 import com.google.gwt.core.client.GWT;
@@ -38,10 +37,12 @@ import com.google.gwt.user.client.ui.Widget;
 public class InputLogisticsInfoViewImpl extends AbstractView implements InputLogisticsInfoView
 {
 	@UiTemplate(value = "InputLogisticsInfoView.ui.xml")
-	static interface InputLogisticsInfoViewImplBinder extends UiBinder<Widget, InputLogisticsInfoViewImpl>
+	static interface InputLogisticsInfoViewImplBinder
+			extends UiBinder<Widget, InputLogisticsInfoViewImpl>
 	{}
 
-	private static UiBinder<Widget, InputLogisticsInfoViewImpl> binder = GWT.create(InputLogisticsInfoViewImplBinder.class);
+	private static UiBinder<Widget, InputLogisticsInfoViewImpl> binder = GWT
+			.create(InputLogisticsInfoViewImplBinder.class);
 
 	@UiField
 	MessagesWidget messages;
@@ -101,12 +102,6 @@ public class InputLogisticsInfoViewImpl extends AbstractView implements InputLog
 	public void setPresenter(ISequentialPresenter sp)
 	{
 		presenter = sp;
-	}
-
-	@Override
-	public void setVisibility(SecurityRole role)
-	{
-
 	}
 
 	@UiHandler(value = { "nextButton" })

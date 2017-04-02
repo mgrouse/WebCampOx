@@ -5,8 +5,6 @@
  */
 package org.hbgb.webcamp.client.view;
 
-import org.hbgb.webcamp.shared.enums.SecurityRole;
-
 import com.google.gwt.user.client.ui.Widget;
 
 public interface IView
@@ -14,6 +12,4 @@ public interface IView
 	public Widget asWidget();
 
 	public void clear();
-
-	public void setVisibility(SecurityRole var1);
 }

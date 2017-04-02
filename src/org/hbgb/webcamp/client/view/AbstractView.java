@@ -6,8 +6,6 @@
  */
 package org.hbgb.webcamp.client.view;
 
-import org.hbgb.webcamp.shared.enums.SecurityRole;
-
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.Widget;
 
@@ -23,7 +21,4 @@ public abstract class AbstractView extends Composite implements IView
 	public void clear()
 	{}
 
-	@Override
-	public void setVisibility(SecurityRole role)
-	{}
 }

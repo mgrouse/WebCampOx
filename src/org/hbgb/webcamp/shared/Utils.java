@@ -9,29 +9,16 @@
  *
  * This copyright notice should not be construed as evidence of publication.
  */
-package org.hbgb.webcamp.client.view.admin;
-
-import com.google.gwt.user.client.ui.Widget;
+package org.hbgb.webcamp.shared;
 
 /**
  * @author Michael
  *
  */
-public class ApplicationListTableViewImpl implements ApplicationListTableView
+public class Utils
 {
-
-	@Override
-	public Widget asWidget()
+	static public Boolean isNullOrEmpty(String text)
 	{
-		// TODO Auto-generated method stub
-		return null;
+		return ((null == text) || (text.isEmpty()));
 	}
-
-	@Override
-	public void clear()
-	{
-		// TODO Auto-generated method stub
-
-	}
-
 }

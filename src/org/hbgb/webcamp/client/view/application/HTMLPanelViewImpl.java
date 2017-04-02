@@ -11,7 +11,6 @@
 package org.hbgb.webcamp.client.view.application;
 
 import org.hbgb.webcamp.client.widget.LoadingPopup;
-import org.hbgb.webcamp.shared.enums.SecurityRole;
 
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.uibinder.client.UiBinder;
@@ -56,9 +55,5 @@ public class HTMLPanelViewImpl extends Composite implements HTMLPanelView
 	{
 		loadPop.go();
 	}
-
-	@Override
-	public void setVisibility(SecurityRole role)
-	{}
 
 }

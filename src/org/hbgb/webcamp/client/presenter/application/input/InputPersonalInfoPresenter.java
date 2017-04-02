@@ -15,7 +15,6 @@ import org.hbgb.webcamp.client.presenter.ISequentialPresenter;
 import org.hbgb.webcamp.client.view.ViewFinder;
 import org.hbgb.webcamp.client.view.application.input.InputPersonalInfoView;
 import org.hbgb.webcamp.shared.Burner;
-import org.hbgb.webcamp.shared.enums.SecurityRole;
 
 import com.google.appengine.api.datastore.Text;
 import com.google.gwt.user.client.Window;
@@ -35,7 +34,6 @@ public class InputPersonalInfoPresenter implements ISequentialPresenter
 	{
 		key = k;
 		view = ViewFinder.getPersonalInfoView();
-		view.setVisibility(SecurityRole.USER);
 		view.setPresenter(this);
 	}
 

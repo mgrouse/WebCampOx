@@ -12,7 +12,7 @@
 package org.hbgb.webcamp.client.presenter.application;
 
 import org.hbgb.webcamp.client.model.ApplicationTableModel;
-import org.hbgb.webcamp.client.presenter.IPresenter;
+import org.hbgb.webcamp.client.presenter.IModelPresenter;
 import org.hbgb.webcamp.client.view.admin.ApplicationListTableView;
 import org.hbgb.webcamp.client.view.admin.ApplicationListTableViewImpl;
 
@@ -23,7 +23,7 @@ import com.google.gwt.user.client.ui.HasWidgets;
  * @author Michael
  *
  */
-public class ApplicationListFancyPresenter implements IPresenter
+public class ApplicationListFancyPresenter implements IModelPresenter
 {
 
 	private ApplicationTableModel appTableModel;
@@ -48,6 +48,20 @@ public class ApplicationListFancyPresenter implements IPresenter
 	{
 		view.clear();
 		// model.fetch();
+	}
+
+	@Override
+	public void onFetchComplete()
+	{
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void onPutComplete()
+	{
+		// TODO Auto-generated method stub
+
 	}
 
 }
