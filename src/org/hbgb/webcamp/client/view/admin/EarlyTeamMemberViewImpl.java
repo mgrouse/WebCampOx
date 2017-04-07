@@ -20,22 +20,30 @@ public class EarlyTeamMemberViewImpl extends AbstractView implements IEarlyTeamM
 	static interface EarlyTeamMemberViewUiBinder extends UiBinder<Widget, EarlyTeamMemberViewImpl>
 	{}
 
-	private static EarlyTeamMemberViewUiBinder uiBinder = (EarlyTeamMemberViewUiBinder) GWT.create(EarlyTeamMemberViewUiBinder.class);
+	private static EarlyTeamMemberViewUiBinder uiBinder = (EarlyTeamMemberViewUiBinder) GWT
+			.create(EarlyTeamMemberViewUiBinder.class);
 
 	@UiField
 	TextBox emailBox;
+
 	@UiField
 	Button lookUpButton;
+
 	@UiField
 	TextBox firstNameBox;
+
 	@UiField
 	TextBox lastNameBox;
+
 	@UiField
 	TextBox playaNameBox;
+
 	@UiField
 	Button saveButton;
+
 	@UiField
 	Button cancelButton;
+
 	private IEarlyTeamMemberView.Presenter presenter;
 
 	public EarlyTeamMemberViewImpl()

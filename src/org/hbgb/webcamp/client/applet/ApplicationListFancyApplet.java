@@ -15,7 +15,7 @@ import org.hbgb.webcamp.client.event.application.EditApplicationEvent;
 import org.hbgb.webcamp.client.event.application.EditApplicationEventHandler;
 import org.hbgb.webcamp.client.event.application.ListApplicationEvent;
 import org.hbgb.webcamp.client.event.application.ListApplicationEventHandler;
-import org.hbgb.webcamp.client.presenter.application.ApplicationListPresenter;
+import org.hbgb.webcamp.client.presenter.application.ApplicationListFancyPresenter;
 import org.hbgb.webcamp.client.presenter.application.EditWholeApplicationPresenter;
 
 import com.google.gwt.event.shared.HandlerManager;
@@ -29,8 +29,10 @@ public class ApplicationListFancyApplet implements IApplet
 {
 	private final HandlerManager eventBus = new HandlerManager(null);
 	private HasWidgets screen;
-	private final ApplicationListPresenter applicationListPresenter = new ApplicationListPresenter(eventBus);
-	private final EditWholeApplicationPresenter editWholeApplicationPresenter = new EditWholeApplicationPresenter(eventBus);
+	private final ApplicationListFancyPresenter applicationListPresenter = new ApplicationListFancyPresenter(
+			eventBus);
+	private final EditWholeApplicationPresenter editWholeApplicationPresenter = new EditWholeApplicationPresenter(
+			eventBus);
 
 	public ApplicationListFancyApplet()
 	{

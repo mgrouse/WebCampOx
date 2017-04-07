@@ -26,7 +26,7 @@ import com.google.gwt.user.client.ui.HasWidgets;
 public class ApplicationListFancyPresenter implements IModelPresenter
 {
 
-	private ApplicationTableModel appTableModel;
+	private ApplicationTableModel model;
 	private ApplicationListTableView view = new ApplicationListTableViewImpl();
 
 	private final HandlerManager eventBus;
@@ -48,6 +48,7 @@ public class ApplicationListFancyPresenter implements IModelPresenter
 	{
 		view.clear();
 		// model.fetch();
+		screen.add(view.asWidget());
 	}
 
 	@Override

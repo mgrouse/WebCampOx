@@ -8,7 +8,7 @@
 		    <g:HorizontalPanel>	
 	        	<g:Label text="Email"/>
 	        	<g:TextBox ui:field="emailBox"/>
-	        	
+	        	 
 	        	<g:Button ui:field="lookUpButton">Look Up</g:Button>
 			</g:HorizontalPanel>
 			

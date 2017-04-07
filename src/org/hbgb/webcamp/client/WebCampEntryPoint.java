@@ -2,6 +2,7 @@ package org.hbgb.webcamp.client;
 
 import java.util.logging.Logger;
 
+import org.hbgb.webcamp.client.applet.ApplicationListFancyApplet;
 import org.hbgb.webcamp.client.applet.ApplicationProcessApplet;
 import org.hbgb.webcamp.client.applet.HealerSheetListApplet;
 import org.hbgb.webcamp.client.presenter.admin.RosterPresenter;
@@ -31,7 +32,7 @@ public class WebCampEntryPoint implements EntryPoint, ValueChangeHandler<String>
 
 		if ("".equals(History.getToken()))
 		{
-			History.newItem("apply");
+			History.newItem("test");
 		}
 		else
 		{
@@ -101,6 +102,8 @@ public class WebCampEntryPoint implements EntryPoint, ValueChangeHandler<String>
 
 	private void startTest()
 	{
-
+		ApplicationListFancyApplet app = new ApplicationListFancyApplet();
+		rp.clear();
+		app.run(rp);
 	}
 }

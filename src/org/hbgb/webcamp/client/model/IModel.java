@@ -22,9 +22,9 @@ public interface IModel<T>
 
 	public void setPresenter(IModelPresenter mp);
 
-	public void fetchData();
+	public void fetch();
 
-	public void putData();
+	public void put();
 
 	public T getData();
 

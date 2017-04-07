@@ -15,7 +15,6 @@ import org.hbgb.webcamp.client.async.ApplicationServiceAsync;
 import org.hbgb.webcamp.client.async.AsyncServiceFinder;
 import org.hbgb.webcamp.client.common.ApplicationColumnDefinitionsFactory;
 import org.hbgb.webcamp.client.common.SelectionModel;
-import org.hbgb.webcamp.client.event.application.AddApplicationEvent;
 import org.hbgb.webcamp.client.event.application.EditApplicationEvent;
 import org.hbgb.webcamp.client.presenter.IPresenter;
 import org.hbgb.webcamp.client.view.ViewFinder;
@@ -50,7 +49,7 @@ public class ApplicationListPresenter
 	@Override
 	public void onAddButtonClicked()
 	{
-		this.eventBus.fireEvent(new AddApplicationEvent());
+		// eventBus.fireEvent(new AddApplicationEvent());
 	}
 
 	@Override
@@ -122,9 +121,9 @@ public class ApplicationListPresenter
 			public void onSuccess(ArrayList<ApplicationDetails> result)
 			{
 				applicationDetails = result;
-				ApplicationListPresenter.this.screen.clear();
-				ApplicationListPresenter.this.view.setRowData(applicationDetails);
-				ApplicationListPresenter.this.screen.add(view.asWidget());
+				screen.clear();
+				view.setRowData(applicationDetails);
+				screen.add(view.asWidget());
 			}
 
 			@Override
@@ -166,5 +165,11 @@ public class ApplicationListPresenter
 				System.out.println("Error deleting selected applications");
 			}
 		});
+	}
+
+	@Override
+	public void onRefreshButtonClicked()
+	{
+		fetchApplicationDetails();
 	}
 }

@@ -16,63 +16,66 @@
 
 	<g:CaptionPanel captionText="List of Applications">
 		<g:VerticalPanel>
-		
-			<!--  
-			<g:HorizontalPanel addStyleNames="{style.applicationViewButtonHPanel}">
-				<g:Button ui:field="addButton">Add</g:Button>
-				<g:Button ui:field="deleteButton">Delete</g:Button>
-			</g:HorizontalPanel>
-			-->	
 			
-			<g:HorizontalPanel>	
-		        <g:Label text="Total Applicants"/>
+			<g:HorizontalPanel verticalAlignment="ALIGN_MIDDLE" addStyleNames="formRow">	
+		        <g:Label addStyleNames="mediumLabel" text="Total Applicants"/>
 		    	<g:TextBox ui:field="totalApps"/>
 			</g:HorizontalPanel>	
 			
-			<g:HorizontalPanel>	
-		        <g:Label text="New Applicants"/>
+			<g:HorizontalPanel verticalAlignment="ALIGN_MIDDLE" addStyleNames="formRow">	
+		        <g:Label addStyleNames="mediumLabel" text="New Applicants"/>
 		    	<g:TextBox ui:field="newApps"/>
 			</g:HorizontalPanel>
 			
-			<g:HorizontalPanel>	
-		        <g:Label text="Accepted Applicants"/>
+			<g:HorizontalPanel verticalAlignment="ALIGN_MIDDLE" addStyleNames="formRow">	
+		        <g:Label addStyleNames="mediumLabel" text="Accepted Applicants"/>
 		    	<g:TextBox ui:field="acceptedApps"/>
 			</g:HorizontalPanel>
 			
-			<g:HorizontalPanel>	
-		        <g:Label text="Accepted ticket holders"/>
+			<g:HorizontalPanel verticalAlignment="ALIGN_MIDDLE" addStyleNames="formRow">	
+		        <g:Label addStyleNames="mediumLabel" text="Accepted ticket holders"/>
 		    	<g:TextBox ui:field="ticketApps"/>
 			</g:HorizontalPanel>
 			
-			<g:HorizontalPanel>	
-		        <g:Label text="Invoiced Applicants"/>
+			<g:HorizontalPanel verticalAlignment="ALIGN_MIDDLE" addStyleNames="formRow">	
+		        <g:Label addStyleNames="mediumLabel" text="Invoiced Applicants"/>
 		    	<g:TextBox ui:field="invoicedApps"/>
 			</g:HorizontalPanel>
 			
-			<g:HorizontalPanel>	
-		        <g:Label text="Paid Applicants"/>
+			<g:HorizontalPanel verticalAlignment="ALIGN_MIDDLE" addStyleNames="formRow">	
+		        <g:Label addStyleNames="mediumLabel" text="Paid Applicants"/>
 		    	<g:TextBox ui:field="paidApps"/>
 			</g:HorizontalPanel>
 			
-			<g:HorizontalPanel>	
-		        <g:Label text="Faeries"/>
+			<g:HorizontalPanel verticalAlignment="ALIGN_MIDDLE" addStyleNames="formRow">	
+		        <g:Label addStyleNames="mediumLabel" text="Faeries"/>
 		    	<g:TextBox ui:field="faerieApps"/>
 			</g:HorizontalPanel>
 			
-			<g:HorizontalPanel>	
-		        <g:Label text="Healers"/>
+			<g:HorizontalPanel verticalAlignment="ALIGN_MIDDLE" addStyleNames="formRow">	
+		        <g:Label addStyleNames="mediumLabel" text="Healers"/>
 		    	<g:TextBox ui:field="healerApps"/>
 			</g:HorizontalPanel>
 			
-			<g:HorizontalPanel>	
-		        <g:Label text="Infrastructure"/>
+			<g:HorizontalPanel verticalAlignment="ALIGN_MIDDLE" addStyleNames="formRow">	
+		        <g:Label addStyleNames="mediumLabel" text="Infrastructure"/>
 		    	<g:TextBox ui:field="infraApps"/>
 			</g:HorizontalPanel>
 			
-			<g:HorizontalPanel>	
-		        <g:Label text="Kitchen"/>
+			<g:HorizontalPanel verticalAlignment="ALIGN_MIDDLE" addStyleNames="formRow">	
+		        <g:Label addStyleNames="mediumLabel" text="Kitchen"/>
 		    	<g:TextBox ui:field="kitchenApps"/>
 			</g:HorizontalPanel>
+			
+			
+			<g:HorizontalPanel addStyleNames="{style.applicationViewButtonHPanel}">
+				<!-- 
+				<g:Button ui:field="addButton">Add</g:Button>
+				<g:Button ui:field="deleteButton">Delete</g:Button>
+				 -->
+				 <g:Button ui:field="refreshButton">Refresh</g:Button>
+			</g:HorizontalPanel>
+			
 			
 			<g:FlexTable ui:field="table" addStyleNames="{style.applicationViewFlexTable}"/>
 			

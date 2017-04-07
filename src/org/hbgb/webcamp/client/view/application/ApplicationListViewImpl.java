@@ -18,6 +18,7 @@ package org.hbgb.webcamp.client.view.application;
 import java.util.List;
 
 import org.hbgb.webcamp.client.common.ColumnDefinition;
+import org.hbgb.webcamp.client.widget.LoadingPopup;
 import org.hbgb.webcamp.shared.ApplicationDetails;
 import org.hbgb.webcamp.shared.enums.ApplicationStatus;
 import org.hbgb.webcamp.shared.enums.Committee;
@@ -28,6 +29,7 @@ import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.uibinder.client.UiHandler;
 import com.google.gwt.uibinder.client.UiTemplate;
+import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.FlexTable;
 import com.google.gwt.user.client.ui.HTML;
@@ -46,83 +48,111 @@ public class ApplicationListViewImpl<T> extends Composite implements Application
 
 	@UiField
 	TextBox totalApps;
+
 	@UiField
 	TextBox newApps;
+
 	@UiField
 	TextBox acceptedApps;
+
 	@UiField
 	TextBox invoicedApps;
+
 	@UiField
 	TextBox paidApps;
+
 	@UiField
 	TextBox ticketApps;
+
 	@UiField
 	TextBox faerieApps;
+
 	@UiField
 	TextBox healerApps;
+
 	@UiField
 	TextBox infraApps;
+
 	@UiField
 	TextBox kitchenApps;
+
+	@UiField
+	Button refreshButton;
+
 	@UiField
 	FlexTable table;
+
+	LoadingPopup loadPop;
+
 	private ApplicationListView.Presenter<T> presenter;
 	private List<ColumnDefinition<T>> columnDefinitions;
 	private List<T> rowData;
 
 	public ApplicationListViewImpl()
 	{
-		this.initWidget(uiBinder.createAndBindUi(this));
-		this.table.setBorderWidth(1);
-		this.table.setCellPadding(5);
+		initWidget(uiBinder.createAndBindUi(this));
+		table.setBorderWidth(1);
+		table.setCellPadding(5);
+		loadPop = new LoadingPopup();
 	}
 
 	@Override
-	public void setPresenter(ApplicationListView.Presenter<T> presenter)
+	public void setPresenter(ApplicationListView.Presenter<T> pres)
 	{
-		this.presenter = presenter;
+		presenter = pres;
 	}
 
 	@Override
-	public void setColumnDefinitions(List<ColumnDefinition<T>> columnDefinitions)
+	public void setColumnDefinitions(List<ColumnDefinition<T>> definitions)
 	{
-		this.columnDefinitions = columnDefinitions;
+		columnDefinitions = definitions;
+	}
+
+	@UiHandler(value = { "refreshButton" })
+	void onNextButtonClicked(ClickEvent event)
+	{
+		if ((presenter != null))
+		{
+			refreshButton.setEnabled(false);
+			loadPop.go();
+			presenter.onRefreshButtonClicked();
+		}
 	}
 
 	@Override
-	public void setRowData(List<T> rowData)
+	public void setRowData(List<T> data)
 	{
-		Integer kitchen;
-		Integer infra = kitchen = Integer.valueOf(0);
-		Integer healer = kitchen;
-		Integer faerie = kitchen;
-		Integer acceptedTicket = kitchen;
-		Integer paid = kitchen;
-		Integer invoiced = kitchen;
-		Integer accepted = kitchen;
-		Integer newApps = kitchen;
-		Integer total = kitchen;
-		this.table.removeAllRows();
-		this.rowData = rowData;
-		this.table.setWidget(0, 1, new HTML("Status"));
-		this.table.setWidget(0, 2, new HTML("First & Last Name"));
-		this.table.setWidget(0, 3, new HTML("Playa Name"));
-		this.table.setWidget(0, 4, new HTML("Email"));
-		this.table.setWidget(0, 5, new HTML("Committee"));
-		this.table.setWidget(0, 6, new HTML("Diet"));
-		this.table.setWidget(0, 7, new HTML("Invoiced"));
-		this.table.setWidget(0, 8, new HTML("Paid"));
-		this.table.setWidget(0, 9, new HTML("ticket"));
+		Integer kitchen = 0;
+		Integer infra = 0;
+		Integer healer = 0;
+		Integer faerie = 0;
+		Integer acceptedTicket = 0;
+		Integer paid = 0;
+		Integer invoiced = 0;
+		Integer accepted = 0;
+		Integer newApps = 0;
+		Integer total = 0;
+		table.removeAllRows();
+		rowData = data;
+		table.setWidget(0, 1, new HTML("Status"));
+		table.setWidget(0, 2, new HTML("First & Last Name"));
+		table.setWidget(0, 3, new HTML("Playa Name"));
+		table.setWidget(0, 4, new HTML("Email"));
+		table.setWidget(0, 5, new HTML("Committee"));
+		table.setWidget(0, 6, new HTML("Diet"));
+		table.setWidget(0, 7, new HTML("Invoiced"));
+		table.setWidget(0, 8, new HTML("Paid"));
+		table.setWidget(0, 9, new HTML("ticket"));
 		total = rowData.size();
 		int i = 0;
 		while (i < rowData.size())
 		{
 			T t = rowData.get(i);
 			int j = 0;
-			while (j < this.columnDefinitions.size())
+			while (j < columnDefinitions.size())
 			{
-				ColumnDefinition<T> columnDefinition = this.columnDefinitions.get(j);
-				this.table.setWidget(i + 1, j, columnDefinition.render(t));
+				ColumnDefinition<T> columnDefinition = columnDefinitions.get(j);
+				table.setWidget(i + 1, j, columnDefinition.render(t));
 				++j;
 			}
 			ApplicationDetails ad = (ApplicationDetails) t;
@@ -164,47 +194,50 @@ public class ApplicationListViewImpl<T> extends Composite implements Application
 			}
 			++i;
 		}
-		this.setTotalApps(total.toString());
-		this.setNewApps(newApps.toString());
-		this.setAcceptedApps(accepted.toString());
-		this.setTicketApps(acceptedTicket.toString());
-		this.setInvoicedApps(invoiced.toString());
-		this.setPaidApps(paid.toString());
-		this.setFaerieApps(faerie.toString());
-		this.setHealerApps(healer.toString());
-		this.setInfraApps(infra.toString());
-		this.setKitchenApps(kitchen.toString());
+		setTotalApps(total.toString());
+		setNewApps(newApps.toString());
+		setAcceptedApps(accepted.toString());
+		setTicketApps(acceptedTicket.toString());
+		setInvoicedApps(invoiced.toString());
+		setPaidApps(paid.toString());
+		setFaerieApps(faerie.toString());
+		setHealerApps(healer.toString());
+		setInfraApps(infra.toString());
+		setKitchenApps(kitchen.toString());
+
+		refreshButton.setEnabled(true);
+		loadPop.stop();
 	}
 
 	void onAddButtonClicked(ClickEvent event)
 	{
-		if (this.presenter == null)
+		if (presenter == null)
 			return;
-		this.presenter.onAddButtonClicked();
+		presenter.onAddButtonClicked();
 	}
 
 	void onDeleteButtonClicked(ClickEvent event)
 	{
-		if (this.presenter == null)
+		if (presenter == null)
 			return;
-		this.presenter.onDeleteButtonClicked();
+		presenter.onDeleteButtonClicked();
 	}
 
 	@UiHandler(value = { "table" })
 	void onTableClicked(ClickEvent event)
 	{
-		if (this.presenter == null)
+		if (presenter == null)
 			return;
-		HTMLTable.Cell cell = this.table.getCellForEvent(event);
+		HTMLTable.Cell cell = table.getCellForEvent(event);
 		if (cell == null)
 			return;
-		if (this.shouldFireClickEvent(cell))
+		if (shouldFireClickEvent(cell))
 		{
-			this.presenter.onItemClicked(this.rowData.get(cell.getRowIndex() - 1));
+			presenter.onItemClicked(rowData.get(cell.getRowIndex() - 1));
 		}
-		if (!this.shouldFireSelectEvent(cell))
+		if (!shouldFireSelectEvent(cell))
 			return;
-		this.presenter.onItemSelected(this.rowData.get(cell.getRowIndex() - 1));
+		presenter.onItemSelected(rowData.get(cell.getRowIndex() - 1));
 	}
 
 	private boolean shouldFireClickEvent(HTMLTable.Cell cell)
@@ -214,7 +247,7 @@ public class ApplicationListViewImpl<T> extends Composite implements Application
 			return shouldFireClickEvent;
 		if (cell.getRowIndex() == 0)
 			return shouldFireClickEvent;
-		ColumnDefinition<T> columnDefinition = this.columnDefinitions.get(cell.getCellIndex());
+		ColumnDefinition<T> columnDefinition = columnDefinitions.get(cell.getCellIndex());
 		if (columnDefinition == null)
 			return shouldFireClickEvent;
 		return columnDefinition.isClickable();
@@ -227,60 +260,60 @@ public class ApplicationListViewImpl<T> extends Composite implements Application
 			return shouldFireSelectEvent;
 		if (cell.getRowIndex() == 0)
 			return shouldFireSelectEvent;
-		ColumnDefinition<T> columnDefinition = this.columnDefinitions.get(cell.getCellIndex());
+		ColumnDefinition<T> columnDefinition = columnDefinitions.get(cell.getCellIndex());
 		if (columnDefinition == null)
 			return shouldFireSelectEvent;
 		return columnDefinition.isSelectable();
 	}
 
-	public void setTotalApps(String totalApps)
+	public void setTotalApps(String value)
 	{
-		this.totalApps.setValue(totalApps);
+		totalApps.setValue(value);
 	}
 
-	public void setNewApps(String newApps)
+	public void setNewApps(String value)
 	{
-		this.newApps.setValue(newApps);
+		newApps.setValue(value);
 	}
 
-	public void setAcceptedApps(String acceptedApps)
+	public void setAcceptedApps(String value)
 	{
-		this.acceptedApps.setValue(acceptedApps);
+		acceptedApps.setValue(value);
 	}
 
-	public void setInvoicedApps(String invoicedApps)
+	public void setInvoicedApps(String value)
 	{
-		this.invoicedApps.setValue(invoicedApps);
+		invoicedApps.setValue(value);
 	}
 
-	public void setPaidApps(String paidApps)
+	public void setPaidApps(String value)
 	{
-		this.paidApps.setValue(paidApps);
+		paidApps.setValue(value);
 	}
 
-	public void setFaerieApps(String faerieApps)
+	public void setFaerieApps(String value)
 	{
-		this.faerieApps.setValue(faerieApps);
+		faerieApps.setValue(value);
 	}
 
-	public void setHealerApps(String healerApps)
+	public void setHealerApps(String value)
 	{
-		this.healerApps.setValue(healerApps);
+		healerApps.setValue(value);
 	}
 
-	public void setInfraApps(String infraApps)
+	public void setInfraApps(String value)
 	{
-		this.infraApps.setValue(infraApps);
+		infraApps.setValue(value);
 	}
 
-	public void setKitchenApps(String kitchenApps)
+	public void setKitchenApps(String value)
 	{
-		this.kitchenApps.setValue(kitchenApps);
+		kitchenApps.setValue(value);
 	}
 
-	public void setTicketApps(String ticketApps)
+	public void setTicketApps(String value)
 	{
-		this.ticketApps.setValue(ticketApps);
+		ticketApps.setValue(value);
 	}
 
 	@Override
@@ -292,7 +325,8 @@ public class ApplicationListViewImpl<T> extends Composite implements Application
 	@Override
 	public void clear()
 	{
-		this.table.removeAllRows();
+		table.removeAllRows();
+		loadPop.go();
 	}
 
 }

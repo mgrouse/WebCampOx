@@ -22,6 +22,8 @@ public interface ApplicationListView<T> extends IView
 
 		public void onDeleteButtonClicked();
 
+		public void onRefreshButtonClicked();
+
 		public void onItemClicked(T var1);
 
 		public void onItemSelected(T var1);

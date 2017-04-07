@@ -46,7 +46,7 @@ public class ApplicationTableModel implements IModel<ArrayList<ApplicationRow>>
 	}
 
 	@Override
-	public void fetchData()
+	public void fetch()
 	{
 		appServAsync.getApplicationRows(new AsyncCallback<ArrayList<ApplicationRow>>()
 		{
@@ -67,7 +67,7 @@ public class ApplicationTableModel implements IModel<ArrayList<ApplicationRow>>
 	}
 
 	@Override
-	public void putData()
+	public void put()
 	{
 		// TODO Auto-generated method stub
 
