@@ -11,7 +11,7 @@
  */
 package org.hbgb.webcamp.client.view.admin;
 
-import java.util.List;
+import java.util.ArrayList;
 
 import org.hbgb.webcamp.client.view.AbstractView;
 import org.hbgb.webcamp.shared.ApplicationRow;
@@ -20,9 +20,14 @@ import com.google.gwt.core.client.GWT;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.uibinder.client.UiTemplate;
+import com.google.gwt.user.cellview.client.ColumnSortEvent.ListHandler;
 import com.google.gwt.user.cellview.client.DataGrid;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.Widget;
+import com.google.gwt.view.client.DefaultSelectionEventManager;
+import com.google.gwt.view.client.ListDataProvider;
+import com.google.gwt.view.client.SelectionModel;
+import com.google.gwt.view.client.SingleSelectionModel;
 
 /**
  * @author Michael
@@ -41,10 +46,16 @@ public class ApplicationListTableViewImpl extends AbstractView implements Applic
 			.create(ApplicationListTableViewUiBinder.class);
 
 	@UiField(provided = true)
-	DataGrid<ApplicationRow> appTable = new DataGrid<>();
+	DataGrid<ApplicationRow> appTable = new DataGrid<>(ApplicationRow.KEY_PROVIDER);
+
+	private final SelectionModel<ApplicationRow> selectionModel;
+	private ListHandler<ApplicationRow> sortHandler;
 
 	public ApplicationListTableViewImpl()
 	{
+		selectionModel = new SingleSelectionModel<>(ApplicationRow.KEY_PROVIDER);
+
+		sortHandler = new ListHandler<>(new ArrayList<ApplicationRow>());
 		createDataGrid();
 
 		initWidget(uiBinder.createAndBindUi(this));
@@ -65,31 +76,47 @@ public class ApplicationListTableViewImpl extends AbstractView implements Applic
 	}
 
 	@Override
-	public void setRowData(List<ApplicationRow> list)
+	public void setRowData(ListDataProvider<ApplicationRow> dataProvider)
 	{
-		// TODO Auto-generated method stub
+		sortHandler.setList(dataProvider.getList());
+		// Attach a column sort handler to the ListData to sort the list.
 
+		setUpDataGrid();
+
+		dataProvider.addDataDisplay(appTable);
 	}
 
-	public void createDataGrid()
+	private void setUpDataGrid()
 	{
 
-		// Create a DataGrid.
 		// appTable = new DataGrid<>();
 		appTable.setWidth("100%");
 		appTable.setAutoHeaderRefreshDisabled(true);
 
 		// blank message
-		// setBlankMessage(grid);
 		appTable.setEmptyTableWidget(new Label("EMPTY_TABLE_MSG"));
 
-		// key provider
-
 		// selection model
+		appTable.setSelectionModel(selectionModel,
+				DefaultSelectionEventManager.<ApplicationRow> createCheckboxManager());
+
+		appTable.addColumnSortHandler(sortHandler);
 
 		// Headers
 
-		// Columns
+		// Columns ------------
+		// status
+		// firstName
+		// lastName
+		// playaName
+		// email
+		// committee
+		// diet
+		// hasTicket
+		// isET
+		// isStrike
+		// hasRV
+		// hasStructure
 
 	}
 

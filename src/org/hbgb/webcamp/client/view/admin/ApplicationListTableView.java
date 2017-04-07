@@ -11,10 +11,10 @@
  */
 package org.hbgb.webcamp.client.view.admin;
 
-import java.util.List;
-
 import org.hbgb.webcamp.client.view.IView;
 import org.hbgb.webcamp.shared.ApplicationRow;
+
+import com.google.gwt.view.client.ListDataProvider;
 
 /**
  * @author Michael
@@ -24,5 +24,5 @@ public interface ApplicationListTableView extends IView
 {
 	public void setPresenter();
 
-	public void setRowData(List<ApplicationRow> list);
+	public void setRowData(ListDataProvider<ApplicationRow> dataProvider);
 }

@@ -17,6 +17,8 @@ import org.hbgb.webcamp.shared.enums.ApplicationStatus;
 import org.hbgb.webcamp.shared.enums.Committee;
 import org.hbgb.webcamp.shared.enums.DietType;
 
+import com.google.gwt.view.client.ProvidesKey;
+
 /**
  * @author Michael
  *
@@ -25,6 +27,15 @@ import org.hbgb.webcamp.shared.enums.DietType;
 @SuppressWarnings("serial")
 public class ApplicationRow implements Comparable<ApplicationRow>, Serializable
 {
+
+	public static final ProvidesKey<ApplicationRow> KEY_PROVIDER = new ProvidesKey<ApplicationRow>()
+	{
+		@Override
+		public Object getKey(ApplicationRow item)
+		{
+			return item == null ? null : item.getEncodedKey();
+		}
+	};
 
 	private String encodedKey;
 
