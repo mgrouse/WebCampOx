@@ -1,16 +1,6 @@
-/*
- * Decompiled with CFR 0_115.
- * 
- * Could not load the following classes: com.google.gwt.core.client.GWT
- * com.google.gwt.uibinder.client.UiBinder
- * com.google.gwt.uibinder.client.UiField
- * com.google.gwt.uibinder.client.UiTemplate
- * com.google.gwt.user.client.ui.Composite
- * com.google.gwt.user.client.ui.FlexTable
- * com.google.gwt.user.client.ui.FlexTable$FlexCellFormatter
- * com.google.gwt.user.client.ui.HTML com.google.gwt.user.client.ui.Widget
- */
 package org.hbgb.webcamp.client.view.report;
+
+import java.util.ArrayList;
 
 import org.hbgb.webcamp.client.presenter.IReportPresenter;
 import org.hbgb.webcamp.shared.Day;
@@ -38,63 +28,78 @@ public class MealsReportViewImpl extends Composite implements IMealsReportView
 
 	public MealsReportViewImpl()
 	{
-		this.initWidget(binder.createAndBindUi(this));
-		this.table.setBorderWidth(1);
-		this.table.setCellPadding(5);
+		initWidget(binder.createAndBindUi(this));
+		table.setBorderWidth(1);
+		table.setCellPadding(5);
 	}
 
 	@Override
 	public void setPresenter(IReportPresenter p)
 	{
-		this.presenter = p;
+		presenter = p;
 	}
 
 	@Override
 	public void setReportData(MealsReport report)
 	{
-		this.table.removeAllRows();
-		this.formatAWeek(report.getEarlyWeek());
-		this.formatAWeek(report.getBurnWeek());
+		table.removeAllRows();
+		formatAWeek(report.getEarlyWeek());
+		formatAWeek(report.getBurnWeek());
+		formatErrors(report.getBadList());
 	}
 
 	private void formatAWeek(Week week)
 	{
-		FlexTable.FlexCellFormatter formatter = this.table.getFlexCellFormatter();
-		int i = this.table.getRowCount();
-		this.table.setWidget(i, 0, new HTML(week.getName()));
+		FlexTable.FlexCellFormatter formatter = table.getFlexCellFormatter();
+		int i = table.getRowCount();
+		table.setWidget(i, 0, new HTML(week.getName()));
 		formatter.setColSpan(i, 0, 9);
-		this.table.setWidget(++i, 0, new HTML("Date"));
-		this.table.setWidget(i, 1, new HTML("Meal"));
-		this.table.setWidget(i, 2, new HTML("Omnivore"));
-		this.table.setWidget(i, 3, new HTML("Vegetarian"));
-		this.table.setWidget(i, 4, new HTML("Vegan  "));
-		this.table.setWidget(i, 5, new HTML("Total  "));
-		this.table.setWidget(i, 6, new HTML("Gluten Free"));
-		this.table.setWidget(i, 7, new HTML("Restrictions"));
+		table.setWidget(++i, 0, new HTML("Date"));
+		table.setWidget(i, 1, new HTML("Meal"));
+		table.setWidget(i, 2, new HTML("Omnivore"));
+		table.setWidget(i, 3, new HTML("Vegetarian"));
+		table.setWidget(i, 4, new HTML("Vegan  "));
+		table.setWidget(i, 5, new HTML("Total  "));
+		table.setWidget(i, 6, new HTML("Gluten Free"));
+		table.setWidget(i, 7, new HTML("Restrictions"));
 		for (Day day : week.getDays())
 		{
-			this.formatADay(day);
+			formatADay(day);
 		}
 	}
 
 	private void formatADay(Day day)
 	{
-		FlexTable.FlexCellFormatter formatter = this.table.getFlexCellFormatter();
-		int i = this.table.getRowCount();
-		this.formatAMeal(day.getBreakfast(), 1);
-		this.formatAMeal(day.getLunch(), 0);
-		this.formatAMeal(day.getDinner(), 0);
-		this.table.setWidget(i, 0, new HTML(day.getToday().toString()));
+		FlexTable.FlexCellFormatter formatter = table.getFlexCellFormatter();
+		int i = table.getRowCount();
+
+		// put the meals down starting on this row
+		// first one skips a cell where day will go
+		formatAMeal(day.getBreakfast(), 1);
+		formatAMeal(day.getLunch(), 0);
+		formatAMeal(day.getDinner(), 0);
+
+		// go back and put day in cell just left of breakfast and make it 3 rows
+		// tall
+		table.setWidget(i, 0, new HTML(day.getToday().toString()));
 		formatter.setRowSpan(i, 0, 3);
-		this.table.setWidget(i, DietType.values().length + 4, new HTML(day.getRestrictions()));
+
+		StringBuilder sb = new StringBuilder("");
+		for (String rest : day.getRestrictions())
+		{
+			sb.append(rest);
+		}
+
+		// put restrictions after the 4 other columns and diet types
+		table.setWidget(i, DietType.values().length + 4, new HTML(sb.toString()));
 		formatter.setRowSpan(i, DietType.values().length + 4, 3);
 	}
 
 	private void formatAMeal(Meal meal, int j)
 	{
-		int i = this.table.getRowCount();
+		int i = table.getRowCount();
 		Integer sum = 0;
-		this.table.setWidget(i, j, new HTML(meal.getName()));
+		table.setWidget(i, j, new HTML(meal.getName()));
 		int[] arrn = meal.getDietNumbers();
 		int n = arrn.length;
 		int n2 = 0;
@@ -102,12 +107,24 @@ public class MealsReportViewImpl extends Composite implements IMealsReportView
 		{
 			Integer num = arrn[n2];
 			sum = sum + num;
-			this.table.setWidget(i, ++j, new HTML(num.toString()));
+			table.setWidget(i, ++j, new HTML(num.toString()));
 			++n2;
 		}
-		this.table.setWidget(i, ++j, new HTML(sum.toString()));
+		table.setWidget(i, ++j, new HTML(sum.toString()));
 		Integer temp = meal.getGlutenFreeNum();
-		this.table.setWidget(i, ++j, new HTML(temp.toString()));
+		table.setWidget(i, ++j, new HTML(temp.toString()));
+	}
+
+	private void formatErrors(ArrayList<String> badList)
+	{
+		int i = table.getRowCount();
+
+		table.setWidget(i++, 0, new HTML("Campers with Missing Data"));
+
+		for (String name : badList)
+		{
+			table.setWidget(i++, 0, new HTML(name));
+		}
 	}
 
 	@Override

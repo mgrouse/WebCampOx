@@ -32,20 +32,22 @@ public class MealsReportModel implements IMealsReportModel
 		this.rpcService.getMealsReport(new AsyncCallback<MealsReport>()
 		{
 
+			@Override
 			public void onSuccess(MealsReport result)
 			{
 				if (result == null)
 				{
-					Window.alert((String) "Meals Report Info reurned as null");
+					Window.alert("Meals Report Info reurned as null");
 					return;
 				}
 				MealsReportModel.this.model = result;
 				MealsReportModel.this.presenter.onDataFetched();
 			}
 
+			@Override
 			public void onFailure(Throwable caught)
 			{
-				Window.alert((String) "RPC Error retrieving Meals report");
+				Window.alert("RPC Error retrieving Meals report: " + caught.getMessage());
 			}
 		});
 	}

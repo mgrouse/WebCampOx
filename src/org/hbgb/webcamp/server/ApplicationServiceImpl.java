@@ -481,6 +481,8 @@ public class ApplicationServiceImpl extends RemoteServiceServlet implements Appl
 	{
 		MealsInfo meals = new MealsInfo();
 
+		meals.setFullName(a.getApplicant().getDemographics().getFullName());
+
 		meals.setArrivalDate(a.getLogisticsInfoBlock().getArrivalDoE());
 		meals.setArrivalTime(a.getLogisticsInfoBlock().getArrivalTime());
 		meals.setDepartureDate(a.getLogisticsInfoBlock().getDepartureDoE());

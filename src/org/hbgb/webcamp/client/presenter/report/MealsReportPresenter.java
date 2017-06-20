@@ -22,28 +22,28 @@ public class MealsReportPresenter implements IReportPresenter
 
 	public MealsReportPresenter()
 	{
-		this.model.setPresenter(this);
-		this.view = new MealsReportViewImpl();
-		this.view.setPresenter(this);
+		model.setPresenter(this);
+		view = new MealsReportViewImpl();
+		view.setPresenter(this);
 	}
 
 	@Override
 	public void setScreen(HasWidgets container)
 	{
-		this.screen = container;
-		this.screen.clear();
+		screen = container;
+		screen.clear();
 	}
 
 	@Override
 	public void report()
 	{
-		this.model.fetchData();
+		model.fetchData();
 	}
 
 	@Override
 	public void onDataFetched()
 	{
-		this.view.setReportData(this.model.getReportData());
-		this.screen.add(this.view.asWidget());
+		view.setReportData(model.getReportData());
+		screen.add(view.asWidget());
 	}
 }

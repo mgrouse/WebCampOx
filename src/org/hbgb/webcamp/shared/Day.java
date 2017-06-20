@@ -14,7 +14,7 @@ public class Day implements Serializable
 	private Meal breakfast;
 	private Meal lunch;
 	private Meal dinner;
-	private String restrictions;
+	private ArrayList<String> restrictions;
 
 	public Day()
 	{
@@ -29,7 +29,7 @@ public class Day implements Serializable
 		lunch = new Meal("lunch");
 		dinner = new Meal("dinner");
 
-		restrictions = "[";
+		restrictions = new ArrayList<>();
 	}
 
 	public void addMealInfo(MealsInfo mealsInfo)
@@ -48,22 +48,18 @@ public class Day implements Serializable
 		}
 	}
 
-	public void addDietaryRestriction(String value)
+	public void addDietaryRestriction(MealsInfo mealsInfo)
 	{
-		if (!value.isEmpty())
+		if (!mealsInfo.getDietaryRestrictions().isEmpty())
 		{
-			restrictions = restrictions + value + "]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[";
+			restrictions.add(" [" + mealsInfo.getFullName() + ": "
+					+ mealsInfo.getDietaryRestrictions() + "] ");
 		}
 	}
 
-	public String getRestrictions()
+	public ArrayList<String> getRestrictions()
 	{
 		return restrictions;
-	}
-
-	public void setRestrictions(String value)
-	{
-		this.restrictions = value;
 	}
 
 	public void setBreakfast(Meal b)
@@ -108,7 +104,7 @@ public class Day implements Serializable
 
 	public List<Meal> getMeals()
 	{
-		List<Meal> list = new ArrayList<Meal>();
+		List<Meal> list = new ArrayList<>();
 		list.add(breakfast);
 		list.add(lunch);
 		list.add(dinner);
@@ -121,14 +117,17 @@ public class Day implements Serializable
 		switch (mealsInfo.getArrivalTime())
 		{
 			case before_breakfast:
-				breakfast.incrementValueForDietType(mealsInfo.getDietType(), mealsInfo.getIsGlutenFree());
+				breakfast.incrementValueForDietType(mealsInfo.getDietType(),
+						mealsInfo.getIsGlutenFree());
 
 			case before_lunch:
-				lunch.incrementValueForDietType(mealsInfo.getDietType(), mealsInfo.getIsGlutenFree());
+				lunch.incrementValueForDietType(mealsInfo.getDietType(),
+						mealsInfo.getIsGlutenFree());
 
 			case before_dinner:
-				dinner.incrementValueForDietType(mealsInfo.getDietType(), mealsInfo.getIsGlutenFree());
-				this.addDietaryRestriction(mealsInfo.getDietaryRestrictions());
+				dinner.incrementValueForDietType(mealsInfo.getDietType(),
+						mealsInfo.getIsGlutenFree());
+				this.addDietaryRestriction(mealsInfo);
 
 			case after_dinner:
 				break;
@@ -143,14 +142,17 @@ public class Day implements Serializable
 		switch (mealsInfo.getDepartureTime())
 		{
 			case after_dinner:
-				dinner.incrementValueForDietType(mealsInfo.getDietType(), mealsInfo.getIsGlutenFree());
+				dinner.incrementValueForDietType(mealsInfo.getDietType(),
+						mealsInfo.getIsGlutenFree());
 
 			case before_dinner:
-				lunch.incrementValueForDietType(mealsInfo.getDietType(), mealsInfo.getIsGlutenFree());
+				lunch.incrementValueForDietType(mealsInfo.getDietType(),
+						mealsInfo.getIsGlutenFree());
 
 			case before_lunch:
-				breakfast.incrementValueForDietType(mealsInfo.getDietType(), mealsInfo.getIsGlutenFree());
-				this.addDietaryRestriction(mealsInfo.getDietaryRestrictions());
+				breakfast.incrementValueForDietType(mealsInfo.getDietType(),
+						mealsInfo.getIsGlutenFree());
+				addDietaryRestriction(mealsInfo);
 
 			case before_breakfast:
 				break;
@@ -173,7 +175,7 @@ public class Day implements Serializable
 		lunch.incrementValueForDietType(mealsInfo.getDietType(), gFree);
 		dinner.incrementValueForDietType(mealsInfo.getDietType(), gFree);
 
-		this.addDietaryRestriction(mealsInfo.getDietaryRestrictions());
+		addDietaryRestriction(mealsInfo);
 	}
 
 	private Boolean dateIsInTheMiddle(DayOfEvent date, DayOfEvent begin, DayOfEvent end)
