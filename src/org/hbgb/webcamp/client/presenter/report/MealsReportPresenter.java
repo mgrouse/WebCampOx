@@ -32,6 +32,8 @@ public class MealsReportPresenter implements IReportPresenter
 	{
 		screen = container;
 		screen.clear();
+		view.clear();
+		screen.add(view.asWidget());
 	}
 
 	@Override
@@ -44,6 +46,5 @@ public class MealsReportPresenter implements IReportPresenter
 	public void onDataFetched()
 	{
 		view.setReportData(model.getReportData());
-		screen.add(view.asWidget());
 	}
 }

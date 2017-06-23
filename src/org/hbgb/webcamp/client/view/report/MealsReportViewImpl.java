@@ -3,6 +3,7 @@ package org.hbgb.webcamp.client.view.report;
 import java.util.ArrayList;
 
 import org.hbgb.webcamp.client.presenter.IReportPresenter;
+import org.hbgb.webcamp.client.widget.LoadingPopup;
 import org.hbgb.webcamp.shared.Day;
 import org.hbgb.webcamp.shared.Meal;
 import org.hbgb.webcamp.shared.MealsReport;
@@ -24,6 +25,9 @@ public class MealsReportViewImpl extends Composite implements IMealsReportView
 			.create(MealsReportViewImplBinder.class);
 	@UiField
 	FlexTable table;
+
+	LoadingPopup loadPop;
+
 	IReportPresenter presenter;
 
 	public MealsReportViewImpl()
@@ -31,6 +35,7 @@ public class MealsReportViewImpl extends Composite implements IMealsReportView
 		initWidget(binder.createAndBindUi(this));
 		table.setBorderWidth(1);
 		table.setCellPadding(5);
+		loadPop = new LoadingPopup();
 	}
 
 	@Override
@@ -46,6 +51,7 @@ public class MealsReportViewImpl extends Composite implements IMealsReportView
 		formatAWeek(report.getEarlyWeek());
 		formatAWeek(report.getBurnWeek());
 		formatErrors(report.getBadList());
+		loadPop.stop();
 	}
 
 	private void formatAWeek(Week week)
@@ -129,7 +135,9 @@ public class MealsReportViewImpl extends Composite implements IMealsReportView
 
 	@Override
 	public void clear()
-	{}
+	{
+		loadPop.go();
+	}
 
 	@UiTemplate(value = "MealsReportView.ui.xml")
 	static interface MealsReportViewImplBinder extends UiBinder<Widget, MealsReportViewImpl>
