@@ -195,19 +195,28 @@ public class ApplicationServiceImpl extends RemoteServiceServlet implements Appl
 
 	private List<Application> purgeNoShows(List<Application> list)
 	{
+		boolean copy;
+		ArrayList<Application> retList = new ArrayList<>();
+
 		for (Application row : list)
 		{
+			copy = true;
+
 			for (ApplicationStatus status : noShows)
 			{
 				if (status == row.getStatus())
 				{
-					list.remove(row);
+					copy = false;
 					break;
 				}
 			}
+			if (copy)
+			{
+				retList.add(row);
+			}
 		}
 
-		return list;
+		return retList;
 	}
 
 	private ApplicationRow Application2Row(Application app)

@@ -15,19 +15,24 @@ import org.hbgb.webcamp.client.model.ApplicationTableModel;
 import org.hbgb.webcamp.client.presenter.IModelPresenter;
 import org.hbgb.webcamp.client.view.admin.ApplicationListTableView;
 import org.hbgb.webcamp.client.view.admin.ApplicationListTableViewImpl;
+import org.hbgb.webcamp.shared.ApplicationRow;
 
 import com.google.gwt.event.shared.HandlerManager;
 import com.google.gwt.user.client.ui.HasWidgets;
+import com.google.gwt.view.client.ListDataProvider;
 
 /**
  * @author Michael
  *
  */
-public class ApplicationListFancyPresenter implements IModelPresenter
+public class ApplicationListFancyPresenter
+		implements IModelPresenter, ApplicationListTableView.Presenter
 {
 
 	private ApplicationTableModel model;
-	private ApplicationListTableView view = new ApplicationListTableViewImpl();
+	private ApplicationListTableView view;
+
+	private ListDataProvider<ApplicationRow> dataProvider;
 
 	private final HandlerManager eventBus;
 	private HasWidgets screen;
@@ -35,6 +40,13 @@ public class ApplicationListFancyPresenter implements IModelPresenter
 	public ApplicationListFancyPresenter(HandlerManager bus)
 	{
 		eventBus = bus;
+
+		model = new ApplicationTableModel();
+		model.setPresenter(this);
+
+		view = new ApplicationListTableViewImpl();
+		view.setPresenter(this);
+
 	}
 
 	@Override
@@ -47,15 +59,18 @@ public class ApplicationListFancyPresenter implements IModelPresenter
 	public void go()
 	{
 		view.clear();
-		// model.fetch();
-		screen.add(view.asWidget());
+
+		model.fetch();
 	}
 
 	@Override
 	public void onFetchComplete()
 	{
-		// TODO Auto-generated method stub
+		dataProvider = new ListDataProvider<>(model.getData(), ApplicationRow.KEY_PROVIDER);
 
+		view.setRowData(dataProvider);
+
+		screen.add(view.asWidget());
 	}
 
 	@Override
@@ -63,6 +78,21 @@ public class ApplicationListFancyPresenter implements IModelPresenter
 	{
 		// TODO Auto-generated method stub
 
+	}
+
+	@Override
+	public void onRowSelect()
+	{
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void onRowEdit()
+	{
+		// can send new data to database here
+		// wait?
+		dataProvider.refresh();
 	}
 
 }

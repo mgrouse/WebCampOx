@@ -22,7 +22,16 @@ import com.google.gwt.view.client.ListDataProvider;
  */
 public interface ApplicationListTableView extends IView
 {
-	public void setPresenter();
+
+	public interface Presenter
+	{
+		public void onRowSelect();
+
+		public void onRowEdit();
+	}
+
+	public void setPresenter(Presenter p);
 
 	public void setRowData(ListDataProvider<ApplicationRow> dataProvider);
+
 }

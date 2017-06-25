@@ -64,20 +64,23 @@ public class ApplicationTableModel implements IModel<ArrayList<ApplicationRow>>
 				Window.alert("DB Error: " + caught.getMessage());
 			}
 		});
+
+		presenter.onFetchComplete();
 	}
 
 	@Override
 	public void put()
 	{
-		// TODO Auto-generated method stub
+		// stuff
 
+		presenter.onPutComplete();
 	}
 
 	@Override
 	public ArrayList<ApplicationRow> getData()
 	{
-		// TODO Auto-generated method stub
-		return null; // copy
+		// copy?
+		return data;
 	}
 
 	@Override

@@ -53,38 +53,38 @@ public class ApplicationListTableViewImpl extends AbstractView implements Applic
 	@UiField(provided = true)
 	DataGrid<ApplicationRow> appTable = new DataGrid<>(ApplicationRow.KEY_PROVIDER);
 
+	private Presenter presenter;
+
 	private final SelectionModel<ApplicationRow> selectionModel;
 	private ListHandler<ApplicationRow> sortHandler;
 
 	public ApplicationListTableViewImpl()
 	{
+		initWidget(uiBinder.createAndBindUi(this));
+
 		selectionModel = new SingleSelectionModel<>(ApplicationRow.KEY_PROVIDER);
 
 		sortHandler = new ListHandler<>(new ArrayList<ApplicationRow>());
-
-		initWidget(uiBinder.createAndBindUi(this));
-
 	}
 
 	@Override
-	public void setPresenter()
+	public void setPresenter(Presenter p)
 	{
-		// TODO Auto-generated method stub
-
+		presenter = p;
 	}
 
 	@Override
 	public void clear()
 	{
-
+		// start loading pop up
 	}
 
 	@Override
 	public void setRowData(ListDataProvider<ApplicationRow> dataProvider)
 	{
 		sortHandler.setList(dataProvider.getList());
-		// Attach a column sort handler to the ListData to sort the list.
 
+		// Attach a column sort handler to the ListData to sort the list.
 		setUpDataGrid();
 
 		dataProvider.addDataDisplay(appTable);
@@ -92,7 +92,6 @@ public class ApplicationListTableViewImpl extends AbstractView implements Applic
 
 	private void setUpDataGrid()
 	{
-
 		// appTable = new DataGrid<>();
 		appTable.setWidth("100%");
 		appTable.setAutoHeaderRefreshDisabled(true);
@@ -141,7 +140,7 @@ public class ApplicationListTableViewImpl extends AbstractView implements Applic
 			{
 				// Called when the user changes the value.
 				row.setFirstName(value);
-				// presenter.ListDataProvider.refreshDisplays();
+				presenter.onRowEdit();
 			}
 		});
 
@@ -157,13 +156,6 @@ public class ApplicationListTableViewImpl extends AbstractView implements Applic
 		// isStrike
 		// hasRV
 		// hasStructure
-
-	}
-
-	private void setBlankMessage(DataGrid<ApplicationRow> grid)
-	{
-		// Set the message to display when the table is empty.
-		grid.setEmptyTableWidget(new Label("EMPTY_TABLE_MSG"));
 	}
 
 }
