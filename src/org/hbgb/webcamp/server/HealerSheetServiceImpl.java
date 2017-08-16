@@ -16,6 +16,7 @@ import javax.jdo.Query;
 
 import org.hbgb.webcamp.client.async.HealerSheetService;
 import org.hbgb.webcamp.shared.Application;
+import org.hbgb.webcamp.shared.Burner;
 import org.hbgb.webcamp.shared.Demographics;
 import org.hbgb.webcamp.shared.HealerSheetDetails;
 import org.hbgb.webcamp.shared.HealerSheetInfoBlock;
@@ -150,7 +151,8 @@ public class HealerSheetServiceImpl extends RemoteServiceServlet implements Heal
 		PersistenceManager pm = getPM();
 		try
 		{
-			HealerSheetInfoBlock dbSheet = pm.getObjectById(HealerSheetInfoBlock.class, block.getEncodedKey());
+			HealerSheetInfoBlock dbSheet = pm.getObjectById(HealerSheetInfoBlock.class,
+					block.getEncodedKey());
 
 			dbSheet.setBio(block.getBio());
 
@@ -201,7 +203,7 @@ public class HealerSheetServiceImpl extends RemoteServiceServlet implements Heal
 			hs = this.getHealerSheetInfoBlockByEmail(email);
 			if (hs != null)
 			{
-				details.add(this.HealerSheetInfoBlock2Details(hs));
+				details.add(HealerSheetInfoBlock2Details(hs));
 			}
 		}
 		Collections.sort(details);
@@ -222,21 +224,7 @@ public class HealerSheetServiceImpl extends RemoteServiceServlet implements Heal
 
 		ApplicationServiceImpl appServ = new ApplicationServiceImpl();
 
-		String playaName = "";
-
 		Application app = appServ.getApplicationByEmail(email);
-		if ((null != app) && (null != app.getApplicant()) && (null != app.getApplicant().getDemographics()))
-		{
-			Demographics demos = app.getApplicant().getDemographics();
-			if (!demos.getPlayaName().isEmpty())
-			{
-				playaName = app.getApplicant().getDemographics().getPlayaName();
-			}
-			else
-			{
-				playaName = app.getApplicant().getDemographics().getFirstName();
-			}
-		}
 
 		String imageURL = "http://storage.googleapis.com/hbgbwebcamp.appspot.com/PhotoNotAvailable.jpg";
 		if ((null != app) && (null != app.getImageURL()) && (!app.getImageURL().isEmpty()))
@@ -244,6 +232,24 @@ public class HealerSheetServiceImpl extends RemoteServiceServlet implements Heal
 			imageURL = app.getImageURL();
 		}
 
-		return new HealerSheetDetails(encodedKey, email, playaName, imageURL, sessionLength, modality1, modality2, modality3, modality4, bio);
+		String playaName = "";
+
+		Burner burner = appServ.getApplicant(app.getEncodedKey());
+
+		if (null != burner)
+		{
+			Demographics demos = burner.getDemographics();
+			if (!demos.getPlayaName().isEmpty())
+			{
+				playaName = demos.getPlayaName();
+			}
+			else
+			{
+				playaName = demos.getFirstName();
+			}
+		}
+
+		return new HealerSheetDetails(encodedKey, email, playaName, imageURL, sessionLength,
+				modality1, modality2, modality3, modality4, bio);
 	}
 }

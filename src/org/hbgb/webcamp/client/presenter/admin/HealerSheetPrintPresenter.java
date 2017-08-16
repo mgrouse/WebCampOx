@@ -50,6 +50,8 @@ public class HealerSheetPrintPresenter implements IPresenter
 	private void printSheetToView()
 	{
 		StringBuffer html = new StringBuffer();
+
+		// Header
 		html.append("<div>");
 		html.append("<table cellspacing = \"0\" cellpadding = \"0px\">");
 		html.append("<tr>");
@@ -66,6 +68,8 @@ public class HealerSheetPrintPresenter implements IPresenter
 		html.append("</tr>");
 		html.append("</table>");
 		html.append("</div>");
+
+		// Left - Modality List
 		html.append("<div>");
 		html.append("<div class= \"modality\">");
 		html.append("<h2>Sign up sheet for " + details.getPlayaName() + "</h2>");
@@ -98,19 +102,27 @@ public class HealerSheetPrintPresenter implements IPresenter
 			html.append("<u>&nbsp;&nbsp;&nbsp;&nbsp;</u>");
 		}
 		html.append(" minutes.<br>");
-		html.append(
-				"Please be patient... timing is approximate.<br><b>Sign up for a session below</b> </p>");
+		html.append("Please be patient... timing is approximate.");
+		html.append("<br><br>");
+		html.append("<b>Sign up for a session below</b> </p>");
 		html.append("</div>");
 		html.append("</div>");
+
+		// Center - Pic
 		html.append("<div class = \"picture\">");
 		html.append("<img src=" + details.getImageURL() + "=s300-c>");
 		html.append("</div>");
+
+		// Right - Who is <name>?
 		html.append("<div class = \"whoIs\">");
 		html.append("<h1>Who is " + details.getPlayaName() + " ?</h1>");
 		html.append("<p class= \"bio\">" + details.getBio() + "</p>");
 		html.append("</div>");
 		html.append("</div>");
+
+		// Bottom - Sign up
 		html.append("<div class = \"clearFloats\"></div>");
+
 		html.append("<div class = \"signUp\">");
 		html.append("<table class = \"signUp\">");
 		html.append("<th></th> <th>Time In (staff use)</th>");
@@ -124,6 +136,7 @@ public class HealerSheetPrintPresenter implements IPresenter
 		html.append("<tr> <td class=\"sigCell\">8)</td> <td class=\"timeCell\">&nbsp;</td> </tr>");
 		html.append("</table>");
 		html.append("</div>");
+
 		view.setHTML(html.toString());
 	}
 }
