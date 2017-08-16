@@ -34,9 +34,9 @@ public class HealerSheetPrintPresenter implements IPresenter
 		screen = container;
 	}
 
-	public void setHealerSheetDetails(HealerSheetDetails details)
+	public void setHealerSheetDetails(HealerSheetDetails hsd)
 	{
-		details = details;
+		details = hsd;
 	}
 
 	@Override

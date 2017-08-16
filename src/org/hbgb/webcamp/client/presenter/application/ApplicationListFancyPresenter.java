@@ -44,9 +44,6 @@ public class ApplicationListFancyPresenter
 		model = new ApplicationTableModel();
 		model.setPresenter(this);
 
-		view = new ApplicationListTableViewImpl();
-		view.setPresenter(this);
-
 	}
 
 	@Override
@@ -58,7 +55,7 @@ public class ApplicationListFancyPresenter
 	@Override
 	public void go()
 	{
-		view.clear();
+		// view.clear();
 
 		model.fetch();
 	}
@@ -68,6 +65,9 @@ public class ApplicationListFancyPresenter
 	{
 		dataProvider = new ListDataProvider<>(model.getData(), ApplicationRow.KEY_PROVIDER);
 
+		view = new ApplicationListTableViewImpl(dataProvider);
+		view.setPresenter(this);
+		view.clear();
 		view.setRowData(dataProvider);
 
 		screen.add(view.asWidget());

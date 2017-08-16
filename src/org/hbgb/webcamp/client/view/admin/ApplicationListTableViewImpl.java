@@ -55,16 +55,20 @@ public class ApplicationListTableViewImpl extends AbstractView implements Applic
 
 	private Presenter presenter;
 
+	ListDataProvider<ApplicationRow> dataProvider;
+
 	private final SelectionModel<ApplicationRow> selectionModel;
 	private ListHandler<ApplicationRow> sortHandler;
 
-	public ApplicationListTableViewImpl()
+	public ApplicationListTableViewImpl(ListDataProvider<ApplicationRow> dataProvider)
 	{
-		initWidget(uiBinder.createAndBindUi(this));
+		this.dataProvider = dataProvider;
 
 		selectionModel = new SingleSelectionModel<>(ApplicationRow.KEY_PROVIDER);
 
 		sortHandler = new ListHandler<>(new ArrayList<ApplicationRow>());
+
+		initWidget(uiBinder.createAndBindUi(this));
 	}
 
 	@Override
