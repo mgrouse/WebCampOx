@@ -63,7 +63,17 @@ public class InputLogisticsInfoPresenter implements ISequentialPresenter
 	private void setView()
 	{
 		view.setWantsEarlyTeam(logisticsInfoBlock.getWantsEarlyTeam());
+		if (logisticsInfoBlock.getWantsEarlyTeam())
+		{
+			view.setETArrivalDates();
+		}
+
 		view.setWantsStrikeTeam(logisticsInfoBlock.getWantsStrikeTeam());
+		if (logisticsInfoBlock.getWantsStrikeTeam())
+		{
+			view.setStrikeDepartureDates();
+		}
+
 		view.setTransportation(logisticsInfoBlock.getTransType());
 		view.setArrivalDate(logisticsInfoBlock.getArrivalDoE());
 		view.setArrivalTime(logisticsInfoBlock.getArrivalTime());
@@ -96,7 +106,7 @@ public class InputLogisticsInfoPresenter implements ISequentialPresenter
 
 					if (result == null)
 					{
-						Window.alert("Applicant's Payment Info reurned as null");
+						Window.alert("Applicant's Logistics Info reurned as null");
 						return;
 					}
 
@@ -107,7 +117,7 @@ public class InputLogisticsInfoPresenter implements ISequentialPresenter
 				@Override
 				public void onFailure(Throwable caught)
 				{
-					Window.alert("DB Error retrieving Applicant's Payment Info");
+					Window.alert("DB Error retrieving Applicant's Logistics Info");
 				}
 			});
 			return;
@@ -160,7 +170,7 @@ public class InputLogisticsInfoPresenter implements ISequentialPresenter
 		if (logisticsInfoBlock.getArrivalDoE().compareTo(logisticsInfoBlock.getDepartureDoE()) >= 0)
 		{
 			retVal = false;
-			// set specific message in messages Obj
+
 			view.addMessage("Your arrival date is after or equal to your departure date.");
 		}
 

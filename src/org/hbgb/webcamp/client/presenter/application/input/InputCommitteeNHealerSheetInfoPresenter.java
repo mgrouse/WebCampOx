@@ -21,7 +21,6 @@ import com.google.gwt.user.client.ui.HasWidgets;
 public class InputCommitteeNHealerSheetInfoPresenter
 		implements ISequentialPresenter, IKeyedModelPresenter
 {
-	private static final int THIS_YEAR = 2017;
 	private static final int NUM_MODELS = 2;
 	private int num_calls = 0;
 	private String key;

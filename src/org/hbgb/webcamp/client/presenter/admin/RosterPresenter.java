@@ -15,6 +15,7 @@ import org.hbgb.webcamp.client.presenter.IPresenter;
 import org.hbgb.webcamp.client.view.application.HTMLPanelView;
 import org.hbgb.webcamp.client.view.application.HTMLPanelViewImpl;
 import org.hbgb.webcamp.shared.RosterDetails;
+import org.hbgb.webcamp.shared.Utils;
 
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.rpc.AsyncCallback;
@@ -41,29 +42,29 @@ public class RosterPresenter implements IPresenter
 
 	private void fetchData()
 	{
-		rpcService.getAcceptedRosterDetailsByYear("2017", new AsyncCallback<List<RosterDetails>>()
-		{
+		rpcService.getAcceptedRosterDetailsByYear(Utils.getThisYearInt(),
+				new AsyncCallback<List<RosterDetails>>()
+				{
 
-			@Override
-			public void onSuccess(List<RosterDetails> result)
-			{
-				setViewHTML(result);
-				screen.add(view.asWidget());
-			}
+					@Override
+					public void onSuccess(List<RosterDetails> result)
+					{
+						setViewHTML(result);
+						screen.add(view.asWidget());
+					}
 
-			@Override
-			public void onFailure(Throwable caught)
-			{
-				Window.alert("Error fetching RosterDetails");
-			}
-		});
+					@Override
+					public void onFailure(Throwable caught)
+					{
+						Window.alert("Error fetching RosterDetails");
+					}
+				});
 	}
 
 	private void setViewHTML(List<RosterDetails> roster)
 	{
 		StringBuilder html = new StringBuilder();
-		html.append(
-				"<table border=1><tr><td align='center'> <b>Photo</b> </td><td align='center'> <b>Stats</b> </td></tr>");
+		html.append("<table class=\"page-break\">");
 
 		if (roster.isEmpty())
 		{
@@ -79,12 +80,14 @@ public class RosterPresenter implements IPresenter
 		{
 			for (RosterDetails details : roster)
 			{
-				html.append("<tr>");
+				html.append("<tr border=1; class=\"page-break\">");
 
-				// html.append("<img src=" + details.getPhotoURL() + ">");
-				html.append(
-						"<td  style=\"background-image:url('" + details.getPhotoURL() + "')\";  ");
-				html.append(" class=\"rosterPic\">");
+				html.append("<td class=\"rosterPic\">");
+				html.append("<img src=" + details.getPhotoURL() + "=s600-c>");
+
+				// html.append("<td style=\"background-image:url('");
+				// html.append(details.getPhotoURL());
+				// html.append("')\"; class=\"rosterPic\">");
 
 				html.append("</td>");
 

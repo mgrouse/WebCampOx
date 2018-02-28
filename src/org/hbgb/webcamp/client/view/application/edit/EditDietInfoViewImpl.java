@@ -28,13 +28,17 @@ public class EditDietInfoViewImpl extends AbstractPartView implements IEditDietI
 	static interface EditDietInfoViewImplBinder extends UiBinder<Widget, EditDietInfoViewImpl>
 	{}
 
-	private static UiBinder<Widget, EditDietInfoViewImpl> binder = GWT.create(EditDietInfoViewImplBinder.class);
+	private static UiBinder<Widget, EditDietInfoViewImpl> binder = GWT
+			.create(EditDietInfoViewImplBinder.class);
 
 	@UiField
 	DietListBox dietType;
 
 	@UiField
 	CheckBox isGlutenFree;
+
+	@UiField
+	CheckBox isLactoseIntolerant;
 
 	@UiField
 	TextArea dietaryRestrictions;
@@ -67,6 +71,18 @@ public class EditDietInfoViewImpl extends AbstractPartView implements IEditDietI
 	public Boolean getIsGlutenFree()
 	{
 		return isGlutenFree.getValue();
+	}
+
+	@Override
+	public void setIsLactoseIntolerant(Boolean bool)
+	{
+		isLactoseIntolerant.setValue(bool, false);
+	}
+
+	@Override
+	public Boolean getIsLactoseIntolerant()
+	{
+		return isLactoseIntolerant.getValue();
 	}
 
 	@Override

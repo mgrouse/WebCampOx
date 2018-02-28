@@ -35,48 +35,34 @@ public class DietInfoBlock implements Serializable
 	private Boolean isGlutenFree = false;
 
 	@Persistent
-	private Text dietaryRestrictions = new Text("");
+	private Boolean isLactoseIntolerant = false;
 
-	// TODO remove these.
-	// @Persistent
-	// private Boolean eatsBeef = false;
-	//
-	// @Persistent
-	// private Boolean eatsChicken = false;
-	//
-	// @Persistent
-	// private Boolean eatsPork = false;
-	//
-	// @Persistent
-	// private Boolean eatsBacon = false;
-	//
-	// @Persistent
-	// private Boolean eatsFish = false;
-	//
-	// @Persistent
-	// private Boolean eatsTofu = false;
+	@Persistent
+	private Text dietaryRestrictions = new Text("");
 
 	public DietInfoBlock()
 	{}
 
 	public DietInfoBlock(String emailText)
 	{
-		this.setEmail(emailText);
+		setEmail(emailText);
 	}
 
 	public DietInfoBlock(String Email, DietInfoBlock source)
 	{
 		if (null != source)
 		{
-			this.setEmail(source.getEmail());
-			this.setIsProfile(source.getIsProfile());
-			this.setDietType(source.getDietType());
-			this.setIsGlutenFree(source.isGlutenFree);
-			this.setDietaryRestrictions(source.getDietaryRestrictions());
+			setEmail(source.getEmail());
+			setIsProfile(source.getIsProfile());
+			setDietType(source.getDietType());
+			setIsGlutenFree(source.isGlutenFree);
+			setIsLactoseIntolerant(source.isLactoseIntolerant);
+
+			setDietaryRestrictions(source.getDietaryRestrictions());
 		}
 		else
 		{
-			this.setEmail(email);
+			setEmail(email);
 		}
 	}
 
@@ -140,64 +126,14 @@ public class DietInfoBlock implements Serializable
 		this.dietaryRestrictions = new Text(dietaryRestrictions);
 	}
 
-	// public Boolean getEatsBeef()
-	// {
-	// return eatsBeef;
-	// }
-	//
-	// public void setEatsBeef(Boolean eatsBeef)
-	// {
-	// this.eatsBeef = eatsBeef;
-	// }
-	//
-	// public Boolean getEatsChicken()
-	// {
-	// return eatsChicken;
-	// }
-	//
-	// public void setEatsChicken(Boolean eatsChicken)
-	// {
-	// this.eatsChicken = eatsChicken;
-	// }
-	//
-	// public Boolean getEatsPork()
-	// {
-	// return eatsPork;
-	// }
-	//
-	// public void setEatsPork(Boolean eatsPork)
-	// {
-	// this.eatsPork = eatsPork;
-	// }
-	//
-	// public Boolean getEatsBacon()
-	// {
-	// return eatsBacon;
-	// }
-	//
-	// public void setEatsBacon(Boolean eatsBacon)
-	// {
-	// this.eatsBacon = eatsBacon;
-	// }
-	//
-	// public Boolean getEatsFish()
-	// {
-	// return eatsFish;
-	// }
-	//
-	// public void setEatsFish(Boolean eatsFish)
-	// {
-	// this.eatsFish = eatsFish;
-	// }
-	//
-	// public Boolean getEatsTofu()
-	// {
-	// return eatsTofu;
-	// }
-	//
-	// public void setEatsTofu(Boolean eatsTofu)
-	// {
-	// this.eatsTofu = eatsTofu;
-	// }
+	public Boolean getIsLactoseIntolerant()
+	{
+		return isLactoseIntolerant;
+	}
+
+	public void setIsLactoseIntolerant(Boolean isLactoseIntolerant)
+	{
+		this.isLactoseIntolerant = isLactoseIntolerant;
+	}
 
 }

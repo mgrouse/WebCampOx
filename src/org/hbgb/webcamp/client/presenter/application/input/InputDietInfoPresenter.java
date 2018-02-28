@@ -58,14 +58,18 @@ public class InputDietInfoPresenter implements ISequentialPresenter
 	{
 		view.setDietType(dietInfoBlock.getDietType());
 		view.setIsGlutenFree(dietInfoBlock.getIsGlutenFree());
+		view.setIsLactoseIntolerant(dietInfoBlock.getIsLactoseIntolerant());
 		view.setDietaryRestrictions(dietInfoBlock.getDietaryRestrictions());
+		view.setIsLactoseIntolerant(dietInfoBlock.getIsLactoseIntolerant());
 	}
 
 	private void setModel()
 	{
 		dietInfoBlock.setDietType(view.getDietType());
 		dietInfoBlock.setIsGlutenFree(view.getIsGlutenFree());
+		dietInfoBlock.setIsLactoseIntolerant(view.getIsLactoseIntolerant());
 		dietInfoBlock.setDietaryRestrictions(view.getDietaryRestrictions());
+
 	}
 
 	@Override

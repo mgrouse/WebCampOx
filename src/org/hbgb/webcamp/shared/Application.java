@@ -16,7 +16,6 @@ import org.hbgb.webcamp.shared.enums.ApplicationStatus;
 @PersistenceCapable(identityType = IdentityType.APPLICATION)
 public class Application implements Serializable
 {
-	private static final int THIS_YEAR = 2017;
 
 	@PrimaryKey
 	@Persistent(valueStrategy = IdGeneratorStrategy.IDENTITY)
@@ -78,7 +77,7 @@ public class Application implements Serializable
 		edited = null;
 
 		// TODO needs to look up the current year.
-		year = THIS_YEAR;
+		year = Utils.getThisYearInt();
 		status = ApplicationStatus.NEW;
 		applicant = new Burner(emailText);
 		paymentInfoBlock = new PaymentInfoBlock(emailText);
@@ -96,7 +95,7 @@ public class Application implements Serializable
 		edited = null;
 
 		// TODO needs to look up the current year.
-		year = THIS_YEAR;
+		year = Utils.getThisYearInt();
 		status = ApplicationStatus.NEW;
 
 		if (null != source)

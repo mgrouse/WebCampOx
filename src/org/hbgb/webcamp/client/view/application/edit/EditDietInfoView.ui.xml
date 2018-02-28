@@ -17,6 +17,11 @@
 					<g:Label text="Gluten Free."/>
 				</g:HorizontalPanel>
 				
+				<g:HorizontalPanel verticalAlignment="ALIGN_MIDDLE" addStyleNames="formRow">
+				    <g:CheckBox ui:field="isLactoseIntolerant"/>
+					<g:Label text="Lactose Intolerant."/>
+				</g:HorizontalPanel>
+				
 				<g:HTML text="Dietary restrictions"/>
 		        <g:TextArea ui:field="dietaryRestrictions"/>
 				

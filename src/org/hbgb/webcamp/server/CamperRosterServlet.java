@@ -24,10 +24,11 @@ public class CamperRosterServlet extends HttpServlet
 	private ApplicationServiceImpl appServ = new ApplicationServiceImpl();
 
 	@Override
-	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
+			throws ServletException, IOException
 	{
 		// get year parameter
-		String year = req.getParameter("year");
+		int year = Integer.parseInt(req.getParameter("year"));
 
 		// get all Applications from that year that are ACCEPTED
 		List<RosterDetails> roster = appServ.getAcceptedRosterDetailsByYear(year);
@@ -36,8 +37,7 @@ public class CamperRosterServlet extends HttpServlet
 		resp.setHeader("Content-Type", "text/html");
 
 		// Start Table
-		resp.getWriter()
-				.println("<table border=1>" + "<tr>" + "<td align='center'> <b>Photo</b> </td>" + "<td align='center'> <b>Stats</b> </td>" + "</tr>");
+		resp.getWriter().println("<table>");
 
 		// for each
 		for (RosterDetails details : roster)
@@ -46,10 +46,10 @@ public class CamperRosterServlet extends HttpServlet
 			resp.getWriter().println("<tr>");
 
 			// display photo in cell #1
-			resp.getWriter().println("<td>");
-			resp.getWriter().println("<img src=" + details.getPhotoURL() + "/>");
+			resp.getWriter().println("<td style=\"background-image:url('");
+			resp.getWriter().println(details.getPhotoURL());
+			resp.getWriter().println("')\"; class=\"rosterPic\">");
 			resp.getWriter().println("</td>");
-
 			// display info in Cell #2
 			resp.getWriter().println("<td>");
 

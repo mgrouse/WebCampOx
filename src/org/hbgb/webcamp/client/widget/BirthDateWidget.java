@@ -12,6 +12,8 @@ package org.hbgb.webcamp.client.widget;
 
 import java.util.Date;
 
+import org.hbgb.webcamp.shared.Utils;
+
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
@@ -22,9 +24,9 @@ import com.google.gwt.user.client.ui.Widget;
 
 public class BirthDateWidget extends Composite
 {
-	private static final int THIS_YEAR = 2017;
 	private static final int NUM_YEARS = 100;
-	private static UiBinder<Widget, BirthDateWidget> binder = GWT.create(BirthDateWidgetBinder.class);
+	private static UiBinder<Widget, BirthDateWidget> binder = GWT
+			.create(BirthDateWidgetBinder.class);
 	@UiField
 	ListBox month;
 	@UiField
@@ -43,7 +45,7 @@ public class BirthDateWidget extends Composite
 	private void fillYear()
 	{
 		this.year.addItem("Choose One", "0");
-		Integer startYear = THIS_YEAR - 100;
+		Integer startYear = Utils.getThisYearInt() - 100;
 		Integer i = 100;
 		while (i >= 0)
 		{
@@ -114,7 +116,7 @@ public class BirthDateWidget extends Composite
 			return;
 		}
 		Integer yearInt = value + 1900;
-		this.year.setSelectedIndex(THIS_YEAR - yearInt + 1);
+		this.year.setSelectedIndex(Utils.getThisYearInt() - yearInt + 1);
 	}
 
 	public void setSelectedValue(Date value)

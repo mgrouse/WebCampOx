@@ -45,8 +45,7 @@ public interface ApplicationServiceAsync
 	public void deleteApplications(ArrayList<String> var1,
 			AsyncCallback<ArrayList<ApplicationDetails>> var2);
 
-	public void getAcceptedRosterDetailsByYear(String var1,
-			AsyncCallback<List<RosterDetails>> var2);
+	public void getAcceptedRosterDetailsByYear(int var1, AsyncCallback<List<RosterDetails>> var2);
 
 	public void getCommitteeEmails(Committee var1, AsyncCallback<List<String>> var2);
 

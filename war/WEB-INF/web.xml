@@ -14,7 +14,7 @@
 
 	<servlet-mapping>
 		<servlet-name>CamperRosterServlet</servlet-name>
-		<url-pattern>/static/roster</url-pattern>
+		<url-pattern>/static/proster</url-pattern>
 	</servlet-mapping>
   	
   	<servlet>

@@ -44,4 +44,8 @@ public interface InputLogisticsInfoView extends ISequentialView, IView
 	public PlayaTime getDepartureTime();
 
 	public void removeETDates();
+
+	public void setETArrivalDates();
+
+	public void setStrikeDepartureDates();
 }

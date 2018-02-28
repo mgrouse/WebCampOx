@@ -38,7 +38,8 @@ public class InputDietInfoViewImpl extends AbstractView implements InputDietInfo
 	static interface EditDietInfoViewImplBinder extends UiBinder<Widget, InputDietInfoViewImpl>
 	{}
 
-	private static UiBinder<Widget, InputDietInfoViewImpl> binder = GWT.create(EditDietInfoViewImplBinder.class);
+	private static UiBinder<Widget, InputDietInfoViewImpl> binder = GWT
+			.create(EditDietInfoViewImplBinder.class);
 
 	@UiField
 	MessagesWidget messages;
@@ -51,6 +52,9 @@ public class InputDietInfoViewImpl extends AbstractView implements InputDietInfo
 
 	@UiField
 	CheckBox isGlutenFree;
+
+	@UiField
+	CheckBox isLactoseIntolerant;
 
 	@UiField
 	TextArea dietaryRestrictions;
@@ -107,6 +111,18 @@ public class InputDietInfoViewImpl extends AbstractView implements InputDietInfo
 	public Boolean getIsGlutenFree()
 	{
 		return this.isGlutenFree.getValue();
+	}
+
+	@Override
+	public void setIsLactoseIntolerant(Boolean bool)
+	{
+		this.isLactoseIntolerant.setValue(bool, false);
+	}
+
+	@Override
+	public Boolean getIsLactoseIntolerant()
+	{
+		return this.isLactoseIntolerant.getValue();
 	}
 
 	@Override

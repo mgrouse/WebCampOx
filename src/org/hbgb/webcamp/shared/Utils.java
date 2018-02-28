@@ -11,14 +11,29 @@
  */
 package org.hbgb.webcamp.shared;
 
+import java.util.Date;
+
 /**
  * @author Michael
  *
  */
 public class Utils
 {
+
 	static public Boolean isNullOrEmpty(String text)
 	{
 		return ((null == text) || (text.isEmpty()));
+	}
+
+	@SuppressWarnings("deprecation")
+	static public int getThisYearInt()
+	{
+		// Calendar cal = Calendar.getInstance();
+
+		// return cal.get(Calendar.YEAR);
+
+		Date today = new Date();
+
+		return today.getYear() + 1900;
 	}
 }

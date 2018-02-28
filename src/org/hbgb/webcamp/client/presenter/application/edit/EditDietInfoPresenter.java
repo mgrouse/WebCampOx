@@ -23,6 +23,7 @@ public class EditDietInfoPresenter extends AbstractInfoBlockPresenter
 		DietInfoBlock block = model.getData();
 		view.setDietType(block.getDietType());
 		view.setIsGlutenFree(block.getIsGlutenFree());
+		view.setIsLactoseIntolerant(block.getIsLactoseIntolerant());
 		view.setDietaryRestrictions(block.getDietaryRestrictions());
 	}
 
@@ -32,6 +33,7 @@ public class EditDietInfoPresenter extends AbstractInfoBlockPresenter
 		DietInfoBlock block = model.getData();
 		block.setDietType(view.getDietType());
 		block.setIsGlutenFree(view.getIsGlutenFree());
+		block.setIsLactoseIntolerant(view.getIsLactoseIntolerant());
 		block.setDietaryRestrictions(view.getDietaryRestrictions());
 	}
 }

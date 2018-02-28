@@ -46,6 +46,11 @@
 					
 						<g:VerticalPanel>
 					
+						    <g:HorizontalPanel verticalAlignment="ALIGN_MIDDLE" addStyleNames="formRow">
+					        	<g:CheckBox ui:field="wantsStrikeTeam"/>
+					        	<g:Label addStyleNames="longLabel" text="I plan on being on Strike team."/>
+							</g:HorizontalPanel>
+						    
 							<g:HorizontalPanel verticalAlignment="ALIGN_MIDDLE" addStyleNames="formRow">
 								<g:Label ui:field="departureDayLabel" text="I will leave on"/>
 					        	<w:DayOfEventListBox ui:field="departureDoE"/>
@@ -54,11 +59,6 @@
 							 <g:HorizontalPanel verticalAlignment="ALIGN_MIDDLE" addStyleNames="formRow">	
 					        	<g:Label ui:field="departureTimeLabel" text="I will leave: "/>
 					        	<w:PlayaTimeListBox ui:field="departureTime"/>
-							</g:HorizontalPanel>
-														
-							<g:HorizontalPanel verticalAlignment="ALIGN_MIDDLE" addStyleNames="formRow">
-					        	<g:CheckBox ui:field="wantsStrikeTeam"/>
-					        	<g:Label addStyleNames="longLabel" text="I plan on being on Strike team."/>
 							</g:HorizontalPanel>
 							
 						</g:VerticalPanel>

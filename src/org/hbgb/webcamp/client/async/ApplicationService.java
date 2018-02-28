@@ -39,7 +39,7 @@ public interface ApplicationService extends RemoteService
 
 	public ArrayList<ApplicationRow> getApplicationRows();
 
-	public List<RosterDetails> getAcceptedRosterDetailsByYear(String var1);
+	public List<RosterDetails> getAcceptedRosterDetailsByYear(int var1);
 
 	public Application findOrAddApplication(String var1);
 

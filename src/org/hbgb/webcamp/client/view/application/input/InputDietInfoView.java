@@ -21,7 +21,12 @@ public interface InputDietInfoView extends ISequentialView, IView
 
 	public Boolean getIsGlutenFree();
 
+	public void setIsLactoseIntolerant(Boolean var1);
+
+	public Boolean getIsLactoseIntolerant();
+
 	public void setDietaryRestrictions(String var1);
 
 	public String getDietaryRestrictions();
+
 }

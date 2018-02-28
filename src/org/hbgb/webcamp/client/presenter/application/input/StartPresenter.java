@@ -9,6 +9,7 @@ package org.hbgb.webcamp.client.presenter.application.input;
 
 import org.hbgb.webcamp.client.async.ApplicationServiceAsync;
 import org.hbgb.webcamp.client.async.AsyncServiceFinder;
+import org.hbgb.webcamp.client.async.EmailServiceAsync;
 import org.hbgb.webcamp.client.presenter.IKeyPresenter;
 import org.hbgb.webcamp.client.presenter.ISequentialPresenter;
 import org.hbgb.webcamp.client.view.ViewFinder;
@@ -22,6 +23,8 @@ import com.google.gwt.user.client.ui.HasWidgets;
 public class StartPresenter implements ISequentialPresenter
 {
 	private final ApplicationServiceAsync rpcService = AsyncServiceFinder.getApplicationService();
+	private final EmailServiceAsync emailService = AsyncServiceFinder.getEmailService();
+
 	private final IStartView view = ViewFinder.getEnterView();
 
 	private String key = null;
@@ -84,10 +87,7 @@ public class StartPresenter implements ISequentialPresenter
 					}
 					else
 					{
-						screen.clear();
-						nextPresenter.setKey(key);
-						nextPresenter.setScreen(screen);
-						nextPresenter.go();
+						sendEmail();
 					}
 				}
 			}
@@ -103,6 +103,43 @@ public class StartPresenter implements ISequentialPresenter
 	private void setModel()
 	{
 		email = view.getEmailText();
+	}
+
+	private void sendEmail()
+	{
+		this.emailService.sendApplicationRecievedEmail(key, new AsyncCallback<String>()
+		{
+			@Override
+			public void onSuccess(String result)
+			{
+				if (result == null)
+				{
+					Window.alert("RPC Error: Email Result is returned as NULL");
+				}
+				else
+				{
+					if (result.equals("Success"))
+					{
+						screen.clear();
+						nextPresenter.setKey(key);
+						nextPresenter.setScreen(screen);
+						nextPresenter.go();
+
+					}
+					else
+					{
+						// log failure of email
+					}
+
+				}
+			}
+
+			@Override
+			public void onFailure(Throwable caught)
+			{
+				// log failure of email
+			}
+		});
 	}
 
 }

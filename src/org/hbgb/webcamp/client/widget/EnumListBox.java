@@ -12,6 +12,7 @@ import com.google.gwt.user.client.ui.ListBox;
 public class EnumListBox<E extends Enum<E>> extends ListBox
 {
 	protected Class<E> _eclass;
+	protected EnumSet<E> _elements;
 
 	/**
 	 * Creates an enum list box that displays all values in the supplied enum.
@@ -28,9 +29,16 @@ public class EnumListBox<E extends Enum<E>> extends ListBox
 	{
 		_eclass = eclass;
 
+		_elements = elements;
+
+		reloadElements();
+	}
+
+	public void reloadElements()
+	{
 		addItem("Choose One");
 
-		for (E value : elements)
+		for (E value : _elements)
 		{
 			addItem(toLabel(value), value.toString());
 		}

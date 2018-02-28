@@ -36,8 +36,27 @@ public class DayOfEventListBox extends EnumListBox<DayOfEvent>
 	{
 		for (int i = 0; i < 8; ++i)
 		{
+			// [0:Choose]
 			removeItem(1);
 		}
+	}
+
+	public void leaveOnlyStarManDates()
+	{
+		while (getItemCount() > 3)
+		{
+			// [0:Choose, 1:Starman Sat, 2:Starman Sun]
+			removeItem(3);
+		}
+	}
+
+	public void leaveOnlyStrikeDates()
+	{
+		while (getItemCount() > 3)
+		{
+			removeItem(1);
+		}
+
 	}
 
 }

@@ -22,7 +22,16 @@
 				
 				<g:HorizontalPanel verticalAlignment="ALIGN_MIDDLE" addStyleNames="formRow">
 		        	<g:CheckBox ui:field="isGlutenFree"/>
-		        	<g:Label text="My diet is Gluten Free." addStyleNames="longLabel"/>
+		        	<g:Label text="My diet is gluten free." addStyleNames="longLabel"/>
+				</g:HorizontalPanel>
+				
+				<g:HTML>
+					<p>Please check the box if you are lactose intolerant.</p>
+				</g:HTML>
+				
+				<g:HorizontalPanel verticalAlignment="ALIGN_MIDDLE" addStyleNames="formRow">
+		        	<g:CheckBox ui:field="isLactoseIntolerant"/>
+		        	<g:Label text="I am lactose intolerant." addStyleNames="longLabel"/>
 				</g:HorizontalPanel>
 				
 				<g:HTML>

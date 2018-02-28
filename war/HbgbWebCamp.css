@@ -272,11 +272,38 @@ gwt-CaptionPanel
 
 
 /* ROSTER CSS */
+/* class works for table */
+table.page-break
+{
+	width: 925px;
+  	page-break-after:always;
+  	page-break-inside:auto;
+}
+
+table tr.page-break
+{
+	width: 100%;
+    border: 1px solid black;
+
+  	page-break-after:always;
+  	page-break-inside:avoid;
+} 
+
+tr.rosterPage
+{
+	page-break-after: always;
+	display: block;
+}
+
+
 
 td.rosterPic
 {
-    width: 400px;
-    height: 400px;
+    width: 600px;
+    height: 684px;
+    
+    border: 1px solid black;
+    
     text-align:center;
     background-repeat:no-repeat;
     background-position:center;
@@ -287,8 +314,13 @@ td.rosterPic
 
 td.rosterBio
 {
+	width: 325px;
+	
+	border: 1px solid black;
+	
 	padding: 10px;
 }
+
 
 
 /* HEALER SHEET CSS */

@@ -31,6 +31,7 @@ import org.hbgb.webcamp.shared.MealsReport;
 import org.hbgb.webcamp.shared.PaymentInfoBlock;
 import org.hbgb.webcamp.shared.RosterDetails;
 import org.hbgb.webcamp.shared.ShelterInfoBlock;
+import org.hbgb.webcamp.shared.Utils;
 import org.hbgb.webcamp.shared.enums.ApplicationStatus;
 import org.hbgb.webcamp.shared.enums.Committee;
 
@@ -39,7 +40,6 @@ import com.google.gwt.user.server.rpc.RemoteServiceServlet;
 @SuppressWarnings("serial")
 public class ApplicationServiceImpl extends RemoteServiceServlet implements ApplicationService
 {
-	private static final int THIS_YEAR = 2017;
 	private static final ApplicationStatus noShows[] = { ApplicationStatus.ARCHIVED };
 
 	@Override
@@ -266,7 +266,7 @@ public class ApplicationServiceImpl extends RemoteServiceServlet implements Appl
 		}
 		else
 		{
-			if (THIS_YEAR == test.getYear())
+			if (Utils.getThisYearInt() == test.getYear())
 			{
 				retVal = test;
 			}
@@ -382,7 +382,7 @@ public class ApplicationServiceImpl extends RemoteServiceServlet implements Appl
 
 		try
 		{
-			entries = (List<Application>) query.execute(THIS_YEAR);
+			entries = (List<Application>) query.execute(Utils.getThisYearInt());
 		}
 		catch (Exception e)
 		{
@@ -405,7 +405,7 @@ public class ApplicationServiceImpl extends RemoteServiceServlet implements Appl
 		List<Application> entries = null;
 		try
 		{
-			entries = (List<Application>) query.execute(THIS_YEAR, status.name());
+			entries = (List<Application>) query.execute(Utils.getThisYearInt(), status.name());
 		}
 		catch (Exception e)
 		{
@@ -760,7 +760,7 @@ public class ApplicationServiceImpl extends RemoteServiceServlet implements Appl
 	}
 
 	@SuppressWarnings("unchecked")
-	private List<Application> getAcceptedApplicationsByYear(String year)
+	private List<Application> getAcceptedApplicationsByYear(int year)
 	{
 		PersistenceManager pm = PMF.get().getPersistenceManager();
 		Query query = pm.newQuery(Application.class);
@@ -769,7 +769,7 @@ public class ApplicationServiceImpl extends RemoteServiceServlet implements Appl
 		List<Application> entries = null;
 		try
 		{
-			entries = (List<Application>) query.execute(new Integer(year), "ACCEPTED");
+			entries = (List<Application>) query.execute(year, "ACCEPTED");
 		}
 		finally
 		{
@@ -825,7 +825,7 @@ public class ApplicationServiceImpl extends RemoteServiceServlet implements Appl
 	}
 
 	@Override
-	public List<RosterDetails> getAcceptedRosterDetailsByYear(String year)
+	public List<RosterDetails> getAcceptedRosterDetailsByYear(int year)
 	{
 		List<RosterDetails> details = new ArrayList<>();
 

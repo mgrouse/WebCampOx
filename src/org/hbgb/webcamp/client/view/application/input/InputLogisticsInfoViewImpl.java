@@ -92,7 +92,7 @@ public class InputLogisticsInfoViewImpl extends AbstractView implements InputLog
 	{
 		initWidget(binder.createAndBindUi(this));
 
-		removeETDates();
+		// removeETDates();
 
 		messages.clear();
 		setAllLabelsNormal();
@@ -102,6 +102,35 @@ public class InputLogisticsInfoViewImpl extends AbstractView implements InputLog
 	public void setPresenter(ISequentialPresenter sp)
 	{
 		presenter = sp;
+	}
+
+	@UiHandler(value = { "wantsEarlyTeam" })
+	void onEarlyTeamCheckBox(ClickEvent event)
+	{
+		if (getWantsEarlyTeam())
+		{
+			// Must arrive by StarMan_Sunday
+			setETArrivalDates();
+		}
+		else
+		{
+			arrivalDoE.reloadElements();
+		}
+	}
+
+	@UiHandler(value = { "wantsStrikeTeam" })
+	void onStrikeCheckBox(ClickEvent event)
+	{
+
+		if (getWantsStrikeTeam())
+		{
+			// Must be staying until Strike Monday at least
+			this.setStrikeDepartureDates();
+		}
+		else
+		{
+			departureDoE.reloadElements();
+		}
 	}
 
 	@UiHandler(value = { "nextButton" })
@@ -207,6 +236,18 @@ public class InputLogisticsInfoViewImpl extends AbstractView implements InputLog
 	{
 		arrivalDoE.removeETDates();
 		departureDoE.removeETDates();
+	}
+
+	@Override
+	public void setETArrivalDates()
+	{
+		arrivalDoE.leaveOnlyStarManDates();
+	}
+
+	@Override
+	public void setStrikeDepartureDates()
+	{
+		departureDoE.leaveOnlyStrikeDates();
 	}
 
 	protected Boolean formIsValid()

@@ -16,7 +16,12 @@ public interface IEditDietInfoView extends IPartView
 
 	public Boolean getIsGlutenFree();
 
+	public void setIsLactoseIntolerant(Boolean bool);
+
+	public Boolean getIsLactoseIntolerant();
+
 	public void setDietaryRestrictions(String var1);
 
 	public String getDietaryRestrictions();
+
 }

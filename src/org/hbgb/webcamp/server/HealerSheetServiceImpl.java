@@ -27,7 +27,6 @@ import com.google.gwt.user.server.rpc.RemoteServiceServlet;
 @SuppressWarnings("serial")
 public class HealerSheetServiceImpl extends RemoteServiceServlet implements HealerSheetService
 {
-	private static final int THIS_YEAR = 2017;
 
 	public HealerSheetServiceImpl()
 	{
