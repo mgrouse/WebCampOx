@@ -9,12 +9,15 @@ import org.hbgb.webcamp.client.view.admin.IUserEditView;
 import org.hbgb.webcamp.client.view.admin.UserEditViewImpl;
 import org.hbgb.webcamp.client.view.admin.UserListView;
 import org.hbgb.webcamp.client.view.admin.UserListViewImpl;
+import org.hbgb.webcamp.client.view.application.ApplicationListPastView;
+import org.hbgb.webcamp.client.view.application.ApplicationListPastViewImpl;
 import org.hbgb.webcamp.client.view.application.ApplicationListView;
 import org.hbgb.webcamp.client.view.application.ApplicationListViewImpl;
 import org.hbgb.webcamp.client.view.application.EditApplicationViewImpl;
 import org.hbgb.webcamp.client.view.application.HealerSheetListView;
 import org.hbgb.webcamp.client.view.application.HealerSheetListViewImpl;
 import org.hbgb.webcamp.client.view.application.IEditApplicationView;
+import org.hbgb.webcamp.client.view.application.input.IStartView;
 import org.hbgb.webcamp.client.view.application.input.InputCommitteeInfoView;
 import org.hbgb.webcamp.client.view.application.input.InputCommitteeInfoViewImpl;
 import org.hbgb.webcamp.client.view.application.input.InputDietInfoView;
@@ -27,7 +30,6 @@ import org.hbgb.webcamp.client.view.application.input.InputPersonalInfoView;
 import org.hbgb.webcamp.client.view.application.input.InputPersonalInfoViewImpl;
 import org.hbgb.webcamp.client.view.application.input.InputShelterInfoView;
 import org.hbgb.webcamp.client.view.application.input.InputShelterInfoViewImpl;
-import org.hbgb.webcamp.client.view.application.input.IStartView;
 import org.hbgb.webcamp.client.view.application.input.StartViewImpl;
 import org.hbgb.webcamp.client.view.application.input.UploadPhotoView;
 import org.hbgb.webcamp.client.view.application.input.UploadPhotoViewImpl;
@@ -41,7 +43,8 @@ public class ViewFinder
 	private static IUserEditView editUserView;
 	private static UserListView<HbgbUserDetails> listUserView;
 	private static IEditApplicationView editApplicationView;
-	private static ApplicationListView<ApplicationDetails> listApplicationListView;
+	private static ApplicationListView<ApplicationDetails> applicationListView;
+	private static ApplicationListPastView<ApplicationDetails> applicationListPastView;
 	private static IStartView enterView;
 	private static InputLogisticsInfoView editLogisticsView;
 	private static InputShelterInfoView editShelterView;
@@ -89,10 +92,18 @@ public class ViewFinder
 
 	public static ApplicationListView<ApplicationDetails> getApplicationListView()
 	{
-		if (listApplicationListView != null)
-			return listApplicationListView;
-		listApplicationListView = new ApplicationListViewImpl<>();
-		return listApplicationListView;
+		if (applicationListView != null)
+			return applicationListView;
+		applicationListView = new ApplicationListViewImpl<>();
+		return applicationListView;
+	}
+
+	public static ApplicationListPastView<ApplicationDetails> getApplicationListPastView()
+	{
+		if (applicationListPastView != null)
+			return applicationListPastView;
+		applicationListPastView = new ApplicationListPastViewImpl<>();
+		return applicationListPastView;
 	}
 
 	public static HealerSheetListView<HealerSheetDetails> getHealerSheetListView()
@@ -166,4 +177,5 @@ public class ViewFinder
 		uplaodPhotoView = new UploadPhotoViewImpl();
 		return uplaodPhotoView;
 	}
+
 }

@@ -5,8 +5,8 @@ import java.util.logging.Logger;
 import org.hbgb.webcamp.client.applet.ApplicationListFancyApplet;
 import org.hbgb.webcamp.client.applet.ApplicationProcessApplet;
 import org.hbgb.webcamp.client.applet.HealerSheetListApplet;
+import org.hbgb.webcamp.client.panel.AdminWindowManager;
 import org.hbgb.webcamp.client.presenter.admin.RosterPresenter;
-import org.hbgb.webcamp.client.window.AdminWindowManager;
 
 import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.core.client.GWT;

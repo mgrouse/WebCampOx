@@ -10,7 +10,7 @@
  * com.google.gwt.user.client.ui.VerticalPanel
  * com.google.gwt.user.client.ui.Widget
  */
-package org.hbgb.webcamp.client.window;
+package org.hbgb.webcamp.client.panel;
 
 import java.util.logging.Logger;
 

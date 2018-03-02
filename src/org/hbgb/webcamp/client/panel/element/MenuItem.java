@@ -17,7 +17,7 @@
  * com.google.gwt.user.client.ui.Widget
  * com.google.web.bindery.event.shared.Event
  */
-package org.hbgb.webcamp.client.panel;
+package org.hbgb.webcamp.client.panel.element;
 
 import org.hbgb.webcamp.client.WebCampResource;
 import org.hbgb.webcamp.client.event.MenuEvent;

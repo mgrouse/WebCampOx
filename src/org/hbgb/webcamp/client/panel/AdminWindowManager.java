@@ -14,9 +14,10 @@
  * com.google.web.bindery.event.shared.Event$Type
  * com.google.web.bindery.event.shared.HandlerRegistration
  */
-package org.hbgb.webcamp.client.window;
+package org.hbgb.webcamp.client.panel;
 
 import org.hbgb.webcamp.client.applet.ApplicationListApplet;
+import org.hbgb.webcamp.client.applet.ApplicationListPastApplet;
 import org.hbgb.webcamp.client.applet.EarlyTeamListApplet;
 import org.hbgb.webcamp.client.applet.UserListApplet;
 import org.hbgb.webcamp.client.event.MenuEvent;
@@ -24,7 +25,7 @@ import org.hbgb.webcamp.client.event.MenuHandler;
 import org.hbgb.webcamp.client.event.SingletonEventBus;
 import org.hbgb.webcamp.client.event.StatusEvent;
 import org.hbgb.webcamp.client.event.StatusHandler;
-import org.hbgb.webcamp.client.panel.ContentPanel;
+import org.hbgb.webcamp.client.panel.element.ContentPanel;
 import org.hbgb.webcamp.client.presenter.report.MealsReportPresenter;
 import org.hbgb.webcamp.client.widget.StatusBar;
 
@@ -41,9 +42,13 @@ public class AdminWindowManager extends ResizeComposite implements StatusHandler
 	static interface AdminWindowManagerBinder extends UiBinder<Widget, AdminWindowManager>
 	{}
 
-	private static UiBinder<Widget, AdminWindowManager> binder = GWT.create(AdminWindowManagerBinder.class);
+	private static UiBinder<Widget, AdminWindowManager> binder = GWT
+			.create(AdminWindowManagerBinder.class);
 
 	private static final String CAMPERS_APPLICATIONS = "campers-applications";
+
+	private static final String CAMPERS_APPLICATIONS_PAST = "campers-applications-past";
+
 	private static final String CAMPERS_APPLICATIONS_FANCY = "campers-applications-fancy";
 
 	private static final String REPORT_MEALS = "report-meals";
@@ -85,6 +90,10 @@ public class AdminWindowManager extends ResizeComposite implements StatusHandler
 		{
 			case CAMPERS_APPLICATIONS:
 				openApplications();
+				break;
+
+			case CAMPERS_APPLICATIONS_PAST:
+				openApplicationsPast();
 				break;
 
 			case CAMPERS_APPLICATIONS_FANCY:
@@ -147,6 +156,26 @@ public class AdminWindowManager extends ResizeComposite implements StatusHandler
 				ApplicationListApplet appList = new ApplicationListApplet();
 				appList.run(wTab.getScrollPanel());
 				contentPanel.addTab("Application List", wTab);
+			}
+		});
+	}
+
+	private void openApplicationsPast()
+	{
+		GWT.runAsync(new RunAsyncCallback()
+		{
+
+			@Override
+			public void onFailure(Throwable caught)
+			{}
+
+			@Override
+			public void onSuccess()
+			{
+				WorkTab wTab = new WorkTab();
+				ApplicationListPastApplet appList = new ApplicationListPastApplet();
+				appList.run(wTab.getScrollPanel());
+				contentPanel.addTab("Past Years", wTab);
 			}
 		});
 	}

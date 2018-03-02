@@ -15,7 +15,7 @@
  * com.google.gwt.user.client.ui.Composite com.google.gwt.user.client.ui.HTML
  * com.google.gwt.user.client.ui.Image com.google.gwt.user.client.ui.Widget
  */
-package org.hbgb.webcamp.client.panel;
+package org.hbgb.webcamp.client.panel.element;
 
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.dom.client.ClickEvent;

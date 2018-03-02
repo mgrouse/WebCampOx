@@ -12,7 +12,7 @@
  * com.google.gwt.user.client.ui.TabLayoutPanel
  * com.google.gwt.user.client.ui.Widget
  */
-package org.hbgb.webcamp.client.panel;
+package org.hbgb.webcamp.client.panel.element;
 
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.logical.shared.CloseEvent;

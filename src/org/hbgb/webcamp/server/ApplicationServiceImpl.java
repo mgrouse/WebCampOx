@@ -124,11 +124,11 @@ public class ApplicationServiceImpl extends RemoteServiceServlet implements Appl
 	}
 
 	@Override
-	public ArrayList<ApplicationDetails> getApplicationDetails()
+	public ArrayList<ApplicationDetails> getApplicationDetails(int year)
 	{
 		ArrayList<ApplicationDetails> details = new ArrayList<>();
 
-		List<Application> applications = getApplications();
+		List<Application> applications = getApplications(year);
 
 		Boolean add;
 
@@ -161,7 +161,7 @@ public class ApplicationServiceImpl extends RemoteServiceServlet implements Appl
 	{
 		ArrayList<ApplicationRow> rows = new ArrayList<>();
 
-		List<Application> applications = purgeNoShows(getApplications());
+		List<Application> applications = purgeNoShows(getApplications(Utils.getThisYearInt()));
 
 		for (Application app : applications)
 		{
@@ -356,11 +356,11 @@ public class ApplicationServiceImpl extends RemoteServiceServlet implements Appl
 		{
 			deleteApplication(encoded);
 		}
-		return getApplicationDetails();
+		return getApplicationDetails(Utils.getThisYearInt());
 	}
 
 	@SuppressWarnings("unchecked")
-	private List<Application> getApplications()
+	private List<Application> getApplications(int year)
 	{
 		PersistenceManager pm = PMF.get().getPersistenceManager();
 		Query query = pm.newQuery(Application.class);
@@ -372,7 +372,7 @@ public class ApplicationServiceImpl extends RemoteServiceServlet implements Appl
 
 		try
 		{
-			entries = (List<Application>) query.execute(Utils.getThisYearInt());
+			entries = (List<Application>) query.execute(year);
 		}
 		catch (Exception e)
 		{
@@ -481,7 +481,7 @@ public class ApplicationServiceImpl extends RemoteServiceServlet implements Appl
 	{
 		ArrayList<MealsInfo> meals = new ArrayList<>();
 
-		List<Application> applications = getApplications();
+		List<Application> applications = getApplications(Utils.getThisYearInt());
 
 		for (Application app : applications)
 		{

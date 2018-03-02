@@ -35,7 +35,7 @@ public interface ApplicationService extends RemoteService
 
 	public Application getApplication(String var1);
 
-	public ArrayList<ApplicationDetails> getApplicationDetails();
+	public ArrayList<ApplicationDetails> getApplicationDetails(int year);
 
 	public ArrayList<ApplicationRow> getApplicationRows();
 

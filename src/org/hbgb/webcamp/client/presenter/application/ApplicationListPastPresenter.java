@@ -18,33 +18,38 @@ import org.hbgb.webcamp.client.common.SelectionModel;
 import org.hbgb.webcamp.client.event.application.EditApplicationEvent;
 import org.hbgb.webcamp.client.presenter.IPresenter;
 import org.hbgb.webcamp.client.view.ViewFinder;
-import org.hbgb.webcamp.client.view.application.ApplicationListView;
+import org.hbgb.webcamp.client.view.application.ApplicationListPastView;
 import org.hbgb.webcamp.shared.ApplicationDetails;
-import org.hbgb.webcamp.shared.Utils;
 
 import com.google.gwt.event.shared.HandlerManager;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.HasWidgets;
 
-public class ApplicationListPresenter
-		implements IPresenter, ApplicationListView.Presenter<ApplicationDetails>
+public class ApplicationListPastPresenter
+		implements IPresenter, ApplicationListPastView.Presenter<ApplicationDetails>
 {
 	private List<ApplicationDetails> applicationDetails;
 	private final ApplicationServiceAsync rpcService = AsyncServiceFinder.getApplicationService();
 	private final HandlerManager eventBus;
-	private final ApplicationListView<ApplicationDetails> view;
+	private final ApplicationListPastView<ApplicationDetails> view;
 	private final SelectionModel<ApplicationDetails> selectionModel;
 	private HasWidgets screen;
 
-	public ApplicationListPresenter(HandlerManager bus)
+	public ApplicationListPastPresenter(HandlerManager bus)
 	{
 		eventBus = bus;
-		view = ViewFinder.getApplicationListView();
+		view = ViewFinder.getApplicationListPastView();
 		selectionModel = new SelectionModel<>();
 		view.setPresenter(this);
 		view.setColumnDefinitions(
 				ApplicationColumnDefinitionsFactory.getApplicationColumnDefinitions());
+	}
+
+	@Override
+	public void onRefreshButtonClicked()
+	{
+		fetchApplicationDetails();
 	}
 
 	@Override
@@ -95,7 +100,9 @@ public class ApplicationListPresenter
 	public void go()
 	{
 		view.clear();
-		fetchApplicationDetails();
+		screen.clear();
+		screen.add(view.asWidget());
+
 	}
 
 	public void setApplicationDetails(List<ApplicationDetails> applicationDetails)
@@ -115,7 +122,8 @@ public class ApplicationListPresenter
 
 	private void fetchApplicationDetails()
 	{
-		this.rpcService.getApplicationDetails(Utils.getThisYearInt(),
+
+		this.rpcService.getApplicationDetails(view.getYearValue(),
 				new AsyncCallback<ArrayList<ApplicationDetails>>()
 				{
 
@@ -123,9 +131,9 @@ public class ApplicationListPresenter
 					public void onSuccess(ArrayList<ApplicationDetails> result)
 					{
 						applicationDetails = result;
-						screen.clear();
+						// screen.clear();
 						view.setRowData(applicationDetails);
-						screen.add(view.asWidget());
+						// screen.add(view.asWidget());
 					}
 
 					@Override
@@ -156,9 +164,6 @@ public class ApplicationListPresenter
 				applicationDetails = result;
 
 				view.setRowData(applicationDetails);
-
-				// does this help?
-				// screen.add(view.asWidget());
 			}
 
 			@Override
@@ -169,9 +174,4 @@ public class ApplicationListPresenter
 		});
 	}
 
-	@Override
-	public void onRefreshButtonClicked()
-	{
-		fetchApplicationDetails();
-	}
 }

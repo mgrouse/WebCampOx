@@ -8,7 +8,7 @@
  * com.google.gwt.user.client.ui.ScrollPanel
  * com.google.gwt.user.client.ui.Widget
  */
-package org.hbgb.webcamp.client.window;
+package org.hbgb.webcamp.client.panel;
 
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.uibinder.client.UiBinder;

@@ -32,7 +32,7 @@ public interface ApplicationServiceAsync
 
 	public void getApplication(String var1, AsyncCallback<Application> var2);
 
-	public void getApplicationDetails(AsyncCallback<ArrayList<ApplicationDetails>> var1);
+	public void getApplicationDetails(int i, AsyncCallback<ArrayList<ApplicationDetails>> var1);
 
 	public void getApplicationRows(AsyncCallback<ArrayList<ApplicationRow>> callback);
 
