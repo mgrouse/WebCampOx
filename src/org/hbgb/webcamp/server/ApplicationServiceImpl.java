@@ -11,6 +11,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Date;
 import java.util.List;
+import java.util.logging.Logger;
 
 import javax.jdo.PersistenceManager;
 import javax.jdo.Query;
@@ -40,6 +41,8 @@ import com.google.gwt.user.server.rpc.RemoteServiceServlet;
 @SuppressWarnings("serial")
 public class ApplicationServiceImpl extends RemoteServiceServlet implements ApplicationService
 {
+	private static final Logger log = Logger.getLogger(EmailServiceImpl.class.getName());
+
 	private static final ApplicationStatus noShows[] = { ApplicationStatus.ARCHIVED };
 
 	@Override
@@ -118,31 +121,6 @@ public class ApplicationServiceImpl extends RemoteServiceServlet implements Appl
 		}
 
 		return app;
-	}
-
-	@Override
-	public MealsReport getMealsReport()
-	{
-		ArrayList<MealsInfo> meals = new ArrayList<>();
-
-		List<Application> applications = getApplications();
-
-		for (Application app : applications)
-		{
-			if (app.getStatus() == ApplicationStatus.ACCEPTED)
-			{
-				meals.add(application2MealsInfo(app));
-			}
-		}
-
-		MealsReport report = new MealsReport();
-
-		for (MealsInfo mi : meals)
-		{
-			report.addMealsInfo(mi);
-		}
-
-		return report;
 	}
 
 	@Override
@@ -263,6 +241,18 @@ public class ApplicationServiceImpl extends RemoteServiceServlet implements Appl
 		if (null == test)
 		{
 			retVal = createBlankApplicationByEmail(email);
+
+			// send emails about a new application
+			EmailServiceImpl mailServ = new EmailServiceImpl();
+			try
+			{
+				mailServ.sendApplicationRecievedEmail(email);
+			}
+			catch (Exception e)
+			{
+				// log error
+				log.severe(e.getMessage());
+			}
 		}
 		else
 		{
@@ -484,6 +474,31 @@ public class ApplicationServiceImpl extends RemoteServiceServlet implements Appl
 				committee, ticket, invoiced, paid, diet, email);
 
 		return d;
+	}
+
+	@Override
+	public MealsReport getMealsReport()
+	{
+		ArrayList<MealsInfo> meals = new ArrayList<>();
+
+		List<Application> applications = getApplications();
+
+		for (Application app : applications)
+		{
+			if (app.getStatus() == ApplicationStatus.ACCEPTED)
+			{
+				meals.add(application2MealsInfo(app));
+			}
+		}
+
+		MealsReport report = new MealsReport();
+
+		for (MealsInfo mi : meals)
+		{
+			report.addMealsInfo(mi);
+		}
+
+		return report;
 	}
 
 	private MealsInfo application2MealsInfo(Application a)

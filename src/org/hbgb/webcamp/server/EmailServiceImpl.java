@@ -39,8 +39,6 @@ public class EmailServiceImpl extends RemoteServiceServlet implements EmailServi
 		// first to the Lead
 		sendMail(getRegistrationLeadAddressAsText(),
 				"HeeBee application received! for: " + app.getEmail(), getNotificationEmailBody());
-		// sendMail("michael.grouse@gmail.com", "HeeBee application received!",
-		// getNotificationEmailBody());
 
 		// then to the camper
 		return sendMail(app.getEmail(), "Your HeeBee application was received!",
@@ -58,7 +56,9 @@ public class EmailServiceImpl extends RemoteServiceServlet implements EmailServi
 			msg.setFrom(getWebmasterAddress());
 
 			msg.addRecipient(Message.RecipientType.TO, new InternetAddress(to));
-			msg.addRecipient(Message.RecipientType.BCC, getWebmasterAddress());
+
+			// msg.addRecipient(Message.RecipientType.BCC,
+			// getWebmasterAddress());
 
 			msg.setSubject(subject);
 			msg.setText(message);
