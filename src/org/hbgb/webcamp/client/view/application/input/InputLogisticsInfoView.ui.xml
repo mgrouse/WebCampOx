@@ -24,7 +24,7 @@
 							</g:HorizontalPanel>
 							
 							<g:HorizontalPanel verticalAlignment="ALIGN_MIDDLE" addStyleNames="formRow">
-								<g:Label ui:field="transportationLabel" text="I will travel by: "/>
+								<g:Label ui:field="transportationLabel" addStyleNames="longLabel" text="I will get to Black Rock City by: "/>
 					        	<w:TransportationListBox ui:field="transportation"/>
 							</g:HorizontalPanel>
 							

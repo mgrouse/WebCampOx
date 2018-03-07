@@ -131,9 +131,8 @@ public class ApplicationListPastPresenter
 					public void onSuccess(ArrayList<ApplicationDetails> result)
 					{
 						applicationDetails = result;
-						// screen.clear();
+
 						view.setRowData(applicationDetails);
-						// screen.add(view.asWidget());
 					}
 
 					@Override

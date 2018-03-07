@@ -39,7 +39,8 @@ public class InputLogisticsInfoViewImpl extends AbstractView implements InputLog
 	@UiTemplate(value = "InputLogisticsInfoView.ui.xml")
 	static interface InputLogisticsInfoViewImplBinder
 			extends UiBinder<Widget, InputLogisticsInfoViewImpl>
-	{}
+	{
+	}
 
 	private static UiBinder<Widget, InputLogisticsInfoViewImpl> binder = GWT
 			.create(InputLogisticsInfoViewImplBinder.class);
@@ -92,8 +93,6 @@ public class InputLogisticsInfoViewImpl extends AbstractView implements InputLog
 	{
 		initWidget(binder.createAndBindUi(this));
 
-		// removeETDates();
-
 		messages.clear();
 		setAllLabelsNormal();
 	}
@@ -114,7 +113,7 @@ public class InputLogisticsInfoViewImpl extends AbstractView implements InputLog
 		}
 		else
 		{
-			arrivalDoE.reloadElements();
+			setEventArrivalDates();
 		}
 	}
 
@@ -125,11 +124,11 @@ public class InputLogisticsInfoViewImpl extends AbstractView implements InputLog
 		if (getWantsStrikeTeam())
 		{
 			// Must be staying until Strike Monday at least
-			this.setStrikeDepartureDates();
+			setStrikeDepartureDates();
 		}
 		else
 		{
-			departureDoE.reloadElements();
+			setEventDepartureDates();
 		}
 	}
 
@@ -232,22 +231,28 @@ public class InputLogisticsInfoViewImpl extends AbstractView implements InputLog
 	}
 
 	@Override
-	public void removeETDates()
+	public void setEventArrivalDates()
 	{
-		arrivalDoE.removeETDates();
-		departureDoE.removeETDates();
+		arrivalDoE.loadEventDates();
 	}
 
 	@Override
 	public void setETArrivalDates()
 	{
-		arrivalDoE.leaveOnlyStarManDates();
+		arrivalDoE.loadETArrivalDates();
 	}
 
 	@Override
 	public void setStrikeDepartureDates()
 	{
-		departureDoE.leaveOnlyStrikeDates();
+		departureDoE.lodeStrikeDates();
+		;
+	}
+
+	@Override
+	public void setEventDepartureDates()
+	{
+		departureDoE.loadEventDates();
 	}
 
 	protected Boolean formIsValid()

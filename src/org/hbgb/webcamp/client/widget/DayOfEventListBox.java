@@ -1,13 +1,4 @@
-/*
- * Decompiled with CFR 0_115.
- * 
- * Could not load the following classes: com.google.gwt.core.client.GWT
- * com.google.gwt.uibinder.client.UiBinder
- * com.google.gwt.uibinder.client.UiFactory
- * com.google.gwt.uibinder.client.UiField
- * com.google.gwt.uibinder.client.UiTemplate
- * com.google.gwt.user.client.ui.Composite com.google.gwt.user.client.ui.Widget
- */
+
 package org.hbgb.webcamp.client.widget;
 
 import org.hbgb.webcamp.shared.enums.DayOfEvent;
@@ -32,31 +23,19 @@ public class DayOfEventListBox extends EnumListBox<DayOfEvent>
 		return doe;
 	}
 
-	public void removeETDates()
+	public void loadEventDates()
 	{
-		for (int i = 0; i < 8; ++i)
-		{
-			// [0:Choose]
-			removeItem(1);
-		}
+		loadElements(DayOfEvent.getEventDays());
 	}
 
-	public void leaveOnlyStarManDates()
+	public void loadETArrivalDates()
 	{
-		while (getItemCount() > 3)
-		{
-			// [0:Choose, 1:Starman Sat, 2:Starman Sun]
-			removeItem(3);
-		}
+		loadElements(DayOfEvent.getETArrivalDays());
 	}
 
-	public void leaveOnlyStrikeDates()
+	public void lodeStrikeDates()
 	{
-		while (getItemCount() > 3)
-		{
-			removeItem(1);
-		}
-
+		loadElements(DayOfEvent.getStrikeDepartureDays());
 	}
 
 }

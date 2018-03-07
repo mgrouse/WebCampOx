@@ -67,11 +67,19 @@ public class InputLogisticsInfoPresenter implements ISequentialPresenter
 		{
 			view.setETArrivalDates();
 		}
+		else
+		{
+			view.setEventArrivalDates();
+		}
 
 		view.setWantsStrikeTeam(logisticsInfoBlock.getWantsStrikeTeam());
 		if (logisticsInfoBlock.getWantsStrikeTeam())
 		{
 			view.setStrikeDepartureDates();
+		}
+		else
+		{
+			view.setEventDepartureDates();
 		}
 
 		view.setTransportation(logisticsInfoBlock.getTransType());

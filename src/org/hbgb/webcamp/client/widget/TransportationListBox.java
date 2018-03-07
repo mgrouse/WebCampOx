@@ -18,4 +18,15 @@ public class TransportationListBox extends EnumListBox<Transportation>
 	{
 		super(Transportation.class);
 	}
+
+	@Override
+	public Transportation getSelectedEnumValue()
+	{
+		Transportation t = null;
+
+		String temp = getSelectedItemText();
+		t = Transportation.reverseLookup(temp);
+
+		return t;
+	}
 }

@@ -13,9 +13,9 @@
 			    
 				<g:HTML>
 					<p>
-						All HeeBees are placed on a committee. 
-					   	Please let us know which two committees you would like to be a working member of and your reason 
-					   	for wanting to be a part of those committees. We will try to give you your first choice if possible.
+						All HeeBees are part of one of four working groups called "circles". 
+					   	Please let us know which two circles you would like to be a working member of and your reason 
+					   	for wanting to be a part of those circles. We will try to give you your first choice if possible.
 					</p>
 				</g:HTML>
 		
@@ -24,7 +24,7 @@
 		        	<w:CommitteeListBox ui:field="committee1ListBox"/>
 				</g:HorizontalPanel>
 				
-				<g:HTML ui:field="reason1HTML" text="Why do you want to be on this committee?" addStyleNames="longLabel"/>
+				<g:HTML ui:field="reason1HTML" text="Why do you want to be a part of this circle?" addStyleNames="longLabel"/>
 		        <g:TextArea ui:field="reason1"/>
 				
 				<g:HorizontalPanel verticalAlignment="ALIGN_MIDDLE" addStyleNames="formRow">	
@@ -32,14 +32,14 @@
 		        	<w:CommitteeListBox ui:field="committee2ListBox"/>
 				</g:HorizontalPanel>		        
 		        
-				<g:HTML ui:field="reason2HTML" text="Why do you want to be on this committee?"  addStyleNames="longLabel"/>
+				<g:HTML ui:field="reason2HTML" text="Why do you want to be a part of this circle?"  addStyleNames="longLabel"/>
 		        <g:TextArea ui:field="reason2"/>				
 				
 				<g:VerticalPanel ui:field="healerSheetPanel">
 				
 				    <g:HTML>
 						<p>
-							 Since one of your choices is the Healer Committee,
+							 Since one of your choices is the Healer Circle,
 							 please enter the following data so we can print up your sign-up sheets.
 							 Modalities should just be the names, not descriptive sentences. 
 							 The Bio can be a paragraph including information about you, your training, 

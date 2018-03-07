@@ -31,14 +31,26 @@ public class EnumListBox<E extends Enum<E>> extends ListBox
 
 		_elements = elements;
 
-		reloadElements();
+		loadAllElements();
 	}
 
-	public void reloadElements()
+	public void loadAllElements()
 	{
+		clear();
 		addItem("Choose One");
 
 		for (E value : _elements)
+		{
+			addItem(toLabel(value), value.toString());
+		}
+	}
+
+	public void loadElements(EnumSet<E> elements)
+	{
+		clear();
+		addItem("Choose One");
+
+		for (E value : elements)
 		{
 			addItem(toLabel(value), value.toString());
 		}

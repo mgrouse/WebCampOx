@@ -16,18 +16,10 @@
 		        	<w:DietListBox ui:field="dietType"/>
 				</g:HorizontalPanel>
 				
-				<g:HTML>
-					<p>Please check the box if you require a gluten free diet.</p>
-				</g:HTML>
-				
 				<g:HorizontalPanel verticalAlignment="ALIGN_MIDDLE" addStyleNames="formRow">
 		        	<g:CheckBox ui:field="isGlutenFree"/>
 		        	<g:Label text="My diet is gluten free." addStyleNames="longLabel"/>
 				</g:HorizontalPanel>
-				
-				<g:HTML>
-					<p>Please check the box if you are lactose intolerant.</p>
-				</g:HTML>
 				
 				<g:HorizontalPanel verticalAlignment="ALIGN_MIDDLE" addStyleNames="formRow">
 		        	<g:CheckBox ui:field="isLactoseIntolerant"/>
@@ -55,7 +47,7 @@
 					</p>
 					
 					<p>	  
-						Bad examples: I have been type 2 Diabetic since I was 5, I don't like onions, Green beans give me gass."
+						Bad examples: I have been type 2 Diabetic since I was 5, I don't like onions, Green beans give me gas."
 					</p>
 				</g:HTML>
 				

@@ -98,7 +98,7 @@ public class EmailServiceImpl extends RemoteServiceServlet implements EmailServi
 		sb.append("https://www.facebook.com/groups/23767999265 \n");
 		sb.append("\n");
 		sb.append("This year's co-leads, \n");
-		sb.append("Quiggles and Dragonheart\n");
+		sb.append("Quiggles and DragonHeart\n");
 		return sb.toString();
 	}
 

@@ -2,7 +2,7 @@
 	         xmlns:g="urn:import:com.google.gwt.user.client.ui"
 	         xmlns:w="urn:import:org.hbgb.webcamp.client.widget">
 
-	<g:CaptionPanel captionText="Committee">
+	<g:CaptionPanel captionText="Circle">
 	
 		<g:VerticalPanel>
 		
@@ -13,7 +13,7 @@
 		        	<w:CommitteeListBox ui:field="committee1"/>
 				</g:HorizontalPanel>
 					
-				<g:HTML text="Why do you want to be on this committee?" styleName="longLabel"/>
+				<g:HTML text="Why do you want to be on this circle?" styleName="longLabel"/>
 	        	<g:TextArea ui:field="reason1"/>
 					
 				<g:HorizontalPanel verticalAlignment="ALIGN_MIDDLE" addStyleNames="formRow">	
@@ -21,11 +21,11 @@
 		        	<w:CommitteeListBox ui:field="committee2"/>
 				</g:HorizontalPanel>		        
 			        
-				<g:HTML text="Why do you want to be on this committee?"  styleName="longLabel"/>
+				<g:HTML text="Why do you want to be on this circle?"  styleName="longLabel"/>
 	        	<g:TextArea ui:field="reason2"/>				
 					
 				<g:HorizontalPanel verticalAlignment="ALIGN_MIDDLE" addStyleNames="formRow">	
-		        	<g:Label text="Assigned Committee"/>
+		        	<g:Label text="Assigned Circle"/>
 		        	<w:CommitteeListBox ui:field="assignedCommittee"/>
 				</g:HorizontalPanel>
 				
