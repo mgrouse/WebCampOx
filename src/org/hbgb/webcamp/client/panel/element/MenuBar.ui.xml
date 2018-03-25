@@ -17,11 +17,6 @@
 					<p:MenuItem contentName="campers-applications" text="Applications" imageResource="{resource.peers}" />
 				</g:layer>
 				
-				<!--//top increment by 1.8  -->
-				 <g:layer left='0.5em' width='10em' top='2.3em' height='3em'>
-					<p:MenuItem contentName="campers-applications-past" text="Past Years" imageResource="{resource.pin}" />
-				</g:layer>
-				
 			</g:LayoutPanel>
 		</g:stack>
 		 

@@ -10,6 +10,8 @@
  */
 package org.hbgb.webcamp.client.view.application.edit;
 
+import java.util.Date;
+
 import org.hbgb.webcamp.client.widget.TicketTypeListBox;
 import org.hbgb.webcamp.shared.enums.TicketType;
 
@@ -18,6 +20,7 @@ import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.uibinder.client.UiTemplate;
 import com.google.gwt.user.client.ui.CheckBox;
+import com.google.gwt.user.client.ui.TextBox;
 import com.google.gwt.user.client.ui.Widget;
 
 public class EditPaymentInfoViewImpl extends AbstractPartView implements IEditPaymentInfoView
@@ -25,9 +28,11 @@ public class EditPaymentInfoViewImpl extends AbstractPartView implements IEditPa
 
 	@UiTemplate(value = "EditPaymentInfoView.ui.xml")
 	static interface EditPaymentInfoViewImplBinder extends UiBinder<Widget, EditPaymentInfoViewImpl>
-	{}
+	{
+	}
 
-	private static UiBinder<Widget, EditPaymentInfoViewImpl> binder = GWT.create(EditPaymentInfoViewImplBinder.class);
+	private static UiBinder<Widget, EditPaymentInfoViewImpl> binder = GWT
+			.create(EditPaymentInfoViewImplBinder.class);
 
 	@UiField
 	CheckBox hasTicket;
@@ -37,21 +42,21 @@ public class EditPaymentInfoViewImpl extends AbstractPartView implements IEditPa
 
 	// @UiField
 	// CheckBox hasBeenInvoiced;
-	//
-	// @UiField
-	// CheckBox hasPaidDues;
-	//
-	// @UiField
-	// TextBox paidDate;
-	//
-	// @UiField
-	// CheckBox wasSubsidized;
-	//
-	// @UiField
-	// TextBox subsidyAmt;
-	//
-	// @UiField
-	// TextBox subsidyReason;
+
+	@UiField
+	CheckBox hasPaidDues;
+
+	@UiField
+	TextBox paidDate;
+
+	@UiField
+	CheckBox wasSubsidized;
+
+	@UiField
+	TextBox subsidyAmt;
+
+	@UiField
+	TextBox subsidyReason;
 
 	public EditPaymentInfoViewImpl()
 	{
@@ -95,72 +100,72 @@ public class EditPaymentInfoViewImpl extends AbstractPartView implements IEditPa
 	// return hasBeenInvoiced.getValue();
 	// }
 	//
-	// @Override
-	// public void setHasPaidDues(Boolean bool)
-	// {
-	// hasPaidDues.setValue(bool, false);
-	// }
-	//
-	// @Override
-	// public Boolean getHasPaidDues()
-	// {
-	// return hasPaidDues.getValue();
-	// }
-	//
-	// @Override
-	// public void setPaidDate(Date d)
-	// {
-	// if (d != null)
-	// {
-	// paidDate.setText(d.toString());
-	// return;
-	// }
-	// paidDate.setText("");
-	// }
-	//
-	// @Override
-	// public Date getPaidDate()
-	// {
-	// Date retVal = null;
-	// if (paidDate.getText().isEmpty())
-	// return retVal;
-	// return new Date(Date.parse(paidDate.getText()));
-	// }
-	//
-	// @Override
-	// public void setWasSubsidized(Boolean bool)
-	// {
-	// wasSubsidized.setValue(bool, false);
-	// }
-	//
-	// @Override
-	// public Boolean getWasSubsidized()
-	// {
-	// return wasSubsidized.getValue();
-	// }
-	//
-	// @Override
-	// public void setSubsidyAmt(Integer amt)
-	// {
-	// subsidyAmt.setValue(amt.toString(), false);
-	// }
-	//
-	// @Override
-	// public Integer getSubsidyAmt()
-	// {
-	// return Integer.valueOf(subsidyAmt.getValue());
-	// }
-	//
-	// @Override
-	// public void setSubsidyReason(String r)
-	// {
-	// subsidyReason.setValue(r, false);
-	// }
-	//
-	// @Override
-	// public String getSubsidyReason()
-	// {
-	// return subsidyReason.getValue();
-	// }
+	@Override
+	public void setHasPaidDues(Boolean bool)
+	{
+		hasPaidDues.setValue(bool, false);
+	}
+
+	@Override
+	public Boolean getHasPaidDues()
+	{
+		return hasPaidDues.getValue();
+	}
+
+	@Override
+	public void setPaidDate(Date d)
+	{
+		if (d != null)
+		{
+			paidDate.setText(d.toString());
+			return;
+		}
+		paidDate.setText("");
+	}
+
+	@Override
+	public Date getPaidDate()
+	{
+		Date retVal = null;
+		if (paidDate.getText().isEmpty())
+			return retVal;
+		return new Date(Date.parse(paidDate.getText()));
+	}
+
+	@Override
+	public void setWasSubsidized(Boolean bool)
+	{
+		wasSubsidized.setValue(bool, false);
+	}
+
+	@Override
+	public Boolean getWasSubsidized()
+	{
+		return wasSubsidized.getValue();
+	}
+
+	@Override
+	public void setSubsidyAmt(Integer amt)
+	{
+		subsidyAmt.setValue(amt.toString(), false);
+	}
+
+	@Override
+	public Integer getSubsidyAmt()
+	{
+		return Integer.valueOf(subsidyAmt.getValue());
+	}
+
+	@Override
+	public void setSubsidyReason(String r)
+	{
+		subsidyReason.setValue(r, false);
+	}
+
+	@Override
+	public String getSubsidyReason()
+	{
+		return subsidyReason.getValue();
+	}
 
 }

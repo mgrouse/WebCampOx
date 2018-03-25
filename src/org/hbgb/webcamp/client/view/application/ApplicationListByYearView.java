@@ -8,7 +8,7 @@ import java.util.List;
 import org.hbgb.webcamp.client.common.ColumnDefinition;
 import org.hbgb.webcamp.client.view.IView;
 
-public interface ApplicationListPastView<T> extends IView
+public interface ApplicationListByYearView<T> extends IView
 {
 	public void setPresenter(Presenter<T> var1);
 

@@ -17,10 +17,12 @@
 		        	<w:TicketTypeListBox ui:field="ticketType"/>
 				</g:HorizontalPanel>		
 				
-				<!-- <g:HorizontalPanel verticalAlignment="ALIGN_MIDDLE" addStyleNames="formRow">
+				<!-- 
+				<g:HorizontalPanel verticalAlignment="ALIGN_MIDDLE" addStyleNames="formRow">
 					<g:CheckBox ui:field="hasBeenInvoiced"/>
 					<g:Label text="Has Burner been invoiced?" />
 				</g:HorizontalPanel>
+				-->
 				
 				<g:HorizontalPanel verticalAlignment="ALIGN_MIDDLE" addStyleNames="formRow">
 					<g:CheckBox ui:field="hasPaidDues"/>
@@ -45,7 +47,7 @@
 				<g:HorizontalPanel verticalAlignment="ALIGN_MIDDLE" addStyleNames="formRow">
 					<g:Label text="Rreason / Type of subsidy?" />
 		        	<g:TextBox ui:field="subsidyReason"/>
-				</g:HorizontalPanel> -->
+				</g:HorizontalPanel> 
 				
 			</g:VerticalPanel>
 			

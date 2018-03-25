@@ -15,7 +15,8 @@ import com.google.gwt.user.client.ui.HTML;
 import com.google.gwt.user.client.ui.Widget;
 
 @SuppressWarnings("serial")
-public class ApplicationColumnDefinitionsImpl extends ArrayList<ColumnDefinition<ApplicationDetails>>
+public class ApplicationColumnDefinitionsImpl
+		extends ArrayList<ColumnDefinition<ApplicationDetails>>
 {
 	private static ApplicationColumnDefinitionsImpl instance = null;
 
@@ -125,7 +126,7 @@ public class ApplicationColumnDefinitionsImpl extends ArrayList<ColumnDefinition
 			@Override
 			public Widget render(ApplicationDetails c)
 			{
-				return new HTML(c.getDiet());
+				return new HTML(c.getEarlyTeam());
 			}
 
 			@Override
@@ -140,7 +141,7 @@ public class ApplicationColumnDefinitionsImpl extends ArrayList<ColumnDefinition
 			@Override
 			public Widget render(ApplicationDetails c)
 			{
-				return new HTML(c.getInvoiced());
+				return new HTML(c.getDiet());
 			}
 
 			@Override
@@ -149,6 +150,7 @@ public class ApplicationColumnDefinitionsImpl extends ArrayList<ColumnDefinition
 				return true;
 			}
 		});
+
 		this.add(new ColumnDefinition<ApplicationDetails>()
 		{
 

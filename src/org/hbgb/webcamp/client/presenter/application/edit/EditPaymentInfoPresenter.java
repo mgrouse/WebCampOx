@@ -24,11 +24,11 @@ public class EditPaymentInfoPresenter extends AbstractInfoBlockPresenter
 		view.setHasTicket(paymentInfo.getHasTicket());
 		view.setTicketType(paymentInfo.getTicketType());
 		// view.setHasBeenInvoiced(paymentInfo.getHasBeenInvoiced());
-		// view.setHasPaidDues(paymentInfo.getHasPaidDues());
-		// view.setPaidDate(paymentInfo.getPaidDate());
-		// view.setWasSubsidized(paymentInfo.getWasHeeBeeSubsidized());
-		// view.setSubsidyAmt(paymentInfo.getSubsidyAmt());
-		// view.setSubsidyReason(paymentInfo.getSubsidyReason());
+		view.setHasPaidDues(paymentInfo.getHasPaidDues());
+		view.setPaidDate(paymentInfo.getPaidDate());
+		view.setWasSubsidized(paymentInfo.getWasHeeBeeSubsidized());
+		view.setSubsidyAmt(paymentInfo.getSubsidyAmt());
+		view.setSubsidyReason(paymentInfo.getSubsidyReason());
 	}
 
 	@Override
@@ -38,10 +38,10 @@ public class EditPaymentInfoPresenter extends AbstractInfoBlockPresenter
 		paymentInfo.setHasTicket(view.getHasTicket());
 		paymentInfo.setTicketType(view.getTicketType());
 		// paymentInfo.setHasBeenInvoiced(view.getHasBeenInvoiced());
-		// paymentInfo.setHasPaidDues(view.getHasPaidDues());
-		// paymentInfo.setPaidDate(view.getPaidDate());
-		// paymentInfo.setWasHeeBeeSubsidized(view.getWasSubsidized());
-		// paymentInfo.setSubsidyAmt(view.getSubsidyAmt());
-		// paymentInfo.setSubsidyReason(view.getSubsidyReason());
+		paymentInfo.setHasPaidDues(view.getHasPaidDues());
+		paymentInfo.setPaidDate(view.getPaidDate());
+		paymentInfo.setWasHeeBeeSubsidized(view.getWasSubsidized());
+		paymentInfo.setSubsidyAmt(view.getSubsidyAmt());
+		paymentInfo.setSubsidyReason(view.getSubsidyReason());
 	}
 }

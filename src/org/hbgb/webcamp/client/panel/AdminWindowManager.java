@@ -17,7 +17,7 @@
 package org.hbgb.webcamp.client.panel;
 
 import org.hbgb.webcamp.client.applet.ApplicationListApplet;
-import org.hbgb.webcamp.client.applet.ApplicationListPastApplet;
+import org.hbgb.webcamp.client.applet.ApplicationListByYearApplet;
 import org.hbgb.webcamp.client.applet.EarlyTeamListApplet;
 import org.hbgb.webcamp.client.applet.UserListApplet;
 import org.hbgb.webcamp.client.event.MenuEvent;
@@ -40,7 +40,8 @@ import com.google.gwt.user.client.ui.Widget;
 public class AdminWindowManager extends ResizeComposite implements StatusHandler, MenuHandler
 {
 	static interface AdminWindowManagerBinder extends UiBinder<Widget, AdminWindowManager>
-	{}
+	{
+	}
 
 	private static UiBinder<Widget, AdminWindowManager> binder = GWT
 			.create(AdminWindowManagerBinder.class);
@@ -88,29 +89,29 @@ public class AdminWindowManager extends ResizeComposite implements StatusHandler
 	{
 		switch (menuEvent.getMenu())
 		{
-			case CAMPERS_APPLICATIONS:
-				openApplications();
-				break;
+		case CAMPERS_APPLICATIONS:
+			openApplications();
+			break;
 
-			case CAMPERS_APPLICATIONS_PAST:
-				openApplicationsPast();
-				break;
+		// case CAMPERS_APPLICATIONS_PAST:
+		// openApplicationsPast();
+		// break;
 
-			case CAMPERS_APPLICATIONS_FANCY:
-				openApplicationsFancy();
-				break;
+		case CAMPERS_APPLICATIONS_FANCY:
+			openApplicationsFancy();
+			break;
 
-			case REPORT_MEALS:
-				openMealseReport();
-				break;
+		case REPORT_MEALS:
+			openMealseReport();
+			break;
 
-			case UTILS_EARLY_TEAM:
-				openEarlyTeam();
-				break;
+		case UTILS_EARLY_TEAM:
+			openEarlyTeam();
+			break;
 
-			case DEV_USERS:
-				openUsers();
-				break;
+		case DEV_USERS:
+			openUsers();
+			break;
 
 		}
 
@@ -126,7 +127,8 @@ public class AdminWindowManager extends ResizeComposite implements StatusHandler
 
 			@Override
 			public void onFailure(Throwable caught)
-			{}
+			{
+			}
 
 			@Override
 			public void onSuccess()
@@ -147,38 +149,39 @@ public class AdminWindowManager extends ResizeComposite implements StatusHandler
 
 			@Override
 			public void onFailure(Throwable caught)
-			{}
+			{
+			}
 
 			@Override
 			public void onSuccess()
 			{
 				WorkTab wTab = new WorkTab();
-				ApplicationListApplet appList = new ApplicationListApplet();
+				ApplicationListByYearApplet appList = new ApplicationListByYearApplet();
 				appList.run(wTab.getScrollPanel());
 				contentPanel.addTab("Application List", wTab);
 			}
 		});
 	}
 
-	private void openApplicationsPast()
-	{
-		GWT.runAsync(new RunAsyncCallback()
-		{
-
-			@Override
-			public void onFailure(Throwable caught)
-			{}
-
-			@Override
-			public void onSuccess()
-			{
-				WorkTab wTab = new WorkTab();
-				ApplicationListPastApplet appList = new ApplicationListPastApplet();
-				appList.run(wTab.getScrollPanel());
-				contentPanel.addTab("Past Years", wTab);
-			}
-		});
-	}
+	// private void openApplicationsPast()
+	// {
+	// GWT.runAsync(new RunAsyncCallback()
+	// {
+	//
+	// @Override
+	// public void onFailure(Throwable caught)
+	// {}
+	//
+	// @Override
+	// public void onSuccess()
+	// {
+	// WorkTab wTab = new WorkTab();
+	// ApplicationListPastApplet appList = new ApplicationListPastApplet();
+	// appList.run(wTab.getScrollPanel());
+	// contentPanel.addTab("Past Years", wTab);
+	// }
+	// });
+	// }
 
 	private void openMealseReport()
 	{
@@ -196,7 +199,8 @@ public class AdminWindowManager extends ResizeComposite implements StatusHandler
 
 			@Override
 			public void onFailure(Throwable caught)
-			{}
+			{
+			}
 
 			@Override
 			public void onSuccess()
@@ -216,7 +220,8 @@ public class AdminWindowManager extends ResizeComposite implements StatusHandler
 
 			@Override
 			public void onFailure(Throwable caught)
-			{}
+			{
+			}
 
 			@Override
 			public void onSuccess()

@@ -42,7 +42,8 @@ public class ApplicationListViewImpl<T> extends Composite implements Application
 	@SuppressWarnings("rawtypes")
 	@UiTemplate(value = "ApplicationListView.ui.xml")
 	static interface ApplicationViewUiBinder extends UiBinder<Widget, ApplicationListViewImpl>
-	{}
+	{
+	}
 
 	private static ApplicationViewUiBinder uiBinder = GWT.create(ApplicationViewUiBinder.class);
 
@@ -184,10 +185,10 @@ public class ApplicationListViewImpl<T> extends Composite implements Application
 			{
 				newApps = newApps + 1;
 			}
-			if (ad.getInvoiced().equals("true"))
-			{
-				invoiced = invoiced + 1;
-			}
+			// if (ad.getInvoiced().equals("true"))
+			// {
+			// invoiced = invoiced + 1;
+			// }
 			if (ad.getPaid().equals("true"))
 			{
 				paid = paid + 1;

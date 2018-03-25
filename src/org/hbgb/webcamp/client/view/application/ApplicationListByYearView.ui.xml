@@ -1,0 +1,87 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui">
+	
+	<ui:style>
+		.applicationViewButtonHPanel 
+		{
+			margin: 5px 0px 0x 5px;
+		}
+
+		.applicationViewFlexTable 
+		{
+			margin: 5px 0px 5px 0px;
+		}
+	</ui:style>
+
+	<g:CaptionPanel captionText="List of Applications">
+		<g:VerticalPanel>
+			
+			<g:HorizontalPanel>
+			    
+			    <g:VerticalPanel>
+					<g:HorizontalPanel verticalAlignment="ALIGN_MIDDLE" addStyleNames="formRow">	
+				        <g:Label addStyleNames="mediumLabel" text="Total Applicants"/>
+				    	<g:TextBox ui:field="totalApps"/>
+					</g:HorizontalPanel>	
+					
+					<g:HorizontalPanel verticalAlignment="ALIGN_MIDDLE" addStyleNames="formRow">	
+				        <g:Label addStyleNames="mediumLabel" text="New Applicants"/>
+				    	<g:TextBox ui:field="newApps"/>
+					</g:HorizontalPanel>
+					
+					<g:HorizontalPanel verticalAlignment="ALIGN_MIDDLE" addStyleNames="formRow">	
+				        <g:Label addStyleNames="mediumLabel" text="Accepted Applicants"/>
+				    	<g:TextBox ui:field="acceptedApps"/>
+					</g:HorizontalPanel>
+					
+					<g:HorizontalPanel verticalAlignment="ALIGN_MIDDLE" addStyleNames="formRow">	
+				        <g:Label addStyleNames="mediumLabel" text="Accepted ticket holders"/>
+				    	<g:TextBox ui:field="ticketApps"/>
+					</g:HorizontalPanel>
+					
+					<g:HorizontalPanel verticalAlignment="ALIGN_MIDDLE" addStyleNames="formRow">	
+				        <g:Label addStyleNames="mediumLabel" text="Paid Applicants"/>
+				    	<g:TextBox ui:field="paidApps"/>
+					</g:HorizontalPanel>
+				</g:VerticalPanel>
+				
+			    <g:VerticalPanel>
+					<g:HorizontalPanel verticalAlignment="ALIGN_MIDDLE" addStyleNames="formRow">	
+				        <g:Label addStyleNames="mediumLabel" text="Faeries"/>
+				    	<g:TextBox ui:field="faerieApps"/>
+					</g:HorizontalPanel>
+					
+					<g:HorizontalPanel verticalAlignment="ALIGN_MIDDLE" addStyleNames="formRow">	
+				        <g:Label addStyleNames="mediumLabel" text="Healers"/>
+				    	<g:TextBox ui:field="healerApps"/>
+					</g:HorizontalPanel>
+					
+					<g:HorizontalPanel verticalAlignment="ALIGN_MIDDLE" addStyleNames="formRow">	
+				        <g:Label addStyleNames="mediumLabel" text="Infrastructure"/>
+				    	<g:TextBox ui:field="infraApps"/>
+					</g:HorizontalPanel>
+					
+					<g:HorizontalPanel verticalAlignment="ALIGN_MIDDLE" addStyleNames="formRow">	
+				        <g:Label addStyleNames="mediumLabel" text="Kitchen"/>
+				    	<g:TextBox ui:field="kitchenApps"/>
+					 </g:HorizontalPanel>
+				</g:VerticalPanel>
+				
+			</g:HorizontalPanel>
+			
+			<g:HorizontalPanel addStyleNames="{style.applicationViewButtonHPanel}">
+				<!-- 
+				<g:Button ui:field="addButton">Add</g:Button>
+				<g:Button ui:field="deleteButton">Delete</g:Button>
+				 -->
+				 <g:ListBox ui:field="yearListBox"/>
+				 <g:Button ui:field="refreshButton">Refresh</g:Button>
+			</g:HorizontalPanel>
+			
+			
+			<g:FlexTable ui:field="table" addStyleNames="{style.applicationViewFlexTable}"/>
+			
+		</g:VerticalPanel>
+	</g:CaptionPanel>
+</ui:UiBinder> 

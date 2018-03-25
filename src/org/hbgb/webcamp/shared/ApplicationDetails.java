@@ -10,8 +10,9 @@ public class ApplicationDetails implements Comparable<ApplicationDetails>, Seria
 	private String displayName;
 	private String playaName;
 	private String committee;
+	private String earlyTeam;
 	private String ticket;
-	private String invoiced;
+	// private String invoiced;
 	private String paid;
 	private String diet;
 	private String email;
@@ -21,16 +22,18 @@ public class ApplicationDetails implements Comparable<ApplicationDetails>, Seria
 		new ApplicationDetails(null, "", "", "", "", "", "", "", "", "");
 	}
 
-	public ApplicationDetails(String key, String status, String displayName, String playaName, String committee, String ticket, String invoiced,
-			String paid, String diet, String email)
+	public ApplicationDetails(String key, String status, String displayName, String playaName,
+			String committee, String earlyTeam, String ticket, String paid, String diet,
+			String email)
 	{
 		this.encodedKey = key;
 		this.status = status;
 		this.displayName = displayName;
 		this.playaName = playaName;
 		this.committee = committee;
+		this.earlyTeam = earlyTeam;
 		this.ticket = ticket;
-		this.invoiced = invoiced;
+		// this.invoiced = invoiced;
 		this.paid = paid;
 		this.diet = diet;
 		this.email = email;
@@ -86,15 +89,25 @@ public class ApplicationDetails implements Comparable<ApplicationDetails>, Seria
 		this.committee = committee;
 	}
 
-	public String getInvoiced()
+	public String getEarlyTeam()
 	{
-		return invoiced;
+		return earlyTeam;
 	}
 
-	public void setInvoiced(String invoiced)
+	public void setEarlyTeam(String earlyTeam)
 	{
-		this.invoiced = invoiced;
+		this.earlyTeam = earlyTeam;
 	}
+
+	// public String getInvoiced()
+	// {
+	// return invoiced;
+	// }
+	//
+	// public void setInvoiced(String invoiced)
+	// {
+	// this.invoiced = invoiced;
+	// }
 
 	public String getPaid()
 	{

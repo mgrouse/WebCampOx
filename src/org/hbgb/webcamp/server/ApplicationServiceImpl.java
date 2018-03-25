@@ -444,17 +444,23 @@ public class ApplicationServiceImpl extends RemoteServiceServlet implements Appl
 			committee = a.getCommitteeInfoBlock().getAssignedCommittee().toString();
 		}
 
+		String earlyTeam = "NULL";
+		if (null != a.getLogisticsInfoBlock().getIsAssignedEarlyTeam())
+		{
+			earlyTeam = a.getLogisticsInfoBlock().getIsAssignedEarlyTeam().toString();
+		}
+
 		String ticket = "NULL";
 		if (null != a.getPaymentInfoBlock().getHasTicket())
 		{
 			ticket = a.getPaymentInfoBlock().getHasTicket().toString();
 		}
 
-		String invoiced = "NULL";
-		if (null != a.getPaymentInfoBlock().getHasBeenInvoiced())
-		{
-			invoiced = a.getPaymentInfoBlock().getHasBeenInvoiced().toString();
-		}
+		// String invoiced = "NULL";
+		// if (null != a.getPaymentInfoBlock().getHasBeenInvoiced())
+		// {
+		// invoiced = a.getPaymentInfoBlock().getHasBeenInvoiced().toString();
+		// }
 
 		String paid = "NULL";
 		if (null != a.getPaymentInfoBlock().getHasPaidDues())
@@ -471,7 +477,7 @@ public class ApplicationServiceImpl extends RemoteServiceServlet implements Appl
 		String email = a.getEmail();
 
 		ApplicationDetails d = new ApplicationDetails(encodedKey, status, displayName, playaName,
-				committee, ticket, invoiced, paid, diet, email);
+				committee, earlyTeam, ticket, paid, diet, email);
 
 		return d;
 	}

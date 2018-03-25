@@ -18,7 +18,7 @@ import org.hbgb.webcamp.client.common.SelectionModel;
 import org.hbgb.webcamp.client.event.application.EditApplicationEvent;
 import org.hbgb.webcamp.client.presenter.IPresenter;
 import org.hbgb.webcamp.client.view.ViewFinder;
-import org.hbgb.webcamp.client.view.application.ApplicationListPastView;
+import org.hbgb.webcamp.client.view.application.ApplicationListByYearView;
 import org.hbgb.webcamp.shared.ApplicationDetails;
 
 import com.google.gwt.event.shared.HandlerManager;
@@ -26,21 +26,25 @@ import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.HasWidgets;
 
-public class ApplicationListPastPresenter
-		implements IPresenter, ApplicationListPastView.Presenter<ApplicationDetails>
+public class ApplicationListByYearPresenter
+		implements IPresenter, ApplicationListByYearView.Presenter<ApplicationDetails>
 {
 	private List<ApplicationDetails> applicationDetails;
 	private final ApplicationServiceAsync rpcService = AsyncServiceFinder.getApplicationService();
 	private final HandlerManager eventBus;
-	private final ApplicationListPastView<ApplicationDetails> view;
+	private final ApplicationListByYearView<ApplicationDetails> view;
 	private final SelectionModel<ApplicationDetails> selectionModel;
 	private HasWidgets screen;
 
-	public ApplicationListPastPresenter(HandlerManager bus)
+	public ApplicationListByYearPresenter(HandlerManager bus)
 	{
 		eventBus = bus;
+
 		view = ViewFinder.getApplicationListPastView();
+		view.clear();
+
 		selectionModel = new SelectionModel<>();
+
 		view.setPresenter(this);
 		view.setColumnDefinitions(
 				ApplicationColumnDefinitionsFactory.getApplicationColumnDefinitions());
@@ -61,8 +65,6 @@ public class ApplicationListPastPresenter
 	@Override
 	public void onDeleteButtonClicked()
 	{
-		// does this help?
-		// view.clear();
 		// deleteSelectedApplications();
 	}
 
@@ -99,10 +101,11 @@ public class ApplicationListPastPresenter
 	@Override
 	public void go()
 	{
-		view.clear();
 		screen.clear();
+		view.clear();
 		screen.add(view.asWidget());
 
+		fetchApplicationDetails();
 	}
 
 	public void setApplicationDetails(List<ApplicationDetails> applicationDetails)
@@ -131,7 +134,6 @@ public class ApplicationListPastPresenter
 					public void onSuccess(ArrayList<ApplicationDetails> result)
 					{
 						applicationDetails = result;
-
 						view.setRowData(applicationDetails);
 					}
 

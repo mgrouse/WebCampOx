@@ -19,6 +19,9 @@ import java.util.List;
 
 import org.hbgb.webcamp.client.common.ColumnDefinition;
 import org.hbgb.webcamp.client.widget.LoadingPopup;
+import org.hbgb.webcamp.shared.ApplicationDetails;
+import org.hbgb.webcamp.shared.enums.ApplicationStatus;
+import org.hbgb.webcamp.shared.enums.Committee;
 
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.dom.client.ClickEvent;
@@ -35,44 +38,46 @@ import com.google.gwt.user.client.ui.ListBox;
 import com.google.gwt.user.client.ui.TextBox;
 import com.google.gwt.user.client.ui.Widget;
 
-public class ApplicationListPastViewImpl<T> extends Composite implements ApplicationListPastView<T>
+public class ApplicationListByYearViewImpl<T> extends Composite
+		implements ApplicationListByYearView<T>
 {
 	@SuppressWarnings("rawtypes")
-	@UiTemplate(value = "ApplicationListPastView.ui.xml")
-	static interface ApplicationViewUiBinder extends UiBinder<Widget, ApplicationListPastViewImpl>
-	{}
+	@UiTemplate(value = "ApplicationListByYearView.ui.xml")
+	static interface ApplicationViewUiBinder extends UiBinder<Widget, ApplicationListByYearViewImpl>
+	{
+	}
 
 	private static ApplicationViewUiBinder uiBinder = GWT.create(ApplicationViewUiBinder.class);
 
 	@UiField
 	TextBox totalApps;
 
-	// @UiField
-	// TextBox newApps;
-	//
-	// @UiField
-	// TextBox acceptedApps;
-	//
+	@UiField
+	TextBox newApps;
+
+	@UiField
+	TextBox acceptedApps;
+
 	// @UiField
 	// TextBox invoicedApps;
-	//
-	// @UiField
-	// TextBox paidApps;
-	//
-	// @UiField
-	// TextBox ticketApps;
-	//
-	// @UiField
-	// TextBox faerieApps;
-	//
-	// @UiField
-	// TextBox healerApps;
-	//
-	// @UiField
-	// TextBox infraApps;
-	//
-	// @UiField
-	// TextBox kitchenApps;
+
+	@UiField
+	TextBox paidApps;
+
+	@UiField
+	TextBox ticketApps;
+
+	@UiField
+	TextBox faerieApps;
+
+	@UiField
+	TextBox healerApps;
+
+	@UiField
+	TextBox infraApps;
+
+	@UiField
+	TextBox kitchenApps;
 
 	@UiField
 	ListBox yearListBox;
@@ -85,26 +90,27 @@ public class ApplicationListPastViewImpl<T> extends Composite implements Applica
 
 	LoadingPopup loadPop;
 
-	private ApplicationListPastView.Presenter<T> presenter;
+	private ApplicationListByYearView.Presenter<T> presenter;
 	private List<ColumnDefinition<T>> columnDefinitions;
 	private List<T> rowData;
 
-	public ApplicationListPastViewImpl()
+	public ApplicationListByYearViewImpl()
 	{
 		initWidget(uiBinder.createAndBindUi(this));
 		table.setBorderWidth(1);
 		table.setCellPadding(5);
 		loadPop = new LoadingPopup();
 
-		yearListBox.addItem("Choose One");
 		yearListBox.addItem("2018");
 		yearListBox.addItem("2017");
-		yearListBox.addItem("2016");
+		// yearListBox.addItem("2016");
+		// yearListBox.addItem("2015");
+		// yearListBox.addItem("2014"); there are errors with this year
 
 	}
 
 	@Override
-	public void setPresenter(ApplicationListPastView.Presenter<T> pres)
+	public void setPresenter(ApplicationListByYearView.Presenter<T> pres)
 	{
 		presenter = pres;
 	}
@@ -122,10 +128,11 @@ public class ApplicationListPastViewImpl<T> extends Composite implements Applica
 	}
 
 	@UiHandler(value = { "refreshButton" })
-	void onNextButtonClicked(ClickEvent event)
+	void onRefreshButtonClicked(ClickEvent event)
 	{
 		if ((presenter != null))
 		{
+			loadPop.go();
 			refreshButton.setEnabled(false);
 			presenter.onRefreshButtonClicked();
 		}
@@ -134,15 +141,14 @@ public class ApplicationListPastViewImpl<T> extends Composite implements Applica
 	@Override
 	public void setRowData(List<T> data)
 	{
-		// Integer kitchen = 0;
-		// Integer infra = 0;
-		// Integer healer = 0;
-		// Integer faerie = 0;
-		// Integer acceptedTicket = 0;
-		// Integer paid = 0;
-		// Integer invoiced = 0;
-		// Integer accepted = 0;
-		// Integer newApps = 0;
+		Integer kitchen = 0;
+		Integer infra = 0;
+		Integer healer = 0;
+		Integer faerie = 0;
+		Integer acceptedTicket = 0;
+		Integer paid = 0;
+		Integer accepted = 0;
+		Integer newApps = 0;
 		Integer total = data.size();
 		table.removeAllRows();
 
@@ -153,12 +159,11 @@ public class ApplicationListPastViewImpl<T> extends Composite implements Applica
 		table.setWidget(0, 3, new HTML("Playa Name"));
 		table.setWidget(0, 4, new HTML("Email"));
 		table.setWidget(0, 5, new HTML("Committee"));
-		table.setWidget(0, 6, new HTML("Diet"));
-		table.setWidget(0, 7, new HTML("Invoiced"));
+		table.setWidget(0, 6, new HTML("Early Team"));
+		table.setWidget(0, 7, new HTML("Diet"));
+		// table.setWidget(0, 7, new HTML("Invoiced"));
 		table.setWidget(0, 8, new HTML("Paid"));
 		table.setWidget(0, 9, new HTML("ticket"));
-
-		loadPop.go();
 
 		int i = 0;
 		while (i < rowData.size())
@@ -171,58 +176,57 @@ public class ApplicationListPastViewImpl<T> extends Composite implements Applica
 				table.setWidget(i + 1, j, columnDefinition.render(t));
 				++j;
 			}
+
+			ApplicationDetails ad = (ApplicationDetails) t;
+			if (ad.getStatus().equals(ApplicationStatus.ACCEPTED.toString()))
+			{
+				accepted = accepted + 1;
+				if (ad.getCommittee().equals(Committee.Faeries.toString()))
+				{
+					faerie = faerie + 1;
+				}
+				if (ad.getCommittee().equals(Committee.Healers.toString()))
+				{
+					healer = healer + 1;
+				}
+				if (ad.getCommittee().equals(Committee.Infrastructure.toString()))
+				{
+					infra = infra + 1;
+				}
+				if (ad.getCommittee().equals(Committee.Kitchen.toString()))
+				{
+					kitchen = kitchen + 1;
+				}
+				if (ad.getTicket().equals("true"))
+				{
+					acceptedTicket = acceptedTicket + 1;
+				}
+			}
+			if (ad.getStatus().equals(ApplicationStatus.NEW.toString()))
+			{
+				newApps = newApps + 1;
+			}
+			// if (ad.getInvoiced().equals("true"))
+			// {
+			// invoiced = invoiced + 1;
+			// }
+			if (ad.getPaid().equals("true"))
+			{
+				paid = paid + 1;
+			}
 			++i;
 		}
 
-		// ApplicationDetails ad = (ApplicationDetails) t;
-		// if (ad.getStatus().equals(ApplicationStatus.ACCEPTED.toString()))
-		// {
-		// accepted = accepted + 1;
-		// if (ad.getCommittee().equals(Committee.Faeries.toString()))
-		// {
-		// faerie = faerie + 1;
-		// }
-		// if (ad.getCommittee().equals(Committee.Healers.toString()))
-		// {
-		// healer = healer + 1;
-		// }
-		// if
-		// (ad.getCommittee().equals(Committee.Infrastructure.toString()))
-		// {
-		// infra = infra + 1;
-		// }
-		// if (ad.getCommittee().equals(Committee.Kitchen.toString()))
-		// {
-		// kitchen = kitchen + 1;
-		// }
-		// if (ad.getTicket().equals("true"))
-		// {
-		// acceptedTicket = acceptedTicket + 1;
-		// }
-		// }
-		// if (ad.getStatus().equals(ApplicationStatus.NEW.toString()))
-		// {
-		// newApps = newApps + 1;
-		// }
-		// if (ad.getInvoiced().equals("true"))
-		// {
-		// invoiced = invoiced + 1;
-		// }
-		// if (ad.getPaid().equals("true"))
-		// {
-		// paid = paid + 1;
-		// }
-
 		setTotalApps(total.toString());
-		// setNewApps(newApps.toString());
-		// setAcceptedApps(accepted.toString());
-		// setTicketApps(acceptedTicket.toString());
-		// setInvoicedApps(invoiced.toString());
-		// setPaidApps(paid.toString());
-		// setFaerieApps(faerie.toString());
-		// setHealerApps(healer.toString());
-		// setInfraApps(infra.toString());
-		// setKitchenApps(kitchen.toString());
+		setNewApps(newApps.toString());
+		setAcceptedApps(accepted.toString());
+		setTicketApps(acceptedTicket.toString());
+		setPaidApps(paid.toString());
+
+		setFaerieApps(faerie.toString());
+		setHealerApps(healer.toString());
+		setInfraApps(infra.toString());
+		setKitchenApps(kitchen.toString());
 
 		refreshButton.setEnabled(true);
 		loadPop.stop();
@@ -290,50 +294,45 @@ public class ApplicationListPastViewImpl<T> extends Composite implements Applica
 		totalApps.setValue(value);
 	}
 
-	// public void setNewApps(String value)
-	// {
-	// newApps.setValue(value);
-	// }
-	//
-	// public void setAcceptedApps(String value)
-	// {
-	// acceptedApps.setValue(value);
-	// }
-	//
-	// public void setInvoicedApps(String value)
-	// {
-	// invoicedApps.setValue(value);
-	// }
-	//
-	// public void setPaidApps(String value)
-	// {
-	// paidApps.setValue(value);
-	// }
-	//
-	// public void setFaerieApps(String value)
-	// {
-	// faerieApps.setValue(value);
-	// }
-	//
-	// public void setHealerApps(String value)
-	// {
-	// healerApps.setValue(value);
-	// }
-	//
-	// public void setInfraApps(String value)
-	// {
-	// infraApps.setValue(value);
-	// }
-	//
-	// public void setKitchenApps(String value)
-	// {
-	// kitchenApps.setValue(value);
-	// }
-	//
-	// public void setTicketApps(String value)
-	// {
-	// ticketApps.setValue(value);
-	// }
+	public void setNewApps(String value)
+	{
+		newApps.setValue(value);
+	}
+
+	public void setAcceptedApps(String value)
+	{
+		acceptedApps.setValue(value);
+	}
+
+	public void setPaidApps(String value)
+	{
+		paidApps.setValue(value);
+	}
+
+	public void setFaerieApps(String value)
+	{
+		faerieApps.setValue(value);
+	}
+
+	public void setHealerApps(String value)
+	{
+		healerApps.setValue(value);
+	}
+
+	public void setInfraApps(String value)
+	{
+		infraApps.setValue(value);
+	}
+
+	public void setKitchenApps(String value)
+	{
+		kitchenApps.setValue(value);
+	}
+
+	public void setTicketApps(String value)
+	{
+		ticketApps.setValue(value);
+	}
 
 	@Override
 	public Widget asWidget()
@@ -344,8 +343,8 @@ public class ApplicationListPastViewImpl<T> extends Composite implements Applica
 	@Override
 	public void clear()
 	{
+		loadPop.go();
 		table.removeAllRows();
-		// loadPop.go();
 	}
 
 }

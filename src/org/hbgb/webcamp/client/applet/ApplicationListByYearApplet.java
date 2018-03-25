@@ -14,22 +14,22 @@ import org.hbgb.webcamp.client.event.application.EditApplicationEvent;
 import org.hbgb.webcamp.client.event.application.EditApplicationEventHandler;
 import org.hbgb.webcamp.client.event.application.ListApplicationEvent;
 import org.hbgb.webcamp.client.event.application.ListApplicationEventHandler;
-import org.hbgb.webcamp.client.presenter.application.ApplicationListPastPresenter;
+import org.hbgb.webcamp.client.presenter.application.ApplicationListByYearPresenter;
 import org.hbgb.webcamp.client.presenter.application.EditWholeApplicationPresenter;
 
 import com.google.gwt.event.shared.HandlerManager;
 import com.google.gwt.user.client.ui.HasWidgets;
 
-public class ApplicationListPastApplet implements IApplet
+public class ApplicationListByYearApplet implements IApplet
 {
 	private final HandlerManager eventBus = new HandlerManager(null);
 	private HasWidgets screen;
-	private final ApplicationListPastPresenter appListPastPresenter = new ApplicationListPastPresenter(
+	private final ApplicationListByYearPresenter appListPastPresenter = new ApplicationListByYearPresenter(
 			eventBus);
 	private final EditWholeApplicationPresenter editWholeApplicationPresenter = new EditWholeApplicationPresenter(
 			eventBus);
 
-	public ApplicationListPastApplet()
+	public ApplicationListByYearApplet()
 	{
 		registerEvents();
 	}
@@ -44,6 +44,7 @@ public class ApplicationListPastApplet implements IApplet
 			{
 				screen.clear();
 				editWholeApplicationPresenter.setScreen(screen);
+				// this one makes everything ready to look at
 				editWholeApplicationPresenter.setKey(event.getKey());
 				editWholeApplicationPresenter.setKeyList(event.getKeyList());
 			}
@@ -65,6 +66,7 @@ public class ApplicationListPastApplet implements IApplet
 	{
 		screen = container;
 		appListPastPresenter.setScreen(container);
+
 		appListPastPresenter.go();
 	}
 

@@ -9,8 +9,8 @@ import org.hbgb.webcamp.client.view.admin.IUserEditView;
 import org.hbgb.webcamp.client.view.admin.UserEditViewImpl;
 import org.hbgb.webcamp.client.view.admin.UserListView;
 import org.hbgb.webcamp.client.view.admin.UserListViewImpl;
-import org.hbgb.webcamp.client.view.application.ApplicationListPastView;
-import org.hbgb.webcamp.client.view.application.ApplicationListPastViewImpl;
+import org.hbgb.webcamp.client.view.application.ApplicationListByYearView;
+import org.hbgb.webcamp.client.view.application.ApplicationListByYearViewImpl;
 import org.hbgb.webcamp.client.view.application.ApplicationListView;
 import org.hbgb.webcamp.client.view.application.ApplicationListViewImpl;
 import org.hbgb.webcamp.client.view.application.EditApplicationViewImpl;
@@ -44,7 +44,7 @@ public class ViewFinder
 	private static UserListView<HbgbUserDetails> listUserView;
 	private static IEditApplicationView editApplicationView;
 	private static ApplicationListView<ApplicationDetails> applicationListView;
-	private static ApplicationListPastView<ApplicationDetails> applicationListPastView;
+	private static ApplicationListByYearView<ApplicationDetails> applicationListPastView;
 	private static IStartView enterView;
 	private static InputLogisticsInfoView editLogisticsView;
 	private static InputShelterInfoView editShelterView;
@@ -98,11 +98,11 @@ public class ViewFinder
 		return applicationListView;
 	}
 
-	public static ApplicationListPastView<ApplicationDetails> getApplicationListPastView()
+	public static ApplicationListByYearView<ApplicationDetails> getApplicationListPastView()
 	{
 		if (applicationListPastView != null)
 			return applicationListPastView;
-		applicationListPastView = new ApplicationListPastViewImpl<>();
+		applicationListPastView = new ApplicationListByYearViewImpl<>();
 		return applicationListPastView;
 	}
 
