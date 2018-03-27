@@ -20,7 +20,7 @@ import org.hbgb.webcamp.shared.Burner;
 import org.hbgb.webcamp.shared.Demographics;
 import org.hbgb.webcamp.shared.HealerSheetDetails;
 import org.hbgb.webcamp.shared.HealerSheetInfoBlock;
-import org.hbgb.webcamp.shared.enums.Committee;
+import org.hbgb.webcamp.shared.enums.Circle;
 
 import com.google.gwt.user.server.rpc.RemoteServiceServlet;
 
@@ -193,7 +193,7 @@ public class HealerSheetServiceImpl extends RemoteServiceServlet implements Heal
 	{
 		ArrayList<HealerSheetDetails> details = new ArrayList<>();
 		ApplicationServiceImpl appServ = new ApplicationServiceImpl();
-		List<String> healerEmails = appServ.getCommitteeEmails(Committee.Healers);
+		List<String> healerEmails = appServ.getCommitteeEmails(Circle.Healers);
 
 		HealerSheetInfoBlock hs = null;
 

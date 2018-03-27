@@ -1,24 +1,11 @@
-/*
- * Decompiled with CFR 0_115.
- * 
- * Could not load the following classes: com.google.gwt.core.client.GWT
- * com.google.gwt.event.dom.client.ChangeEvent
- * com.google.gwt.event.dom.client.ClickEvent
- * com.google.gwt.uibinder.client.UiBinder
- * com.google.gwt.uibinder.client.UiField
- * com.google.gwt.uibinder.client.UiHandler
- * com.google.gwt.uibinder.client.UiTemplate com.google.gwt.user.client.Element
- * com.google.gwt.user.client.ui.CheckBox com.google.gwt.user.client.ui.Panel
- * com.google.gwt.user.client.ui.TextArea com.google.gwt.user.client.ui.TextBox
- * com.google.gwt.user.client.ui.Widget
- */
+
 package org.hbgb.webcamp.client.view.application.input;
 
 import org.hbgb.webcamp.client.presenter.ISequentialPresenter;
 import org.hbgb.webcamp.client.view.AbstractView;
-import org.hbgb.webcamp.client.widget.CommitteeListBox;
+import org.hbgb.webcamp.client.widget.CircleListBox;
 import org.hbgb.webcamp.client.widget.MessagesWidget;
-import org.hbgb.webcamp.shared.enums.Committee;
+import org.hbgb.webcamp.shared.enums.Circle;
 
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.dom.client.ChangeEvent;
@@ -40,7 +27,8 @@ public class InputCommitteeInfoViewImpl extends AbstractView implements InputCom
 	@UiTemplate(value = "InputCommitteeInfoView.ui.xml")
 	static interface InputComitteeInfoViewImplBinder
 			extends UiBinder<Widget, InputCommitteeInfoViewImpl>
-	{}
+	{
+	}
 
 	private static UiBinder<Widget, InputCommitteeInfoViewImpl> binder = GWT
 			.create(InputComitteeInfoViewImplBinder.class);
@@ -52,7 +40,7 @@ public class InputCommitteeInfoViewImpl extends AbstractView implements InputCom
 	Label committee1Label;
 
 	@UiField
-	CommitteeListBox committee1ListBox;
+	CircleListBox committee1ListBox;
 
 	@UiField
 	HTML reason1HTML;
@@ -64,7 +52,7 @@ public class InputCommitteeInfoViewImpl extends AbstractView implements InputCom
 	Label committee2Label;
 
 	@UiField
-	CommitteeListBox committee2ListBox;
+	CircleListBox committee2ListBox;
 
 	@UiField
 	HTML reason2HTML;
@@ -145,8 +133,8 @@ public class InputCommitteeInfoViewImpl extends AbstractView implements InputCom
 
 	private void setHealerSheetPanelVisibility()
 	{
-		if (committee1ListBox.getSelectedEnumValue() == Committee.Healers
-				|| committee2ListBox.getSelectedEnumValue() == Committee.Healers)
+		if (committee1ListBox.getSelectedEnumValue() == Circle.Healers
+				|| committee2ListBox.getSelectedEnumValue() == Circle.Healers)
 		{
 			healerSheetPanel.setVisible(true);
 		}
@@ -248,14 +236,14 @@ public class InputCommitteeInfoViewImpl extends AbstractView implements InputCom
 	}
 
 	@Override
-	public void setCommittee1(Committee c)
+	public void setCommittee1(Circle c)
 	{
 		committee1ListBox.setSelectedValue(c);
 		setHealerSheetPanelVisibility();
 	}
 
 	@Override
-	public Committee getCommittee1()
+	public Circle getCommittee1()
 	{
 		return committee1ListBox.getSelectedEnumValue();
 	}
@@ -273,14 +261,14 @@ public class InputCommitteeInfoViewImpl extends AbstractView implements InputCom
 	}
 
 	@Override
-	public void setCommittee2(Committee c)
+	public void setCommittee2(Circle c)
 	{
 		committee2ListBox.setSelectedValue(c);
 		setHealerSheetPanelVisibility();
 	}
 
 	@Override
-	public Committee getCommittee2()
+	public Circle getCommittee2()
 	{
 		return committee2ListBox.getSelectedEnumValue();
 	}

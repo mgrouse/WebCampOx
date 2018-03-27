@@ -14,11 +14,12 @@ public abstract class AbstractView extends Composite implements IView
 	@Override
 	public Widget asWidget()
 	{
-		return this;
+		return this.asWidget();
 	}
 
 	@Override
 	public void clear()
-	{}
+	{
+	}
 
 }

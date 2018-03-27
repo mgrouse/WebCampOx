@@ -12,12 +12,12 @@
  */
 package org.hbgb.webcamp.client.widget;
 
-import org.hbgb.webcamp.shared.enums.Committee;
+import org.hbgb.webcamp.shared.enums.Circle;
 
-public class CommitteeListBox extends EnumListBox<Committee>
+public class CircleListBox extends EnumListBox<Circle>
 {
-	public CommitteeListBox()
+	public CircleListBox()
 	{
-		super(Committee.class);
+		super(Circle.class);
 	}
 }

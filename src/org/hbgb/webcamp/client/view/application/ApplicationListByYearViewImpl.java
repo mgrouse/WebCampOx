@@ -21,7 +21,7 @@ import org.hbgb.webcamp.client.common.ColumnDefinition;
 import org.hbgb.webcamp.client.widget.LoadingPopup;
 import org.hbgb.webcamp.shared.ApplicationDetails;
 import org.hbgb.webcamp.shared.enums.ApplicationStatus;
-import org.hbgb.webcamp.shared.enums.Committee;
+import org.hbgb.webcamp.shared.enums.Circle;
 
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.dom.client.ClickEvent;
@@ -181,19 +181,19 @@ public class ApplicationListByYearViewImpl<T> extends Composite
 			if (ad.getStatus().equals(ApplicationStatus.ACCEPTED.toString()))
 			{
 				accepted = accepted + 1;
-				if (ad.getCommittee().equals(Committee.Faeries.toString()))
+				if (ad.getCommittee().equals(Circle.Faeries.toString()))
 				{
 					faerie = faerie + 1;
 				}
-				if (ad.getCommittee().equals(Committee.Healers.toString()))
+				if (ad.getCommittee().equals(Circle.Healers.toString()))
 				{
 					healer = healer + 1;
 				}
-				if (ad.getCommittee().equals(Committee.Infrastructure.toString()))
+				if (ad.getCommittee().equals(Circle.Infrastructure.toString()))
 				{
 					infra = infra + 1;
 				}
-				if (ad.getCommittee().equals(Committee.Kitchen.toString()))
+				if (ad.getCommittee().equals(Circle.Kitchen.toString()))
 				{
 					kitchen = kitchen + 1;
 				}

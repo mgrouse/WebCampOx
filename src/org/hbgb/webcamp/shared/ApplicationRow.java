@@ -14,7 +14,7 @@ package org.hbgb.webcamp.shared;
 import java.io.Serializable;
 
 import org.hbgb.webcamp.shared.enums.ApplicationStatus;
-import org.hbgb.webcamp.shared.enums.Committee;
+import org.hbgb.webcamp.shared.enums.Circle;
 import org.hbgb.webcamp.shared.enums.DietType;
 
 import com.google.gwt.view.client.ProvidesKey;
@@ -46,7 +46,7 @@ public class ApplicationRow implements Comparable<ApplicationRow>, Serializable
 	private String playaName;
 	private String email;
 
-	private Committee committee;
+	private Circle committee;
 
 	private DietType diet;
 
@@ -121,12 +121,12 @@ public class ApplicationRow implements Comparable<ApplicationRow>, Serializable
 		this.email = email;
 	}
 
-	public Committee getCommittee()
+	public Circle getCommittee()
 	{
 		return committee;
 	}
 
-	public void setCommittee(Committee committee)
+	public void setCommittee(Circle committee)
 	{
 		this.committee = committee;
 	}

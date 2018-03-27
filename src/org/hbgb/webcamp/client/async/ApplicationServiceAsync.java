@@ -20,7 +20,7 @@ import org.hbgb.webcamp.shared.MealsReport;
 import org.hbgb.webcamp.shared.PaymentInfoBlock;
 import org.hbgb.webcamp.shared.RosterDetails;
 import org.hbgb.webcamp.shared.ShelterInfoBlock;
-import org.hbgb.webcamp.shared.enums.Committee;
+import org.hbgb.webcamp.shared.enums.Circle;
 
 import com.google.gwt.user.client.rpc.AsyncCallback;
 
@@ -47,7 +47,7 @@ public interface ApplicationServiceAsync
 
 	public void getAcceptedRosterDetailsByYear(int var1, AsyncCallback<List<RosterDetails>> var2);
 
-	public void getCommitteeEmails(Committee var1, AsyncCallback<List<String>> var2);
+	public void getCommitteeEmails(Circle var1, AsyncCallback<List<String>> var2);
 
 	public void getMealsReport(AsyncCallback<MealsReport> var1);
 

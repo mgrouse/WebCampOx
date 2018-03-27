@@ -21,7 +21,7 @@ import org.hbgb.webcamp.shared.MealsReport;
 import org.hbgb.webcamp.shared.PaymentInfoBlock;
 import org.hbgb.webcamp.shared.RosterDetails;
 import org.hbgb.webcamp.shared.ShelterInfoBlock;
-import org.hbgb.webcamp.shared.enums.Committee;
+import org.hbgb.webcamp.shared.enums.Circle;
 
 import com.google.gwt.user.client.rpc.RemoteService;
 import com.google.gwt.user.client.rpc.RemoteServiceRelativePath;
@@ -49,7 +49,7 @@ public interface ApplicationService extends RemoteService
 
 	public ArrayList<ApplicationDetails> deleteApplications(ArrayList<String> var1);
 
-	public List<String> getCommitteeEmails(Committee var1);
+	public List<String> getCommitteeEmails(Circle var1);
 
 	public MealsReport getMealsReport();
 

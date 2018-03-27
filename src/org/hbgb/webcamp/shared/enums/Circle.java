@@ -3,7 +3,7 @@
  */
 package org.hbgb.webcamp.shared.enums;
 
-public enum Committee
+public enum Circle
 {
 	Faeries, Healers, Infrastructure, Kitchen;
 }

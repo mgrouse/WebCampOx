@@ -9,7 +9,7 @@ import javax.jdo.annotations.PersistenceCapable;
 import javax.jdo.annotations.Persistent;
 import javax.jdo.annotations.PrimaryKey;
 
-import org.hbgb.webcamp.shared.enums.Committee;
+import org.hbgb.webcamp.shared.enums.Circle;
 
 @SuppressWarnings("serial")
 @PersistenceCapable(identityType = IdentityType.APPLICATION)
@@ -29,7 +29,7 @@ public class HeeBeeHistoryRecord implements Serializable
 	private Integer year;
 
 	@Persistent
-	private Committee committee;
+	private Circle committee;
 
 	@Persistent
 	private Boolean wasGoodOnCommittee;

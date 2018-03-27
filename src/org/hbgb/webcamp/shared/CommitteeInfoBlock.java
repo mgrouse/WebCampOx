@@ -9,7 +9,7 @@ import javax.jdo.annotations.PersistenceCapable;
 import javax.jdo.annotations.Persistent;
 import javax.jdo.annotations.PrimaryKey;
 
-import org.hbgb.webcamp.shared.enums.Committee;
+import org.hbgb.webcamp.shared.enums.Circle;
 
 import com.google.appengine.api.datastore.Text;
 
@@ -29,19 +29,19 @@ public class CommitteeInfoBlock implements Serializable
 	private Boolean isProfile = false;
 
 	@Persistent
-	private Committee committee1;
+	private Circle committee1;
 
 	@Persistent
 	private Text reason1 = new Text("");
 
 	@Persistent
-	private Committee committee2;
+	private Circle committee2;
 
 	@Persistent
 	private Text reason2 = new Text("");
 
 	@Persistent
-	private Committee assignedCommittee;
+	private Circle assignedCommittee;
 
 	@Persistent
 	private Boolean isAssignedLead = false;
@@ -103,12 +103,12 @@ public class CommitteeInfoBlock implements Serializable
 		this.isProfile = isProfile;
 	}
 
-	public Committee getCommittee1()
+	public Circle getCommittee1()
 	{
 		return committee1;
 	}
 
-	public void setCommittee1(Committee committee1)
+	public void setCommittee1(Circle committee1)
 	{
 		this.committee1 = committee1;
 	}
@@ -123,12 +123,12 @@ public class CommitteeInfoBlock implements Serializable
 		this.reason1 = new Text(reason1);
 	}
 
-	public Committee getCommittee2()
+	public Circle getCommittee2()
 	{
 		return committee2;
 	}
 
-	public void setCommittee2(Committee committee2)
+	public void setCommittee2(Circle committee2)
 	{
 		this.committee2 = committee2;
 	}
@@ -143,12 +143,12 @@ public class CommitteeInfoBlock implements Serializable
 		this.reason2 = new Text(reason2);
 	}
 
-	public Committee getAssignedCommittee()
+	public Circle getAssignedCommittee()
 	{
 		return assignedCommittee;
 	}
 
-	public void setAssignedCommittee(Committee assignedCommittee)
+	public void setAssignedCommittee(Circle assignedCommittee)
 	{
 		this.assignedCommittee = assignedCommittee;
 	}

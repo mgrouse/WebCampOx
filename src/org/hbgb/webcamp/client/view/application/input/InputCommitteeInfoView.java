@@ -6,24 +6,24 @@ package org.hbgb.webcamp.client.view.application.input;
 import org.hbgb.webcamp.client.presenter.ISequentialPresenter;
 import org.hbgb.webcamp.client.view.ISequentialView;
 import org.hbgb.webcamp.client.view.IView;
-import org.hbgb.webcamp.shared.enums.Committee;
+import org.hbgb.webcamp.shared.enums.Circle;
 
 public interface InputCommitteeInfoView extends ISequentialView, IView
 {
 	@Override
 	public void setPresenter(ISequentialPresenter var1);
 
-	public void setCommittee1(Committee var1);
+	public void setCommittee1(Circle var1);
 
-	public Committee getCommittee1();
+	public Circle getCommittee1();
 
 	public void setReason1(String var1);
 
 	public String getReason1();
 
-	public void setCommittee2(Committee var1);
+	public void setCommittee2(Circle var1);
 
-	public Committee getCommittee2();
+	public Circle getCommittee2();
 
 	public void setReason2(String var1);
 

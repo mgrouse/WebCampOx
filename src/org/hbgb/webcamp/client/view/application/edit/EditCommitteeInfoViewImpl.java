@@ -10,8 +10,8 @@
  */
 package org.hbgb.webcamp.client.view.application.edit;
 
-import org.hbgb.webcamp.client.widget.CommitteeListBox;
-import org.hbgb.webcamp.shared.enums.Committee;
+import org.hbgb.webcamp.client.widget.CircleListBox;
+import org.hbgb.webcamp.shared.enums.Circle;
 
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.uibinder.client.UiBinder;
@@ -31,19 +31,19 @@ public class EditCommitteeInfoViewImpl extends AbstractPartView implements IEdit
 	private static UiBinder<Widget, EditCommitteeInfoViewImpl> binder = GWT.create(EditCommitteeInfoViewImplBinder.class);
 
 	@UiField
-	CommitteeListBox committee1;
+	CircleListBox committee1;
 
 	@UiField
 	TextArea reason1;
 
 	@UiField
-	CommitteeListBox committee2;
+	CircleListBox committee2;
 
 	@UiField
 	TextArea reason2;
 
 	@UiField
-	CommitteeListBox assignedCommittee;
+	CircleListBox assignedCommittee;
 
 	@UiField
 	CheckBox isAssignedLead;
@@ -55,13 +55,13 @@ public class EditCommitteeInfoViewImpl extends AbstractPartView implements IEdit
 	}
 
 	@Override
-	public void setCommittee1(Committee c)
+	public void setCommittee1(Circle c)
 	{
 		committee1.setSelectedValue(c);
 	}
 
 	@Override
-	public Committee getCommittee1()
+	public Circle getCommittee1()
 	{
 		return committee1.getSelectedEnumValue();
 	}
@@ -79,13 +79,13 @@ public class EditCommitteeInfoViewImpl extends AbstractPartView implements IEdit
 	}
 
 	@Override
-	public void setCommittee2(Committee c)
+	public void setCommittee2(Circle c)
 	{
 		committee2.setSelectedValue(c);
 	}
 
 	@Override
-	public Committee getCommittee2()
+	public Circle getCommittee2()
 	{
 		return committee2.getSelectedEnumValue();
 	}
@@ -103,13 +103,13 @@ public class EditCommitteeInfoViewImpl extends AbstractPartView implements IEdit
 	}
 
 	@Override
-	public void setAssignedCommittee(Committee c)
+	public void setAssignedCommittee(Circle c)
 	{
 		assignedCommittee.setSelectedValue(c);
 	}
 
 	@Override
-	public Committee getAssignedCommittee()
+	public Circle getAssignedCommittee()
 	{
 		return assignedCommittee.getSelectedEnumValue();
 	}

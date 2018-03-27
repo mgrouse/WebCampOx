@@ -34,7 +34,7 @@ import org.hbgb.webcamp.shared.RosterDetails;
 import org.hbgb.webcamp.shared.ShelterInfoBlock;
 import org.hbgb.webcamp.shared.Utils;
 import org.hbgb.webcamp.shared.enums.ApplicationStatus;
-import org.hbgb.webcamp.shared.enums.Committee;
+import org.hbgb.webcamp.shared.enums.Circle;
 
 import com.google.gwt.user.server.rpc.RemoteServiceServlet;
 
@@ -405,7 +405,7 @@ public class ApplicationServiceImpl extends RemoteServiceServlet implements Appl
 	}
 
 	@Override
-	public List<String> getCommitteeEmails(Committee com)
+	public List<String> getCommitteeEmails(Circle com)
 	{
 		ArrayList<String> emails = new ArrayList<>();
 		List<Application> entries = getApplicationsByStatus(ApplicationStatus.ACCEPTED);

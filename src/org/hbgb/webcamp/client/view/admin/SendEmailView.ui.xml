@@ -1,0 +1,37 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	         xmlns:g="urn:import:com.google.gwt.user.client.ui"
+	         xmlns:w="urn:import:org.hbgb.webcamp.client.widget">
+
+	<g:CaptionPanel captionText="Send Email" >
+		
+		    
+	    <g:VerticalPanel ui:field="form">
+		
+	        <g:HorizontalPanel verticalAlignment="ALIGN_MIDDLE" addStyleNames="formRow">	
+		        <g:Label ui:field="recipientLabel" text="Recipients"/>
+		        <w:CircleListBox ui:field="recipientListBox"/>
+			</g:HorizontalPanel>
+				
+	        <g:HorizontalPanel verticalAlignment="ALIGN_MIDDLE" addStyleNames="formRow">	
+	        	<g:Label ui:field="subjectLabel" text="Subject Line"  addStyleNames="longLabel"/>
+	        	<g:TextBox ui:field="subjectLine" addStyleNames="right"/>
+			</g:HorizontalPanel>
+	        
+			<g:HTML ui:field="reason1HTML" text="Text of Email" addStyleNames="longLabel"/>
+		    <g:TextArea ui:field="emailBody"/>
+			
+        	<g:HorizontalPanel verticalAlignment="ALIGN_MIDDLE" addStyleNames="formRow">	
+	        	<g:Label ui:field="returnAddressLabel" text="Respond to Email Address"  addStyleNames="longLabel"/>
+	        	<g:TextBox ui:field="respondEmailAddress" addStyleNames="right"/>
+			</g:HorizontalPanel>
+			
+        	<g:HorizontalPanel>
+				<g:Button ui:field="sendButton">Send</g:Button>
+			</g:HorizontalPanel>
+			
+	    </g:VerticalPanel>
+	        	
+		
+	</g:CaptionPanel>
+</ui:UiBinder> 
