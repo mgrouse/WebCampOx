@@ -19,11 +19,11 @@ import org.hbgb.webcamp.client.view.IView;
  */
 public interface ISendEmailView extends IView
 {
-	public interface Presenter
-	{
-		public void onSendButtonClicked();
-	}
-
-	public void setPresenter(Presenter p);
+	// public interface Presenter
+	// {
+	// public void onSendButtonClicked();
+	// }
+	//
+	// public void setPresenter(Presenter p);
 
 }

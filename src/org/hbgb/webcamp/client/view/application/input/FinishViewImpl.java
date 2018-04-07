@@ -21,6 +21,11 @@ import com.google.gwt.user.client.ui.Widget;
 
 public class FinishViewImpl extends AbstractView implements FinishViewI
 {
+	@UiTemplate(value = "FinishView.ui.xml")
+	static interface ExitViewImplBinder extends UiBinder<Widget, FinishViewImpl>
+	{
+	}
+
 	private static UiBinder<Widget, FinishViewImpl> binder = GWT.create(ExitViewImplBinder.class);
 
 	@UiField
@@ -53,9 +58,5 @@ public class FinishViewImpl extends AbstractView implements FinishViewI
 	{
 		this.emailFailure.setVisible(visible.booleanValue());
 	}
-
-	@UiTemplate(value = "FinishView.ui.xml")
-	static interface ExitViewImplBinder extends UiBinder<Widget, FinishViewImpl>
-	{}
 
 }
