@@ -181,19 +181,19 @@ public class ApplicationListByYearViewImpl<T> extends Composite
 			if (ad.getStatus().equals(ApplicationStatus.ACCEPTED.toString()))
 			{
 				accepted = accepted + 1;
-				if (ad.getCommittee().equals(Circle.Faeries.toString()))
+				if (ad.getCircle().equals(Circle.Faeries.toString()))
 				{
 					faerie = faerie + 1;
 				}
-				if (ad.getCommittee().equals(Circle.Healers.toString()))
+				if (ad.getCircle().equals(Circle.Healers.toString()))
 				{
 					healer = healer + 1;
 				}
-				if (ad.getCommittee().equals(Circle.Infrastructure.toString()))
+				if (ad.getCircle().equals(Circle.Infrastructure.toString()))
 				{
 					infra = infra + 1;
 				}
-				if (ad.getCommittee().equals(Circle.Kitchen.toString()))
+				if (ad.getCircle().equals(Circle.Kitchen.toString()))
 				{
 					kitchen = kitchen + 1;
 				}

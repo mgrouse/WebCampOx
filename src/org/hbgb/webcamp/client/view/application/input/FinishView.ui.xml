@@ -12,9 +12,8 @@
 			
 				<g:HTML ui:field="emailSuccess">
 					<p>
-						We have emailed: <br/> 
-						Our camp leaders, to let them know you have applied.<br/>
-						You, to let you know the process completed, and to remind you of some steps you should take to connect with the HeeBee tribe.
+						Our camp leaders have been emailed to let them know you have applied.<br/>
+						<!-- You, to let you know the process completed, and to remind you of some steps you should take to connect with the HeeBee tribe. -->
 					</p>
 				</g:HTML>
 				
@@ -29,7 +28,10 @@
 				<g:HTML>	
 					<p>
 						Please return to: <a href="http://www.heebeegeebeehealers.org">www.HeeBeeGeeBeeHealers.org</a> 
-						and read up on camp life.
+						and read up on camp life.<br/><br/>
+						
+						You can also meet the rest of us by joining the HeeBeeGeeBee Healers Facebook Group at:
+						<a href="https://www.facebook.com/groups/23767999265">HeeBeeGeeBee Healers on Facebook</a>
 					</p>
 				</g:HTML>
 				

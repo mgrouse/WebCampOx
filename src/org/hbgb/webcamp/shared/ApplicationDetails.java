@@ -9,7 +9,7 @@ public class ApplicationDetails implements Comparable<ApplicationDetails>, Seria
 	private String status;
 	private String displayName;
 	private String playaName;
-	private String committee;
+	private String circle;
 	private String earlyTeam;
 	private String ticket;
 	// private String invoiced;
@@ -23,14 +23,13 @@ public class ApplicationDetails implements Comparable<ApplicationDetails>, Seria
 	}
 
 	public ApplicationDetails(String key, String status, String displayName, String playaName,
-			String committee, String earlyTeam, String ticket, String paid, String diet,
-			String email)
+			String circle, String earlyTeam, String ticket, String paid, String diet, String email)
 	{
 		this.encodedKey = key;
 		this.status = status;
 		this.displayName = displayName;
 		this.playaName = playaName;
-		this.committee = committee;
+		this.circle = circle;
 		this.earlyTeam = earlyTeam;
 		this.ticket = ticket;
 		// this.invoiced = invoiced;
@@ -79,14 +78,14 @@ public class ApplicationDetails implements Comparable<ApplicationDetails>, Seria
 		this.playaName = playaName;
 	}
 
-	public String getCommittee()
+	public String getCircle()
 	{
-		return committee;
+		return circle;
 	}
 
-	public void setCommittee(String committee)
+	public void setCircle(String committee)
 	{
-		this.committee = committee;
+		this.circle = committee;
 	}
 
 	public String getEarlyTeam()
@@ -158,7 +157,7 @@ public class ApplicationDetails implements Comparable<ApplicationDetails>, Seria
 
 		if (retval == 0)
 		{
-			retval = this.committee.compareTo(ad.committee);
+			retval = this.circle.compareTo(ad.circle);
 		}
 
 		return retval;

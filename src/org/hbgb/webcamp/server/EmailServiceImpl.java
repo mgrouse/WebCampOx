@@ -1,12 +1,4 @@
-/*
- * Decompiled with CFR 0_115.
- * 
- * Could not load the following classes:
- * com.google.gwt.user.server.rpc.RemoteServiceServlet javax.mail.Address
- * javax.mail.Authenticator javax.mail.Message javax.mail.Message$RecipientType
- * javax.mail.Session javax.mail.Transport javax.mail.internet.InternetAddress
- * javax.mail.internet.MimeMessage
- */
+
 package org.hbgb.webcamp.server;
 
 import java.util.Properties;
@@ -31,7 +23,7 @@ public class EmailServiceImpl extends RemoteServiceServlet implements EmailServi
 	private static final Logger log = Logger.getLogger(EmailServiceImpl.class.getName());
 
 	@Override
-	public String sendApplicationRecievedEmail(String key) throws Exception
+	public String sendApplicationRecievedEmail(String key)
 	{
 		ApplicationServiceImpl appServ = new ApplicationServiceImpl();
 		Application app = appServ.getApplication(key);
@@ -45,7 +37,7 @@ public class EmailServiceImpl extends RemoteServiceServlet implements EmailServi
 				getApplicationEmailBody());
 	}
 
-	private String sendMail(String to, String subject, String message) throws Exception
+	private String sendMail(String to, String subject, String message)
 	{
 		String output = "Success";
 		Properties props = new Properties();
@@ -57,8 +49,7 @@ public class EmailServiceImpl extends RemoteServiceServlet implements EmailServi
 
 			msg.addRecipient(Message.RecipientType.TO, new InternetAddress(to));
 
-			// msg.addRecipient(Message.RecipientType.BCC,
-			// getWebmasterAddress());
+			msg.addRecipient(Message.RecipientType.TO, getWebmasterAddress());
 
 			msg.setSubject(subject);
 			msg.setText(message);
@@ -67,9 +58,10 @@ public class EmailServiceImpl extends RemoteServiceServlet implements EmailServi
 		}
 		catch (Exception e)
 		{
+			output = "Failure";
 			// log error
 			log.severe(e.getMessage());
-			throw e;
+			// throw e;
 		}
 
 		return output;

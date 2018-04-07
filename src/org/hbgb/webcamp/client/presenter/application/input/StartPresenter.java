@@ -9,7 +9,6 @@ package org.hbgb.webcamp.client.presenter.application.input;
 
 import org.hbgb.webcamp.client.async.ApplicationServiceAsync;
 import org.hbgb.webcamp.client.async.AsyncServiceFinder;
-import org.hbgb.webcamp.client.async.EmailServiceAsync;
 import org.hbgb.webcamp.client.presenter.IKeyPresenter;
 import org.hbgb.webcamp.client.presenter.ISequentialPresenter;
 import org.hbgb.webcamp.client.view.ViewFinder;
@@ -23,7 +22,8 @@ import com.google.gwt.user.client.ui.HasWidgets;
 public class StartPresenter implements ISequentialPresenter
 {
 	private final ApplicationServiceAsync rpcService = AsyncServiceFinder.getApplicationService();
-	private final EmailServiceAsync emailService = AsyncServiceFinder.getEmailService();
+	// private final EmailServiceAsync emailService =
+	// AsyncServiceFinder.getEmailService();
 
 	private final IStartView view = ViewFinder.getEnterView();
 
@@ -40,7 +40,8 @@ public class StartPresenter implements ISequentialPresenter
 
 	@Override
 	public void setKey(String key)
-	{}
+	{
+	}
 
 	@Override
 	public void setScreen(HasWidgets container)
@@ -87,7 +88,10 @@ public class StartPresenter implements ISequentialPresenter
 					}
 					else
 					{
-						sendEmail();
+						screen.clear();
+						nextPresenter.setKey(key);
+						nextPresenter.setScreen(screen);
+						nextPresenter.go();
 					}
 				}
 			}
@@ -105,41 +109,44 @@ public class StartPresenter implements ISequentialPresenter
 		email = view.getEmailText();
 	}
 
-	private void sendEmail()
-	{
-		this.emailService.sendApplicationRecievedEmail(key, new AsyncCallback<String>()
-		{
-			@Override
-			public void onSuccess(String result)
-			{
-				if (result == null)
-				{
-					Window.alert("RPC Error: Email Result is returned as NULL");
-				}
-				else
-				{
-					if (result.equals("Success"))
-					{
-						screen.clear();
-						nextPresenter.setKey(key);
-						nextPresenter.setScreen(screen);
-						nextPresenter.go();
-
-					}
-					else
-					{
-						// log failure of email
-					}
-
-				}
-			}
-
-			@Override
-			public void onFailure(Throwable caught)
-			{
-				// log failure of email
-			}
-		});
-	}
+	// private void sendEmail()
+	// {
+	// this.emailService.sendApplicationRecievedEmail(key, new
+	// AsyncCallback<String>()
+	// {
+	// @Override
+	// public void onSuccess(String result)
+	// {
+	// if (result == null)
+	// {
+	// Window.alert("RPC Error: Email Result is returned as NULL");
+	// }
+	// else
+	// {
+	//
+	// }
+	//
+	// // if (result.equals("Success"))
+	// // {
+	// // screen.clear();
+	// // nextPresenter.setKey(key);
+	// // nextPresenter.setScreen(screen);
+	// // nextPresenter.go();
+	// //
+	// // }
+	// // else
+	// // {
+	// // // log failure of email
+	// // }
+	//
+	// }
+	//
+	// @Override
+	// public void onFailure(Throwable caught)
+	// {
+	// // log failure of email
+	// }
+	// });
+	// }
 
 }

@@ -32,7 +32,7 @@ public class WebCampEntryPoint implements EntryPoint, ValueChangeHandler<String>
 
 		if ("".equals(History.getToken()))
 		{
-			History.newItem("apply");
+			History.newItem("admin");
 		}
 		else
 		{
@@ -49,24 +49,24 @@ public class WebCampEntryPoint implements EntryPoint, ValueChangeHandler<String>
 		{
 			switch (token)
 			{
-				case "admin":
-					startAdminPanel();
-					break;
+			case "admin":
+				startAdminPanel();
+				break;
 
-				case "apply":
-					startApplication();
-					break;
+			case "apply":
+				startApplication();
+				break;
 
-				case "roster":
-					startRoster();
-					break;
+			case "roster":
+				startRoster();
+				break;
 
-				case "sheet":
-					startSheet();
-					break;
+			case "sheet":
+				startSheet();
+				break;
 
-				case "test":
-					startTest();
+			case "test":
+				startTest();
 			}
 		}
 	}

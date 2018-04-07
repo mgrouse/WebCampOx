@@ -9,41 +9,24 @@
  *
  * This copyright notice should not be construed as evidence of publication.
  */
-package org.hbgb.webcamp.client.presenter.admin;
+package org.hbgb.webcamp.shared;
 
 /**
  * @author Michael
  *
  */
-public class SendEmailPresenter // implements ISendEmailPresenter//,
-								// ISendEmailView.Presenter
+
+public class WebCampException // extends Exception
 {
 
-	// private HasWidgets screen;
-	//
-	// public SendEmailPresenter()
+	// public WebCampException()
 	// {
-	//
+	// super();
 	// }
 	//
-	// @Override
-	// public void setScreen(HasWidgets container)
+	// public WebCampException(Throwable cause)
 	// {
-	// this.screen = container;
-	// }
-	//
-	// @Override
-	// public void go()
-	// {
-	// // TODO Auto-generated method stub
-	//
-	// }
-	//
-	// @Override
-	// public void onSendButtonClicked()
-	// {
-	// // TODO Auto-generated method stub
-	//
+	// super(cause);
 	// }
 
 }

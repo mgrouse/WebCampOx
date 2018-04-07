@@ -111,7 +111,7 @@ public class ApplicationColumnDefinitionsImpl
 			@Override
 			public Widget render(ApplicationDetails c)
 			{
-				return new HTML(c.getCommittee());
+				return new HTML(c.getCircle());
 			}
 
 			@Override

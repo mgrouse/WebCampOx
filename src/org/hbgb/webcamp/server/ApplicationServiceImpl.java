@@ -242,7 +242,7 @@ public class ApplicationServiceImpl extends RemoteServiceServlet implements Appl
 		{
 			retVal = createBlankApplicationByEmail(email);
 
-			// send emails about a new application
+			// send e-mails about a new application
 			EmailServiceImpl mailServ = new EmailServiceImpl();
 			try
 			{
@@ -253,6 +253,7 @@ public class ApplicationServiceImpl extends RemoteServiceServlet implements Appl
 				// log error
 				log.severe(e.getMessage());
 			}
+
 		}
 		else
 		{
@@ -263,6 +264,18 @@ public class ApplicationServiceImpl extends RemoteServiceServlet implements Appl
 			else
 			{
 				retVal = createCopyApplicationForThisYear(test);
+
+				// send e-mails about a new application
+				EmailServiceImpl mailServ = new EmailServiceImpl();
+				try
+				{
+					mailServ.sendApplicationRecievedEmail(email);
+				}
+				catch (Exception e)
+				{
+					// log error
+					log.severe(e.getMessage());
+				}
 			}
 		}
 
