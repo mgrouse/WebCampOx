@@ -12,8 +12,8 @@
 			
 				<g:HTML ui:field="emailSuccess">
 					<p>
-						Our camp leaders have been emailed to let them know you have applied.<br/>
-						<!-- You, to let you know the process completed, and to remind you of some steps you should take to connect with the HeeBee tribe. -->
+						Our camp leaders have been emailed to let them know you have applied.
+						<!-- <br/>You, to let you know the process completed, and to remind you of some steps you should take to connect with the HeeBee tribe. -->
 					</p>
 				</g:HTML>
 				
