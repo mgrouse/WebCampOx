@@ -49,7 +49,7 @@ public interface ApplicationService extends RemoteService
 
 	public ArrayList<ApplicationDetails> deleteApplications(ArrayList<String> var1);
 
-	public List<String> getCommitteeEmails(Circle var1);
+	public List<String> getCircleEmailList(Circle var1);
 
 	public MealsReport getMealsReport();
 

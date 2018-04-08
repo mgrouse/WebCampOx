@@ -193,7 +193,7 @@ public class HealerSheetServiceImpl extends RemoteServiceServlet implements Heal
 	{
 		ArrayList<HealerSheetDetails> details = new ArrayList<>();
 		ApplicationServiceImpl appServ = new ApplicationServiceImpl();
-		List<String> healerEmails = appServ.getCommitteeEmails(Circle.Healers);
+		List<String> healerEmails = appServ.getCircleEmailList(Circle.Healers);
 
 		HealerSheetInfoBlock hs = null;
 

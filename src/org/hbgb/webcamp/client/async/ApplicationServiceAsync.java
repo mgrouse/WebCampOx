@@ -47,7 +47,7 @@ public interface ApplicationServiceAsync
 
 	public void getAcceptedRosterDetailsByYear(int var1, AsyncCallback<List<RosterDetails>> var2);
 
-	public void getCommitteeEmails(Circle var1, AsyncCallback<List<String>> var2);
+	public void getCircleEmailList(Circle var1, AsyncCallback<List<String>> var2);
 
 	public void getMealsReport(AsyncCallback<MealsReport> var1);
 

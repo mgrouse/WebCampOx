@@ -418,7 +418,7 @@ public class ApplicationServiceImpl extends RemoteServiceServlet implements Appl
 	}
 
 	@Override
-	public List<String> getCommitteeEmails(Circle com)
+	public List<String> getCircleEmailList(Circle circle)
 	{
 		ArrayList<String> emails = new ArrayList<>();
 		List<Application> entries = getApplicationsByStatus(ApplicationStatus.ACCEPTED);
@@ -428,7 +428,7 @@ public class ApplicationServiceImpl extends RemoteServiceServlet implements Appl
 			for (Application app : entries)
 			{
 				CommitteeInfoBlock cib = app.getCommitteeInfoBlock();
-				if (cib != null && com == cib.getAssignedCommittee() && app.getEmail() != null
+				if (cib != null && circle == cib.getAssignedCommittee() && app.getEmail() != null
 						&& !app.getEmail().isEmpty())
 				{
 					emails.add(app.getEmail());

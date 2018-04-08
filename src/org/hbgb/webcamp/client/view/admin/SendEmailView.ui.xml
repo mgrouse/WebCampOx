@@ -7,6 +7,8 @@
 		
 		    
 	    <g:VerticalPanel ui:field="form">
+	        
+	        <w:MessagesWidget ui:field="messages"/>
 		
 	        <g:HorizontalPanel verticalAlignment="ALIGN_MIDDLE" addStyleNames="formRow">	
 		        <g:Label ui:field="recipientLabel" text="Recipients"/>
@@ -18,11 +20,11 @@
 	        	<g:TextBox ui:field="subjectLine" addStyleNames="right"/>
 			</g:HorizontalPanel>
 	        
-			<g:HTML ui:field="reason1HTML" text="Text of Email" addStyleNames="longLabel"/>
+			<g:HTML ui:field="emailBodyLabel" text="Text of Email" addStyleNames="longLabel"/>
 		    <g:TextArea ui:field="emailBody"/>
 			
         	<g:HorizontalPanel verticalAlignment="ALIGN_MIDDLE" addStyleNames="formRow">	
-	        	<g:Label ui:field="returnAddressLabel" text="Respond to Email Address"  addStyleNames="longLabel"/>
+	        	<g:Label ui:field="respondEmailLabel" text="Respond to Email Address"  addStyleNames="longLabel"/>
 	        	<g:TextBox ui:field="respondEmailAddress" addStyleNames="right"/>
 			</g:HorizontalPanel>
 			

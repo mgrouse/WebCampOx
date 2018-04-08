@@ -12,6 +12,7 @@
 package org.hbgb.webcamp.client.view.admin;
 
 import org.hbgb.webcamp.client.view.IView;
+import org.hbgb.webcamp.shared.enums.Circle;
 
 /**
  * @author Michael
@@ -19,11 +20,28 @@ import org.hbgb.webcamp.client.view.IView;
  */
 public interface ISendEmailView extends IView
 {
-	// public interface Presenter
-	// {
-	// public void onSendButtonClicked();
-	// }
-	//
-	// public void setPresenter(Presenter p);
+	public interface Presenter
+	{
+		public void onSendButtonClicked();
+	}
 
+	public void setPresenter(Presenter p);
+
+	public Circle getRecipientCircle();
+
+	public void setRecipientCircle(Circle circle);
+
+	public String getSubjectLineText();
+
+	public void setSubjectLineText(String text);
+
+	public String getEmailBodyText();
+
+	public void setEmailBodyText(String emailText);
+
+	public String getRespondEmailAddress();
+
+	public void setRespondEmailAddress(String address);
+
+	public void setSendButtonEnabled(boolean b);
 }

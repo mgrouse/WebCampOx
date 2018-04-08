@@ -26,6 +26,7 @@ import org.hbgb.webcamp.client.event.SingletonEventBus;
 import org.hbgb.webcamp.client.event.StatusEvent;
 import org.hbgb.webcamp.client.event.StatusHandler;
 import org.hbgb.webcamp.client.panel.element.ContentPanel;
+import org.hbgb.webcamp.client.presenter.admin.SendEmailPresenter;
 import org.hbgb.webcamp.client.presenter.report.MealsReportPresenter;
 import org.hbgb.webcamp.client.widget.StatusBar;
 
@@ -48,7 +49,7 @@ public class AdminWindowManager extends ResizeComposite implements StatusHandler
 
 	private static final String CAMPERS_APPLICATIONS = "campers-applications";
 
-	private static final String CAMPERS_APPLICATIONS_PAST = "campers-applications-past";
+	private static final String SEND_MAIL = "send-email";
 
 	private static final String CAMPERS_APPLICATIONS_FANCY = "campers-applications-fancy";
 
@@ -93,9 +94,9 @@ public class AdminWindowManager extends ResizeComposite implements StatusHandler
 			openApplications();
 			break;
 
-		// case CAMPERS_APPLICATIONS_PAST:
-		// openApplicationsPast();
-		// break;
+		case SEND_MAIL:
+			openMail();
+			break;
 
 		case CAMPERS_APPLICATIONS_FANCY:
 			openApplicationsFancy();
@@ -163,25 +164,29 @@ public class AdminWindowManager extends ResizeComposite implements StatusHandler
 		});
 	}
 
-	// private void openApplicationsPast()
-	// {
-	// GWT.runAsync(new RunAsyncCallback()
-	// {
-	//
-	// @Override
-	// public void onFailure(Throwable caught)
-	// {}
-	//
-	// @Override
-	// public void onSuccess()
-	// {
-	// WorkTab wTab = new WorkTab();
-	// ApplicationListPastApplet appList = new ApplicationListPastApplet();
-	// appList.run(wTab.getScrollPanel());
-	// contentPanel.addTab("Past Years", wTab);
-	// }
-	// });
-	// }
+	private void openMail()
+	{
+		GWT.runAsync(new RunAsyncCallback()
+		{
+
+			@Override
+			public void onFailure(Throwable caught)
+			{
+			}
+
+			@Override
+			public void onSuccess()
+			{
+				WorkTab wTab = new WorkTab();
+
+				SendEmailPresenter p = new SendEmailPresenter();
+				p.setScreen(wTab.getScrollPanel());
+				p.go();
+
+				contentPanel.addTab("Send Email", wTab);
+			}
+		});
+	}
 
 	private void openMealseReport()
 	{

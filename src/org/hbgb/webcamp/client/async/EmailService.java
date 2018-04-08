@@ -7,6 +7,8 @@
  */
 package org.hbgb.webcamp.client.async;
 
+import org.hbgb.webcamp.shared.enums.Circle;
+
 import com.google.gwt.user.client.rpc.RemoteService;
 import com.google.gwt.user.client.rpc.RemoteServiceRelativePath;
 
@@ -14,4 +16,7 @@ import com.google.gwt.user.client.rpc.RemoteServiceRelativePath;
 public interface EmailService extends RemoteService
 {
 	public String sendApplicationRecievedEmail(String var1) throws Exception;
+
+	public String sendEmailToCircle(Circle circle, String subject, String message,
+			String replyAddress);
 }

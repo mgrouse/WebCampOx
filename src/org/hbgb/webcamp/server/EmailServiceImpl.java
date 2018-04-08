@@ -1,6 +1,9 @@
 
 package org.hbgb.webcamp.server;
 
+import java.io.UnsupportedEncodingException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Properties;
 import java.util.logging.Logger;
 
@@ -11,15 +14,17 @@ import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 
+import org.hbgb.webcamp.client.async.ApplicationService;
 import org.hbgb.webcamp.client.async.EmailService;
 import org.hbgb.webcamp.shared.Application;
+import org.hbgb.webcamp.shared.enums.Circle;
 
 import com.google.gwt.user.server.rpc.RemoteServiceServlet;
 
 @SuppressWarnings("serial")
 public class EmailServiceImpl extends RemoteServiceServlet implements EmailService
 {
-
+	private static final ApplicationService appServ = new ApplicationServiceImpl();
 	private static final Logger log = Logger.getLogger(EmailServiceImpl.class.getName());
 
 	@Override
@@ -28,16 +33,38 @@ public class EmailServiceImpl extends RemoteServiceServlet implements EmailServi
 		ApplicationServiceImpl appServ = new ApplicationServiceImpl();
 		Application app = appServ.getApplication(key);
 
+		List<String> recipient = new ArrayList<>();
+		String replyTo = getRegistrationLeadAddressAsText();
+
 		// first to the Lead
-		sendMail(getRegistrationLeadAddressAsText(),
-				"HeeBee application received! for: " + app.getEmail(), getNotificationEmailBody());
+		recipient.add(getRegistrationLeadAddressAsText());
+
+		sendMail(recipient, "HeeBee application received! for: " + app.getEmail(),
+				getNotificationEmailBody(), getRegistrationLeadAddressAsText());
 
 		// then to the camper
-		return sendMail(app.getEmail(), "Your HeeBee application was received!",
-				getApplicationEmailBody());
+		recipient.clear();
+		recipient.add(app.getEmail());
+
+		return sendMail(recipient, "Your HeeBee application was received!",
+				getApplicationEmailBody(), replyTo);
 	}
 
-	private String sendMail(String to, String subject, String message)
+	@Override
+	public String sendEmailToCircle(Circle circle, String subject, String message,
+			String replyAddress)
+	{
+		List<String> recipients = appServ.getCircleEmailList(circle);
+
+		if (0 == recipients.size())
+		{
+			return "NoRecipients";
+		}
+
+		return sendMail(recipients, subject, message, replyAddress);
+	}
+
+	private String sendMail(List<String> recipients, String subject, String message, String replyTo)
 	{
 		String output = "Success";
 		Properties props = new Properties();
@@ -47,13 +74,17 @@ public class EmailServiceImpl extends RemoteServiceServlet implements EmailServi
 			MimeMessage msg = new MimeMessage(session);
 			msg.setFrom(getWebmasterAddress());
 
-			msg.addRecipient(Message.RecipientType.TO, new InternetAddress(to));
+			for (String address : recipients)
+			{
+				msg.addRecipient(Message.RecipientType.TO, new InternetAddress(address));
+			}
 
+			// add me for tracking performance
 			msg.addRecipient(Message.RecipientType.TO, getWebmasterAddress());
 
 			msg.setSubject(subject);
 			msg.setText(message);
-			msg.setReplyTo(new InternetAddress[] { this.getRegistrationLeadAddress() });
+			msg.setReplyTo(new InternetAddress[] { asInternetAddress(replyTo) });
 			Transport.send(msg);
 		}
 		catch (Exception e)
@@ -107,5 +138,10 @@ public class EmailServiceImpl extends RemoteServiceServlet implements EmailServi
 	private String getRegistrationLeadAddressAsText()
 	{
 		return "shanalory@hotmail.com";
+	}
+
+	private InternetAddress asInternetAddress(String address) throws UnsupportedEncodingException
+	{
+		return new InternetAddress(address, "");
 	}
 }

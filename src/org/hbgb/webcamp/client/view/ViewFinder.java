@@ -5,7 +5,9 @@ package org.hbgb.webcamp.client.view;
 
 import org.hbgb.webcamp.client.view.admin.EarlyTeamMemberViewImpl;
 import org.hbgb.webcamp.client.view.admin.IEarlyTeamMemberView;
+import org.hbgb.webcamp.client.view.admin.ISendEmailView;
 import org.hbgb.webcamp.client.view.admin.IUserEditView;
+import org.hbgb.webcamp.client.view.admin.SendEmailViewImpl;
 import org.hbgb.webcamp.client.view.admin.UserEditViewImpl;
 import org.hbgb.webcamp.client.view.admin.UserListView;
 import org.hbgb.webcamp.client.view.admin.UserListViewImpl;
@@ -54,9 +56,11 @@ public class ViewFinder
 	private static InputPersonalInfoView editPersonalView;
 	private static HealerSheetListView<HealerSheetDetails> healerSheetListView;
 	private static UploadPhotoView uplaodPhotoView;
+	private static ISendEmailView sendEmailView;
 
 	private ViewFinder()
-	{}
+	{
+	}
 
 	public static IEarlyTeamMemberView getEarlyTeamMemberView()
 	{
@@ -176,6 +180,14 @@ public class ViewFinder
 			return uplaodPhotoView;
 		uplaodPhotoView = new UploadPhotoViewImpl();
 		return uplaodPhotoView;
+	}
+
+	public static ISendEmailView getSendEmailView()
+	{
+		if (sendEmailView != null)
+			return sendEmailView;
+		sendEmailView = new SendEmailViewImpl();
+		return sendEmailView;
 	}
 
 }
