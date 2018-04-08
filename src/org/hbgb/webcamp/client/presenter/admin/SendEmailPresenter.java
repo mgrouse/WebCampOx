@@ -84,9 +84,9 @@ public class SendEmailPresenter implements ISendEmailPresenter, ISendEmailView.P
 					{
 						if (result == "Failure")
 						{
-							Window.alert("Your email was not sent. ;( /n/n "
-									+ "Please contact Scarab and tell him what time it is now;"
-									+ "and that your email failed");
+							Window.alert("Your email was not sent. ;( \n\n "
+									+ "Please contact Scarab and tell him what time it is now; "
+									+ "and that your email failed.");
 						}
 						else if (result == "Success")
 						{

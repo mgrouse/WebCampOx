@@ -142,6 +142,6 @@ public class EmailServiceImpl extends RemoteServiceServlet implements EmailServi
 
 	private InternetAddress asInternetAddress(String address) throws UnsupportedEncodingException
 	{
-		return new InternetAddress(address, "");
+		return new InternetAddress(address, "Scarab");
 	}
 }

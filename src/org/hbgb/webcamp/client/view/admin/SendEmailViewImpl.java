@@ -106,7 +106,7 @@ public class SendEmailViewImpl extends AbstractView implements ISendEmailView
 		if (subjectLine.getText().isEmpty())
 		{
 			addMessage("Please answer the question(s) in red.");
-			subjectLine.getElement().getStyle().setColor("red");
+			subjectLabel.getElement().getStyle().setColor("red");
 			retVal = false;
 		}
 
@@ -120,7 +120,7 @@ public class SendEmailViewImpl extends AbstractView implements ISendEmailView
 		if (respondEmailAddress.getText().isEmpty())
 		{
 			addMessage("Please answer the question(s) in red.");
-			respondEmailAddress.getElement().getStyle().setColor("red");
+			respondEmailLabel.getElement().getStyle().setColor("red");
 			retVal = false;
 		}
 
@@ -130,9 +130,9 @@ public class SendEmailViewImpl extends AbstractView implements ISendEmailView
 	private void clearErrorState()
 	{
 		recipientLabel.getElement().getStyle().setColor("black");
-		subjectLine.getElement().getStyle().setColor("black");
+		subjectLabel.getElement().getStyle().setColor("black");
 		emailBodyLabel.getElement().getStyle().setColor("black");
-		respondEmailAddress.getElement().getStyle().setColor("black");
+		respondEmailLabel.getElement().getStyle().setColor("black");
 
 		messages.clear();
 	}
