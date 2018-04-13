@@ -13,6 +13,7 @@ package org.hbgb.webcamp.client.view.admin;
 
 import org.hbgb.webcamp.client.view.AbstractView;
 import org.hbgb.webcamp.client.widget.CircleListBox;
+import org.hbgb.webcamp.client.widget.LoadingPopup;
 import org.hbgb.webcamp.client.widget.MessagesWidget;
 import org.hbgb.webcamp.shared.enums.Circle;
 
@@ -22,6 +23,7 @@ import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.uibinder.client.UiHandler;
 import com.google.gwt.uibinder.client.UiTemplate;
+import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.TextArea;
@@ -65,6 +67,12 @@ public class SendEmailViewImpl extends AbstractView implements ISendEmailView
 	TextArea emailBody;
 
 	@UiField
+	Label respondNameLabel;
+
+	@UiField
+	TextBox respondName;
+
+	@UiField
 	Label respondEmailLabel;
 
 	@UiField
@@ -73,20 +81,29 @@ public class SendEmailViewImpl extends AbstractView implements ISendEmailView
 	@UiField
 	Button sendButton;
 
+	private LoadingPopup loadPop;
+
 	private Presenter presenter;
 
 	public SendEmailViewImpl()
 	{
 		initWidget(binder.createAndBindUi(this));
+		loadPop = new LoadingPopup();
 	}
 
 	@UiHandler(value = { "sendButton" })
 	void onNextButtonClicked(ClickEvent event)
 	{
+		setSendButtonEnabled(false);
+
 		if ((presenter != null) && (formIsValid()))
 		{
-			sendButton.setEnabled(false);
+			loadPop.go();
 			presenter.onSendButtonClicked();
+		}
+		else
+		{
+			setSendButtonEnabled(true);
 		}
 	}
 
@@ -117,6 +134,13 @@ public class SendEmailViewImpl extends AbstractView implements ISendEmailView
 			retVal = false;
 		}
 
+		if (respondName.getText().isEmpty())
+		{
+			addMessage("Please answer the question(s) in red.");
+			respondNameLabel.getElement().getStyle().setColor("red");
+			retVal = false;
+		}
+
 		if (respondEmailAddress.getText().isEmpty())
 		{
 			addMessage("Please answer the question(s) in red.");
@@ -132,9 +156,17 @@ public class SendEmailViewImpl extends AbstractView implements ISendEmailView
 		recipientLabel.getElement().getStyle().setColor("black");
 		subjectLabel.getElement().getStyle().setColor("black");
 		emailBodyLabel.getElement().getStyle().setColor("black");
+		respondNameLabel.getElement().getStyle().setColor("black");
 		respondEmailLabel.getElement().getStyle().setColor("black");
 
 		messages.clear();
+	}
+
+	@Override
+	public void displaySendResult(String result)
+	{
+		Window.alert(result);
+		loadPop.stop();
 	}
 
 	@Override
@@ -174,6 +206,18 @@ public class SendEmailViewImpl extends AbstractView implements ISendEmailView
 	}
 
 	@Override
+	public String getRespondName()
+	{
+		return respondName.getText();
+	}
+
+	@Override
+	public void setRespondName(String name)
+	{
+		respondName.setText(name);
+	}
+
+	@Override
 	public String getRespondEmailAddress()
 	{
 		return respondEmailAddress.getText();
@@ -185,8 +229,7 @@ public class SendEmailViewImpl extends AbstractView implements ISendEmailView
 		respondEmailAddress.setText(address);
 	}
 
-	@Override
-	public void setSendButtonEnabled(boolean b)
+	private void setSendButtonEnabled(boolean b)
 	{
 		sendButton.setEnabled(b);
 	}

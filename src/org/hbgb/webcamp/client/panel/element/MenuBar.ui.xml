@@ -8,7 +8,7 @@
 	<g:StackLayoutPanel unit="EM">
 		
 		<g:stack>
-			<g:customHeader size='1.8'>
+			<g:customHeader size='2.0'>
 				<p:MenuHeader text="Manage Campers" imageResource="{resource.spanner}" />
 			</g:customHeader>
 			
@@ -25,7 +25,7 @@
 		</g:stack>
 		 
 		<g:stack>
-			<g:customHeader size='1.8'>
+			<g:customHeader size='2.0'>
 				<p:MenuHeader text="Reports" imageResource="{resource.spanner}" />
 			</g:customHeader>
 			
@@ -37,7 +37,7 @@
 		</g:stack>
 		
 		<g:stack>
-			<g:customHeader size='1.8'>
+			<g:customHeader size='2.0'>
 				<p:MenuHeader text="Utilities" imageResource="{resource.spanner}" />
 			</g:customHeader>
 			
@@ -50,7 +50,7 @@
 		</g:stack>
 		
 		<g:stack>
-			<g:customHeader size='1.8'>
+			<g:customHeader size='2.0'>
 				<p:MenuHeader text="Dev Tools" imageResource="{resource.spanner}" />
 			</g:customHeader>
 			
@@ -59,7 +59,7 @@
 					<p:MenuItem contentName="dev-users" text="Users"
 						imageResource="{resource.bean}" />
 				</g:layer>
-				 <!--//top increment by 1.8  -->
+				 <!--//top increment by 1.8 em -->
 				 <g:layer left='0.5em' width='10em' top='2.3em' height='3em'>
 					<p:MenuItem contentName="campers-applications-fancy" text="Applications Fancy" imageResource="{resource.dollar}" />
 				</g:layer>

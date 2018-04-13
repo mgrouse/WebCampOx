@@ -1,12 +1,14 @@
 
 package org.hbgb.webcamp.server;
 
-import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
+import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import javax.jdo.PersistenceManager;
+import javax.jdo.Query;
 import javax.mail.Authenticator;
 import javax.mail.Message;
 import javax.mail.Session;
@@ -14,17 +16,19 @@ import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 
-import org.hbgb.webcamp.client.async.ApplicationService;
 import org.hbgb.webcamp.client.async.EmailService;
 import org.hbgb.webcamp.shared.Application;
-import org.hbgb.webcamp.shared.enums.Circle;
+import org.hbgb.webcamp.shared.CommitteeInfoBlock;
+import org.hbgb.webcamp.shared.Utils;
+import org.hbgb.webcamp.shared.enums.ApplicationStatus;
 
 import com.google.gwt.user.server.rpc.RemoteServiceServlet;
 
 @SuppressWarnings("serial")
 public class EmailServiceImpl extends RemoteServiceServlet implements EmailService
 {
-	private static final ApplicationService appServ = new ApplicationServiceImpl();
+	// private static final ApplicationService appServ = new
+	// ApplicationServiceImpl();
 	private static final Logger log = Logger.getLogger(EmailServiceImpl.class.getName());
 
 	@Override
@@ -34,13 +38,13 @@ public class EmailServiceImpl extends RemoteServiceServlet implements EmailServi
 		Application app = appServ.getApplication(key);
 
 		List<String> recipient = new ArrayList<>();
-		String replyTo = getRegistrationLeadAddressAsText();
+		InternetAddress replyTo = getRegistrationLeadAddress();
 
 		// first to the Lead
 		recipient.add(getRegistrationLeadAddressAsText());
 
 		sendMail(recipient, "HeeBee application received! for: " + app.getEmail(),
-				getNotificationEmailBody(), getRegistrationLeadAddressAsText());
+				getNotificationEmailBody(), replyTo);
 
 		// then to the camper
 		recipient.clear();
@@ -51,20 +55,23 @@ public class EmailServiceImpl extends RemoteServiceServlet implements EmailServi
 	}
 
 	@Override
-	public String sendEmailToCircle(Circle circle, String subject, String message,
+	public String sendEmailToCircle(String circle, String subject, String message, String replyName,
 			String replyAddress)
 	{
-		List<String> recipients = appServ.getCircleEmailList(circle);
+		List<String> recipients = getCircleEmailList(circle);
 
 		if (0 == recipients.size())
 		{
 			return "NoRecipients";
 		}
 
-		return sendMail(recipients, subject, message, replyAddress);
+		InternetAddress replyTo = asInternetAddress(replyName, replyAddress);
+
+		return sendMail(recipients, subject, message, replyTo);
 	}
 
-	private String sendMail(List<String> recipients, String subject, String message, String replyTo)
+	private String sendMail(List<String> recipients, String subject, String message,
+			InternetAddress replyTo)
 	{
 		String output = "Success";
 		Properties props = new Properties();
@@ -84,18 +91,60 @@ public class EmailServiceImpl extends RemoteServiceServlet implements EmailServi
 
 			msg.setSubject(subject);
 			msg.setText(message);
-			msg.setReplyTo(new InternetAddress[] { asInternetAddress(replyTo) });
+			msg.setReplyTo(new InternetAddress[] { replyTo });
+
 			Transport.send(msg);
 		}
 		catch (Exception e)
 		{
 			output = "Failure";
-			// log error
+
 			log.severe(e.getMessage());
-			// throw e;
 		}
 
 		return output;
+	}
+
+	private List<String> getCircleEmailList(String circle)
+	{
+		ArrayList<String> emails = new ArrayList<>();
+		List<Application> entries = getApplicationsByStatus(ApplicationStatus.ACCEPTED);
+
+		if (entries != null)
+		{
+			for (Application app : entries)
+			{
+				CommitteeInfoBlock cib = app.getCommitteeInfoBlock();
+				if (cib != null && circle.contentEquals(cib.getAssignedCommittee().toString())
+						&& app.getEmail() != null && !app.getEmail().isEmpty())
+				{
+					emails.add(app.getEmail());
+				}
+			}
+		}
+		return emails;
+	}
+
+	@SuppressWarnings("unchecked")
+	private List<Application> getApplicationsByStatus(ApplicationStatus status)
+	{
+		PersistenceManager pm = PMF.get().getPersistenceManager();
+
+		Query query = pm.newQuery(Application.class);
+		query.setFilter("year == yearParam && status == statusParam");
+		query.declareParameters("int yearParam, String statusParam");
+		query.setOrdering("status ASC");
+
+		List<Application> entries = null;
+		try
+		{
+			entries = (List<Application>) query.execute(Utils.getThisYearInt(), status.name());
+		}
+		catch (Exception e)
+		{
+			log.log(Level.WARNING, e.getMessage());
+		}
+		return entries;
 	}
 
 	/**
@@ -130,9 +179,9 @@ public class EmailServiceImpl extends RemoteServiceServlet implements EmailServi
 		return new InternetAddress("michael.grouse@gmail.com", "Scarab");
 	}
 
-	private InternetAddress getRegistrationLeadAddress() throws Exception
+	private InternetAddress getRegistrationLeadAddress()
 	{
-		return new InternetAddress("shanalory@hotmail.com", "Quiggles");
+		return asInternetAddress("Quiggles", "shanalory@hotmail.com");
 	}
 
 	private String getRegistrationLeadAddressAsText()
@@ -140,8 +189,19 @@ public class EmailServiceImpl extends RemoteServiceServlet implements EmailServi
 		return "shanalory@hotmail.com";
 	}
 
-	private InternetAddress asInternetAddress(String address) throws UnsupportedEncodingException
+	private InternetAddress asInternetAddress(String name, String address)
 	{
-		return new InternetAddress(address, "Scarab");
+		InternetAddress retVal = null;
+
+		try
+		{
+			retVal = new InternetAddress(address, name);
+		}
+		catch (Exception e)
+		{
+			log.log(Level.WARNING, e.getMessage());
+		}
+
+		return retVal;
 	}
 }

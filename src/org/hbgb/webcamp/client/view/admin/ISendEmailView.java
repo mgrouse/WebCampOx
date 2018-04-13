@@ -43,5 +43,9 @@ public interface ISendEmailView extends IView
 
 	public void setRespondEmailAddress(String address);
 
-	public void setSendButtonEnabled(boolean b);
+	public void displaySendResult(String result);
+
+	public String getRespondName();
+
+	public void setRespondName(String name);
 }

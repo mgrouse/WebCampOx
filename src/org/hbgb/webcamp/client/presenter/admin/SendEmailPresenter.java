@@ -17,7 +17,6 @@ import org.hbgb.webcamp.client.view.ViewFinder;
 import org.hbgb.webcamp.client.view.admin.ISendEmailView;
 import org.hbgb.webcamp.shared.enums.Circle;
 
-import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.HasWidgets;
 
@@ -35,7 +34,8 @@ public class SendEmailPresenter implements ISendEmailPresenter, ISendEmailView.P
 	private Circle recipientCircle;
 	private String subject;
 	private String body;
-	private String sender;
+	private String senderName;
+	private String senderAddress;
 
 	public SendEmailPresenter()
 	{
@@ -62,7 +62,6 @@ public class SendEmailPresenter implements ISendEmailPresenter, ISendEmailView.P
 	{
 		getViewData();
 		sendMail();
-		view.setSendButtonEnabled(true);
 	}
 
 	private void getViewData()
@@ -70,13 +69,14 @@ public class SendEmailPresenter implements ISendEmailPresenter, ISendEmailView.P
 		recipientCircle = view.getRecipientCircle();
 		subject = view.getSubjectLineText();
 		body = view.getEmailBodyText();
-		sender = view.getRespondEmailAddress();
+		senderName = view.getRespondName();
+		senderAddress = view.getRespondEmailAddress();
 	}
 
 	private void sendMail()
 	{
-		service.sendEmailToCircle(recipientCircle, subject, sender, body,
-				new AsyncCallback<String>()
+		service.sendEmailToCircle(recipientCircle.toString(), subject, body, senderName,
+				senderAddress, new AsyncCallback<String>()
 				{
 
 					@Override
@@ -84,17 +84,17 @@ public class SendEmailPresenter implements ISendEmailPresenter, ISendEmailView.P
 					{
 						if (result == "Failure")
 						{
-							Window.alert("Your email was not sent. ;( \n\n "
+							view.displaySendResult("Your email was not sent. ;( \n\n "
 									+ "Please contact Scarab and tell him what time it is now; "
 									+ "and that your email failed.");
 						}
 						else if (result == "Success")
 						{
-							Window.alert("Congrats!!! your email was sent!");
+							view.displaySendResult("Congrats!!! your email was sent!");
 						}
 						else if (result == "NoRecipients")
 						{
-							Window.alert("That Circle has no members in database!");
+							view.displaySendResult("That Circle has no members in the database!");
 						}
 
 					}
@@ -102,8 +102,9 @@ public class SendEmailPresenter implements ISendEmailPresenter, ISendEmailView.P
 					@Override
 					public void onFailure(Throwable caught)
 					{
-						Window.alert("Please contact Scarab and let him know "
-								+ "that the following error has occurred: " + caught.getMessage());
+						view.displaySendResult("Please contact Scarab and let him know "
+								+ "that the following error has occurred:\n\n"
+								+ caught.getMessage());
 					}
 				});
 
