@@ -108,17 +108,23 @@ public class EmailServiceImpl extends RemoteServiceServlet implements EmailServi
 	private List<String> getCircleEmailList(String circle)
 	{
 		ArrayList<String> emails = new ArrayList<>();
-		List<Application> entries = getApplicationsByStatus(ApplicationStatus.ACCEPTED);
 
-		if (entries != null)
+		if (null != circle)
 		{
-			for (Application app : entries)
+			List<Application> entries = getApplicationsByStatus(ApplicationStatus.ACCEPTED);
+
+			if (entries != null)
 			{
-				CommitteeInfoBlock cib = app.getCommitteeInfoBlock();
-				if (cib != null && circle.contentEquals(cib.getAssignedCommittee().toString())
-						&& app.getEmail() != null && !app.getEmail().isEmpty())
+				for (Application app : entries)
 				{
-					emails.add(app.getEmail());
+					CommitteeInfoBlock cib = app.getCommitteeInfoBlock();
+
+					if (null != cib && null != cib.getAssignedCommittee()
+							&& circle.contentEquals(cib.getAssignedCommittee().toString())
+							&& app.getEmail() != null && !app.getEmail().isEmpty())
+					{
+						emails.add(app.getEmail());
+					}
 				}
 			}
 		}

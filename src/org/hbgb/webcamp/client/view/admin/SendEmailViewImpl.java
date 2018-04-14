@@ -167,6 +167,7 @@ public class SendEmailViewImpl extends AbstractView implements ISendEmailView
 	{
 		Window.alert(result);
 		loadPop.stop();
+		setSendButtonEnabled(true);
 	}
 
 	@Override

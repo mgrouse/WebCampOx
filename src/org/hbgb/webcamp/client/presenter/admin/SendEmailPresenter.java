@@ -107,7 +107,5 @@ public class SendEmailPresenter implements ISendEmailPresenter, ISendEmailView.P
 								+ caught.getMessage());
 					}
 				});
-
 	}
-
 }
