@@ -103,20 +103,31 @@ public class RosterDetails implements Comparable<RosterDetails>, Serializable
 	@Override
 	public int compareTo(RosterDetails rd)
 	{
-		int retval = 0;
+		String name1, name2;
 
-		retval = playaName.compareTo(rd.playaName);
-
-		if (isEmpty(playaName) && isEmpty(rd.playaName))
+		if (isEmpty(this.getPlayaName()))
 		{
-			retval = firstName.compareTo(rd.firstName);
+			name1 = this.getFirstName();
+		}
+		else
+		{
+			name1 = this.getPlayaName();
 		}
 
-		return retval;
+		if (isEmpty(rd.getPlayaName()))
+		{
+			name2 = rd.getFirstName();
+		}
+		else
+		{
+			name2 = rd.getPlayaName();
+		}
+
+		return name1.compareToIgnoreCase(name2);
 	}
 
 	private Boolean isEmpty(String text)
 	{
-		return ((null == text) || (text.isEmpty()));
+		return ((null == text) || (text.trim().isEmpty()));
 	}
 }

@@ -57,7 +57,7 @@ public class CamperRosterServlet extends HttpServlet
 			resp.getWriter().println("<h2>Playa Name: " + details.getPlayaName() + " </h2> <br/>");
 
 			// display assigned committee
-			resp.getWriter().println("Committee: " + details.getCommittee() + " <br/>");
+			resp.getWriter().println("Circle: " + details.getCommittee() + " <br/>");
 
 			// display bio
 			resp.getWriter().println("Bio: " + details.getBio());
