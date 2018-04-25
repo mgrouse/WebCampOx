@@ -26,6 +26,7 @@ import org.hbgb.webcamp.shared.CommitteeInfoBlock;
 import org.hbgb.webcamp.shared.ContactInfo;
 import org.hbgb.webcamp.shared.Demographics;
 import org.hbgb.webcamp.shared.DietInfoBlock;
+import org.hbgb.webcamp.shared.FindAppResult;
 import org.hbgb.webcamp.shared.LogisticsInfoBlock;
 import org.hbgb.webcamp.shared.MealsInfo;
 import org.hbgb.webcamp.shared.MealsReport;
@@ -35,6 +36,7 @@ import org.hbgb.webcamp.shared.ShelterInfoBlock;
 import org.hbgb.webcamp.shared.Utils;
 import org.hbgb.webcamp.shared.enums.ApplicationStatus;
 import org.hbgb.webcamp.shared.enums.Circle;
+import org.hbgb.webcamp.shared.enums.FindApp;
 
 import com.google.gwt.user.server.rpc.RemoteServiceServlet;
 
@@ -49,7 +51,7 @@ public class ApplicationServiceImpl extends RemoteServiceServlet implements Appl
 	public Application getApplication(String encoded)
 	{
 		Application application = null;
-		PersistenceManager pm = this.getPM();
+		PersistenceManager pm = getPM();
 		try
 		{
 			application = pm.getObjectById(Application.class, encoded);
@@ -82,7 +84,7 @@ public class ApplicationServiceImpl extends RemoteServiceServlet implements Appl
 	public String findApplicationEmailByKey(String encoded)
 	{
 		String retVal = null;
-		Application app = this.getApplication(encoded);
+		Application app = getApplication(encoded);
 		if (app != null)
 		{
 			retVal = app.getEmail();
@@ -117,7 +119,7 @@ public class ApplicationServiceImpl extends RemoteServiceServlet implements Appl
 		finally
 		{
 			// TODO find out how to make all detaches cascade
-			pm.close();
+			// pm.close();
 		}
 
 		return app;
@@ -232,94 +234,79 @@ public class ApplicationServiceImpl extends RemoteServiceServlet implements Appl
 	// was NOT added
 
 	@Override
-	public Application findOrAddApplication(String email)
+	public FindAppResult findOrAddApplication(String email)
 	{
-		Application retVal = null;
+		FindAppResult retVal = new FindAppResult();
 
 		Application test = getApplicationByEmail(email);
 
 		if (null == test)
 		{
-			retVal = createBlankApplicationByEmail(email);
-
-			// send e-mails about a new application
-			EmailServiceImpl mailServ = new EmailServiceImpl();
-			try
-			{
-				mailServ.sendApplicationRecievedEmail(email);
-			}
-			catch (Exception e)
-			{
-				// log error
-				log.severe(e.getMessage());
-			}
-
+			retVal.setKey(createBlankApplicationByEmail(email));
+			retVal.setFind(FindApp.Created);
 		}
 		else
 		{
 			if (Utils.getThisYearInt() == test.getYear())
 			{
-				retVal = test;
+				retVal.setKey(new String(test.getEncodedKey()));
+				retVal.setFind(FindApp.Found);
 			}
 			else
 			{
-				retVal = createCopyApplicationForThisYear(test);
-
-				// send e-mails about a new application
-				EmailServiceImpl mailServ = new EmailServiceImpl();
-				try
-				{
-					mailServ.sendApplicationRecievedEmail(email);
-				}
-				catch (Exception e)
-				{
-					// log error
-					log.severe(e.getMessage());
-				}
+				retVal.setKey(createCopyApplicationForThisYear(test));
+				retVal.setFind(FindApp.Copy);
 			}
 		}
 
 		return retVal;
 	}
 
-	private Application createBlankApplicationByEmail(String email)
+	private String createBlankApplicationByEmail(String email)
 	{
+		String retVal = null;
 		PersistenceManager pm = getPM();
 
 		Application app = new Application(email);
 
 		try
 		{
-			pm.makePersistent(app);
-			app = pm.detachCopy(app);
+			app = pm.makePersistent(app);
+
+			// need to clone since app.<any member> will go way on pm.colse()
+			retVal = new String(app.getEncodedKey());
 		}
 		finally
 		{
 			pm.close();
 		}
 
-		return app;
+		return retVal;
 	}
 
-	private Application createCopyApplicationForThisYear(Application source)
+	private String createCopyApplicationForThisYear(Application source)
 	{
+		String retVal = null;
 		PersistenceManager pm = getPM();
 
-		Application dbApp = pm.getObjectById(Application.class, source.getEncodedKey());
+		// Application dbApp = pm.getObjectById(Application.class,
+		// source.getEncodedKey());
 
-		Application copy = new Application(dbApp);
+		Application copy = new Application(source);
 
 		try
 		{
-			pm.makePersistent(copy);
-			copy = pm.detachCopy(copy);
+			copy = pm.makePersistent(copy);
+
+			// need to clone since app.<any member> will go way on pm.colse()
+			retVal = new String(copy.getEncodedKey());
 		}
 		finally
 		{
 			pm.close();
 		}
 
-		return copy;
+		return retVal;
 	}
 
 	@Override

@@ -16,6 +16,7 @@ import org.hbgb.webcamp.shared.ApplicationRow;
 import org.hbgb.webcamp.shared.Burner;
 import org.hbgb.webcamp.shared.CommitteeInfoBlock;
 import org.hbgb.webcamp.shared.DietInfoBlock;
+import org.hbgb.webcamp.shared.FindAppResult;
 import org.hbgb.webcamp.shared.LogisticsInfoBlock;
 import org.hbgb.webcamp.shared.MealsReport;
 import org.hbgb.webcamp.shared.PaymentInfoBlock;
@@ -41,7 +42,7 @@ public interface ApplicationService extends RemoteService
 
 	public List<RosterDetails> getAcceptedRosterDetailsByYear(int var1);
 
-	public Application findOrAddApplication(String var1);
+	public FindAppResult findOrAddApplication(String var1);
 
 	public Boolean updateApplication(Application var1);
 

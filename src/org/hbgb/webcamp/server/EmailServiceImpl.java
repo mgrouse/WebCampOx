@@ -32,23 +32,23 @@ public class EmailServiceImpl extends RemoteServiceServlet implements EmailServi
 	private static final Logger log = Logger.getLogger(EmailServiceImpl.class.getName());
 
 	@Override
-	public String sendApplicationRecievedEmail(String key)
+	public String sendApplicationRecievedEmail(String emailAddress)
 	{
-		ApplicationServiceImpl appServ = new ApplicationServiceImpl();
-		Application app = appServ.getApplication(key);
-
 		List<String> recipient = new ArrayList<>();
 		InternetAddress replyTo = getRegistrationLeadAddress();
 
 		// first to the Lead
 		recipient.add(getRegistrationLeadAddressAsText());
 
-		sendMail(recipient, "HeeBee application received! for: " + app.getEmail(),
+		sendMail(recipient, "HeeBee application received! for: " + emailAddress,
 				getNotificationEmailBody(), replyTo);
 
 		// then to the camper
 		recipient.clear();
-		recipient.add(app.getEmail());
+		recipient.add(emailAddress);
+
+		// for testing
+		recipient.add("michael.grouse@gmail.com");
 
 		return sendMail(recipient, "Your HeeBee application was received!",
 				getApplicationEmailBody(), replyTo);

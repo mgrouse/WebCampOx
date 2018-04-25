@@ -1,19 +1,18 @@
-/*
- * Decompiled with CFR 0_115.
- * 
- * Could not load the following classes: com.google.gwt.user.client.Window
- * com.google.gwt.user.client.rpc.AsyncCallback
- * com.google.gwt.user.client.ui.HasWidgets com.google.gwt.user.client.ui.Widget
- */
+
 package org.hbgb.webcamp.client.presenter.application.input;
+
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import org.hbgb.webcamp.client.async.ApplicationServiceAsync;
 import org.hbgb.webcamp.client.async.AsyncServiceFinder;
+import org.hbgb.webcamp.client.async.EmailServiceAsync;
 import org.hbgb.webcamp.client.presenter.IKeyPresenter;
 import org.hbgb.webcamp.client.presenter.ISequentialPresenter;
 import org.hbgb.webcamp.client.view.ViewFinder;
 import org.hbgb.webcamp.client.view.application.input.IStartView;
-import org.hbgb.webcamp.shared.Application;
+import org.hbgb.webcamp.shared.FindAppResult;
+import org.hbgb.webcamp.shared.enums.FindApp;
 
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.rpc.AsyncCallback;
@@ -21,13 +20,16 @@ import com.google.gwt.user.client.ui.HasWidgets;
 
 public class StartPresenter implements ISequentialPresenter
 {
+	private static final Logger log = Logger.getLogger(StartPresenter.class.getName());
+
 	private final ApplicationServiceAsync rpcService = AsyncServiceFinder.getApplicationService();
-	// private final EmailServiceAsync emailService =
-	// AsyncServiceFinder.getEmailService();
+	private final EmailServiceAsync emailService = AsyncServiceFinder.getEmailService();
 
 	private final IStartView view = ViewFinder.getEnterView();
 
-	private String key = null;
+	// private int finishedCalls;
+
+	private FindAppResult findResult = null;
 	private String email;
 
 	private HasWidgets screen;
@@ -35,7 +37,8 @@ public class StartPresenter implements ISequentialPresenter
 
 	public StartPresenter()
 	{
-		this.view.setPresenter(this);
+		// finishedCalls = 0;
+		view.setPresenter(this);
 	}
 
 	@Override
@@ -52,6 +55,7 @@ public class StartPresenter implements ISequentialPresenter
 	@Override
 	public void go()
 	{
+		// finishedCalls = 0;
 		screen.clear();
 		view.clear();
 		screen.add(view.asWidget());
@@ -63,45 +67,37 @@ public class StartPresenter implements ISequentialPresenter
 		nextPresenter = next;
 	}
 
+	// waits on calls to complete. A poor man's semaphore
+	// private void onAsyncReturn()
+	// {
+	// finishedCalls += 1;
+	// if (2 == finishedCalls)
+	// {
+	// notifyNextPresenter();
+	// }
+	// }
+
 	@Override
 	public void onNextButtonClicked()
 	{
 		view.setNextButtonActive(false);
 		setModel();
+	
+		// starting two Async calls
+		getApplicationKey();
+		// sendEmail();
+	}
 
-		rpcService.findOrAddApplication(email, new AsyncCallback<Application>()
-		{
-			@Override
-			public void onSuccess(Application result)
-			{
-				if (null == result)
-				{
-					Window.alert("Applicant's Info came back as NULL.");
-				}
-				else
-				{
-					key = result.getEncodedKey();
+	private void notifyNextPresenter()
+	{
+		// mostly just in case the same browser comes back
+		// to enter another registration
+		view.setNextButtonActive(true);
 
-					if (null == key)
-					{
-						Window.alert("Applicant's Info came back with null key");
-					}
-					else
-					{
-						screen.clear();
-						nextPresenter.setKey(key);
-						nextPresenter.setScreen(screen);
-						nextPresenter.go();
-					}
-				}
-			}
-
-			@Override
-			public void onFailure(Throwable caught)
-			{
-				Window.alert("RPC Error saving Applicant's Info" + caught.getMessage());
-			}
-		});
+		screen.clear();
+		nextPresenter.setKey(findResult.getKey());
+		nextPresenter.setScreen(screen);
+		nextPresenter.go();
 	}
 
 	private void setModel()
@@ -109,44 +105,79 @@ public class StartPresenter implements ISequentialPresenter
 		email = view.getEmailText();
 	}
 
-	// private void sendEmail()
-	// {
-	// this.emailService.sendApplicationRecievedEmail(key, new
-	// AsyncCallback<String>()
-	// {
-	// @Override
-	// public void onSuccess(String result)
-	// {
-	// if (result == null)
-	// {
-	// Window.alert("RPC Error: Email Result is returned as NULL");
-	// }
-	// else
-	// {
-	//
-	// }
-	//
-	// // if (result.equals("Success"))
-	// // {
-	// // screen.clear();
-	// // nextPresenter.setKey(key);
-	// // nextPresenter.setScreen(screen);
-	// // nextPresenter.go();
-	// //
-	// // }
-	// // else
-	// // {
-	// // // log failure of email
-	// // }
-	//
-	// }
-	//
-	// @Override
-	// public void onFailure(Throwable caught)
-	// {
-	// // log failure of email
-	// }
-	// });
-	// }
+	private void getApplicationKey()
+	{
+		rpcService.findOrAddApplication(email, new AsyncCallback<FindAppResult>()
+		{
+			@Override
+			public void onSuccess(FindAppResult result)
+			{
+				if (null == result)
+				{
+					log.log(Level.WARNING, "Applicant's AppFind came back as NULL.");
+					Window.alert("Applicant's AppFind came back as NULL.");
+				}
+				else
+				{
+					findResult = result;
 
+					if (null == findResult.getKey())
+					{
+						log.log(Level.WARNING, "Applicant's Info came back with null key");
+						Window.alert("Applicant's Info came back with null key");
+					}
+					else if (FindApp.Found != findResult.getFind())
+					{
+						sendEmail();
+					}
+					else
+					{
+						notifyNextPresenter();
+					}
+				}
+				// onAsyncReturn();
+			}
+
+			@Override
+			public void onFailure(Throwable caught)
+			{
+				log.log(Level.WARNING,
+						"RPC Error involving Applicant's Info" + caught.getMessage());
+				Window.alert("RPC Error involving Applicant's Info" + caught.getMessage());
+				// onAsyncReturn();
+			}
+		});
+	}
+
+	private void sendEmail()
+	{
+		emailService.sendApplicationRecievedEmail(email, new AsyncCallback<String>()
+		{
+			@Override
+			public void onSuccess(String result)
+			{
+				if (result == null)
+				{
+					log.log(Level.WARNING, "RPC Error: Email Result is returned as NULL");
+				}
+				else if (result.equals("Failure"))
+				{
+					// log failure of email
+					log.log(Level.WARNING, "RPC Error: Email Result is returned as 'Failure'");
+				}
+
+				// onAsyncReturn();
+				notifyNextPresenter();
+			}
+
+			@Override
+			public void onFailure(Throwable caught)
+			{
+				// log failure of email
+				log.log(Level.SEVERE, "Exception.msg: " + caught.getMessage());
+				// onAsyncReturn();
+				notifyNextPresenter();
+			}
+		});
+	}
 }

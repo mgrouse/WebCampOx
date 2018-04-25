@@ -15,6 +15,7 @@ import org.hbgb.webcamp.shared.ApplicationRow;
 import org.hbgb.webcamp.shared.Burner;
 import org.hbgb.webcamp.shared.CommitteeInfoBlock;
 import org.hbgb.webcamp.shared.DietInfoBlock;
+import org.hbgb.webcamp.shared.FindAppResult;
 import org.hbgb.webcamp.shared.LogisticsInfoBlock;
 import org.hbgb.webcamp.shared.MealsReport;
 import org.hbgb.webcamp.shared.PaymentInfoBlock;
@@ -36,7 +37,7 @@ public interface ApplicationServiceAsync
 
 	public void getApplicationRows(AsyncCallback<ArrayList<ApplicationRow>> callback);
 
-	public void findOrAddApplication(String var1, AsyncCallback<Application> var2);
+	public void findOrAddApplication(String var1, AsyncCallback<FindAppResult> var2);
 
 	public void updateApplication(Application var1, AsyncCallback<Boolean> var2);
 

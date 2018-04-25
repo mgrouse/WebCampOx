@@ -140,7 +140,7 @@ public class ApplicationListByYearPresenter
 					@Override
 					public void onFailure(Throwable caught)
 					{
-						Window.alert("Error fetching Application details");
+						Window.alert("Error fetching Application details: " + caught.getMessage());
 					}
 				});
 	}

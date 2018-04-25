@@ -13,7 +13,7 @@ import javax.jdo.annotations.PrimaryKey;
 import org.hbgb.webcamp.shared.enums.ApplicationStatus;
 
 @SuppressWarnings("serial")
-@PersistenceCapable(identityType = IdentityType.APPLICATION)
+@PersistenceCapable(identityType = IdentityType.APPLICATION, detachable = "true")
 public class Application implements Serializable
 {
 
@@ -67,7 +67,8 @@ public class Application implements Serializable
 	// on save of last page send invite link to yahoo group
 
 	public Application()
-	{}
+	{
+	}
 
 	public Application(String emailText)
 	{
