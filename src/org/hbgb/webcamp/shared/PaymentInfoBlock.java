@@ -13,7 +13,7 @@ import javax.jdo.annotations.PrimaryKey;
 import org.hbgb.webcamp.shared.enums.TicketType;
 
 @SuppressWarnings("serial")
-@PersistenceCapable(identityType = IdentityType.APPLICATION)
+@PersistenceCapable(detachable = "true", identityType = IdentityType.APPLICATION)
 public class PaymentInfoBlock implements Serializable
 {
 	@PrimaryKey
@@ -49,7 +49,8 @@ public class PaymentInfoBlock implements Serializable
 	private String subsidyReason = "";
 
 	public PaymentInfoBlock()
-	{}
+	{
+	}
 
 	public PaymentInfoBlock(String emailText)
 	{

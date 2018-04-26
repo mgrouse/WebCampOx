@@ -15,7 +15,7 @@ import org.hbgb.webcamp.shared.enums.PlayaTime;
 import org.hbgb.webcamp.shared.enums.Transportation;
 
 @SuppressWarnings("serial")
-@PersistenceCapable(identityType = IdentityType.APPLICATION)
+@PersistenceCapable(detachable = "true", identityType = IdentityType.APPLICATION)
 public class LogisticsInfoBlock implements Serializable
 {
 	@PrimaryKey
@@ -60,7 +60,8 @@ public class LogisticsInfoBlock implements Serializable
 	private PlayaTime departureTime;
 
 	public LogisticsInfoBlock()
-	{}
+	{
+	}
 
 	public LogisticsInfoBlock(String emailText)
 	{

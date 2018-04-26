@@ -12,7 +12,7 @@ import javax.jdo.annotations.PrimaryKey;
 import org.hbgb.webcamp.shared.enums.SecurityRole;
 
 @SuppressWarnings("serial")
-@PersistenceCapable(identityType = IdentityType.APPLICATION)
+@PersistenceCapable(detachable = "true", identityType = IdentityType.APPLICATION)
 public class HbgbUser implements Serializable
 {
 
@@ -60,7 +60,8 @@ public class HbgbUser implements Serializable
 	SecurityRole securityRole;
 
 	public HbgbUser()
-	{}
+	{
+	}
 
 	public HbgbUser(String emailAddress, String password, String firstName, String lastName)
 	{

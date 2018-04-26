@@ -41,7 +41,8 @@ public class ApplicationServiceImpl extends RemoteServiceServlet implements Appl
 
 	private static final ApplicationStatus noShows[] = { ApplicationStatus.ARCHIVED };
 
-	@Override
+	@Override // returns only the Application Object, the child objects are not
+				// present
 	public Application getApplication(String encoded)
 	{
 		Application application = null;
@@ -105,7 +106,6 @@ public class ApplicationServiceImpl extends RemoteServiceServlet implements Appl
 			if (!results.isEmpty())
 			{
 				app = results.get(0);
-
 				app = pm.detachCopy(app);
 			}
 
@@ -283,8 +283,17 @@ public class ApplicationServiceImpl extends RemoteServiceServlet implements Appl
 		String retVal = null;
 		PersistenceManager pm = getPM();
 
-		// Application dbApp = pm.getObjectById(Application.class,
-		// source.getEncodedKey());
+		// source was gotten as a top level object only. It has no members
+		// we need to fetch proper detached members and set them.
+		// TODO figure out how to make a detachCopy(application) call cascade
+		// all the way down
+		// put that wisdom in getApplicationByEmail(String email)
+		source.setApplicant(getApplicant(source.getEncodedKey()));
+		source.setCommitteeInfoBlock(getApplicantsCommitteeInfoBlock(source.getEncodedKey()));
+		source.setDietInfoBlock(getApplicantsDietInfoBlock(source.getEncodedKey()));
+		source.setLogisticsInfoBlock(getApplicantsLogisticsInfoBlock(source.getEncodedKey()));
+		source.setPaymentInfoBlock(getApplicantsPaymentInfoBlock(source.getEncodedKey()));
+		source.setShelterInfoBlock(getApplicantsShelterInfoBlock(source.getEncodedKey()));
 
 		Application copy = new Application(source);
 
@@ -533,9 +542,10 @@ public class ApplicationServiceImpl extends RemoteServiceServlet implements Appl
 		try
 		{
 			application = pm.getObjectById(Application.class, encoded);
-			cBlock = application.getCommitteeInfoBlock();
-			cBlock = pm.detachCopy(cBlock);
 
+			cBlock = application.getCommitteeInfoBlock();
+
+			cBlock = pm.detachCopy(cBlock);
 		}
 		finally
 		{

@@ -14,7 +14,7 @@ import org.hbgb.webcamp.shared.enums.DietType;
 import com.google.appengine.api.datastore.Text;
 
 @SuppressWarnings("serial")
-@PersistenceCapable(identityType = IdentityType.APPLICATION)
+@PersistenceCapable(detachable = "true", identityType = IdentityType.APPLICATION)
 public class DietInfoBlock implements Serializable
 {
 	@PrimaryKey
@@ -41,7 +41,8 @@ public class DietInfoBlock implements Serializable
 	private Text dietaryRestrictions = new Text("");
 
 	public DietInfoBlock()
-	{}
+	{
+	}
 
 	public DietInfoBlock(String emailText)
 	{

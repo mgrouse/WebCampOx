@@ -28,12 +28,9 @@ public class Utils
 	@SuppressWarnings("deprecation")
 	static public int getThisYearInt()
 	{
-		// Calendar cal = Calendar.getInstance();
-
-		// return cal.get(Calendar.YEAR);
-
 		Date today = new Date();
 
+		// return 2017;
 		return today.getYear() + 1900;
 	}
 }

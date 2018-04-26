@@ -14,7 +14,7 @@ import org.hbgb.webcamp.shared.enums.Circle;
 import com.google.appengine.api.datastore.Text;
 
 @SuppressWarnings("serial")
-@PersistenceCapable(identityType = IdentityType.APPLICATION)
+@PersistenceCapable(detachable = "true", identityType = IdentityType.APPLICATION)
 public class CommitteeInfoBlock implements Serializable
 {
 	@PrimaryKey
@@ -47,7 +47,8 @@ public class CommitteeInfoBlock implements Serializable
 	private Boolean isAssignedLead = false;
 
 	public CommitteeInfoBlock()
-	{}
+	{
+	}
 
 	public CommitteeInfoBlock(String emailText)
 	{

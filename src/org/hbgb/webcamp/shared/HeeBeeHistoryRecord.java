@@ -12,7 +12,7 @@ import javax.jdo.annotations.PrimaryKey;
 import org.hbgb.webcamp.shared.enums.Circle;
 
 @SuppressWarnings("serial")
-@PersistenceCapable(identityType = IdentityType.APPLICATION)
+@PersistenceCapable(detachable = "true", identityType = IdentityType.APPLICATION)
 public class HeeBeeHistoryRecord implements Serializable
 {
 	@PrimaryKey

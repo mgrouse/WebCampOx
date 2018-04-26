@@ -12,7 +12,7 @@ import javax.jdo.annotations.PrimaryKey;
 import com.google.appengine.api.datastore.Text;
 
 @SuppressWarnings("serial")
-@PersistenceCapable(identityType = IdentityType.APPLICATION)
+@PersistenceCapable(detachable = "true", identityType = IdentityType.APPLICATION)
 public class OfficeUse implements Serializable
 {
 	@PrimaryKey
@@ -27,7 +27,8 @@ public class OfficeUse implements Serializable
 	private Text notes = new Text("");
 
 	public OfficeUse()
-	{}
+	{
+	}
 
 	public OfficeUse(String emailText)
 	{

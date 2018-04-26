@@ -12,7 +12,7 @@ import javax.jdo.annotations.PrimaryKey;
 import com.google.appengine.api.datastore.Text;
 
 @SuppressWarnings("serial")
-@PersistenceCapable(identityType = IdentityType.APPLICATION)
+@PersistenceCapable(detachable = "true", identityType = IdentityType.APPLICATION)
 public class ShelterInfoBlock implements Serializable
 {
 	@PrimaryKey
@@ -42,7 +42,8 @@ public class ShelterInfoBlock implements Serializable
 	private Text structureInfo = new Text("");
 
 	public ShelterInfoBlock()
-	{}
+	{
+	}
 
 	public ShelterInfoBlock(String emailText)
 	{

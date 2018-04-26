@@ -10,7 +10,7 @@ import javax.jdo.annotations.Persistent;
 import javax.jdo.annotations.PrimaryKey;
 
 @SuppressWarnings("serial")
-@PersistenceCapable(identityType = IdentityType.APPLICATION)
+@PersistenceCapable(detachable = "true", identityType = IdentityType.APPLICATION)
 public class VettingInfoBlock implements Serializable
 {
 	@PrimaryKey
@@ -25,7 +25,8 @@ public class VettingInfoBlock implements Serializable
 	private Boolean isSparklePony = false;
 
 	public VettingInfoBlock()
-	{}
+	{
+	}
 
 	public VettingInfoBlock(String emailText)
 	{

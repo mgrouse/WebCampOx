@@ -10,7 +10,7 @@ import javax.jdo.annotations.Persistent;
 import javax.jdo.annotations.PrimaryKey;
 
 @SuppressWarnings("serial")
-@PersistenceCapable(identityType = IdentityType.APPLICATION)
+@PersistenceCapable(detachable = "true", identityType = IdentityType.APPLICATION)
 public class Burn implements Serializable
 {
 	@PrimaryKey
@@ -31,7 +31,8 @@ public class Burn implements Serializable
 	private String note;
 
 	public Burn()
-	{}
+	{
+	}
 
 	public Burn(String email)
 	{

@@ -12,7 +12,7 @@ import javax.jdo.annotations.PrimaryKey;
 import com.google.appengine.api.datastore.Text;
 
 @SuppressWarnings("serial")
-@PersistenceCapable(identityType = IdentityType.APPLICATION)
+@PersistenceCapable(detachable = "true", identityType = IdentityType.APPLICATION)
 public class HealerSheetInfoBlock implements Serializable
 {
 	@PrimaryKey
@@ -42,7 +42,8 @@ public class HealerSheetInfoBlock implements Serializable
 	private Text bio = new Text("");
 
 	public HealerSheetInfoBlock()
-	{}
+	{
+	}
 
 	public String getEncodedKey()
 	{

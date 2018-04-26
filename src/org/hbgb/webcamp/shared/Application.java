@@ -95,7 +95,6 @@ public class Application implements Serializable
 		created = new Date();
 		edited = null;
 
-		// TODO needs to look up the current year.
 		year = Utils.getThisYearInt();
 		status = ApplicationStatus.NEW;
 
