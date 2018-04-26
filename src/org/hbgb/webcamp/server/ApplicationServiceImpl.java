@@ -1,10 +1,4 @@
-/*
- * Decompiled with CFR 0_115.
- * 
- * Could not load the following classes: com.google.appengine.api.datastore.Text
- * com.google.gwt.user.server.rpc.RemoteServiceServlet
- * javax.jdo.PersistenceManager javax.jdo.Query
- */
+
 package org.hbgb.webcamp.server;
 
 import java.util.ArrayList;
@@ -119,7 +113,7 @@ public class ApplicationServiceImpl extends RemoteServiceServlet implements Appl
 		finally
 		{
 			// TODO find out how to make all detaches cascade
-			// pm.close();
+			pm.close();
 		}
 
 		return app;
